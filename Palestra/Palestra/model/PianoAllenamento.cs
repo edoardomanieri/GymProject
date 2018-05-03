@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Palestra.model.TipoAllenamentoEnum;
 
 namespace Palestra.model
 {
+    public enum TipoAllenamento { Ipertrofia, Definizione, Forza, Dimagrimento, Tonificazione }
     class PianoAllenamento
     {
         private List<GiornoAllenamento> _giorniAllenamento;
@@ -43,8 +43,5 @@ namespace Palestra.model
             return false;
 
         }
-
-
-
     }
 }

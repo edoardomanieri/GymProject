@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Palestra.model.FasciaMuscolareEnum;
+
 
 namespace Palestra.model
 {
+    public enum FasciaMuscolare { Bicipiti, Petto, Tricipiti, Addome, Quadricipiti, Deltoidi, Polpacci, Dorso }
     class Esercizio
     {
 

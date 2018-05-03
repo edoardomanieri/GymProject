@@ -42,13 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="model\Allenamento.cs" />
     <Compile Include="model\Esercizio.cs" />
-    <Compile Include="model\FasciaMuscolareEnum.cs" />
+    <Compile Include="model\GestorePianiAllenamento.cs" />
     <Compile Include="model\GiornoAllenamento.cs" />
     <Compile Include="model\InsiemeSerie.cs" />
+    <Compile Include="model\Utente.cs" />
     <Compile Include="model\PianoAllenamento.cs" />
     <Compile Include="model\Serie.cs" />
-    <Compile Include="model\TipoAllenamentoEnum.cs" />
+    <Compile Include="model\UtenteAutomatico.cs" />
+    <Compile Include="model\UtenteManuale.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
