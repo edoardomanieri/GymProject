@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    class Serie
+    public class Serie
     {
-        private uint _numeroRipetizioni;
+        private int _numeroRipetizioni;
         private Esercizio esercizio;
 
-        public Serie(uint numeroRipetizioni, Esercizio esercizio)
+        public Serie(int numeroRipetizioni, Esercizio esercizio)
         {
             _numeroRipetizioni = numeroRipetizioni;
             this.Esercizio = esercizio;
         }
 
         public Esercizio Esercizio { get => esercizio; set => esercizio = value; }
-        public uint NumeroRipetizioni { get => _numeroRipetizioni; set => _numeroRipetizioni = value; }
+        public int NumeroRipetizioni { get => _numeroRipetizioni; set => _numeroRipetizioni = value; }
 
 
     }

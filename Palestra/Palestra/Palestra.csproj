@@ -43,9 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\Allenamento.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoAutomaticoDefinizione.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoAutomaticoForza.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoAutomaticoIpertrofia.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoAutomaticoTonificazione.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoFactory.cs" />
     <Compile Include="model\Esercizio.cs" />
     <Compile Include="model\GestorePianiAllenamento.cs" />
     <Compile Include="model\GiornoAllenamento.cs" />
+    <Compile Include="model\IConfiguraPianoAllenamentoAutomatico.cs" />
     <Compile Include="model\InsiemeSerie.cs" />
     <Compile Include="model\Utente.cs" />
     <Compile Include="model\PianoAllenamento.cs" />

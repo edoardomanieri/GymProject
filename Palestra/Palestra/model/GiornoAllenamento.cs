@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    class GiornoAllenamento
+    public class GiornoAllenamento
     {
-        private uint _tempoDiRecuperoInSec;
+        private int _tempoDiRecuperoInSec;
         private List<InsiemeSerie> _listaInsiemeSerie;
 
-        public GiornoAllenamento(uint tempoDiRecuperoInSec)
+        public GiornoAllenamento(int tempoDiRecuperoInSec)
         {
             _tempoDiRecuperoInSec = tempoDiRecuperoInSec;
             _listaInsiemeSerie = new List<InsiemeSerie>();
@@ -27,7 +27,7 @@ namespace Palestra.model
             return ListaInsiemeSerie.Remove(insiemeSerie);
         }
 
-        public uint TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
+        public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
         public List<InsiemeSerie> ListaInsiemeSerie { get => _listaInsiemeSerie; }
     }
 }

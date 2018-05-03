@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    class InsiemeSerie
+    public class InsiemeSerie
     {
-        private uint _tempoDiRecuperoInSec;
+        private int _tempoDiRecuperoInSec;
         private List<Serie> _listaSerie;
 
-        public InsiemeSerie(uint tempoDiRecuperoInSec)
+        public InsiemeSerie(int tempoDiRecuperoInSec)
         {
             _tempoDiRecuperoInSec = tempoDiRecuperoInSec;
             _listaSerie = new List<Serie>();
@@ -27,7 +27,7 @@ namespace Palestra.model
             return ListaSerie.Remove(serie);
         }
 
-        public uint TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
+        public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
         public List<Serie> ListaSerie { get => _listaSerie; }
     }
 }

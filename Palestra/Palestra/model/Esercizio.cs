@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Palestra.model
 {
     public enum FasciaMuscolare { Bicipiti, Petto, Tricipiti, Addome, Quadricipiti, Deltoidi, Polpacci, Dorso }
-    class Esercizio
+    public class Esercizio
     {
 
         private string _nome;

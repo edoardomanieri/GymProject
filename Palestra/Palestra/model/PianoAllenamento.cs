@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Palestra.model
 {
     public enum TipoAllenamento { Ipertrofia, Definizione, Forza, Dimagrimento, Tonificazione }
-    class PianoAllenamento
+    public class PianoAllenamento
     {
         private List<GiornoAllenamento> _giorniAllenamento;
-        private uint _numeroGiorniAllenamento;
+        private int _numeroGiorniAllenamento;
         private TipoAllenamento _tipoAllenamento;
 
         public PianoAllenamento(TipoAllenamento tipoAllenamento)
@@ -20,11 +20,11 @@ namespace Palestra.model
             TipoAllenamento = tipoAllenamento;
         }
 
-        public uint NumeroGiorniAllenamento { get => _numeroGiorniAllenamento; set => _numeroGiorniAllenamento = value; }
-        internal List<GiornoAllenamento> GiorniAllenamento { get => _giorniAllenamento; set => _giorniAllenamento = value; }
-        internal TipoAllenamento TipoAllenamento { get => _tipoAllenamento; set => _tipoAllenamento = value; }
+        public int NumeroGiorniAllenamento { get => _numeroGiorniAllenamento; set => _numeroGiorniAllenamento = value; }
+        public List<GiornoAllenamento> GiorniAllenamento { get => _giorniAllenamento; set => _giorniAllenamento = value; }
+        public TipoAllenamento TipoAllenamento { get => _tipoAllenamento; set => _tipoAllenamento = value; }
 
-        public Boolean inserisciGiornoAllenamento(GiornoAllenamento giornoAllenamento)
+        public bool inserisciGiornoAllenamento(GiornoAllenamento giornoAllenamento)
         {
             if (NumeroGiorniAllenamento >= 7)
                 return false;
@@ -33,7 +33,7 @@ namespace Palestra.model
             return true;
         }
 
-        public Boolean rimuoviGiornoAllenamento(GiornoAllenamento giornoAllenamento)
+        public bool rimuoviGiornoAllenamento(GiornoAllenamento giornoAllenamento)
         {
             if (GiorniAllenamento.Remove(giornoAllenamento))
             {
