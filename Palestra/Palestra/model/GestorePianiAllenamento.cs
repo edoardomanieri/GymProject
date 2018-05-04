@@ -8,17 +8,17 @@ namespace Palestra.model
 {
     public class GestorePianiAllenamento
     {
-        private List<Allenamento> _allenamenti;
         private readonly Utente _utente;
         private PianoAllenamento _pianoAllenamento;
         private IConfiguraPianoAllenamentoAutomatico _configuraPianoAllenamentoAutomatico;
 
         public PianoAllenamento PianoAllenamento { get => _pianoAllenamento; set => _pianoAllenamento = value; }
 
+        public Utente Utente => _utente;
+
         public GestorePianiAllenamento(Utente utente)
         {
             _utente = utente;
-            _allenamenti = new List<Allenamento>();
             if (utente is UtenteAutomatico)
             {
                 UtenteAutomatico utenteAutomatico = (UtenteAutomatico)utente;
@@ -27,12 +27,6 @@ namespace Palestra.model
             }
         }
 
-
-
-        public void registraAllenamento(Allenamento allenamento)
-        {
-            _allenamenti.Add(allenamento);
-        }
 
         public void ConfiguraPianoAllenamentoManuale(PianoAllenamento pianoAllenamento)
         {

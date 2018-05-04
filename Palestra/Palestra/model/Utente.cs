@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
+    public enum Sesso { Maschio, Femmina };
     public class Utente
     {
         private readonly string _nome;
@@ -13,14 +14,16 @@ namespace Palestra.model
         private readonly DateTime _dataDiNascita;
         private readonly int _pesoInKg;
         private readonly int _altezzaInCm;
+        private readonly Sesso _sesso;
 
-        protected Utente(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm)
+        protected Utente(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm, Sesso sesso)
         {
             _nome = nome;
             _cognome = cognome;
             _dataDiNascita = dataDiNascita;
             _pesoInKg = pesoInKg;
             _altezzaInCm = altezzaInCm;
+            _sesso = sesso;
         }
 
         public string Nome => _nome;
@@ -32,5 +35,7 @@ namespace Palestra.model
         public int PesoInKg => _pesoInKg;
 
         public int AltezzaInCm => _altezzaInCm;
+
+        public Sesso Sesso => _sesso;
     }
 }

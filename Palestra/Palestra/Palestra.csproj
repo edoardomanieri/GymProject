@@ -57,7 +57,11 @@
     <Compile Include="model\PianoAllenamento.cs" />
     <Compile Include="model\Serie.cs" />
     <Compile Include="model\UtenteAutomatico.cs" />
-    <Compile Include="model\UtenteManuale.cs" />
+    <Compile Include="Persistence\IAllenamentoPersistenceManager.cs" />
+    <Compile Include="Persistence\IEsercizioPersistanceManager.cs" />
+    <Compile Include="Persistence\IPianoAllenamentoPersistenceManager.cs" />
+    <Compile Include="Persistence\IUtentePersistenceManager.cs" />
+    <Compile Include="Persistence\MainPersistanceManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
