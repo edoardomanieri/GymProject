@@ -22,7 +22,7 @@ namespace Palestra.model
            ListaSerie.Add(serie);
         }
         
-        public Boolean removeSerie(Serie serie)
+        public bool removeSerie(Serie serie)
         {
             return ListaSerie.Remove(serie);
         }
