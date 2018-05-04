@@ -14,7 +14,8 @@ namespace Palestra.Persistence
         public MainPersistanceManager()
         {
             _esercizi = new List<Esercizio>();
-            _esercizi.Add(new Esercizio("panca piana", FasciaMuscolare.Petto));
+            _esercizi.Add(new Esercizio("Panca piana", FasciaMuscolare.Petto));
+            _esercizi.Add(new Esercizio("Distensioni", FasciaMuscolare.Petto));
             //mettere tutti gli esercizi nella lista
         }
 
