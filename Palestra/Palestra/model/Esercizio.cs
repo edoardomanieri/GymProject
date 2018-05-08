@@ -21,8 +21,7 @@ namespace Palestra.model
         }
 
         public string Nome { get => _nome; set => _nome = value; }
-        internal FasciaMuscolare FasciaMuscolare { get => _fasciaMuscolare; set => _fasciaMuscolare = value; }
-
+        public FasciaMuscolare FasciaMuscolare { get => _fasciaMuscolare; set => _fasciaMuscolare = value; }
 
     }
 }

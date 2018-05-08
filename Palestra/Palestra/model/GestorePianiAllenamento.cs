@@ -11,19 +11,20 @@ namespace Palestra.model
         private readonly Utente _utente;
         private PianoAllenamento _pianoAllenamento;
         private IConfiguraPianoAllenamentoAutomatico _configuraPianoAllenamentoAutomatico;
+        private List<Esercizio> _esercizi;
 
         public PianoAllenamento PianoAllenamento { get => _pianoAllenamento; set => _pianoAllenamento = value; }
-
         public Utente Utente => _utente;
 
-        public GestorePianiAllenamento(Utente utente)
+        public GestorePianiAllenamento(Utente utente, List<Esercizio> esercizi)
         {
             _utente = utente;
+            _esercizi = esercizi;
             if (utente is UtenteAutomatico)
             {
                 UtenteAutomatico utenteAutomatico = (UtenteAutomatico)utente;
                 _configuraPianoAllenamentoAutomatico = ConfiguraPianoAllenamentoFactory.GetConfiguraPianoAllenamentoAutomatico(utenteAutomatico.Tipo);
-                PianoAllenamento =  _configuraPianoAllenamentoAutomatico.ConfiguraPianoAllenamentoAutomatico(utenteAutomatico);
+                PianoAllenamento =  _configuraPianoAllenamentoAutomatico.ConfiguraPianoAllenamentoAutomatico(utenteAutomatico, _esercizi);
             }
         }
 

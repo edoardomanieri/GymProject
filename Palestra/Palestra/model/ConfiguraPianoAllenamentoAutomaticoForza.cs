@@ -8,7 +8,7 @@ namespace Palestra.model
 {
     class ConfiguraPianoAllenamentoAutomaticoForza : IConfiguraPianoAllenamentoAutomatico
     {
-        public PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico)
+        public PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
         {
             throw new NotImplementedException();
         }

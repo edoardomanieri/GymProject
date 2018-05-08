@@ -8,6 +8,6 @@ namespace Palestra.model
 {
     public interface IConfiguraPianoAllenamentoAutomatico
     {
-        PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico);
+        PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi);
     }
 }
