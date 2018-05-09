@@ -68,9 +68,10 @@
     <Compile Include="model\GiornoAllenamento.cs" />
     <Compile Include="model\IConfiguraPianoAllenamentoAutomatico.cs" />
     <Compile Include="model\InsiemeSerie.cs" />
+    <Compile Include="model\Sesso.cs" />
+    <Compile Include="model\TipoAllenamento.cs" />
     <Compile Include="model\Utente.cs" />
     <Compile Include="model\PianoAllenamento.cs" />
-    <Compile Include="model\Serie.cs" />
     <Compile Include="model\UtenteAutomatico.cs" />
     <Compile Include="Persistence\IAllenamentoPersistenceManager.cs" />
     <Compile Include="Persistence\IEsercizioPersistanceManager.cs" />

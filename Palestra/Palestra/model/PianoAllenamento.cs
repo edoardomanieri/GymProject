@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public enum TipoAllenamento { Ipertrofia, Definizione, Forza, Tonificazione }
     public class PianoAllenamento
     {
         private List<GiornoAllenamento> _giorniAllenamento;

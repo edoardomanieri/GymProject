@@ -9,25 +9,23 @@ namespace Palestra.model
     public class InsiemeSerie
     {
         private int _tempoDiRecuperoInSec;
-        private List<Serie> _listaSerie;
+        private int _numeroRipetizioni;
+        private int _numeroSerie;
+        private Esercizio _esercizio;
+        private int _peso;
 
-        public InsiemeSerie(int tempoDiRecuperoInSec)
+        public InsiemeSerie(int tempoDiRecuperoInSec, int numeroRipetizioni, int numeroSerie, Esercizio esercizio)
         {
-            _tempoDiRecuperoInSec = tempoDiRecuperoInSec;
-            _listaSerie = new List<Serie>();
-        }
-
-        public void addSerie(Serie serie)
-        {
-           ListaSerie.Add(serie);
-        }
-        
-        public bool removeSerie(Serie serie)
-        {
-            return ListaSerie.Remove(serie);
+            TempoDiRecuperoInSec = tempoDiRecuperoInSec;
+            NumeroRipetizioni = numeroRipetizioni;
+            NumeroSerie = numeroSerie;
+            Esercizio = esercizio;
         }
 
         public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
-        public List<Serie> ListaSerie { get => _listaSerie; }
+        public int NumeroRipetizioni { get => _numeroRipetizioni; set => _numeroRipetizioni = value; }
+        public int NumeroSerie { get => _numeroSerie; set => _numeroSerie = value; }
+        public Esercizio Esercizio { get => _esercizio; set => _esercizio = value; }
+        public int Peso { get => _peso; set => _peso = value; }
     }
 }

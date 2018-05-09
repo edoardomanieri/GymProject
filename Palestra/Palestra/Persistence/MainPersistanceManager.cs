@@ -26,6 +26,16 @@ namespace Palestra.Persistence
             //mettere tutti gli esercizi nella lista
         }
 
+        private Esercizio GetEsercizioByName(string nome)
+        {
+            foreach(Esercizio esercizio in _esercizi)
+            {
+                if (esercizio.Nome.Equals(nome))
+                    return esercizio;
+            }
+            return null;
+        }
+
         public SqlConnection Conn { get => _conn; set => _conn = value; }
 
 
@@ -111,24 +121,28 @@ namespace Palestra.Persistence
                 }
                 pianoAllenamento = new PianoAllenamento(tipo);
 
-                SqlCommand myCommand2 = new SqlCommand("select * from ALLENAMENTI", Conn);
+                SqlCommand myCommand2 = new SqlCommand("select * from GIORNIALLENAMENTI", Conn);
                 SqlDataReader myReader2 = myCommand.ExecuteReader();
-                while (myReader.Read())
+                GiornoAllenamento giornoAllenamento;
+                while (myReader2.Read())
                 {
-                    allenamenti.Add(new Allenamento((int)myReader["DurataInMinuti"], (DateTime)myReader["Data"]));
+                    giornoAllenamento = new GiornoAllenamento((int)myReader2["TempoRecuperoTraEsercizi"]);
+                    SqlCommand myCommand3 = new SqlCommand("select * from insiemeSerie where I_G_ID=" + myReader2["ID"], Conn);
+                    SqlDataReader myReader3 = myCommand.ExecuteReader();
+                    while (myReader3.Read())
+                    {
+                        giornoAllenamento.addInsiemeSerie(new InsiemeSerie((int)myReader3["tempoDiRecuperoTraSerie"], (int)myReader3["numeroRipetizioni"], (int)myReader3["numeroSerie"], GetEsercizioByName((string)myReader3["Nome"])));
+                    }
+                    pianoAllenamento.inserisciGiornoAllenamento(giornoAllenamento);
+
                 }
-            }
-
-
-
-
             }
             catch (SqlException e)
             {
                 //eccezione da gestire
                 throw;
             }
-            return allenamenti;
+            return pianoAllenamento;
         }
 
         public Utente GetUtente()

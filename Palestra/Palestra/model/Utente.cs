@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public enum Sesso { Maschio, Femmina };
     public class Utente
     {
         private readonly string _nome;
