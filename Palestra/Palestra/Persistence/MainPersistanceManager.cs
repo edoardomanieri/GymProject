@@ -12,7 +12,7 @@ namespace Palestra.Persistence
     public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager
     {
         private List<Esercizio> _esercizi;
-        private SqlConnection _conn;
+        private SqlConnection _conn; 
 
         public MainPersistanceManager()
         {
@@ -22,8 +22,7 @@ namespace Palestra.Persistence
             Conn.Open();
 
             _esercizi = new List<Esercizio>();
-            _esercizi.Add(new Esercizio("Panca piana", FasciaMuscolare.Petto));
-            _esercizi.Add(new Esercizio("Distensioni", FasciaMuscolare.Petto));
+            _esercizi.Add(new Esercizio("Panca piana", FasciaMuscolare.Pettorali, "", Risorsa.SalaPesi ));
             //mettere tutti gli esercizi nella lista
         }
 

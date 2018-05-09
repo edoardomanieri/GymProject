@@ -11,15 +11,43 @@ namespace Palestra
     {
         static void Main(string[] args)
         {
-            Esercizio curl = new Esercizio("curl", FasciaMuscolareEnum.FasciaMuscolare.Bicipiti);
-            Serie serie = new Serie(4, curl);
-            InsiemeSerie insiemeSerie = new InsiemeSerie(60);
-            insiemeSerie.addSerie(serie);
-            GiornoAllenamento giorno = new GiornoAllenamento(120);
-            giorno.addInsiemeSerie(insiemeSerie);
-            PianoAllenamento piano = new PianoAllenamento(TipoAllenamentoEnum.TipoAllenamento.Ipertrofia);
-            piano.inserisciGiornoAllenamento(giorno);
+           /* ConfiguraPianoAllenamentoAutomaticoIpertrofia configura = new ConfiguraPianoAllenamentoAutomaticoIpertrofia();
+            Dictionary<int, List<FasciaMuscolare>> prova;
 
+            prova = configura.distribuisciFasceMuscolariPerGiorno(1);
+            printDictionary(prova);
+            prova = configura.distribuisciFasceMuscolariPerGiorno(2);
+            printDictionary(prova);
+
+            prova = configura.distribuisciFasceMuscolariPerGiorno(3);
+            printDictionary(prova);
+
+            prova = configura.distribuisciFasceMuscolariPerGiorno(4);
+            printDictionary(prova);
+
+            prova = configura.distribuisciFasceMuscolariPerGiorno(5);
+            printDictionary(prova);
+
+            prova = configura.distribuisciFasceMuscolariPerGiorno(6);
+            printDictionary(prova);
+
+            prova = configura.distribuisciFasceMuscolariPerGiorno(7);
+            printDictionary(prova);
+            Console.ReadLine();*/
         }
+
+        /*private static void printDictionary(Dictionary<int, List<FasciaMuscolare>> prova)
+        {
+            Console.WriteLine("Prova con numero giorni allenamento = " + prova.Count);
+            foreach(int x in prova.Keys)
+            {
+                int giorno = x+1;
+                Console.WriteLine(giorno);
+                foreach (FasciaMuscolare fc in prova.ElementAt(x).Value)
+                {
+                    Console.WriteLine(fc.ToString());
+                }
+            }
+        }*/
     }
 }

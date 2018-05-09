@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public enum risorseDisponibili { salaPesi, corpoLibero }
     public class UtenteAutomatico : Utente
     {
         private readonly TipoAllenamento _tipo;
-        private readonly risorseDisponibili _risorse;
+        private readonly Risorsa _risorse;
         private readonly int _numeroAllenamentiSettimanali;
        
 
