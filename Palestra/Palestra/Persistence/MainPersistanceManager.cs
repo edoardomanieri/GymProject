@@ -34,9 +34,17 @@ namespace Palestra.Persistence
             throw new NotImplementedException();
         }
 
-        public bool DeleteAllenamento(Allenamento allenamento)
+        public bool DeleteAllenamenti()
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand myCommand = new SqlCommand("delete from ALLENAMENTI", Conn);
+                return myCommand.ExecuteNonQuery() > 0;
+            }
+            catch(SqlException e)
+            {
+                throw;
+            }
         }
 
         public bool DeletePianoAllenamento(PianoAllenamento pianoAllenamento)
@@ -54,7 +62,7 @@ namespace Palestra.Persistence
             List<Allenamento> allenamenti = new List<Allenamento>();
             try
             { 
-                SqlCommand myCommand = new SqlCommand("select * from allenamenti",   Conn);
+                SqlCommand myCommand = new SqlCommand("select * from ALLENAMENTI",   Conn);
                 SqlDataReader myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
@@ -76,7 +84,51 @@ namespace Palestra.Persistence
 
         public PianoAllenamento GetPianoAllenamento()
         {
-            throw new NotImplementedException();
+            PianoAllenamento pianoAllenamento;
+            try
+            {
+                SqlCommand myCommand = new SqlCommand("select * from PIANIALLENAMENTO", Conn);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                string tipoString = (string) myReader["TipoAllenamento"];
+                TipoAllenamento tipo;
+                switch (tipoString)
+                {
+                    case "Ipertofia":
+                        tipo = TipoAllenamento.Ipertrofia;
+                        break;
+                    case "Definizione":
+                        tipo = TipoAllenamento.Definizione;
+                        break;
+                    case "Tonificazione":
+                        tipo = TipoAllenamento.Tonificazione;
+                        break;
+                    case "Forza":
+                        tipo = TipoAllenamento.Forza;
+                        break;
+                    default:
+                        throw new Exception();
+                }
+                pianoAllenamento = new PianoAllenamento(tipo);
+
+                SqlCommand myCommand2 = new SqlCommand("select * from ALLENAMENTI", Conn);
+                SqlDataReader myReader2 = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    allenamenti.Add(new Allenamento((int)myReader["DurataInMinuti"], (DateTime)myReader["Data"]));
+                }
+            }
+
+
+
+
+            }
+            catch (SqlException e)
+            {
+                //eccezione da gestire
+                throw;
+            }
+            return allenamenti;
         }
 
         public Utente GetUtente()

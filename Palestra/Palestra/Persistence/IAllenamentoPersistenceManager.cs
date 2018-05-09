@@ -11,6 +11,6 @@ namespace Palestra.Persistence
     {
         IEnumerable<Allenamento> GetAllAllenamenti();
         bool SaveAllenamento(Allenamento allenamento);
-        bool DeleteAllenamento(Allenamento allenamento);
+        bool DeleteAllenamenti();
     }
 }
