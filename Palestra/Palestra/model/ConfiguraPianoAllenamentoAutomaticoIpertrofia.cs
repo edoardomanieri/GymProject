@@ -8,7 +8,7 @@ namespace Palestra.model
 {
     class ConfiguraPianoAllenamentoAutomaticoIpertrofia : IConfiguraPianoAllenamentoAutomatico
     {
-
+        //prova
         public override PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico, List<Esercizio> listaEsercizi)
         {
             PianoAllenamento schedaGenerata = schedaGenerata = new PianoAllenamento(utenteAutomatico.Tipo);
