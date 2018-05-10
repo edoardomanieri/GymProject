@@ -9,7 +9,7 @@ using Palestra.model;
 
 namespace Palestra.Persistence
 {
-    public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager
+    public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager, IIDGeneerator
     {
         private List<Esercizio> _esercizi;
         private SqlConnection _conn; 
@@ -207,6 +207,31 @@ namespace Palestra.Persistence
         public void CloseConnection()
         {
             _conn.Close();
+        }
+
+        public int generaUtenteID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int generaAllenamentoID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int generaGiornoAllenamentoID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int generaInsiemeSerieID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void resetID()
+        {
+            throw new NotImplementedException();
         }
     }
 }
