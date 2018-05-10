@@ -13,7 +13,7 @@ namespace Palestra.model
         private readonly int _numeroAllenamentiSettimanali;
        
 
-        public UtenteAutomatico(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm,  Sesso sesso,  TipoAllenamento tipo, risorseDisponibili risorse, int numeroAllenamentiSettimanali) : base(nome, cognome,  dataDiNascita,  pesoInKg,  altezzaInCm, sesso)
+        public UtenteAutomatico(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm,  Sesso sesso,  TipoAllenamento tipo, Risorsa risorse, int numeroAllenamentiSettimanali) : base(nome, cognome,  dataDiNascita,  pesoInKg,  altezzaInCm, sesso)
         {
             _tipo = tipo;
             _risorse = risorse;
@@ -22,7 +22,7 @@ namespace Palestra.model
 
         public int NumeroAllenamentiSettimanali => _numeroAllenamentiSettimanali;
 
-        public risorseDisponibili Risorse => _risorse;
+        public Risorsa Risorse => _risorse;
 
         public TipoAllenamento Tipo => _tipo;
     }

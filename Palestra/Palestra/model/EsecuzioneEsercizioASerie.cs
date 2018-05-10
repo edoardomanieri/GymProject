@@ -6,26 +6,31 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public class InsiemeSerie
+    public class EsecuzioneEsercizioASerie : EsecuzioneEsercizio
     {
         private int _tempoDiRecuperoInSec;
         private int _numeroRipetizioni;
         private int _numeroSerie;
-        private Esercizio _esercizio;
         private int _peso;
 
-        public InsiemeSerie(int tempoDiRecuperoInSec, int numeroRipetizioni, int numeroSerie, Esercizio esercizio)
+        public EsecuzioneEsercizioASerie(Esercizio esercizio, int tempoDiRecuperoInSec, int numeroRipetizioni, int numeroSerie, int peso) : base(esercizio)
         {
             TempoDiRecuperoInSec = tempoDiRecuperoInSec;
             NumeroRipetizioni = numeroRipetizioni;
             NumeroSerie = numeroSerie;
-            Esercizio = esercizio;
+            Peso = peso;
         }
 
-        public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
+        public EsecuzioneEsercizioASerie(Esercizio esercizio, int tempoDiRecuperoInSec, int numeroRipetizioni, int numeroSerie) : base(esercizio)
+        {
+            TempoDiRecuperoInSec = tempoDiRecuperoInSec;
+            NumeroRipetizioni = numeroRipetizioni;
+            NumeroSerie = numeroSerie;
+        }
+
         public int NumeroRipetizioni { get => _numeroRipetizioni; set => _numeroRipetizioni = value; }
         public int NumeroSerie { get => _numeroSerie; set => _numeroSerie = value; }
-        public Esercizio Esercizio { get => _esercizio; set => _esercizio = value; }
         public int Peso { get => _peso; set => _peso = value; }
+        public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
     }
 }

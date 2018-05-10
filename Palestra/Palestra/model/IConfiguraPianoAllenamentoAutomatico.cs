@@ -90,7 +90,7 @@ namespace Palestra.model
                         result.Add(corrente);
                     else
                     {
-                        if (corrente.RisorsaRichiesta.Equals(risorseDisponibili))
+                        if (corrente.RisorseRichieste.Equals(risorseDisponibili))
                             result.Add(corrente);
                     }
 
@@ -100,11 +100,11 @@ namespace Palestra.model
             return result;
         }
 
-        public InsiemeSerie generaInsiemeSerie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, int numeroRipetizioni, int numeroSerie, int tempoRecuperoInSec, List<Esercizio> listaEsercizi)
+        public EsecuzioneEsercizio generaInsiemeSerie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, int numeroRipetizioni, int numeroSerie, int tempoRecuperoInSec, List<Esercizio> listaEsercizi)
         {
             Random random = new Random();
-            InsiemeSerie nuovoInsiemeSerie = new InsiemeSerie(tempoRecuperoInSec, numeroRipetizioni, numeroSerie, getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi)[random.Next(getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi).Count - 1)]);
-            return nuovoInsiemeSerie;
+            Esercizio esercizio = getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi)[random.Next(getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi).Count - 1)];
+            return new EsecuzioneEsercizioASerie(esercizio, tempoRecuperoInSec, numeroRipetizioni, numeroSerie);
         }
     }
 }

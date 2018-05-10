@@ -63,12 +63,14 @@
     <Compile Include="model\ConfiguraPianoAllenamentoAutomaticoIpertrofia.cs" />
     <Compile Include="model\ConfiguraPianoAllenamentoAutomaticoTonificazione.cs" />
     <Compile Include="model\ConfiguraPianoAllenamentoFactory.cs" />
+    <Compile Include="model\EsecuzioneEsercizioATempo.cs" />
+    <Compile Include="model\EsecuzioneEsercizioASerie.cs" />
     <Compile Include="model\Esercizio.cs" />
     <Compile Include="model\FasciaMuscolare.cs" />
     <Compile Include="model\GestorePianiAllenamento.cs" />
     <Compile Include="model\GiornoAllenamento.cs" />
     <Compile Include="model\IConfiguraPianoAllenamentoAutomatico.cs" />
-    <Compile Include="model\InsiemeSerie.cs" />
+    <Compile Include="model\EsecuzioneEsercizio.cs" />
     <Compile Include="model\Risorsa.cs" />
     <Compile Include="model\Sesso.cs" />
     <Compile Include="model\TipoAllenamento.cs" />
