@@ -131,7 +131,7 @@ namespace Palestra.Persistence
                     SqlDataReader myReader3 = myCommand.ExecuteReader();
                     while (myReader3.Read())
                     {
-                        giornoAllenamento.addInsiemeSerie(new InsiemeSerie((int)myReader3["tempoDiRecuperoTraSerie"], (int)myReader3["numeroRipetizioni"], (int)myReader3["numeroSerie"], GetEsercizioByName((string)myReader3["Nome"])));
+                        giornoAllenamento.addInsiemeSerie(new InsiemeSerie((int)myReader3["tempoDiRecuperoTraSerie"], (int)myReader3["numeroRipetizioni"], (int)myReader3["numeroSerie"], GetEsercizioByName((string)myReader3["NomeEsercizio"])));
                     }
                     pianoAllenamento.inserisciGiornoAllenamento(giornoAllenamento);
 
@@ -183,8 +183,10 @@ namespace Palestra.Persistence
                 SqlParameter myParam6 = new SqlParameter("@Param6", SqlDbType.Int, 2);
                 myParam6.Value = utente.PesoInKg;
 
-                SqlCommand myCommand = new SqlCommand("INSERT INTO Utenti (Nome, Cognome, DataDiNascita, Sesso, AltezzaInCm, PesoInKg)" +
-                    " Values (@Param1, @Param2, @Param3, @Param4, @Param5, @Param6)", Conn);
+                int ID = generaUtenteID();
+
+                SqlCommand myCommand = new SqlCommand("INSERT INTO Utenti (ID, Nome, Cognome, DataDiNascita, Sesso, AltezzaInCm, PesoInKg)" +
+                    " Values (" + ID + ", @Param1, @Param2, @Param3, @Param4, @Param5, @Param6)", Conn);
                 myCommand.Parameters.Add(myParam);
                 myCommand.Parameters.Add(myParam2);
                 myCommand.Parameters.Add(myParam3);
@@ -211,27 +213,100 @@ namespace Palestra.Persistence
 
         public int generaUtenteID()
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand myCommand = new SqlCommand("select Utente from IDs", Conn);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                int ID = (int)myReader["Utente"] + 1;
+
+                SqlCommand update = new SqlCommand("update IDs set Utente = " + ID, Conn);
+                update.ExecuteNonQuery();
+                return ID;
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
         }
 
         public int generaAllenamentoID()
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand myCommand = new SqlCommand("select Allenamento from IDs", Conn);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                int ID = (int)myReader["Allenamento"] + 1;
+
+                SqlCommand update = new SqlCommand("update IDs set Allenamento = " + ID, Conn);
+                update.ExecuteNonQuery();
+                return ID;
+            }
+            catch(SqlException e)
+            {
+                throw;
+            }
+
         }
 
         public int generaGiornoAllenamentoID()
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand myCommand = new SqlCommand("select GiornoAllenamento from IDs", Conn);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                int ID = (int)myReader["GiornoAllenamento"] + 1;
+
+                SqlCommand update = new SqlCommand("update IDs set GiornoAllenamento = " + ID, Conn);
+                update.ExecuteNonQuery();
+                return ID;
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
         }
 
-        public int generaInsiemeSerieID()
+       public int generaInsiemeSerieID()
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand myCommand = new SqlCommand("select InsiemeSerie from IDs", Conn);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                int ID = (int)myReader["InsiemeSerie"] + 1;
+
+                SqlCommand update = new SqlCommand("update IDs set InsiemeSerie = " + ID, Conn);
+                update.ExecuteNonQuery();
+                return ID;
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
         }
 
         public void resetID()
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                SqlCommand update = new SqlCommand("update IDs set Allenamento = 0, InsiemeSerie = 0, GiornoAllenamento = 0, Utente = 0", Conn);
+                update.ExecuteNonQuery();
+                
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+        }
+
+
+        public void reset()
+        {
+            resetID();
         }
     }
 }
