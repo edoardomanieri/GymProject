@@ -8,7 +8,7 @@ namespace Palestra.model
 {
     class ConfiguraPianoAllenamentoAutomaticoDefinizione : IConfiguraPianoAllenamentoAutomatico
     {
-        public PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
+        public override PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
         {
             throw new NotImplementedException();
         }
