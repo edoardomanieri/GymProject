@@ -113,9 +113,6 @@ namespace Palestra.Persistence
                     case "Tonificazione":
                         tipo = TipoAllenamento.Tonificazione;
                         break;
-                    case "Forza":
-                        tipo = TipoAllenamento.Forza;
-                        break;
                     default:
                         throw new Exception();
                 }
@@ -127,11 +124,24 @@ namespace Palestra.Persistence
                 while (myReader2.Read())
                 {
                     giornoAllenamento = new GiornoAllenamento((int)myReader2["TempoRecuperoTraEsercizi"]);
-                    SqlCommand myCommand3 = new SqlCommand("select * from insiemeSerie where I_G_ID=" + myReader2["ID"], Conn);
+                    SqlCommand myCommand3 = new SqlCommand("select * from ESECUZIONEESERCIZIO where ha_ID=" + myReader2["ID"], Conn);
                     SqlDataReader myReader3 = myCommand.ExecuteReader();
                     while (myReader3.Read())
                     {
-                        giornoAllenamento.addInsiemeSerie(new EsecuzioneEsercizioASerie(GetEsercizioByName((string)myReader3["NomeEsercizio"]),(int)myReader3["tempoDiRecuperoTraSerie"], (int)myReader3["numeroRipetizioni"], (int)myReader3["numeroSerie"]));
+                        SqlCommand myCommand4 = new SqlCommand("select * from ESECUZIONEESERCIZIOATEMPO where ID=" + myReader3["ID"], Conn);
+                        SqlDataReader myReader4 = myCommand.ExecuteReader();
+                        if (myReader4.HasRows)
+                        {
+                            giornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioATempo(GetEsercizioByName((string)myReader3["NomeEsercizio"]), (int)myReader4["tempo"]));
+                        }
+                        else
+                        {
+                            SqlCommand myCommand5 = new SqlCommand("select * from ESECUZIONEESERCIZIOASERIE where ID=" + myReader3["ID"], Conn);
+                            SqlDataReader myReader5 = myCommand.ExecuteReader();
+                            giornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(GetEsercizioByName((string)myReader3["NomeEsercizio"]), (int)myReader5["tempoDiRecuperoTraSerie"],
+                            (int)myReader5["numeroRipetizioni"], (int)myReader5["numeroSerie"]));
+                        }
+                        
                     }
                     pianoAllenamento.inserisciGiornoAllenamento(giornoAllenamento);
 

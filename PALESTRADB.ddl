@@ -3,7 +3,7 @@
 -- *--------------------------------------------
 -- * DB-MAIN version: 9.3.0              
 -- * Generator date: Feb 16 2016              
--- * Generation date: Wed May 09 17:56:37 2018 
+-- * Generation date: Fri May 11 18:55:46 2018 
 -- * LUN file: C:\Users\Edoardo\Desktop\universita\Terzo anno\Ingegneria del software\progetto\PALESTRADB.lun 
 -- * Schema: PALESTRA/SQL 
 -- ********************************************* 
@@ -30,10 +30,26 @@ create table ALLENAMENTI (
      Ese_ID char(1) not null,
      constraint ID_ALLENAMENTI_ID primary key (ID));
 
-create table ESERCIZI (
-     Nome char(1) not null,
-     FasciaMuscolare char(1) not null,
-     constraint ID_ESERCIZI_ID primary key (Nome));
+create table ESECUZIONEESERCIZIO (
+     ID char(1) not null,
+     nomeEsercizio char(1) not null,
+     Ha_ID char(1) not null,
+     ESECUZIONEESERCIZIOATEMPO char(1),
+     ESECUZIONEESERCIZIOASERIE char(1),
+     constraint ID_ESECUZIONEESERCIZIO_ID primary key (ID));
+
+create table ESECUZIONEESERCIZIOASERIE (
+     ID char(1) not null,
+     numeroSerie char(1) not null,
+     numeroRipetizioni char(1) not null,
+     tempoDiRecuperoTraSerie char(1) not null,
+     peso char(1),
+     constraint FKESE_ESE_ID primary key (ID));
+
+create table ESECUZIONEESERCIZIOATEMPO (
+     ID char(1) not null,
+     tempo char(1) not null,
+     constraint FKESE_ESE_1_ID primary key (ID));
 
 create table GIORNIALLENAMENTI (
      ID char(1) not null,
@@ -41,15 +57,12 @@ create table GIORNIALLENAMENTI (
      Con_ID char(1) not null,
      constraint ID_GIORNIALLENAMENTI_ID primary key (ID));
 
-create table insiemeSerie (
-     ID char(1) not null,
-     numeroSerie char(1) not null,
-     numeroRipetizioni char(1) not null,
-     tempoDiRecuperoTraSerie char(1) not null,
-     peso char(1),
-     I_G_ID char(1) not null,
-     Nome char(1) not null,
-     constraint ID_insiemeSerie_ID primary key (ID));
+create table IDs (
+     Allenamento numeric(1) not null,
+     Utente char(1) not null,
+     GiornoAllenamento char(1) not null,
+     InsiemeSerie char(1) not null,
+     constraint ID_IDs_ID primary key (Allenamento, Utente, GiornoAllenamento, InsiemeSerie));
 
 create table PIANOALLENAMENTO (
      ID char(1) not null,
@@ -82,21 +95,29 @@ alter table ALLENAMENTI add constraint FKesegue_FK
      foreign key (Ese_ID)
      references UTENTE;
 
+alter table ESECUZIONEESERCIZIO add constraint EXTONE_ESECUZIONEESERCIZIO
+     check((ESECUZIONEESERCIZIOASERIE is not null and ESECUZIONEESERCIZIOATEMPO is null)
+           or (ESECUZIONEESERCIZIOASERIE is null and ESECUZIONEESERCIZIOATEMPO is not null)); 
+
+alter table ESECUZIONEESERCIZIO add constraint FKha_FK
+     foreign key (Ha_ID)
+     references GIORNIALLENAMENTI;
+
+alter table ESECUZIONEESERCIZIOASERIE add constraint FKESE_ESE_FK
+     foreign key (ID)
+     references ESECUZIONEESERCIZIO;
+
+alter table ESECUZIONEESERCIZIOATEMPO add constraint FKESE_ESE_1_FK
+     foreign key (ID)
+     references ESECUZIONEESERCIZIO;
+
 alter table GIORNIALLENAMENTI add constraint ID_GIORNIALLENAMENTI_CHK
-     check(exists(select * from insiemeSerie
-                  where insiemeSerie.I_G_ID = ID)); 
+     check(exists(select * from ESECUZIONEESERCIZIO
+                  where ESECUZIONEESERCIZIO.Ha_ID = ID)); 
 
 alter table GIORNIALLENAMENTI add constraint FKcontiene_FK
      foreign key (Con_ID)
      references PIANOALLENAMENTO;
-
-alter table insiemeSerie add constraint FKins_GIO_FK
-     foreign key (I_G_ID)
-     references GIORNIALLENAMENTI;
-
-alter table insiemeSerie add constraint FKins_ESE_FK
-     foreign key (Nome)
-     references ESERCIZI;
 
 alter table PIANOALLENAMENTO add constraint FKrealizza_CHK
      check(exists(select * from GIORNIALLENAMENTI
@@ -124,8 +145,17 @@ create unique index ID_ALLENAMENTI_IND
 create index FKesegue_IND
      on ALLENAMENTI (Ese_ID);
 
-create unique index ID_ESERCIZI_IND
-     on ESERCIZI (Nome);
+create unique index ID_ESECUZIONEESERCIZIO_IND
+     on ESECUZIONEESERCIZIO (ID);
+
+create index FKha_IND
+     on ESECUZIONEESERCIZIO (Ha_ID);
+
+create unique index FKESE_ESE_IND
+     on ESECUZIONEESERCIZIOASERIE (ID);
+
+create unique index FKESE_ESE_1_IND
+     on ESECUZIONEESERCIZIOATEMPO (ID);
 
 create unique index ID_GIORNIALLENAMENTI_IND
      on GIORNIALLENAMENTI (ID);
@@ -133,14 +163,8 @@ create unique index ID_GIORNIALLENAMENTI_IND
 create index FKcontiene_IND
      on GIORNIALLENAMENTI (Con_ID);
 
-create unique index ID_insiemeSerie_IND
-     on insiemeSerie (ID);
-
-create index FKins_GIO_IND
-     on insiemeSerie (I_G_ID);
-
-create index FKins_ESE_IND
-     on insiemeSerie (Nome);
+create unique index ID_IDs_IND
+     on IDs (Allenamento, Utente, GiornoAllenamento, InsiemeSerie);
 
 create unique index FKrealizza_IND
      on PIANOALLENAMENTO (ID);

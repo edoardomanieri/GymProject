@@ -9,25 +9,25 @@ namespace Palestra.model
     public class GiornoAllenamento
     {
         private int _tempoDiRecuperoInSec;
-        private List<EsecuzioneEsercizio> _listaInsiemeSerie;
+        private List<EsecuzioneEsercizio> _listaEsecuzioneEsercizi;
 
         public GiornoAllenamento(int tempoDiRecuperoInSec)
         {
             _tempoDiRecuperoInSec = tempoDiRecuperoInSec;
-            _listaInsiemeSerie = new List<EsecuzioneEsercizio>();
+            _listaEsecuzioneEsercizi = new List<EsecuzioneEsercizio>();
         }
 
-        public void addInsiemeSerie(EsecuzioneEsercizio esecuzionEsercizio)
+        public void addEsecuzioneEsercizio(EsecuzioneEsercizio esecuzioneEsercizio)
         {
-            ListaInsiemeSerie.Add(esecuzionEsercizio);
+            ListaInsiemeSerie.Add(esecuzioneEsercizio);
         }
 
-        public Boolean removeInsiemeSerie(EsecuzioneEsercizio insiemeSerie)
+        public Boolean removeEsecuzioneEsercizio(EsecuzioneEsercizio insiemeSerie)
         {
             return ListaInsiemeSerie.Remove(insiemeSerie);
         }
 
         public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
-        public List<EsecuzioneEsercizio> ListaInsiemeSerie { get => _listaInsiemeSerie; }
+        public List<EsecuzioneEsercizio> ListaInsiemeSerie { get => _listaEsecuzioneEsercizi; }
     }
 }

@@ -23,7 +23,7 @@ namespace Palestra.model
                 {
                     for(int indiceEsercizio=0; indiceEsercizio< eserciziPerMuscolo[indiceMuscolo]; indiceEsercizio++)
                     {
-                        nuovoGiornoAllenamento.addInsiemeSerie(generaInsiemeSerie(distribuzioneMuscoli.ElementAt(indice).Value.ElementAt(indiceEsercizio), utenteAutomatico.Risorse, 10, 4, 90, listaEsercizi));
+                        nuovoGiornoAllenamento.addEsecuzioneEsercizio(generaInsiemeSerie(distribuzioneMuscoli.ElementAt(indice).Value.ElementAt(indiceEsercizio), utenteAutomatico.Risorse, 10, 4, 90, listaEsercizi));
                     }
                         
                 }
