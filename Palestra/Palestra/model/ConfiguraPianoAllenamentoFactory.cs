@@ -8,18 +8,17 @@ namespace Palestra.model
 {
     public class ConfiguraPianoAllenamentoFactory
     {
-            private static readonly Dictionary<TipoAllenamento, IConfiguraPianoAllenamentoAutomatico> _dictionary;
+            private static readonly Dictionary<TipoAllenamento, IConfiguraPianoAllenamento> _dictionary;
 
             static ConfiguraPianoAllenamentoFactory()
             {
-                _dictionary = new Dictionary<TipoAllenamento, IConfiguraPianoAllenamentoAutomatico>();
-                _dictionary.Add(TipoAllenamento.Ipertrofia, new ConfiguraPianoAllenamentoAutomaticoIpertrofia());
-                _dictionary.Add(TipoAllenamento.Tonificazione, new ConfiguraPianoAllenamentoAutomaticoTonificazione());
-                _dictionary.Add(TipoAllenamento.Forza, new ConfiguraPianoAllenamentoAutomaticoForza());
-                _dictionary.Add(TipoAllenamento.Definizione, new ConfiguraPianoAllenamentoAutomaticoDefinizione());
+                _dictionary = new Dictionary<TipoAllenamento, IConfiguraPianoAllenamento>();
+                _dictionary.Add(TipoAllenamento.Ipertrofia, new ConfiguraPianoAllenamentoIpertrofia());
+                _dictionary.Add(TipoAllenamento.Tonificazione, new ConfiguraPianoAllenamentoTonificazione());
+                _dictionary.Add(TipoAllenamento.Definizione, new ConfiguraPianoAllenamentoDefinizione());
             }
 
-            public static IConfiguraPianoAllenamentoAutomatico GetConfiguraPianoAllenamentoAutomatico(TipoAllenamento tipo)
+            public static IConfiguraPianoAllenamento GetConfiguraPianoAllenamento(TipoAllenamento tipo)
             {
                 if (!_dictionary.ContainsKey(tipo))
                     throw new ArgumentException();

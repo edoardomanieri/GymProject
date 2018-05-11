@@ -11,13 +11,20 @@ namespace Palestra.model
         private readonly TipoAllenamento _tipo;
         private readonly Risorsa _risorse;
         private readonly int _numeroAllenamentiSettimanali;
-       
+        private PianoAllenamento _pianoAllenamento;
 
         public UtenteAutomatico(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm,  Sesso sesso,  TipoAllenamento tipo, Risorsa risorse, int numeroAllenamentiSettimanali) : base(nome, cognome,  dataDiNascita,  pesoInKg,  altezzaInCm, sesso)
         {
             _tipo = tipo;
             _risorse = risorse;
             _numeroAllenamentiSettimanali = numeroAllenamentiSettimanali;
+
+        }
+
+        public override PianoAllenamento GetPianoAllenamento(List<Esercizio> esercizi)
+        {
+            IConfiguraPianoAllenamento configuraPianoAllenamento = ConfiguraPianoAllenamentoFactory.GetConfiguraPianoAllenamento(Tipo);
+            return configuraPianoAllenamento.Configura(this, esercizi);
         }
 
         public int NumeroAllenamentiSettimanali => _numeroAllenamentiSettimanali;

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public abstract class IConfiguraPianoAllenamentoAutomatico
+    public abstract class IConfiguraPianoAllenamento
     {
         const int FasceMuscolariTot = 8;
-        public abstract PianoAllenamento  ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi);
+        public abstract PianoAllenamento  Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi);
 
-        public Dictionary<int, List<FasciaMuscolare>> distribuisciFasceMuscolariPerGiorno(int numeroGiorniAllenamento)
+        protected Dictionary<int, List<FasciaMuscolare>> distribuisciFasceMuscolariPerGiorno(int numeroGiorniAllenamento)
         {
             Dictionary<int, List<FasciaMuscolare>> result = new Dictionary<int, List<FasciaMuscolare>>();
             int[] distribuzione = distribuisci(numeroGiorniAllenamento, FasceMuscolariTot);
@@ -42,7 +42,7 @@ namespace Palestra.model
             return result;
         }
 
-        public FasciaMuscolare GetFasciaMuscolareCasuale()
+        protected FasciaMuscolare GetFasciaMuscolareCasuale()
         {
             IList<FasciaMuscolare> list = new List<FasciaMuscolare>();
             Random random = new Random();
@@ -58,7 +58,7 @@ namespace Palestra.model
             return list.ElementAt(random.Next(list.Count));
         }
 
-        public int[] distribuisci(int dimensioneDistribuzione, int elementiTotDaDistribuire) //Restituisce un array dove: l'indice corrisponde al giorno d'allenamento, il valore contenuto in quell'indice corrisponde al numero di muscoli da allenare.
+        protected int[] distribuisci(int dimensioneDistribuzione, int elementiTotDaDistribuire) //Restituisce un array dove: l'indice corrisponde al giorno d'allenamento, il valore contenuto in quell'indice corrisponde al numero di muscoli da allenare.
         {
             int[] result = new int[dimensioneDistribuzione];// 
 
@@ -79,7 +79,7 @@ namespace Palestra.model
             return result;
         }
 
-        public IList<Esercizio> getEserciziPerFascie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, List<Esercizio> listaEsercizi)
+        protected IList<Esercizio> getEserciziPerFascie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, List<Esercizio> listaEsercizi)
         {
             IList<Esercizio> result = new List<Esercizio>();
             foreach (Esercizio corrente in listaEsercizi)
@@ -100,7 +100,7 @@ namespace Palestra.model
             return result;
         }
 
-        public EsecuzioneEsercizio generaInsiemeSerie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, int numeroRipetizioni, int numeroSerie, int tempoRecuperoInSec, List<Esercizio> listaEsercizi)
+        protected EsecuzioneEsercizio generaInsiemeSerie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, int numeroRipetizioni, int numeroSerie, int tempoRecuperoInSec, List<Esercizio> listaEsercizi)
         {
             Random random = new Random();
             Esercizio esercizio = getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi)[random.Next(getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi).Count - 1)];

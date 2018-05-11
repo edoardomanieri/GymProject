@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    class ConfiguraPianoAllenamentoAutomaticoForza : IConfiguraPianoAllenamentoAutomatico
+    class ConfiguraPianoAllenamentoTonificazione : IConfiguraPianoAllenamento
     {
-        public override PianoAllenamento ConfiguraPianoAllenamentoAutomatico(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
+        public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
         {
             throw new NotImplementedException();
         }

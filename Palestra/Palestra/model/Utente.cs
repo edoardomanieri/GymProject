@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public class Utente
+    public abstract class Utente
     {
         private readonly string _nome;
         private readonly string _cognome;
@@ -15,7 +15,7 @@ namespace Palestra.model
         private readonly int _altezzaInCm;
         private readonly Sesso _sesso;
 
-        protected Utente(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm, Sesso sesso)
+        public Utente(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm, Sesso sesso)
         {
             _nome = nome;
             _cognome = cognome;
@@ -24,6 +24,8 @@ namespace Palestra.model
             _altezzaInCm = altezzaInCm;
             _sesso = sesso;
         }
+
+        public abstract PianoAllenamento GetPianoAllenamento(List<Esercizio> esercizi);
 
         public string Nome => _nome;
 

@@ -8,6 +8,7 @@ namespace Palestra.model
 {
     public enum Risorsa
     {
-        SalaPesi, CorpoLibero
+        SalaPesi,
+        CorpoLibero
     }
 }
