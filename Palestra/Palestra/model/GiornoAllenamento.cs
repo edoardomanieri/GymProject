@@ -17,9 +17,9 @@ namespace Palestra.model
             _listaInsiemeSerie = new List<EsecuzioneEsercizio>();
         }
 
-        public void addInsiemeSerie(EsecuzioneEsercizio insiemeSerie)
+        public void addInsiemeSerie(EsecuzioneEsercizio esecuzionEsercizio)
         {
-            ListaInsiemeSerie.Add(insiemeSerie);
+            ListaInsiemeSerie.Add(esecuzionEsercizio);
         }
 
         public Boolean removeInsiemeSerie(EsecuzioneEsercizio insiemeSerie)

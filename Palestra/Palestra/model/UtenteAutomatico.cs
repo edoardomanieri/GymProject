@@ -21,11 +21,6 @@ namespace Palestra.model
 
         }
 
-        public override PianoAllenamento GetPianoAllenamento(List<Esercizio> esercizi)
-        {
-            IConfiguraPianoAllenamento configuraPianoAllenamento = ConfiguraPianoAllenamentoFactory.GetConfiguraPianoAllenamento(Tipo);
-            return configuraPianoAllenamento.Configura(this, esercizi);
-        }
 
         public int NumeroAllenamentiSettimanali => _numeroAllenamentiSettimanali;
 

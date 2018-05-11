@@ -8,21 +8,36 @@ namespace Palestra.model
 {
     public class GestorePianiAllenamento
     {
-        private readonly Utente _utente;
-        private PianoAllenamento _pianoAllenamento;
-        private IConfiguraPianoAllenamento _configuraPianoAllenamento;
-        private List<Esercizio> _esercizi;
+        private Dictionary<Utente, PianoAllenamento> _pianiAllenamento;
+        private static GestorePianiAllenamento _instance;
 
-        public PianoAllenamento PianoAllenamento { get => _pianoAllenamento; set => _pianoAllenamento = value; }
-        public Utente Utente => _utente;
+        private GestorePianiAllenamento() { }
 
-        public GestorePianiAllenamento(UtenteAutomatico utente, List<Esercizio> esercizi)
+        public static GestorePianiAllenamento Instance
         {
-            _utente = utente;
-            _esercizi = esercizi;
-            _configuraPianoAllenamento = ConfiguraPianoAllenamentoFactory.GetConfiguraPianoAllenamento(utente.Tipo);
-            PianoAllenamento =  _configuraPianoAllenamento.Configura(utente, _esercizi);
+            get
+            {
+                if(_instance == null)
+                {
+                    _instance = new GestorePianiAllenamento();
+                }
+                return _instance;
+            }
         }
+
+        public PianoAllenamento getPianoAllenamento(UtenteAutomatico utente, List<Esercizio> esercizi)
+        {
+            if (_pianiAllenamento == null)
+                _pianiAllenamento = new Dictionary<Utente, PianoAllenamento>();
+            if (_pianiAllenamento.ContainsKey(utente))
+                return _pianiAllenamento[utente]; 
+            IConfiguraPianoAllenamento configuraPianoAllenamento = ConfiguraPianoAllenamentoFactory.GetConfiguraPianoAllenamento(utente.Tipo);
+            PianoAllenamento pianoAllenamento = configuraPianoAllenamento.Configura(utente, esercizi);
+            _pianiAllenamento.Add(utente, pianoAllenamento);
+            return pianoAllenamento;
+        }
+
+
 
     }
 }

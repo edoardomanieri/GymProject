@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public abstract class Utente
+    public class Utente
     {
         private readonly string _nome;
         private readonly string _cognome;
@@ -25,7 +25,6 @@ namespace Palestra.model
             _sesso = sesso;
         }
 
-        public abstract PianoAllenamento GetPianoAllenamento(List<Esercizio> esercizi);
 
         public string Nome => _nome;
 

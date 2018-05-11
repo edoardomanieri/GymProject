@@ -131,7 +131,7 @@ namespace Palestra.Persistence
                     SqlDataReader myReader3 = myCommand.ExecuteReader();
                     while (myReader3.Read())
                     {
-                        giornoAllenamento.addInsiemeSerie(new EsecuzioneEsercizio((int)myReader3["tempoDiRecuperoTraSerie"], (int)myReader3["numeroRipetizioni"], (int)myReader3["numeroSerie"], GetEsercizioByName((string)myReader3["NomeEsercizio"])));
+                        giornoAllenamento.addInsiemeSerie(new EsecuzioneEsercizioASerie(GetEsercizioByName((string)myReader3["NomeEsercizio"]),(int)myReader3["tempoDiRecuperoTraSerie"], (int)myReader3["numeroRipetizioni"], (int)myReader3["numeroSerie"]));
                     }
                     pianoAllenamento.inserisciGiornoAllenamento(giornoAllenamento);
 
