@@ -85,6 +85,7 @@
     <Compile Include="Persistence\IAllenamentoPersistenceManager.cs" />
     <Compile Include="Persistence\IEsercizioPersistanceManager.cs" />
     <Compile Include="Persistence\IIDGeneerator.cs" />
+    <Compile Include="Persistence\IPersistable.cs" />
     <Compile Include="Persistence\IPianoAllenamentoPersistenceManager.cs" />
     <Compile Include="Persistence\IUtentePersistenceManager.cs" />
     <Compile Include="Persistence\MainPersistanceManager.cs" />

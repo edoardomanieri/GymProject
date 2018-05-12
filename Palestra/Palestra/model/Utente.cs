@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Palestra.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public class Utente
+    public class Utente : IPersistable
     {
         private readonly string _nome;
         private readonly string _cognome;
@@ -14,6 +15,7 @@ namespace Palestra.model
         private readonly int _pesoInKg;
         private readonly int _altezzaInCm;
         private readonly Sesso _sesso;
+        private int _ID;
 
         public Utente(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm, Sesso sesso)
         {
@@ -23,6 +25,7 @@ namespace Palestra.model
             _pesoInKg = pesoInKg;
             _altezzaInCm = altezzaInCm;
             _sesso = sesso;
+            _ID = ID;
         }
 
 
@@ -37,5 +40,7 @@ namespace Palestra.model
         public int AltezzaInCm => _altezzaInCm;
 
         public Sesso Sesso => _sesso;
+
+        public int ID { get => _ID; set => _ID = value; }
     }
 }

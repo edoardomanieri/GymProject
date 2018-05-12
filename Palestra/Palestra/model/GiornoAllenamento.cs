@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Palestra.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public class GiornoAllenamento
+    public class GiornoAllenamento : IPersistable
     {
         private int _tempoDiRecuperoInSec;
         private List<EsecuzioneEsercizio> _listaEsecuzioneEsercizi;
+        private int _ID;
 
         public GiornoAllenamento(int tempoDiRecuperoInSec)
         {
@@ -29,5 +31,6 @@ namespace Palestra.model
 
         public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
         public List<EsecuzioneEsercizio> ListaInsiemeSerie { get => _listaEsecuzioneEsercizi; }
+        public int ID { get => _ID; set => _ID = value; }
     }
 }

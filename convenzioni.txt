@@ -1,0 +1,3 @@
+-nomi di attributi tutti minuscoli
+-entry di attributi tutti minuscoli
+-nomi di tabelle tutti al plurale e tutti maiuscoli
