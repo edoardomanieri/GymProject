@@ -89,7 +89,16 @@ namespace Palestra.Persistence
                 SqlDataReader readerAllenamenti = selectAllenamenti.ExecuteReader();
                 while (readerAllenamenti.Read())
                 {
-                    allenamenti.Add(new Allenamento((int)readerAllenamenti["durataInMinuti"], (DateTime)readerAllenamenti["data"]));
+                    if (readerAllenamenti["peso"] != null)
+                    {
+                        int peso = (int)readerAllenamenti["peso"];
+                        allenamenti.Add(new Allenamento((int)readerAllenamenti["durataInMinuti"], (DateTime)readerAllenamenti["data"], peso));
+
+                    }
+                    else
+                    {
+                        allenamenti.Add(new Allenamento((int)readerAllenamenti["durataInMinuti"], (DateTime)readerAllenamenti["data"]));
+                    }
                 }
                 readerAllenamenti.Close();
                 return allenamenti;
@@ -122,10 +131,11 @@ namespace Palestra.Persistence
                     giornoAllenamento.ID = (int)readerGiorniAllenamenti["ID"];
 
                     using (SqlConnection conn2 = new SqlConnection(Conn.ConnectionString))
+                    using (SqlCommand commandEsecuzioneEsercizio = new SqlCommand("select * from ESECUZIONIESERCIZI where Ha_ID=" + readerGiorniAllenamenti["ID"] + ";", conn2))
                     {
                         conn2.Open();
-                        SqlCommand commandEsecuzioneEsercizio = new SqlCommand("select * from ESECUZIONIESERCIZI where Ha_ID=" + readerGiorniAllenamenti["ID"] + ";", conn2);
-                        SqlDataReader readerEsecuzioneEsercizio = commandGiorniAllenamenti.ExecuteReader();
+
+                        SqlDataReader readerEsecuzioneEsercizio = commandEsecuzioneEsercizio.ExecuteReader();
                         while (readerEsecuzioneEsercizio.Read())
                         {
 
@@ -134,12 +144,12 @@ namespace Palestra.Persistence
                             {
                                 conn3.Open();
                                 SqlCommand commandEsecuzioneEsercizioATempo = new SqlCommand("select * from ESECUZIONIESERCIZIATEMPO where ID=" + readerEsecuzioneEsercizio["ID"] + ";", conn3);
-                                SqlDataReader readerEsecuzioneEsercizioAtempo = commandGiorniAllenamenti.ExecuteReader();
+                                SqlDataReader readerEsecuzioneEsercizioAtempo = commandEsecuzioneEsercizioATempo.ExecuteReader();
                                 if (readerEsecuzioneEsercizioAtempo.HasRows)
                                 {
                                     readerEsecuzioneEsercizioAtempo.Read();
-                                    EsecuzioneEsercizioATempo esecATempo =  new EsecuzioneEsercizioATempo(GetEsercizioByName((string)readerEsecuzioneEsercizio["nomeEsercizio"]), (int)readerEsecuzioneEsercizioAtempo["tempo"]);
-                                    esecATempo.ID = (int) readerEsecuzioneEsercizioAtempo["ID"];
+                                    EsecuzioneEsercizioATempo esecATempo = new EsecuzioneEsercizioATempo(GetEsercizioByName((string)readerEsecuzioneEsercizio["nomeEsercizio"]), (int)readerEsecuzioneEsercizioAtempo["tempo"]);
+                                    esecATempo.ID = (int)readerEsecuzioneEsercizioAtempo["ID"];
                                     giornoAllenamento.addEsecuzioneEsercizio(esecATempo);
                                     readerEsecuzioneEsercizioAtempo.Close();
                                 }
@@ -150,7 +160,7 @@ namespace Palestra.Persistence
                                     readerEsecuzioneEsercizioASerie.Read();
                                     EsecuzioneEsercizioASerie esecASerie = new EsecuzioneEsercizioASerie(GetEsercizioByName((string)readerEsecuzioneEsercizio["NomeEsercizio"]), (int)readerEsecuzioneEsercizioASerie["tempoDiRecuperoTraSerie"],
                                     (int)readerEsecuzioneEsercizioASerie["numeroRipetizioni"], (int)readerEsecuzioneEsercizioASerie["numeroSerie"]);
-                                    esecASerie.ID = (int) readerEsecuzioneEsercizioASerie["ID"];
+                                    esecASerie.ID = (int)readerEsecuzioneEsercizioASerie["ID"];
                                     giornoAllenamento.addEsecuzioneEsercizio(esecASerie);
                                     readerEsecuzioneEsercizioASerie.Close();
                                 }
@@ -225,13 +235,13 @@ namespace Palestra.Persistence
                 int allenamentoID = generaAllenamentoID();
 
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
-                SqlParameter data = new SqlParameter("@Param1", SqlDbType.Date, 11);
+                SqlParameter data = new SqlParameter("@Param1", SqlDbType.Date);
                 data.Value = allenamento.Data;
 
                 SqlParameter durata = new SqlParameter("@Param2", SqlDbType.Int);
                 durata.Value = allenamento.DurataInMinuti;
 
-                SqlParameter utenteID = new SqlParameter("@Param3", SqlDbType.VarChar);
+                SqlParameter utenteID = new SqlParameter("@Param3", SqlDbType.Int);
                 utenteID.Value = utente.ID;
 
                 
@@ -240,7 +250,7 @@ namespace Palestra.Persistence
                 allenamento.ID = allenamentoID;
                 if (allenamento.PesoInKg != default(int))
                 {
-                    SqlParameter peso = new SqlParameter("@Param4", SqlDbType.Int, 11);
+                    SqlParameter peso = new SqlParameter("@Param4", SqlDbType.Int);
                     peso.Value = allenamento.PesoInKg;
                     SqlCommand myCommand = new SqlCommand("INSERT INTO ALLENAMENTI Values (" + allenamentoID + ", @Param4, @Param1, @Param2, @Param3);", Conn);
                     myCommand.Parameters.Add(data);
@@ -272,11 +282,10 @@ namespace Palestra.Persistence
             try
             {
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
-                SqlParameter utenteID = new SqlParameter("@Param1", SqlDbType.Int, 11);
+                SqlParameter utenteID = new SqlParameter("@Param1", SqlDbType.Int);
                 utenteID.Value = utente.ID;
 
-
-                SqlCommand insertPianiAllenamenti = new SqlCommand("INSERT INTO PIANIALLENAMENTI Values (@Param1);", Conn);
+                SqlCommand insertPianiAllenamenti = new SqlCommand("INSERT INTO PIANIALLENAMENTO Values (@Param1);", Conn);
                 insertPianiAllenamenti.Parameters.Add(utenteID);
 
                 insertPianiAllenamenti.ExecuteNonQuery();
@@ -289,13 +298,16 @@ namespace Palestra.Persistence
                     //fondamentale per salvare l'ID internamente
                     giornoAllenamento.ID = giornoAllenamentoID;
 
-                    SqlParameter tempoRecuperoTraEsercizi = new SqlParameter("@Param4", SqlDbType.Int, 11);
+                    SqlParameter tempoRecuperoTraEsercizi = new SqlParameter("@Param4", SqlDbType.Int);
                     tempoRecuperoTraEsercizi.Value = giornoAllenamento.TempoDiRecuperoInSec;
 
+                    SqlParameter utenteID2 = new SqlParameter("@UtenteID", SqlDbType.Int);
+                    utenteID2.Value = utente.ID;
 
-                    SqlCommand insertGiorniAllenamenti = new SqlCommand("INSERT INTO GIORNIALLENAMENTI Values (" + giornoAllenamentoID + ", @Param4, @Param1);", Conn);
+
+                    SqlCommand insertGiorniAllenamenti = new SqlCommand("INSERT INTO GIORNIALLENAMENTI Values (" + giornoAllenamentoID + ", @Param4, @UtenteID);", Conn);
                     insertGiorniAllenamenti.Parameters.Add(tempoRecuperoTraEsercizi);
-                    insertGiorniAllenamenti.Parameters.Add(utenteID);
+                    insertGiorniAllenamenti.Parameters.Add(utenteID2);
 
                     insertGiorniAllenamenti.ExecuteNonQuery();
 
@@ -304,7 +316,7 @@ namespace Palestra.Persistence
                         int esecuzioneEsercizioID = generaEsecuzioneEsercizioID();
                         esecuzioneEsercizio.ID = esecuzioneEsercizioID;
 
-                        SqlParameter nomeEsercizio = new SqlParameter("@Param5", SqlDbType.VarChar, 11);
+                        SqlParameter nomeEsercizio = new SqlParameter("@Param5", SqlDbType.VarChar);
                         nomeEsercizio.Value = esecuzioneEsercizio.Esercizio.Nome;
                         SqlCommand insertEsecuzioneEsercizio;
                         SqlCommand insertEsecuzioneEsercizioSpec;
@@ -312,12 +324,12 @@ namespace Palestra.Persistence
                         if (esecuzioneEsercizio is EsecuzioneEsercizioASerie)
                         {
                             EsecuzioneEsercizioASerie myEsecuzioneEsercizioASerie = (EsecuzioneEsercizioASerie)esecuzioneEsercizio;
-                            SqlParameter esecuzioneEsercizioASerie = new SqlParameter("@Param6", SqlDbType.Int, 11);
+                            SqlParameter esecuzioneEsercizioASerie = new SqlParameter("@Param6", SqlDbType.Int);
                             esecuzioneEsercizioASerie.Value = 1;
                             insertEsecuzioneEsercizio = new SqlCommand("INSERT INTO ESECUZIONIESERCIZI(ID, nomeEsercizio, Ha_ID, ESECUZIONIESERCIZIASERIE Values (" + esecuzioneEsercizioID + ", @Param5, " + giornoAllenamentoID + ",  @Param6);", Conn);
                             insertEsecuzioneEsercizio.Parameters.Add(esecuzioneEsercizioASerie);
 
-                            SqlParameter numeroSerie = new SqlParameter("@Param7", SqlDbType.Int, 11);
+                            SqlParameter numeroSerie = new SqlParameter("@Param7", SqlDbType.Int);
                             numeroSerie.Value = myEsecuzioneEsercizioASerie.NumeroSerie;
 
                             SqlParameter numeroRipetizioni = new SqlParameter("@Param8", SqlDbType.Int);
@@ -346,12 +358,12 @@ namespace Palestra.Persistence
                         else
                         {
                             EsecuzioneEsercizioATempo myEsecuzioneEsercizioATempo = (EsecuzioneEsercizioATempo)esecuzioneEsercizio;
-                            SqlParameter esecuzioneEsercizioATempo = new SqlParameter("@Param6", SqlDbType.Int, 11);
+                            SqlParameter esecuzioneEsercizioATempo = new SqlParameter("@Param6", SqlDbType.Int);
                             esecuzioneEsercizioATempo.Value = 1;
-                            insertEsecuzioneEsercizio = new SqlCommand("INSERT INTO ESECUZIONIESERCIZI(ID, nomeEsercizio, Ha_ID, ESECUZIONIESERCIZIATEMPO Values (" + esecuzioneEsercizioID + ", @Param5, " + giornoAllenamentoID + ",  @Param6);", Conn);
+                            insertEsecuzioneEsercizio = new SqlCommand("INSERT INTO ESECUZIONIESERCIZI(ID, nomeEsercizio, Ha_ID, ESECUZIONIESERCIZIATEMPO) Values (" + esecuzioneEsercizioID + ", @Param5, " + giornoAllenamentoID + ",  @Param6);", Conn);
                             insertEsecuzioneEsercizio.Parameters.Add(esecuzioneEsercizioATempo);
 
-                            SqlParameter tempo = new SqlParameter("@Param11", SqlDbType.Int, 11);
+                            SqlParameter tempo = new SqlParameter("@Param11", SqlDbType.Int);
                             tempo.Value = myEsecuzioneEsercizioATempo.Tempo;
 
                             insertEsecuzioneEsercizioSpec = new SqlCommand("INSERT INTO ESECUZIONIESERCIZIATEMPO values ( " + esecuzioneEsercizioID + ", @Param11);", Conn);
@@ -379,10 +391,10 @@ namespace Palestra.Persistence
             try
             {
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
-                SqlParameter myParam = new SqlParameter("@Param1", SqlDbType.VarChar, 11);
+                SqlParameter myParam = new SqlParameter("@Param1", SqlDbType.VarChar);
                 myParam.Value = utente.Nome;
 
-                SqlParameter myParam2 = new SqlParameter("@Param2", SqlDbType.VarChar, 11);
+                SqlParameter myParam2 = new SqlParameter("@Param2", SqlDbType.VarChar);
                 myParam2.Value = utente.Cognome;
 
                 SqlParameter myParam3 = new SqlParameter("@Param3", SqlDbType.VarChar, 7);
@@ -391,10 +403,10 @@ namespace Palestra.Persistence
                 SqlParameter myParam4 = new SqlParameter("@Param4", SqlDbType.Date);
                 myParam4.Value = utente.DataDiNascita;
 
-                SqlParameter myParam5 = new SqlParameter("@Param5", SqlDbType.Int, 2);
+                SqlParameter myParam5 = new SqlParameter("@Param5", SqlDbType.Int);
                 myParam5.Value = utente.AltezzaInCm;
 
-                SqlParameter myParam6 = new SqlParameter("@Param6", SqlDbType.Int, 2);
+                SqlParameter myParam6 = new SqlParameter("@Param6", SqlDbType.Int);
                 myParam6.Value = utente.PesoInKg;
 
                 int ID = generaUtenteID();
@@ -417,13 +429,13 @@ namespace Palestra.Persistence
                 {
                     UtenteAutomatico utenteAutomatico = (UtenteAutomatico)utente;
 
-                    SqlParameter myParam7 = new SqlParameter("@Param7", SqlDbType.VarChar, 12);
+                    SqlParameter myParam7 = new SqlParameter("@Param7", SqlDbType.VarChar);
                     myParam7.Value = utenteAutomatico.Risorse;
 
-                    SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.VarChar, 12);
+                    SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.Int);
                     myParam8.Value = utenteAutomatico.NumeroGiorniAllenamento;
 
-                    SqlParameter myParam9 = new SqlParameter("@Param9", SqlDbType.VarChar, 12);
+                    SqlParameter myParam9 = new SqlParameter("@Param9", SqlDbType.VarChar);
                     myParam9.Value = utenteAutomatico.Tipo;
 
                     insertUtenteAutomatico = new SqlCommand("INSERT INTO UTENTIAUTOMATICI values (" + ID + ", @Param7, @Param8, @Param9);");
@@ -556,8 +568,8 @@ namespace Palestra.Persistence
             try
             {
 
-                SqlCommand update = new SqlCommand("delete from IDs;", Conn);
-                update.ExecuteNonQuery();
+                SqlCommand delete = new SqlCommand("delete from IDs;", Conn);
+                delete.ExecuteNonQuery();
 
             }
             catch (SqlException e)
@@ -591,6 +603,13 @@ namespace Palestra.Persistence
             {
                 throw;
             }
+        }
+
+        public void Reset(Utente utente)
+        {
+            DeleteUtente(utente);
+            resetIDs();
+
         }
 
         /*
@@ -656,7 +675,7 @@ namespace Palestra.Persistence
         {
             foreach (Esercizio esercizio in _esercizi)
             {
-                if (esercizio.Nome.Equals(nome))
+                if (esercizio.Nome.ToLower().Equals(nome.ToLower()))
                     return esercizio;
             }
             return null;
