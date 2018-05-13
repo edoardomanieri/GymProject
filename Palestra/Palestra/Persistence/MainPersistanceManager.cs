@@ -22,7 +22,7 @@ namespace Palestra.Persistence
             Conn.Open();
 
             _esercizi = new List<Esercizio>();
-            _esercizi.Add(new Esercizio("Panca piana", FasciaMuscolare.Pettorali, "", Risorsa.SalaPesi ));
+            _esercizi.Add(new Esercizio("panca piana", FasciaMuscolare.Pettorali, "", Risorsa.SalaPesi ));
             //mettere tutti gli esercizi nella lista
         }
 
@@ -187,14 +187,166 @@ namespace Palestra.Persistence
             }
         }
 
-        public bool SaveAllenamento(Allenamento allenamento)
+        public bool SaveAllenamento(Utente utente, Allenamento allenamento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
+                SqlParameter data = new SqlParameter("@Param1", SqlDbType.Date, 11);
+                data.Value = allenamento.Data;
+
+                SqlParameter durata = new SqlParameter("@Param2", SqlDbType.Int);
+                durata.Value = allenamento.DurataInMinuti;
+
+                SqlParameter utenteID = new SqlParameter("@Param3", SqlDbType.VarChar);
+                utenteID.Value = utente.ID;
+
+                int allenamentoID = generaAllenamentoID();
+
+                //fondamentale per salvare l'ID internamente
+                allenamento.ID = allenamentoID;
+                if (allenamento.PesoInKg != default(int) )
+                {
+                    SqlParameter peso = new SqlParameter("@Param4", SqlDbType.Int, 11);
+                    peso.Value = allenamento.PesoInKg;
+                    SqlCommand myCommand = new SqlCommand("INSERT INTO ALLENAMENTI Values (" + allenamentoID + ", @Param4, @Param1, @Param2, @Param3)", Conn);
+                    myCommand.Parameters.Add(data);
+                    myCommand.Parameters.Add(utenteID);
+                    myCommand.Parameters.Add(durata);
+                    myCommand.Parameters.Add(peso);
+
+                    myCommand.ExecuteNonQuery();
+                }
+                else
+                {
+                    SqlCommand myCommand = new SqlCommand("INSERT INTO (ID, data, durata, Ese_ID) Values (" + allenamentoID + ", @Param1, @Param2, @Param3)", Conn);
+                    myCommand.Parameters.Add(data);
+                    myCommand.Parameters.Add(utenteID);
+                    myCommand.Parameters.Add(durata);
+
+                    myCommand.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
         }
 
         public bool SavePianoAllenamento(Utente utente, PianoAllenamento pianoAllenamento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
+                SqlParameter utenteID = new SqlParameter("@Param1", SqlDbType.Int, 11);
+                utenteID.Value = utente.ID;
+
+                SqlParameter numeroGiorniAllenamento = new SqlParameter("@Param2", SqlDbType.Int, 11);
+                numeroGiorniAllenamento.Value = pianoAllenamento.NumeroGiorniAllenamento;
+
+                SqlParameter tipoAllenamento = new SqlParameter("@Param3", SqlDbType.VarChar);
+                tipoAllenamento.Value = pianoAllenamento.TipoAllenamento.ToString();
+
+
+                SqlCommand myCommand = new SqlCommand("INSERT INTO Values (@Param1, @Param2, @Param3)", Conn);
+                myCommand.Parameters.Add(utenteID);
+                myCommand.Parameters.Add(numeroGiorniAllenamento);
+                myCommand.Parameters.Add(tipoAllenamento);
+
+                myCommand.ExecuteNonQuery();
+
+
+                foreach (GiornoAllenamento giornoAllenamento in pianoAllenamento.GiorniAllenamento)
+                {
+                    int giornoAllenamentoID = generaGiornoAllenamentoID();
+
+                    //fondamentale per salvare l'ID internamente
+                    giornoAllenamento.ID = giornoAllenamentoID;
+
+                    SqlParameter tempoRecuperoTraEsercizi = new SqlParameter("@Param4", SqlDbType.Int, 11);
+                    tempoRecuperoTraEsercizi.Value = giornoAllenamento.TempoDiRecuperoInSec;
+
+
+                    SqlCommand myCommand2 = new SqlCommand("INSERT INTO GIORNIALLENAMENTI Values (" + giornoAllenamentoID + ", @Param4, @Param1)", Conn);
+                    myCommand2.Parameters.Add(tempoRecuperoTraEsercizi);
+                    myCommand2.Parameters.Add(utenteID);
+
+                    myCommand2.ExecuteNonQuery(); 
+
+                    foreach(EsecuzioneEsercizio esecuzioneEsercizio in giornoAllenamento.ListaEsecuzioniEsercizi)
+                    {
+                        int esecuzioneEsercizioID = generaInsiemeSerieID();
+                        esecuzioneEsercizio.ID = esecuzioneEsercizioID;
+
+                        SqlParameter nomeEsercizio = new SqlParameter("@Param5", SqlDbType.VarChar, 11);
+                        nomeEsercizio.Value = esecuzioneEsercizio.Esercizio.Nome;
+                        SqlCommand myCommand3;
+                        SqlCommand myCommand4;
+
+                        if (esecuzioneEsercizio is EsecuzioneEsercizioASerie)
+                        {
+                            EsecuzioneEsercizioASerie myEsecuzioneEsercizioASerie = (EsecuzioneEsercizioASerie) esecuzioneEsercizio;
+                            SqlParameter esecuzioneEsercizioASerie = new SqlParameter("@Param6", SqlDbType.Int, 11);
+                            esecuzioneEsercizioASerie.Value = 1;
+                            myCommand3 = new SqlCommand("INSERT INTO ESECUZIONIESERCIZI(ID, nomeEsercizio, Ha_ID, ESECUZIONIESERCIZIASERIE Values (" + esecuzioneEsercizioID + ", @Param5, " + giornoAllenamentoID + ",  @Param6)", Conn);
+                            myCommand3.Parameters.Add(esecuzioneEsercizioASerie);
+
+                            SqlParameter numeroSerie = new SqlParameter("@Param7", SqlDbType.Int, 11);
+                            numeroSerie.Value = myEsecuzioneEsercizioASerie.NumeroSerie;
+
+                            SqlParameter numeroRipetizioni = new SqlParameter("@Param8", SqlDbType.Int);
+                            numeroRipetizioni.Value = myEsecuzioneEsercizioASerie.NumeroRipetizioni;
+
+                            SqlParameter tempoDiRecuperoTraSerie = new SqlParameter("@Param9", SqlDbType.Int);
+                            tempoDiRecuperoTraSerie.Value = myEsecuzioneEsercizioASerie.TempoDiRecuperoInSec;
+
+                            if(myEsecuzioneEsercizioASerie.Carico != default(int))
+                            {
+                                SqlParameter carico = new SqlParameter("@Param10", SqlDbType.Int);
+                                carico.Value = myEsecuzioneEsercizioASerie.Carico;
+                                myCommand4 = new SqlCommand("INSERT INTO ESECUZIONIESERCIZIASERIE(ID, numeroSerie, numeroRipetizioni, tempoDiRecuperoTraSerie, carico) values (" + esecuzioneEsercizioID + ", @Param7, @Param8, @Param9, @Param10");
+                                myCommand4.Parameters.Add(carico);
+                            }
+                            else
+                            {
+                                myCommand4 = new SqlCommand("INSERT INTO ESECUZIONIESERCIZIASERIE(ID, numeroSerie, numeroRipetizioni, tempoDiRecuperoTraSerie) values (" + esecuzioneEsercizioID + ", @Param7, @Param8, @Param9");
+                            }
+                            myCommand4.Parameters.Add(numeroSerie);
+                            myCommand4.Parameters.Add(numeroRipetizioni);
+                            myCommand4.Parameters.Add(tempoDiRecuperoTraSerie);
+
+
+                        }
+                        else
+                        {
+                            EsecuzioneEsercizioATempo myEsecuzioneEsercizioATempo = (EsecuzioneEsercizioATempo) esecuzioneEsercizio;
+                            SqlParameter esecuzioneEsercizioATempo = new SqlParameter("@Param6", SqlDbType.Int, 11);
+                            esecuzioneEsercizioATempo.Value = 1;
+                            myCommand3 = new SqlCommand("INSERT INTO ESECUZIONIESERCIZI(ID, nomeEsercizio, Ha_ID, ESECUZIONIESERCIZIATEMPO Values (" + esecuzioneEsercizioID + ", @Param5, " + giornoAllenamentoID + ",  @Param6)", Conn);
+                            myCommand3.Parameters.Add(esecuzioneEsercizioATempo);
+
+                            SqlParameter tempo = new SqlParameter("@Param11", SqlDbType.Int, 11);
+                            tempo.Value = myEsecuzioneEsercizioATempo.Tempo;
+
+                            myCommand4 = new SqlCommand("INSERT INTO ESECUZIONIESERCIZIATEMPO values ( " + esecuzioneEsercizioID + ", @Param11)", Conn);
+                            myCommand4.Parameters.Add(tempo);
+
+                        }
+
+                        myCommand3.Parameters.Add(nomeEsercizio);
+                    
+                        myCommand3.ExecuteNonQuery();
+                        myCommand4.ExecuteNonQuery();
+
+                    }
+                }
+                return true;
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
         }
 
         public bool SaveUtente(Utente utente)
@@ -334,7 +486,22 @@ namespace Palestra.Persistence
             }
         }
 
-        public void resetID()
+        public void setIDs()
+        {
+            try
+            {
+
+                SqlCommand insert = new SqlCommand("insert IDs into IDs values (0,0,0,0)", Conn);
+                insert.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+        }
+
+        public void resetIDs()
         {
             try
             {

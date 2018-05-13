@@ -21,16 +21,16 @@ namespace Palestra.model
 
         public void addEsecuzioneEsercizio(EsecuzioneEsercizio esecuzioneEsercizio)
         {
-            ListaInsiemeSerie.Add(esecuzioneEsercizio);
+            ListaEsecuzioniEsercizi.Add(esecuzioneEsercizio);
         }
 
         public Boolean removeEsecuzioneEsercizio(EsecuzioneEsercizio insiemeSerie)
         {
-            return ListaInsiemeSerie.Remove(insiemeSerie);
+            return ListaEsecuzioniEsercizi.Remove(insiemeSerie);
         }
 
         public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
-        public List<EsecuzioneEsercizio> ListaInsiemeSerie { get => _listaEsecuzioneEsercizi; }
+        public List<EsecuzioneEsercizio> ListaEsecuzioniEsercizi { get => _listaEsecuzioneEsercizi; }
         public int ID { get => _ID; set => _ID = value; }
     }
 }

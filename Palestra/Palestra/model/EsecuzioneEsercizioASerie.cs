@@ -11,14 +11,14 @@ namespace Palestra.model
         private int _tempoDiRecuperoInSec;
         private int _numeroRipetizioni;
         private int _numeroSerie;
-        private int _peso;
+        private int _carico;
 
-        public EsecuzioneEsercizioASerie(Esercizio esercizio, int tempoDiRecuperoInSec, int numeroRipetizioni, int numeroSerie, int peso) : base(esercizio)
+        public EsecuzioneEsercizioASerie(Esercizio esercizio, int tempoDiRecuperoInSec, int numeroRipetizioni, int numeroSerie, int carico) : base(esercizio)
         {
             TempoDiRecuperoInSec = tempoDiRecuperoInSec;
             NumeroRipetizioni = numeroRipetizioni;
             NumeroSerie = numeroSerie;
-            Peso = peso;
+            Carico = carico;
         }
 
         public EsecuzioneEsercizioASerie(Esercizio esercizio, int tempoDiRecuperoInSec, int numeroRipetizioni, int numeroSerie) : base(esercizio)
@@ -30,7 +30,7 @@ namespace Palestra.model
 
         public int NumeroRipetizioni { get => _numeroRipetizioni; set => _numeroRipetizioni = value; }
         public int NumeroSerie { get => _numeroSerie; set => _numeroSerie = value; }
-        public int Peso { get => _peso; set => _peso = value; }
+        public int Carico { get => _carico; set => _carico = value; }
         public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }
     }
 }
