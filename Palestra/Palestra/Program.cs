@@ -1,4 +1,5 @@
 ﻿using Palestra.model;
+using Palestra.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,30 @@ namespace Palestra
     {
         static void Main(string[] args)
         {
+
+            MainPersistanceManager main = new MainPersistanceManager();
+
+            main.ThereIsASavedAccount();
+            Utente utente = main.LoadUtente();
+            Allenamento allenamento = new Allenamento(30, new DateTime(2018, 7, 12), 51);
+            main.DeleteAllenamenti();
+            main.CloseConnection();
+            while (true) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
            /* ConfiguraPianoAllenamentoAutomaticoIpertrofia configura = new ConfiguraPianoAllenamentoAutomaticoIpertrofia();
             Dictionary<int, List<FasciaMuscolare>> prova;
 
@@ -34,7 +59,7 @@ namespace Palestra
             prova = configura.distribuisciFasceMuscolariPerGiorno(7);
             printDictionary(prova);
             Console.ReadLine();*/
-        }
+      }
 
         /*private static void printDictionary(Dictionary<int, List<FasciaMuscolare>> prova)
         {

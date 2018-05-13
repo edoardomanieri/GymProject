@@ -10,18 +10,17 @@ namespace Palestra.model
     {
         private List<GiornoAllenamento> _giorniAllenamento;
         private int _numeroGiorniAllenamento;
-        private TipoAllenamento _tipoAllenamento;
 
-        public PianoAllenamento(TipoAllenamento tipoAllenamento)
+
+        public PianoAllenamento()
         {
             GiorniAllenamento = new List<GiornoAllenamento>();
             NumeroGiorniAllenamento = 0;
-            TipoAllenamento = tipoAllenamento;
+ 
         }
 
         public int NumeroGiorniAllenamento { get => _numeroGiorniAllenamento; set => _numeroGiorniAllenamento = value; }
         public List<GiornoAllenamento> GiorniAllenamento { get => _giorniAllenamento; set => _giorniAllenamento = value; }
-        public TipoAllenamento TipoAllenamento { get => _tipoAllenamento; set => _tipoAllenamento = value; }
 
         public bool inserisciGiornoAllenamento(GiornoAllenamento giornoAllenamento)
         {

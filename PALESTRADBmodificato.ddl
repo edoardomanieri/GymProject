@@ -3,7 +3,7 @@
 -- *--------------------------------------------
 -- * DB-MAIN version: 9.3.0              
 -- * Generator date: Feb 16 2016              
--- * Generation date: Sun May 13 18:16:44 2018 
+-- * Generation date: Sun May 13 17:31:20 2018 
 -- * LUN file: C:\Users\Edoardo\Desktop\universita\Terzo anno\Ingegneria del software\progetto\PALESTRADB.lun 
 -- * Schema: PALESTRA/SQL 
 -- ********************************************* 
@@ -23,66 +23,67 @@ create database PALESTRA;
 -- _____________ 
 
 create table ALLENAMENTI (
-     ID numeric(1) not null,
-     peso numeric(1),
+     ID int not null,
+     peso int,
      data date not null,
-     durata numeric(1) not null,
-     Ese_ID numeric(1) not null,
+     durata int not null,
+     Ese_ID int not null,
      constraint ID_ALLENAMENTI_ID primary key (ID));
 
 create table ESECUZIONIESERCIZI (
-     ID numeric(1) not null,
+     ID int not null,
      nomeEsercizio varchar(50) not null,
-     Ha_ID numeric(1) not null,
-     ESECUZIONIESERCIZIATEMPO numeric(1),
-     ESECUZIONIESERCIZIASERIE numeric(1),
+     Ha_ID int not null,
+     ESECUZIONIESERCIZIATEMPO int,
+     ESECUZIONIESERCIZIASERIE int,
      constraint ID_ESECUZIONIESERCIZI_ID primary key (ID));
 
 create table ESECUZIONIESERCIZIASERIE (
-     ID numeric(1) not null,
-     numeroSerie numeric(1) not null,
-     numeroRipetizioni numeric(1) not null,
-     tempoDiRecuperoTraSerie numeric(1) not null,
-     carico numeric(1),
+     ID int not null,
+     numeroSerie int not null,
+     numeroRipetizioni int not null,
+     tempoDiRecuperoTraSerie int not null,
+     carico int,
      constraint FKESE_ESE_ID primary key (ID));
 
 create table ESECUZIONIESERCIZIATEMPO (
-     ID numeric(1) not null,
-     tempo numeric(1) not null,
+     ID int not null,
+     tempo int not null,
      constraint FKESE_ESE_1_ID primary key (ID));
 
 create table GIORNIALLENAMENTI (
-     ID numeric(1) not null,
-     tempoRecuperoTraEsercizi numeric(1) not null,
-     Con_ID numeric(1) not null,
+     ID int not null,
+     tempoRecuperoTraEsercizi int not null,
+     Con_ID int not null,
      constraint ID_GIORNIALLENAMENTI_ID primary key (ID));
 
 create table IDs (
-     allenamento numeric(1) not null,
-     utente numeric(1) not null,
-     giornoAllenamento numeric(1) not null,
-     esecuzioneEsercizio numeric(1) not null,
+     allenamento int not null,
+     utente int not null,
+     giornoAllenamento int not null,
+     esecuzioneEsercizio int not null,
      constraint ID_IDs_ID primary key (allenamento, utente, giornoAllenamento, esecuzioneEsercizio));
 
 create table PIANIALLENAMENTO (
-     ID numeric(1) not null,
+     ID int not null,
      constraint FKrealizza_ID primary key (ID));
 
+
 create table UTENTI (
-     ID numeric(1) not null,
+     ID int not null,
      nome varchar(50) not null,
      cognome varchar(50) not null,
      sesso varchar(7) not null,
      dataNascita date not null,
-     peso numeric(2) not null,
-     altezza numeric(1) not null,
+     peso int not null,
+     altezza int not null,
      constraint ID_UTENTI_ID primary key (ID));
 
 create table UTENTIAUTOMATICI (
-     ID numeric(1) not null,
+     ID int not null,
      risorseDisponibili varchar(12) not null,
-     tipoAllenamento varchar(12) not null,
-     numeroGiorniAllenamento numeric(1) not null,
+     tipoAllenamento varchar(13) not null,
+     numeroGiorniAllenamento int not null,
      constraint FKUTE_UTE_ID primary key (ID));
 
 
@@ -91,7 +92,8 @@ create table UTENTIAUTOMATICI (
 
 alter table ALLENAMENTI add constraint FKesegue_FK
      foreign key (Ese_ID)
-     references UTENTI;
+     references UTENTI
+     ON DELETE CASCADE;
 
 alter table ESECUZIONIESERCIZI add constraint EXTONE_ESECUZIONIESERCIZI
      check((ESECUZIONIESERCIZIASERIE is not null and ESECUZIONIESERCIZIATEMPO is null)
@@ -99,15 +101,18 @@ alter table ESECUZIONIESERCIZI add constraint EXTONE_ESECUZIONIESERCIZI
 
 alter table ESECUZIONIESERCIZI add constraint FKha_FK
      foreign key (Ha_ID)
-     references GIORNIALLENAMENTI;
+     references GIORNIALLENAMENTI
+     ON DELETE CASCADE;
 
 alter table ESECUZIONIESERCIZIASERIE add constraint FKESE_ESE_FK
      foreign key (ID)
-     references ESECUZIONIESERCIZI;
+     references ESECUZIONIESERCIZI
+     ON DELETE CASCADE;
 
 alter table ESECUZIONIESERCIZIATEMPO add constraint FKESE_ESE_1_FK
      foreign key (ID)
-     references ESECUZIONIESERCIZI;
+     references ESECUZIONIESERCIZI
+     ON DELETE CASCADE;
 
 alter table GIORNIALLENAMENTI add constraint ID_GIORNIALLENAMENTI_CHK
      check(exists(select * from ESECUZIONIESERCIZI
@@ -115,7 +120,8 @@ alter table GIORNIALLENAMENTI add constraint ID_GIORNIALLENAMENTI_CHK
 
 alter table GIORNIALLENAMENTI add constraint FKcontiene_FK
      foreign key (Con_ID)
-     references PIANIALLENAMENTO;
+     references PIANIALLENAMENTO
+     ON DELETE CASCADE;
 
 alter table PIANIALLENAMENTO add constraint FKrealizza_CHK
      check(exists(select * from GIORNIALLENAMENTI
@@ -123,7 +129,8 @@ alter table PIANIALLENAMENTO add constraint FKrealizza_CHK
 
 alter table PIANIALLENAMENTO add constraint FKrealizza_FK
      foreign key (ID)
-     references UTENTI;
+     references UTENTI
+     ON DELETE CASCADE;
 
 alter table UTENTI add constraint ID_UTENTI_CHK
      check(exists(select * from PIANIALLENAMENTO
@@ -131,7 +138,8 @@ alter table UTENTI add constraint ID_UTENTI_CHK
 
 alter table UTENTIAUTOMATICI add constraint FKUTE_UTE_FK
      foreign key (ID)
-     references UTENTI;
+     references UTENTI
+     ON DELETE CASCADE;
 
 
 -- Index Section

@@ -11,7 +11,6 @@ namespace Palestra.Persistence
         int generaUtenteID();
         int generaAllenamentoID();
         int generaGiornoAllenamentoID();
-        int generaInsiemeSerieID();
-        void resetID();
+        int generaEsecuzioneEsercizioID();
     }
 }

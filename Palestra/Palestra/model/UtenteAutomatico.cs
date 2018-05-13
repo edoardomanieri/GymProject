@@ -8,23 +8,22 @@ namespace Palestra.model
 {
     public class UtenteAutomatico : Utente
     {
-        private readonly TipoAllenamento _tipo;
-        private readonly Risorsa _risorse;
-        private readonly int _numeroAllenamentiSettimanali;
-        private PianoAllenamento _pianoAllenamento;
 
-        public UtenteAutomatico(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm,  Sesso sesso,  TipoAllenamento tipo, Risorsa risorse, int numeroAllenamentiSettimanali) : base(nome, cognome,  dataDiNascita,  pesoInKg,  altezzaInCm, sesso)
+        private readonly Risorsa _risorse;
+        private readonly int _numeroGiorniAllenamento;
+        private readonly TipoAllenamento _tipo;
+
+        public UtenteAutomatico(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm,  Sesso sesso, Risorsa risorse, int numeroGiorniAllenamento, TipoAllenamento tipo) : base(nome, cognome,  dataDiNascita,  pesoInKg,  altezzaInCm, sesso)
         {
-            _tipo = tipo;
             _risorse = risorse;
-            _numeroAllenamentiSettimanali = numeroAllenamentiSettimanali;
+            _numeroGiorniAllenamento = numeroGiorniAllenamento;
+            _tipo = tipo;
 
         }
 
-
-        public int NumeroAllenamentiSettimanali => _numeroAllenamentiSettimanali;
-
         public Risorsa Risorse => _risorse;
+
+        public int NumeroGiorniAllenamento => _numeroGiorniAllenamento;
 
         public TipoAllenamento Tipo => _tipo;
     }

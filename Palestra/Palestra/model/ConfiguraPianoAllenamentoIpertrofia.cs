@@ -11,8 +11,8 @@ namespace Palestra.model
         //prova
         public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> listaEsercizi)
         {
-            PianoAllenamento schedaGenerata = schedaGenerata = new PianoAllenamento(utenteAutomatico.Tipo);
-            schedaGenerata.NumeroGiorniAllenamento = utenteAutomatico.NumeroAllenamentiSettimanali;
+            PianoAllenamento schedaGenerata = schedaGenerata = new PianoAllenamento();
+            schedaGenerata.NumeroGiorniAllenamento = utenteAutomatico.NumeroGiorniAllenamento;
             Dictionary<int, List<FasciaMuscolare>> distribuzioneMuscoli = distribuisciFasceMuscolariPerGiorno(schedaGenerata.NumeroGiorniAllenamento);
            
             for(int indice=0; indice < distribuzioneMuscoli.Count; indice++)
