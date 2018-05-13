@@ -80,7 +80,7 @@ namespace Palestra.Persistence
             }
         }
 
-        public IEnumerable<Allenamento> GetAllAllenamenti()
+        public IEnumerable<Allenamento> LoadAllAllenamenti()
         {
             List<Allenamento> allenamenti = new List<Allenamento>();
             try
@@ -99,12 +99,12 @@ namespace Palestra.Persistence
             return allenamenti;
         }
 
-        public IEnumerable<Esercizio> GetAllEsercizi()
+        public IEnumerable<Esercizio> LoadAllEsercizi()
         {
             return _esercizi;
         }
 
-        public PianoAllenamento GetPianoAllenamento(Utente utente)
+        public PianoAllenamento LoadPianoAllenamento(Utente utente)
         {
             PianoAllenamento pianoAllenamento;
             try
@@ -158,7 +158,7 @@ namespace Palestra.Persistence
         }
 
 
-        public Utente GetUtente()
+        public Utente LoadUtente()
         {
             try
             {
@@ -509,6 +509,29 @@ namespace Palestra.Persistence
                 SqlCommand update = new SqlCommand("update IDs set allenamento = 0, esecuzioneEsercizio = 0, giornoAllenamento = 0, utente = 0", Conn);
                 update.ExecuteNonQuery();
                 
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+        }
+
+        public bool ThereIsASavedAccount()
+        {
+            try
+            {
+
+                SqlCommand select = new SqlCommand("select * from IDs", Conn);
+                SqlDataReader myReader = select.ExecuteReader();
+                myReader.Read();
+                if (myReader.HasRows)
+                    return true;
+                else
+                {
+                    setIDs();
+                    return false;
+                }
+
             }
             catch (SqlException e)
             {

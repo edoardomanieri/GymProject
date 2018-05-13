@@ -9,7 +9,7 @@ namespace Palestra.Persistence
 {
     public interface IPianoAllenamentoPersistenceManager
     {
-        PianoAllenamento GetPianoAllenamento(Utente utente);
+        PianoAllenamento LoadPianoAllenamento(Utente utente);
         bool SavePianoAllenamento(Utente utente , PianoAllenamento pianoAllenamento);
         bool DeletePianoAllenamento(Utente utente);
 

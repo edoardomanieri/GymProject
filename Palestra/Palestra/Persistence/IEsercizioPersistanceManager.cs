@@ -9,6 +9,6 @@ namespace Palestra.Persistence
 {
     public interface IEsercizioPersistanceManager
     {
-        IEnumerable<Esercizio> GetAllEsercizi();
+        IEnumerable<Esercizio> LoadAllEsercizi();
     }
 }

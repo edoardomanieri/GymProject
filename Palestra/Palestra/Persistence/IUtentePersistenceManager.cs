@@ -11,7 +11,7 @@ namespace Palestra.Persistence
     {
         Utente Autentica(string username, string password);
         bool SaveUtente(Utente utente);
-        Utente GetUtente();
+        Utente LoadUtente();
         bool DeleteUtente(Utente utente);
     }
 }
