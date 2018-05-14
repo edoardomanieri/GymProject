@@ -66,7 +66,7 @@ namespace Palestra.Persistence
             _esercizi.Add(new Esercizio("squat al multipower", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("jefferson squat", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("sumo squat", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("pressa", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("leg press", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("leg extension", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("hack squat", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("front squat", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
