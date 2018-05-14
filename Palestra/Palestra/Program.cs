@@ -51,7 +51,7 @@ namespace Palestra
 
 
 
-           /* ConfiguraPianoAllenamentoAutomaticoIpertrofia configura = new ConfiguraPianoAllenamentoAutomaticoIpertrofia();
+            /*ConfiguraPianoAllenamentoIpertrofia configura = new ConfiguraPianoAllenamentoIpertrofia();
             Dictionary<int, List<FasciaMuscolare>> prova;
 
             prova = configura.distribuisciFasceMuscolariPerGiorno(1);
@@ -76,7 +76,7 @@ namespace Palestra
             Console.ReadLine();*/
       }
 
-        /*private static void printDictionary(Dictionary<int, List<FasciaMuscolare>> prova)
+       /* private static void printDictionary(Dictionary<int, List<FasciaMuscolare>> prova)
         {
             Console.WriteLine("Prova con numero giorni allenamento = " + prova.Count);
             foreach(int x in prova.Keys)
