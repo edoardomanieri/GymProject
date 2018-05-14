@@ -8,10 +8,10 @@ namespace Palestra.model
 {
     public abstract class IConfiguraPianoAllenamento
     {
-        const int FasceMuscolariTot = 8;
+        const int FasceMuscolariTot = 9;
         public abstract PianoAllenamento  Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi);
 
-        protected Dictionary<int, List<FasciaMuscolare>> distribuisciFasceMuscolariPerGiorno(int numeroGiorniAllenamento)
+        public Dictionary<int, List<FasciaMuscolare>> distribuisciFasceMuscolariPerGiorno(int numeroGiorniAllenamento)
         {
             Dictionary<int, List<FasciaMuscolare>> result = new Dictionary<int, List<FasciaMuscolare>>();
             int[] distribuzione = distribuisci(numeroGiorniAllenamento, FasceMuscolariTot);
@@ -54,6 +54,7 @@ namespace Palestra.model
             list.Add(FasciaMuscolare.Polpacci);
             list.Add(FasciaMuscolare.Quadricipiti);
             list.Add(FasciaMuscolare.Tricipiti);
+            list.Add(FasciaMuscolare.Adduttori);
 
             return list.ElementAt(random.Next(list.Count));
         }
@@ -78,6 +79,51 @@ namespace Palestra.model
 
             return result;
         }
+        protected int getNumeroEserciziPerNumeroGiorniAllenamento(int numeroGiorniAllenamento)
+        {
+            switch (numeroGiorniAllenamento)
+            {
+                case (1):
+                    {
+                        return 9;
+                    }
+                case (2):
+                    {
+                        return 8;
+                    }
+                case (3):
+                    {
+                        return 8;
+                    }
+                case (4):
+                    {
+                        return 7;
+                    }
+                case (5):
+                    {
+                        return 6;
+                    }
+                case (6):
+                    {
+                        return 5;
+                    }
+                case (7):
+                    {
+                        return 4;
+                    }
+                default:
+                    throw new Exception();
+            }
+        }
+
+        protected bool verificaPresenzaEsercizio(Esercizio esercizio, GiornoAllenamento giorno)
+        {
+            bool verifica = false;
+            foreach (EsecuzioneEsercizio corrente in giorno.ListaEsecuzioniEsercizi)
+                if (corrente.Esercizio.Equals(esercizio))
+                    verifica = true;
+            return verifica;
+        }
 
         protected IList<Esercizio> getEserciziPerFascie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, List<Esercizio> listaEsercizi)
         {
@@ -99,12 +145,6 @@ namespace Palestra.model
             }
             return result;
         }
-
-        protected EsecuzioneEsercizio generaInsiemeSerie(FasciaMuscolare fasciaMuscolare, Risorsa risorseDisponibili, int numeroRipetizioni, int numeroSerie, int tempoRecuperoInSec, List<Esercizio> listaEsercizi)
-        {
-            Random random = new Random();
-            Esercizio esercizio = getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi)[random.Next(getEserciziPerFascie(fasciaMuscolare, risorseDisponibili, listaEsercizi).Count - 1)];
-            return new EsecuzioneEsercizioASerie(esercizio, tempoRecuperoInSec, numeroRipetizioni, numeroSerie);
-        }
+        
     }
 }
