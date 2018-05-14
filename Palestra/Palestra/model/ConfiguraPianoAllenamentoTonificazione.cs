@@ -15,13 +15,12 @@ namespace Palestra.model
         public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
         {
             PianoAllenamento schedaGenerata = schedaGenerata = new PianoAllenamento();
-            schedaGenerata.NumeroGiorniAllenamento = utenteAutomatico.NumeroGiorniAllenamento;
-            Dictionary<int, List<FasciaMuscolare>> distribuzioneMuscoli = distribuisciFasceMuscolariPerGiorno(schedaGenerata.NumeroGiorniAllenamento); //distribuzione muscoli da allenare in tutta la settimana
+            Dictionary<int, List<FasciaMuscolare>> distribuzioneMuscoli = distribuisciFasceMuscolariPerGiorno(utenteAutomatico.NumeroGiorniAllenamento); //distribuzione muscoli da allenare in tutta la settimana
             
 
             for (int giorno = 0; giorno < distribuzioneMuscoli.Count; giorno++)//per ogni giorno d'allenamento
             {
-                int[] eserciziPerMuscolo = distribuisci(distribuzioneMuscoli.ElementAt(giorno).Value.Count, getNumeroEserciziPerNumeroGiorniAllenamento(schedaGenerata.NumeroGiorniAllenamento) - 2); //distribuzione numero esercizi per ogni muscolo da allenare nel giorno corrente
+                int[] eserciziPerMuscolo = distribuisci(distribuzioneMuscoli.ElementAt(giorno).Value.Count, getNumeroEserciziPerNumeroGiorniAllenamento(utenteAutomatico.NumeroGiorniAllenamento) - 2); //distribuzione numero esercizi per ogni muscolo da allenare nel giorno corrente
                 GiornoAllenamento nuovoGiornoAllenamento = new GiornoAllenamento(tempoDiRecuperoInSecTonificazione);
                 IList<Esercizio> listaEserciziCardio = getEserciziPerFascie(FasciaMuscolare.Cardio, utenteAutomatico.Risorse, esercizi);
                 nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioATempo(listaEserciziCardio[listaEserciziCardio.Count-1], tempoDEsecuzioneInMinTonificazione)); //aggiungo staticamente due esercizi cardio, da notare il -2 quando chiamo "getNumeroEserciziPerNumeroGiorniAllenamento"
