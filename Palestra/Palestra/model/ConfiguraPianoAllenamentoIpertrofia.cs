@@ -8,38 +8,30 @@ namespace Palestra.model
 {
     public class ConfiguraPianoAllenamentoIpertrofia : IConfiguraPianoAllenamento
     {
-
-        const int numeroRipetizioniIpertrofia = 10;
-        const int numeroSerieIpertrofia = 4;
-        const int tempoDiRecuperoInSecIpertrofia = 90;
-        public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
+        //prova
+        public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> listaEsercizi)
         {
             PianoAllenamento schedaGenerata = schedaGenerata = new PianoAllenamento();
-            Dictionary<int, List<FasciaMuscolare>> distribuzioneMuscoli = distribuisciFasceMuscolariPerGiorno(utenteAutomatico.NumeroGiorniAllenamento); //distribuzione muscoli da allenare in tutta la settimana
-
-
-            for (int giorno = 0; giorno < distribuzioneMuscoli.Count; giorno++)//per ogni giorno d'allenamento
+            schedaGenerata.NumeroGiorniAllenamento = utenteAutomatico.NumeroGiorniAllenamento;
+            Dictionary<int, List<FasciaMuscolare>> distribuzioneMuscoli = distribuisciFasceMuscolariPerGiorno(schedaGenerata.NumeroGiorniAllenamento);
+           
+            for(int indice=0; indice < distribuzioneMuscoli.Count; indice++)
             {
-                int[] eserciziPerMuscolo = distribuisci(distribuzioneMuscoli.ElementAt(giorno).Value.Count, getNumeroEserciziPerNumeroGiorniAllenamento(utenteAutomatico.NumeroGiorniAllenamento)); //distribuzione numero esercizi per ogni muscolo da allenare nel giorno corrente
-                GiornoAllenamento nuovoGiornoAllenamento = new GiornoAllenamento(tempoDiRecuperoInSecIpertrofia);
-                for (int indiceMuscolo = 0; indiceMuscolo < eserciziPerMuscolo.Length; indiceMuscolo++)//per ogni muscolo d'allenare del giorno d'allenamento corrente
+                int[] eserciziPerMuscolo = distribuisci(distribuzioneMuscoli.ElementAt(indice).Value.Count, 8);
+                GiornoAllenamento nuovoGiornoAllenamento = new GiornoAllenamento(90);
+                for (int indiceMuscolo = 0; indiceMuscolo < eserciziPerMuscolo.Length; indiceMuscolo++)
                 {
-                    IList<Esercizio> listaPerMuscoloCorrente = getEserciziPerFascie(distribuzioneMuscoli[giorno].ElementAt(indiceMuscolo), utenteAutomatico.Risorse, esercizi);
-                    for (int indiceEsercizio = 0; indiceEsercizio < eserciziPerMuscolo[indiceMuscolo]; indiceEsercizio++)//per ogni esercizio del muscolo corrente
+                    for(int indiceEsercizio=0; indiceEsercizio< eserciziPerMuscolo[indiceMuscolo]; indiceEsercizio++)
                     {
-                        Esercizio nuovoEsercizio = listaPerMuscoloCorrente[new Random().Next(listaPerMuscoloCorrente.Count - 1)];
-                        if (!verificaPresenzaEsercizio(nuovoEsercizio, nuovoGiornoAllenamento)) // è scelto random, percio se è già presente ripete l'iterazione all'indice corrente
-                            nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(nuovoEsercizio, tempoDiRecuperoInSecIpertrofia, numeroRipetizioniIpertrofia, numeroSerieIpertrofia));
-                        else
-                            indiceEsercizio--;
+                        nuovoGiornoAllenamento.addEsecuzioneEsercizio(generaInsiemeSerie(distribuzioneMuscoli.ElementAt(indice).Value.ElementAt(indiceEsercizio), utenteAutomatico.Risorse, 10, 4, 90, listaEsercizi));
                     }
-
+                        
                 }
                 schedaGenerata.addGiornoAllenamento(nuovoGiornoAllenamento);
             }
 
 
             return schedaGenerata;
-        }
+        }   
     }
 }

@@ -8,6 +8,6 @@ namespace Palestra.model
 {
     public enum FasciaMuscolare
     {
-        Bicipiti, Pettorali, Tricipiti, Addominali, Quadricipiti, Deltoidi, Polpacci,Adduttori, Dorsali, Cardio
+        Bicipiti, Pettorali, Tricipiti, Addominali, Quadricipiti, Deltoidi, Polpacci,Adduttori, Dorsali
     }
 }

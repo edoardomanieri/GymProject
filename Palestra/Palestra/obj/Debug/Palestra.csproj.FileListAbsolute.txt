@@ -8,10 +8,3 @@ C:\Users\Edoardo\Desktop\universita\Terzo anno\Ingegneria del software\progetto\
 C:\Users\Edoardo\Desktop\universita\Terzo anno\Ingegneria del software\progetto\Palestra\Palestra\bin\Debug\nunit.framework.xml
 C:\Users\Edoardo\Desktop\universita\Terzo anno\Ingegneria del software\progetto\Palestra\Palestra\obj\Debug\Palestra.exe
 C:\Users\Edoardo\Desktop\universita\Terzo anno\Ingegneria del software\progetto\Palestra\Palestra\obj\Debug\Palestra.pdb
-C:\Users\Giovanni\Desktop\Università - Ingegneria Informatica\Ingegneria Del Software\Progetto\NostroProgetto\progetto\Palestra\Palestra\obj\Debug\Palestra.csprojResolveAssemblyReference.cache
-C:\Users\Giovanni\Desktop\Università - Ingegneria Informatica\Ingegneria Del Software\Progetto\NostroProgetto\progetto\Palestra\Palestra\obj\Debug\Palestra.csproj.CoreCompileInputs.cache
-C:\Users\Giovanni\Desktop\Università - Ingegneria Informatica\Ingegneria Del Software\Progetto\NostroProgetto\progetto\Palestra\Palestra\bin\Debug\Palestra.exe.config
-C:\Users\Giovanni\Desktop\Università - Ingegneria Informatica\Ingegneria Del Software\Progetto\NostroProgetto\progetto\Palestra\Palestra\bin\Debug\Palestra.exe
-C:\Users\Giovanni\Desktop\Università - Ingegneria Informatica\Ingegneria Del Software\Progetto\NostroProgetto\progetto\Palestra\Palestra\bin\Debug\Palestra.pdb
-C:\Users\Giovanni\Desktop\Università - Ingegneria Informatica\Ingegneria Del Software\Progetto\NostroProgetto\progetto\Palestra\Palestra\obj\Debug\Palestra.exe
-C:\Users\Giovanni\Desktop\Università - Ingegneria Informatica\Ingegneria Del Software\Progetto\NostroProgetto\progetto\Palestra\Palestra\obj\Debug\Palestra.pdb

@@ -89,6 +89,7 @@
     <Compile Include="Persistence\IPianoAllenamentoPersistenceManager.cs" />
     <Compile Include="Persistence\IUtentePersistenceManager.cs" />
     <Compile Include="Persistence\MainPersistanceManager.cs" />
+    <Compile Include="Presentation\MainPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -111,6 +112,7 @@
   <ItemGroup>
     <Content Include="descrizioneEsercizi.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
