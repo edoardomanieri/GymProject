@@ -156,34 +156,7 @@ namespace Palestra.Persistence
 
         }
 
-        public string LeggiDescrizione(string nomeEsercizio)
-        {
-            string line = "";
-            string descrizione = "";
 
-
-            System.IO.StreamReader file = new System.IO.StreamReader("descrizioneEsercizi.txt");
-            while ((line = file.ReadLine()) != null)
-            {
-                if (line.ElementAt(0).Equals('#'))
-                {
-                    line.Remove(0, 1);
-                    if (line.Equals(nomeEsercizio))
-                    {
-                        while (!(line = file.ReadLine()).Equals("FINE"))
-                        {
-                            descrizione = descrizione + "\n" + line;
-                        }
-                        return descrizione;
-                    }
-                }
-            }
-            file.Close();
-            if (descrizione.Equals(""))
-                return "Descrizione non disponibile";
-            else
-                return descrizione;
-        }
 
         public SqlConnection Conn { get => _conn; set => _conn = value; }
 
@@ -330,7 +303,7 @@ namespace Palestra.Persistence
                         readerEsecuzioneEsercizio.Close();
                         conn2.Close();
                     }
-                    pianoAllenamento.inserisciGiornoAllenamento(giornoAllenamento);
+                    pianoAllenamento.addGiornoAllenamento(giornoAllenamento);
 
                 }
                 readerGiorniAllenamenti.Close();

@@ -9,6 +9,7 @@ namespace Palestra.model
 {
     public class GiornoAllenamento : IPersistable
     {
+        public event EventHandler Changed;
         private int _tempoDiRecuperoInSec;
         private List<EsecuzioneEsercizio> _listaEsecuzioneEsercizi;
         private int _ID;
@@ -21,12 +22,19 @@ namespace Palestra.model
 
         public void addEsecuzioneEsercizio(EsecuzioneEsercizio esecuzioneEsercizio)
         {
+            OnChanged();
             ListaEsecuzioniEsercizi.Add(esecuzioneEsercizio);
         }
 
-        public Boolean removeEsecuzioneEsercizio(EsecuzioneEsercizio insiemeSerie)
+        public Boolean removeEsecuzioneEsercizio(EsecuzioneEsercizio esecuzioneEsercizio)
         {
-            return ListaEsecuzioniEsercizi.Remove(insiemeSerie);
+            OnChanged();
+            return ListaEsecuzioniEsercizi.Remove(esecuzioneEsercizio);
+        }
+
+        private void OnChanged()
+        {
+            Changed?.Invoke(this, EventArgs.Empty);
         }
 
         public int TempoDiRecuperoInSec { get => _tempoDiRecuperoInSec; set => _tempoDiRecuperoInSec = value; }

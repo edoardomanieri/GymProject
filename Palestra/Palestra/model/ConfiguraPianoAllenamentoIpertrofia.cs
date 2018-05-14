@@ -27,7 +27,7 @@ namespace Palestra.model
                     }
                         
                 }
-                schedaGenerata.inserisciGiornoAllenamento(nuovoGiornoAllenamento);
+                schedaGenerata.addGiornoAllenamento(nuovoGiornoAllenamento);
             }
 
 
