@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Palestra.Persistence
 {
-    public interface IIDGeneerator
+    public interface IIDGenerator
     {
         int generaUtenteID();
         int generaAllenamentoID();
         int generaGiornoAllenamentoID();
         int generaEsecuzioneEsercizioID();
+        void setIDs();
+        void resetIDs();
     }
 }

@@ -73,12 +73,13 @@ namespace ViewProject
             }
             if (checkBoxAutomatica.Checked)
             {
-                view = (CreaSchedaManualeView)ViewFactory.GetView("CreaSchedaManualeView");
+                view = (CreaSchedaAutomaticaView)ViewFactory.GetView("CreaSchedaAutomaticaView");
+
                 mainForm.SetView(view);
             }
             else
             {
-                view = (CreaSchedaAutomaticaView)ViewFactory.GetView("CreaSchedaAutomaticaView");
+                view = (CreaSchedaManualeView)ViewFactory.GetView("CreaSchedaManualeView");
                 mainForm.SetView(view);
             }
 

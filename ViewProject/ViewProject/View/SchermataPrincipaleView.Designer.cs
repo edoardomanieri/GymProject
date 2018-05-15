@@ -205,20 +205,18 @@
             this.panel2.Size = new System.Drawing.Size(626, 29);
             this.panel2.TabIndex = 11;
             // 
-            // FormMenu
+            // SchermataPrincipaleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(822, 512);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonModificaScheda);
             this.Controls.Add(this.tableLayoutPanel1);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormMenu";
-            this.Text = "No Pain No Gain";
+            this.Name = "SchermataPrincipaleView";
+            this.Size = new System.Drawing.Size(822, 512);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

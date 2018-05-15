@@ -1,4 +1,5 @@
-﻿using Palestra.Persistence;
+﻿using Palestra.model;
+using Palestra.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,21 @@ namespace ViewProject.Presentation
 
         private void Click_buttonProcedi(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (!_creaSchedaAutomaticaView.isCompleted())
+                return;
+            Risorsa risorsa = MainPersistanceManager.getRisorsa(_creaSchedaAutomaticaView.comboModalita.Text).Value;
+            TipoAllenamento tipo = MainPersistanceManager.getTipoAllenamento(_creaSchedaAutomaticaView.comboBoxObiettivo.Text).Value;
+            int numeroAllenamenti = (int)_creaSchedaAutomaticaView.numericUpDownAllenamenti.Value;
+
+            //verra per forza invocata dopo che un utente è gia stato salvato
+            _mpm.SaveUtenteAutomatico(risorsa, numeroAllenamenti, tipo);
+            
+            //creo e salvo il pianoAllenamento automatico
+            UtenteAutomatico utente = (UtenteAutomatico)_mpm.LoadUtente();
+            GestorePianiAllenamento gpa = GestorePianiAllenamento.Instance;
+            PianoAllenamento pianoAllenamento = gpa.getPianoAllenamento(utente, (List<Esercizio>)_mpm.LoadAllEsercizi());
+            _mpm.SavePianoAllenamento(utente, pianoAllenamento);
+
         }
     }
 }

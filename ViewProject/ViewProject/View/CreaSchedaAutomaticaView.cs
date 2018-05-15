@@ -30,7 +30,7 @@ namespace ViewProject
             mainForm.SetView(view);
         }
 
-        private bool isCompleted()
+        public bool isCompleted()
         {
             throw new NotImplementedException();
         }

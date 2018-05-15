@@ -26,7 +26,7 @@ namespace ViewProject.View
             {
                 switch (nomeView)
                 {
-                    case "CreaSchedaAutomatica":
+                    case "CreaSchedaAutomaticaView":
 
                         return new CreaSchedaAutomaticaView();
                     case "SchermataPrincipaleView":
@@ -38,7 +38,7 @@ namespace ViewProject.View
                     case "CreaSchedaManualeView":
                         
                         return new CreaSchedaManualeView();
-                    case "MainFormAlreadyRegistered":
+                    case "Profiloview":
                         
                         return new ProfiloView();
                     case "ProgressiView":

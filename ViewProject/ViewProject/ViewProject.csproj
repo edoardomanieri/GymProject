@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistence\IDBroker.cs" />
     <Compile Include="Presentation\CreaSchedaAutomaticaPresenter.cs" />
     <Compile Include="Presentation\CreaSchedaManualePresenter.cs" />
     <Compile Include="Presentation\IPresenter.cs" />
@@ -136,7 +137,7 @@
     <Compile Include="model\UtenteAutomatico.cs" />
     <Compile Include="Persistence\IAllenamentoPersistenceManager.cs" />
     <Compile Include="Persistence\IEsercizioPersistanceManager.cs" />
-    <Compile Include="Persistence\IIDGeneerator.cs" />
+    <Compile Include="Persistence\IIDGenerator.cs" />
     <Compile Include="Persistence\IPersistable.cs" />
     <Compile Include="Persistence\IPianoAllenamentoPersistenceManager.cs" />
     <Compile Include="Persistence\IUtentePersistenceManager.cs" />
@@ -218,6 +219,8 @@
     <Content Include="descrizioneEsercizi.txt" />
     <Content Include="Frasi.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

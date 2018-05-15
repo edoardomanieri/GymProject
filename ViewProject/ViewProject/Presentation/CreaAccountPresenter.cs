@@ -18,7 +18,7 @@ namespace Palestra.Presentation
 
         public CreaAccountPresenter(MainPersistanceManager mpm, CreaAccountView creaAccountView)
         {
-            mpm = _mpm;
+            _mpm = mpm;
             _creaAccountView = creaAccountView;
 
 
@@ -29,6 +29,7 @@ namespace Palestra.Presentation
         {
             if (!_creaAccountView.isCompleted())
                 return;
+            _mpm.InitializeIDs();
             Sesso sesso = _creaAccountView.RadioButtonFemmina.Checked ? Sesso.Femmina : Sesso.Maschio;
             Utente utente = new Utente(_creaAccountView.TextBoxNome.Text, _creaAccountView.TextBoxCognome.Text, 
                 new DateTime(int.Parse(_creaAccountView.comboBoxAnno.Text), int.Parse(_creaAccountView.comboBoxMese.Text), 
@@ -37,6 +38,8 @@ namespace Palestra.Presentation
 
             //inseriamo l'utente nel DB
             _mpm.SaveUtente(utente);
+
+                
         }
     }
 }

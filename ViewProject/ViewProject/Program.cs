@@ -19,10 +19,8 @@ namespace ViewProject
             MainPersistanceManager mpm = new MainPersistanceManager();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // if (!mpm.ThereIsASavedAccount())
                 Application.Run(new MainForm());
-           // else
-             //   Application.Run(new MainFormAlreadyRegistered());
+ 
         }
     }
 }

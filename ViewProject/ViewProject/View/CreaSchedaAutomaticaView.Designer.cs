@@ -229,13 +229,13 @@
         #endregion
 
         private System.Windows.Forms.Label labelTitolo;
-        private System.Windows.Forms.NumericUpDown numericUpDownAllenamenti;
         private System.Windows.Forms.Label labelObiettivo;
-        private System.Windows.Forms.ComboBox comboBoxObiettivo;
         private System.Windows.Forms.Label labelGiorniAllenamento;
         private System.Windows.Forms.Label labelRisorse;
-        private System.Windows.Forms.ComboBox comboModalita;
         private System.Windows.Forms.Button buttonIndietro;
         public System.Windows.Forms.Button buttonProcedi;
+        public System.Windows.Forms.NumericUpDown numericUpDownAllenamenti;
+        public System.Windows.Forms.ComboBox comboBoxObiettivo;
+        public System.Windows.Forms.ComboBox comboModalita;
     }
 }

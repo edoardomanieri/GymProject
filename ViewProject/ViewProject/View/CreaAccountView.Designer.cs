@@ -451,18 +451,18 @@
             this.comboBoxMese.ForeColor = System.Drawing.Color.Transparent;
             this.comboBoxMese.FormattingEnabled = true;
             this.comboBoxMese.Items.AddRange(new object[] {
-            "Gennaio",
-            "Febbraio",
-            "Marzo",
-            "Aprile",
-            "Maggio",
-            "Giugno",
-            "Luglio",
-            "Agosto",
-            "Settembre",
-            "Ottobre",
-            "Novembre",
-            "Dicembre"});
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
             this.comboBoxMese.Location = new System.Drawing.Point(443, 209);
             this.comboBoxMese.Name = "comboBoxMese";
             this.comboBoxMese.RightToLeft = System.Windows.Forms.RightToLeft.No;

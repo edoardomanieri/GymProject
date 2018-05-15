@@ -6,13 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Palestra.model;
+using ViewProject.Persistence;
 
 namespace Palestra.Persistence
 {
-    public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager, IIDGeneerator
+    public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager, IIDGenerator
     {
         private List<Esercizio> _esercizi;
         private SqlConnection _conn;
+        private IIDGenerator _IDBroker;
 
         //Da rendere singleton ed estrarre la classe IDBroker
 
@@ -21,6 +23,7 @@ namespace Palestra.Persistence
             //connessione al database che rimarrà connesso per tutta la durata dell'applicazione
             Conn = new SqlConnection();
             Conn.ConnectionString = "Data Source=EDOARDO;Initial Catalog=PalestraDB;Integrated Security=True";
+            IIDGenerator _IDBroker = new IDBroker(Conn.ConnectionString);
             Conn.Open();
 
             _esercizi = new List<Esercizio>();
@@ -366,7 +369,7 @@ namespace Palestra.Persistence
         {
             try
             {
-                int allenamentoID = generaAllenamentoID();
+                int allenamentoID = _IDBroker.generaAllenamentoID();
 
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
                 SqlParameter data = new SqlParameter("@Param1", SqlDbType.Date);
@@ -427,7 +430,7 @@ namespace Palestra.Persistence
 
                 foreach (GiornoAllenamento giornoAllenamento in pianoAllenamento.GiorniAllenamento)
                 {
-                    int giornoAllenamentoID = generaGiornoAllenamentoID();
+                    int giornoAllenamentoID = _IDBroker.generaGiornoAllenamentoID();
 
                     //fondamentale per salvare l'ID internamente
                     giornoAllenamento.ID = giornoAllenamentoID;
@@ -447,7 +450,7 @@ namespace Palestra.Persistence
 
                     foreach (EsecuzioneEsercizio esecuzioneEsercizio in giornoAllenamento.ListaEsecuzioniEsercizi)
                     {
-                        int esecuzioneEsercizioID = generaEsecuzioneEsercizioID();
+                        int esecuzioneEsercizioID = _IDBroker.generaEsecuzioneEsercizioID();
                         esecuzioneEsercizio.ID = esecuzioneEsercizioID;
 
                         SqlParameter nomeEsercizio = new SqlParameter("@Param5", SqlDbType.VarChar);
@@ -524,8 +527,6 @@ namespace Palestra.Persistence
         {
             try
             {
-                if (!(utente is UtenteAutomatico))
-                {
                     //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
                     SqlParameter myParam = new SqlParameter("@Param1", SqlDbType.VarChar);
                     myParam.Value = utente.Nome;
@@ -545,7 +546,7 @@ namespace Palestra.Persistence
                     SqlParameter myParam6 = new SqlParameter("@Param6", SqlDbType.Int);
                     myParam6.Value = utente.PesoInKg;
 
-                    int ID = generaUtenteID();
+                    int ID = _IDBroker.generaUtenteID();
 
                     //fondamentale per salvare l'ID internamente
                     utente.ID = ID;
@@ -561,27 +562,38 @@ namespace Palestra.Persistence
 
                     insertUtenti.ExecuteNonQuery();
 
-                }
-                if (utente is UtenteAutomatico)
-                {
+                return true;
+                
+            }
+            catch (SqlException e)
+            {
+                throw;
+            }
+        }
+
+
+        public bool SaveUtenteAutomatico(Risorsa risorsa, int numeroGiorniAllenamento, TipoAllenamento tipo)
+        {
+            try
+            {
+
                     SqlCommand insertUtenteAutomatico;
-                    UtenteAutomatico utenteAutomatico = (UtenteAutomatico)utente;
+                    UtenteAutomatico utenteAutomatico = (UtenteAutomatico)LoadUtente();
 
                     SqlParameter myParam7 = new SqlParameter("@Param7", SqlDbType.VarChar);
-                    myParam7.Value = utenteAutomatico.Risorse;
+                    myParam7.Value = risorsa;
 
                     SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.Int);
-                    myParam8.Value = utenteAutomatico.NumeroGiorniAllenamento;
+                    myParam8.Value = numeroGiorniAllenamento;
 
                     SqlParameter myParam9 = new SqlParameter("@Param9", SqlDbType.VarChar);
-                    myParam9.Value = utenteAutomatico.Tipo;
+                    myParam9.Value = tipo;
 
-                    insertUtenteAutomatico = new SqlCommand("INSERT INTO UTENTIAUTOMATICI values (" + utente.ID + ", @Param7, @Param8, @Param9);");
+                    insertUtenteAutomatico = new SqlCommand("INSERT INTO UTENTIAUTOMATICI values (" + utenteAutomatico.ID + ", @Param7, @Param8, @Param9);");
                     insertUtenteAutomatico.Parameters.Add(myParam7);
                     insertUtenteAutomatico.Parameters.Add(myParam8);
                     insertUtenteAutomatico.Parameters.Add(myParam9);
                     insertUtenteAutomatico.ExecuteNonQuery();
-                }
 
 
                 return true;
@@ -605,116 +617,19 @@ namespace Palestra.Persistence
             _conn.Close();
         }
 
-        public int generaUtenteID()
+        public void InitializeIDs()
         {
             try
             {
-                SqlCommand myCommand = new SqlCommand("select utente from IDs;", Conn);
-                SqlDataReader myReader = myCommand.ExecuteReader();
-                myReader.Read();
-                int ID = (int)myReader["utente"] + 1;
-                myReader.Close();
-
-                SqlCommand update = new SqlCommand("update IDs set utente = " + ID + ";", Conn);
-                update.ExecuteNonQuery();
-                return ID;
+                _IDBroker.setIDs();
             }
-            catch (SqlException e)
+            catch(SqlException)
             {
                 throw;
             }
         }
 
-        public int generaAllenamentoID()
-        {
-            try
-            {
-                SqlCommand myCommand = new SqlCommand("select allenamento from IDs;", Conn);
-                SqlDataReader myReader = myCommand.ExecuteReader();
-                myReader.Read();
-                int ID = (int)myReader["allenamento"] + 1;
-                myReader.Close();
 
-                SqlCommand update = new SqlCommand("update IDs set allenamento = " + ID + ";", Conn);
-                update.ExecuteNonQuery();
-                return ID;
-            }
-            catch (SqlException e)
-            {
-                throw;
-            }
-
-        }
-
-        public int generaGiornoAllenamentoID()
-        {
-            try
-            {
-                SqlCommand myCommand = new SqlCommand("select giornoAllenamento from IDs;", Conn);
-                SqlDataReader myReader = myCommand.ExecuteReader();
-                myReader.Read();
-                int ID = (int)myReader["giornoAllenamento"] + 1;
-                myReader.Close();
-
-                SqlCommand update = new SqlCommand("update IDs set giornoAllenamento = " + ID + ";", Conn);
-                update.ExecuteNonQuery();
-                return ID;
-            }
-            catch (SqlException e)
-            {
-                throw;
-            }
-        }
-
-        public int generaEsecuzioneEsercizioID()
-        {
-            try
-            {
-                SqlCommand myCommand = new SqlCommand("select esecuzioneEsercizio from IDs;", Conn);
-                SqlDataReader myReader = myCommand.ExecuteReader();
-                myReader.Read();
-                int ID = (int)myReader["esecuzioneEsercizio"] + 1;
-                myReader.Close();
-
-                SqlCommand update = new SqlCommand("update IDs set esecuzioneEsercizio = " + ID + ";", Conn);
-                update.ExecuteNonQuery();
-                return ID;
-            }
-            catch (SqlException e)
-            {
-                throw;
-            }
-        }
-
-        public void setIDs()
-        {
-            try
-            {
-
-                SqlCommand insert = new SqlCommand("insert into IDs values (0,0,0,0);", Conn);
-                insert.ExecuteNonQuery();
-
-            }
-            catch (SqlException e)
-            {
-                throw;
-            }
-        }
-
-        public void resetIDs()
-        {
-            try
-            {
-
-                SqlCommand delete = new SqlCommand("delete from IDs;", Conn);
-                delete.ExecuteNonQuery();
-
-            }
-            catch (SqlException e)
-            {
-                throw;
-            }
-        }
 
         public  bool ThereIsASavedAccount()
         {
@@ -732,21 +647,20 @@ namespace Palestra.Persistence
                 else
                 {
                     myReader.Close();
-                    setIDs();
                     return false;
                 }
 
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                throw;
+                throw new Exception("ciao");
             }
         }
 
         public void Reset(Utente utente)
         {
             DeleteUtente(utente);
-            resetIDs();
+            _IDBroker.resetIDs();
 
         }
 
@@ -757,7 +671,7 @@ namespace Palestra.Persistence
          * 
          */
 
-        private static TipoAllenamento? getTipoAllenamento(string tipoString)
+        public static TipoAllenamento? getTipoAllenamento(string tipoString)
         {
             TipoAllenamento? tipo = null;
             switch (tipoString.ToLower())
@@ -777,7 +691,7 @@ namespace Palestra.Persistence
         }
 
 
-        private static Sesso? getSesso(string sessoString)
+        public static Sesso? getSesso(string sessoString)
         {
             Sesso? sesso = null;
             switch (sessoString.ToLower())
@@ -792,7 +706,7 @@ namespace Palestra.Persistence
             return sesso;
         }
 
-        private static Risorsa? getRisorsa(string risorsaString)
+        public static Risorsa? getRisorsa(string risorsaString)
         {
             Risorsa? risorsa = null;
             switch (risorsaString.ToLower())
@@ -809,7 +723,7 @@ namespace Palestra.Persistence
 
 
 
-        private Esercizio GetEsercizioByName(string nome)
+        public Esercizio GetEsercizioByName(string nome)
         {
             foreach (Esercizio esercizio in _esercizi)
             {

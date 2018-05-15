@@ -37,6 +37,7 @@ namespace ViewProject.View
             {
                 CreaAccountView view = (CreaAccountView)ViewFactory.GetView("CreaAccountView");
                 CreaAccountPresenter creaAccountPresenter = new CreaAccountPresenter(mpm, view);
+                SetView(view);
             }
 
         }
