@@ -54,79 +54,123 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Presentation\CreaSchedaAutomaticaPresenter.cs" />
+    <Compile Include="Presentation\CreaSchedaManualePresenter.cs" />
+    <Compile Include="Presentation\IPresenter.cs" />
+    <Compile Include="Presentation\ProfiloPresenter.cs" />
+    <Compile Include="Presentation\ProgressiPresenter.cs" />
+    <Compile Include="Presentation\SchermataPrincipalePresenter.cs" />
+    <Compile Include="Presentation\VideoPresenter.cs" />
+    <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAutomatica.cs">
+    <Compile Include="View\CreaAccountView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CreaAccountView.Designer.cs">
+      <DependentUpon>CreaAccountView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreaSchedaAutomaticaView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CreaSchedaAutomaticaView.Designer.cs">
+      <DependentUpon>CreaSchedaAutomaticaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormEliminaEsercizi%28inutile%29.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAutomatica.Designer.cs">
-      <DependentUpon>FormAutomatica.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormEliminaEsercizi%28inutile%29.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEliminaEsercizi%28inutile%29.Designer.cs">
+    <Compile Include="View\FormEliminaEsercizi%28inutile%29.Designer.cs">
       <DependentUpon>FormEliminaEsercizi%28inutile%29.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProfilo.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\ProfiloView.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormProfilo.Designer.cs">
-      <DependentUpon>FormProfilo.cs</DependentUpon>
+    <Compile Include="View\ProfiloView.Designer.cs">
+      <DependentUpon>ProfiloView.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRegistraAllenamento.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\ProgressiView.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormRegistraAllenamento.Designer.cs">
-      <DependentUpon>FormRegistraAllenamento.cs</DependentUpon>
+    <Compile Include="View\ProgressiView.Designer.cs">
+      <DependentUpon>ProgressiView.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormVideo.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\VideoView.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormVideo.Designer.cs">
-      <DependentUpon>FormVideo.cs</DependentUpon>
+    <Compile Include="View\VideoView.Designer.cs">
+      <DependentUpon>VideoView.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormManualeModifica.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\CreaSchedaManualeView.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormManualeModifica.Designer.cs">
-      <DependentUpon>FormManualeModifica.cs</DependentUpon>
+    <Compile Include="View\CreaSchedaManualeView.Designer.cs">
+      <DependentUpon>CreaSchedaManualeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMenu.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\SchermataPrincipaleView.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormMenu.Designer.cs">
-      <DependentUpon>FormMenu.cs</DependentUpon>
+    <Compile Include="View\SchermataPrincipaleView.Designer.cs">
+      <DependentUpon>SchermataPrincipaleView.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\Allenamento.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoDefinizione.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoFactory.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoIpertrofia.cs" />
+    <Compile Include="model\ConfiguraPianoAllenamentoTonificazione.cs" />
+    <Compile Include="model\EsecuzioneEsercizio.cs" />
+    <Compile Include="model\EsecuzioneEsercizioASerie.cs" />
+    <Compile Include="model\EsecuzioneEsercizioATempo.cs" />
+    <Compile Include="model\Esercizio.cs" />
+    <Compile Include="model\FasciaMuscolare.cs" />
+    <Compile Include="model\GestorePianiAllenamento.cs" />
+    <Compile Include="model\GiornoAllenamento.cs" />
+    <Compile Include="model\IConfiguraPianoAllenamento.cs" />
+    <Compile Include="model\PianoAllenamento.cs" />
+    <Compile Include="model\Risorsa.cs" />
+    <Compile Include="model\Sesso.cs" />
+    <Compile Include="model\TipoAllenamento.cs" />
+    <Compile Include="model\Utente.cs" />
+    <Compile Include="model\UtenteAutomatico.cs" />
+    <Compile Include="Persistence\IAllenamentoPersistenceManager.cs" />
+    <Compile Include="Persistence\IEsercizioPersistanceManager.cs" />
+    <Compile Include="Persistence\IIDGeneerator.cs" />
+    <Compile Include="Persistence\IPersistable.cs" />
+    <Compile Include="Persistence\IPianoAllenamentoPersistenceManager.cs" />
+    <Compile Include="Persistence\IUtentePersistenceManager.cs" />
+    <Compile Include="Persistence\MainPersistenceManager.cs" />
+    <Compile Include="Presentation\CreaAccountPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\ViewFactory.cs" />
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAutomatica.resx">
-      <DependentUpon>FormAutomatica.cs</DependentUpon>
+    <EmbeddedResource Include="View\CreaAccountView.resx">
+      <DependentUpon>CreaAccountView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEliminaEsercizi%28inutile%29.resx">
+    <EmbeddedResource Include="View\CreaSchedaAutomaticaView.resx">
+      <DependentUpon>CreaSchedaAutomaticaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormEliminaEsercizi%28inutile%29.resx">
       <DependentUpon>FormEliminaEsercizi%28inutile%29.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProfilo.resx">
-      <DependentUpon>FormProfilo.cs</DependentUpon>
+    <EmbeddedResource Include="View\ProfiloView.resx">
+      <DependentUpon>ProfiloView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRegistraAllenamento.resx">
-      <DependentUpon>FormRegistraAllenamento.cs</DependentUpon>
+    <EmbeddedResource Include="View\ProgressiView.resx">
+      <DependentUpon>ProgressiView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormVideo.resx">
-      <DependentUpon>FormVideo.cs</DependentUpon>
+    <EmbeddedResource Include="View\VideoView.resx">
+      <DependentUpon>VideoView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormManualeModifica.resx">
-      <DependentUpon>FormManualeModifica.cs</DependentUpon>
+    <EmbeddedResource Include="View\CreaSchedaManualeView.resx">
+      <DependentUpon>CreaSchedaManualeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMenu.resx">
-      <DependentUpon>FormMenu.cs</DependentUpon>
+    <EmbeddedResource Include="View\SchermataPrincipaleView.resx">
+      <DependentUpon>SchermataPrincipaleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -171,7 +215,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="descrizioneEsercizi.txt" />
     <Content Include="Frasi.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
