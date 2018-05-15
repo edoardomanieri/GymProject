@@ -23,6 +23,7 @@ namespace ViewProject.Persistence
             {
                 using (SqlConnection Conn = new SqlConnection(_connectionString))
                 {
+                    Conn.Open();
                     SqlCommand myCommand = new SqlCommand("select utente from IDs;", Conn);
                     SqlDataReader myReader = myCommand.ExecuteReader();
                     myReader.Read();
@@ -31,6 +32,7 @@ namespace ViewProject.Persistence
 
                     SqlCommand update = new SqlCommand("update IDs set utente = " + ID + ";", Conn);
                     update.ExecuteNonQuery();
+                    Conn.Close();
                     return ID;
                 }
             }
@@ -46,6 +48,7 @@ namespace ViewProject.Persistence
             {
                 using (SqlConnection Conn = new SqlConnection(_connectionString))
                 {
+                    Conn.Open();
                     SqlCommand myCommand = new SqlCommand("select allenamento from IDs;", Conn);
                     SqlDataReader myReader = myCommand.ExecuteReader();
                     myReader.Read();
@@ -54,6 +57,7 @@ namespace ViewProject.Persistence
 
                     SqlCommand update = new SqlCommand("update IDs set allenamento = " + ID + ";", Conn);
                     update.ExecuteNonQuery();
+                    Conn.Close();
                     return ID;
                 }
             }
@@ -70,6 +74,7 @@ namespace ViewProject.Persistence
             {
                 using (SqlConnection Conn = new SqlConnection(_connectionString))
                 {
+                    Conn.Open();
                     SqlCommand myCommand = new SqlCommand("select giornoAllenamento from IDs;", Conn);
                     SqlDataReader myReader = myCommand.ExecuteReader();
                     myReader.Read();
@@ -78,6 +83,7 @@ namespace ViewProject.Persistence
 
                     SqlCommand update = new SqlCommand("update IDs set giornoAllenamento = " + ID + ";", Conn);
                     update.ExecuteNonQuery();
+                    Conn.Close();
                     return ID;
                 }
             }
@@ -93,6 +99,7 @@ namespace ViewProject.Persistence
             {
                 using (SqlConnection Conn = new SqlConnection(_connectionString))
                 {
+                    Conn.Open();
                     SqlCommand myCommand = new SqlCommand("select esecuzioneEsercizio from IDs;", Conn);
                     SqlDataReader myReader = myCommand.ExecuteReader();
                     myReader.Read();
@@ -101,6 +108,7 @@ namespace ViewProject.Persistence
 
                     SqlCommand update = new SqlCommand("update IDs set esecuzioneEsercizio = " + ID + ";", Conn);
                     update.ExecuteNonQuery();
+                    Conn.Close();
                     return ID;
                 }
             }
@@ -116,8 +124,10 @@ namespace ViewProject.Persistence
             {
                 using (SqlConnection Conn = new SqlConnection(_connectionString))
                 {
+                    Conn.Open();
                     SqlCommand insert = new SqlCommand("insert into IDs values (0,0,0,0);", Conn);
                     insert.ExecuteNonQuery();
+                    Conn.Close();
                 }
 
             }
@@ -133,8 +143,10 @@ namespace ViewProject.Persistence
             {
                 using (SqlConnection Conn = new SqlConnection(_connectionString))
                 {
+                    Conn.Open();
                     SqlCommand delete = new SqlCommand("delete from IDs;", Conn);
                     delete.ExecuteNonQuery();
+                    Conn.Close();
                 }
 
             }

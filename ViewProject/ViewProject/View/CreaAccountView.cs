@@ -74,7 +74,6 @@ namespace ViewProject
             if (checkBoxAutomatica.Checked)
             {
                 view = (CreaSchedaAutomaticaView)ViewFactory.GetView("CreaSchedaAutomaticaView");
-
                 mainForm.SetView(view);
             }
             else

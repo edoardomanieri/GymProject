@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewProject.Presentation;
 
 namespace ViewProject.View
 {
@@ -24,9 +25,16 @@ namespace ViewProject.View
         {
             MainPersistanceManager mpm = new MainPersistanceManager();
             //inizializzo presenter 
+            UserControl view;
 
+            view = ViewFactory.GetView("CreaSchedaAutomaticaView");
+            CreaSchedaAutomaticaPresenter creaSchedaAutomaticaPresenter = new CreaSchedaAutomaticaPresenter(mpm, (CreaSchedaAutomaticaView)view);
 
+            view = ViewFactory.GetView("SchermataPrincipaleView");
+            SchermataPrincipalePresenter schermataPrincipalePresenter = new SchermataPrincipalePresenter(mpm, (SchermataPrincipaleView)view);
 
+            view = ViewFactory.GetView("CreaAccountView");
+            CreaAccountPresenter creaAccountPresenter = new CreaAccountPresenter(mpm, (CreaAccountView)view);
 
 
             if (mpm.ThereIsASavedAccount())
@@ -35,10 +43,10 @@ namespace ViewProject.View
             }
             else
             {
-                CreaAccountView view = (CreaAccountView)ViewFactory.GetView("CreaAccountView");
-                CreaAccountPresenter creaAccountPresenter = new CreaAccountPresenter(mpm, view);
-                SetView(view);
+                SetView(ViewFactory.GetView("CreaAccountView"));
             }
+
+           
 
         }
 

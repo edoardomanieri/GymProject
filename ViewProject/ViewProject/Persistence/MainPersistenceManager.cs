@@ -10,7 +10,7 @@ using ViewProject.Persistence;
 
 namespace Palestra.Persistence
 {
-    public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager, IIDGenerator
+    public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager
     {
         private List<Esercizio> _esercizi;
         private SqlConnection _conn;
@@ -23,7 +23,7 @@ namespace Palestra.Persistence
             //connessione al database che rimarrà connesso per tutta la durata dell'applicazione
             Conn = new SqlConnection();
             Conn.ConnectionString = "Data Source=EDOARDO;Initial Catalog=PalestraDB;Integrated Security=True";
-            IIDGenerator _IDBroker = new IDBroker(Conn.ConnectionString);
+            _IDBroker = new IDBroker(Conn.ConnectionString);
             Conn.Open();
 
             _esercizi = new List<Esercizio>();
@@ -250,6 +250,26 @@ namespace Palestra.Persistence
         public IEnumerable<Esercizio> LoadAllEsercizi()
         {
             return _esercizi;
+        }
+
+        public bool ThereIsAPianoAllenamento()
+        {
+            try
+            {
+                bool res;
+                SqlCommand commandSelect = new SqlCommand("select * from PIANIALLENAMENTO;");
+                SqlDataReader readerPiani = commandSelect.ExecuteReader();
+                if (readerPiani.HasRows)
+                    res = true;
+                else
+                    res = false;
+                readerPiani.Close();
+                return res;
+            }
+            catch (SqlException)
+            {
+                throw new Exception();
+            }
         }
 
         public PianoAllenamento LoadPianoAllenamento(Utente utente)

@@ -32,16 +32,16 @@
             this.labelTitolo = new System.Windows.Forms.Label();
             this.buttonSalvaScheda = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.giornoSettimana = new System.Windows.Forms.ComboBox();
             this.labelGiornoSettimana = new System.Windows.Forms.Label();
             this.buttonAggiungiEsercizio = new System.Windows.Forms.Button();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.carico = new System.Windows.Forms.NumericUpDown();
             this.labelPeso = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.tempoRecupero = new System.Windows.Forms.NumericUpDown();
             this.labelTempoRecupero = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numeroRipetizioni = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numeroSerie = new System.Windows.Forms.NumericUpDown();
             this.labelNumeroSerie = new System.Windows.Forms.Label();
             this.comboBoxEsercizi = new System.Windows.Forms.ComboBox();
             this.labelFasciaMuscolare = new System.Windows.Forms.Label();
@@ -53,10 +53,10 @@
             this.comboBoxGiornoAllenamento = new System.Windows.Forms.ComboBox();
             this.buttonEliminaEsercizio = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carico)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tempoRecupero)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeroRipetizioni)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeroSerie)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,16 +98,16 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.giornoSettimana);
             this.panel1.Controls.Add(this.labelGiornoSettimana);
             this.panel1.Controls.Add(this.buttonAggiungiEsercizio);
-            this.panel1.Controls.Add(this.numericUpDown4);
+            this.panel1.Controls.Add(this.carico);
             this.panel1.Controls.Add(this.labelPeso);
-            this.panel1.Controls.Add(this.numericUpDown3);
+            this.panel1.Controls.Add(this.tempoRecupero);
             this.panel1.Controls.Add(this.labelTempoRecupero);
-            this.panel1.Controls.Add(this.numericUpDown2);
+            this.panel1.Controls.Add(this.numeroRipetizioni);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.numeroSerie);
             this.panel1.Controls.Add(this.labelNumeroSerie);
             this.panel1.Controls.Add(this.comboBoxEsercizi);
             this.panel1.Controls.Add(this.labelFasciaMuscolare);
@@ -118,23 +118,23 @@
             this.panel1.Size = new System.Drawing.Size(477, 363);
             this.panel1.TabIndex = 47;
             // 
-            // comboBox1
+            // giornoSettimana
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox1.BackColor = System.Drawing.Color.Lime;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.giornoSettimana.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.giornoSettimana.BackColor = System.Drawing.Color.Lime;
+            this.giornoSettimana.FormattingEnabled = true;
+            this.giornoSettimana.Items.AddRange(new object[] {
             "Lunedì",
             "Martedì",
             "Mercoledì",
             "Giovedì",
             "Sabato",
             "Domenica"});
-            this.comboBox1.Location = new System.Drawing.Point(303, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(120, 21);
-            this.comboBox1.TabIndex = 62;
-            this.comboBox1.Text = "Giorno Settimana";
+            this.giornoSettimana.Location = new System.Drawing.Point(303, 19);
+            this.giornoSettimana.Name = "giornoSettimana";
+            this.giornoSettimana.Size = new System.Drawing.Size(120, 21);
+            this.giornoSettimana.TabIndex = 62;
+            this.giornoSettimana.Text = "Giorno Settimana";
             // 
             // labelGiornoSettimana
             // 
@@ -170,25 +170,25 @@
             this.buttonAggiungiEsercizio.Text = "Aggiungi esercizio";
             this.buttonAggiungiEsercizio.UseVisualStyleBackColor = false;
             // 
-            // numericUpDown4
+            // carico
             // 
-            this.numericUpDown4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDown4.BackColor = System.Drawing.Color.Lime;
-            this.numericUpDown4.Location = new System.Drawing.Point(307, 269);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.carico.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.carico.BackColor = System.Drawing.Color.Lime;
+            this.carico.Location = new System.Drawing.Point(307, 269);
+            this.carico.Maximum = new decimal(new int[] {
             300,
             0,
             0,
             0});
-            this.numericUpDown4.Minimum = new decimal(new int[] {
+            this.carico.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown4.TabIndex = 60;
-            this.numericUpDown4.Value = new decimal(new int[] {
+            this.carico.Name = "carico";
+            this.carico.Size = new System.Drawing.Size(44, 20);
+            this.carico.TabIndex = 60;
+            this.carico.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -209,25 +209,25 @@
             this.labelPeso.Text = "Inserisci il carico in Kg (opzionale)";
             this.labelPeso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // numericUpDown3
+            // tempoRecupero
             // 
-            this.numericUpDown3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDown3.BackColor = System.Drawing.Color.Lime;
-            this.numericUpDown3.Location = new System.Drawing.Point(307, 227);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.tempoRecupero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tempoRecupero.BackColor = System.Drawing.Color.Lime;
+            this.tempoRecupero.Location = new System.Drawing.Point(307, 227);
+            this.tempoRecupero.Maximum = new decimal(new int[] {
             3600,
             0,
             0,
             0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
+            this.tempoRecupero.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown3.TabIndex = 58;
-            this.numericUpDown3.Value = new decimal(new int[] {
+            this.tempoRecupero.Name = "tempoRecupero";
+            this.tempoRecupero.Size = new System.Drawing.Size(44, 20);
+            this.tempoRecupero.TabIndex = 58;
+            this.tempoRecupero.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -248,25 +248,25 @@
             this.labelTempoRecupero.Text = "Tempo di recupero (secondi)";
             this.labelTempoRecupero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // numericUpDown2
+            // numeroRipetizioni
             // 
-            this.numericUpDown2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDown2.BackColor = System.Drawing.Color.Lime;
-            this.numericUpDown2.Location = new System.Drawing.Point(307, 185);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numeroRipetizioni.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numeroRipetizioni.BackColor = System.Drawing.Color.Lime;
+            this.numeroRipetizioni.Location = new System.Drawing.Point(307, 185);
+            this.numeroRipetizioni.Maximum = new decimal(new int[] {
             500,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.numeroRipetizioni.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown2.TabIndex = 56;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.numeroRipetizioni.Name = "numeroRipetizioni";
+            this.numeroRipetizioni.Size = new System.Drawing.Size(44, 20);
+            this.numeroRipetizioni.TabIndex = 56;
+            this.numeroRipetizioni.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -287,25 +287,25 @@
             this.label1.Text = "Numero di ripetizioni per serie";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // numericUpDown1
+            // numeroSerie
             // 
-            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDown1.BackColor = System.Drawing.Color.Lime;
-            this.numericUpDown1.Location = new System.Drawing.Point(307, 148);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numeroSerie.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numeroSerie.BackColor = System.Drawing.Color.Lime;
+            this.numeroSerie.Location = new System.Drawing.Point(307, 148);
+            this.numeroSerie.Maximum = new decimal(new int[] {
             30,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numeroSerie.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDown1.TabIndex = 54;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numeroSerie.Name = "numeroSerie";
+            this.numeroSerie.Size = new System.Drawing.Size(44, 20);
+            this.numeroSerie.TabIndex = 54;
+            this.numeroSerie.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -489,26 +489,24 @@
             this.buttonEliminaEsercizio.Text = "Rimuovi esercizio";
             this.buttonEliminaEsercizio.UseVisualStyleBackColor = false;
             // 
-            // FormManualeModifica
+            // CreaSchedaManualeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(822, 512);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonSalvaScheda);
             this.Controls.Add(this.labelTitolo);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormManualeModifica";
-            this.Text = "Form_Manuale";
+            this.Name = "CreaSchedaManualeView";
+            this.Size = new System.Drawing.Size(822, 512);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carico)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tempoRecupero)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeroRipetizioni)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeroSerie)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -518,28 +516,28 @@
 
         #endregion
         private System.Windows.Forms.Label labelTitolo;
-        private System.Windows.Forms.Button buttonSalvaScheda;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonAggiungiEsercizio;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label labelPeso;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label labelTempoRecupero;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label labelNumeroSerie;
-        private System.Windows.Forms.ComboBox comboBoxEsercizi;
         private System.Windows.Forms.Label labelFasciaMuscolare;
-        private System.Windows.Forms.ComboBox comboBoxFasciaMuscolare;
         private System.Windows.Forms.Label labelEserzizio;
         private System.Windows.Forms.ComboBox comboGiorno;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label labelGiornoSettimana;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelRimuoviEsercizi;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ComboBox comboBoxGiornoAllenamento;
-        private System.Windows.Forms.Button buttonEliminaEsercizio;
+        public System.Windows.Forms.ComboBox giornoSettimana;
+        public System.Windows.Forms.Button buttonSalvaScheda;
+        public System.Windows.Forms.Button buttonAggiungiEsercizio;
+        public System.Windows.Forms.NumericUpDown carico;
+        public System.Windows.Forms.NumericUpDown tempoRecupero;
+        public System.Windows.Forms.NumericUpDown numeroRipetizioni;
+        public System.Windows.Forms.NumericUpDown numeroSerie;
+        public System.Windows.Forms.ComboBox comboBoxEsercizi;
+        public System.Windows.Forms.ComboBox comboBoxFasciaMuscolare;
+        public System.Windows.Forms.ListBox listBox1;
+        public System.Windows.Forms.ComboBox comboBoxGiornoAllenamento;
+        public System.Windows.Forms.Button buttonEliminaEsercizio;
     }
 }

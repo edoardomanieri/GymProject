@@ -32,14 +32,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTitolo = new System.Windows.Forms.Label();
             this.buttonModificaScheda = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelSchermataPrincipale = new System.Windows.Forms.Panel();
             this.buttonFrase = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonProgressi = new System.Windows.Forms.Button();
             this.buttonVideo = new System.Windows.Forms.Button();
             this.buttonProfilo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.panelSchermataPrincipale.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,22 +92,23 @@
             this.buttonModificaScheda.Tag = "";
             this.buttonModificaScheda.Text = "Modifica Scheda";
             this.buttonModificaScheda.UseVisualStyleBackColor = false;
+            this.buttonModificaScheda.Click += new System.EventHandler(this.buttonModificaScheda_Click);
             // 
-            // panel1
+            // panelSchermataPrincipale
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Controls.Add(this.buttonFrase);
-            this.panel1.Controls.Add(this.buttonReset);
-            this.panel1.Controls.Add(this.buttonProgressi);
-            this.panel1.Controls.Add(this.buttonVideo);
-            this.panel1.Controls.Add(this.buttonProfilo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(626, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(196, 512);
-            this.panel1.TabIndex = 10;
+            this.panelSchermataPrincipale.AutoSize = true;
+            this.panelSchermataPrincipale.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.panelSchermataPrincipale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panelSchermataPrincipale.Controls.Add(this.buttonFrase);
+            this.panelSchermataPrincipale.Controls.Add(this.buttonReset);
+            this.panelSchermataPrincipale.Controls.Add(this.buttonProgressi);
+            this.panelSchermataPrincipale.Controls.Add(this.buttonVideo);
+            this.panelSchermataPrincipale.Controls.Add(this.buttonProfilo);
+            this.panelSchermataPrincipale.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelSchermataPrincipale.Location = new System.Drawing.Point(626, 0);
+            this.panelSchermataPrincipale.Name = "panelSchermataPrincipale";
+            this.panelSchermataPrincipale.Size = new System.Drawing.Size(196, 512);
+            this.panelSchermataPrincipale.TabIndex = 10;
             // 
             // buttonFrase
             // 
@@ -142,6 +143,7 @@
             this.buttonReset.Tag = "";
             this.buttonReset.Text = "Cancella Account";
             this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // buttonProgressi
             // 
@@ -159,6 +161,7 @@
             this.buttonProgressi.Tag = "";
             this.buttonProgressi.Text = "Registra Allenamento";
             this.buttonProgressi.UseVisualStyleBackColor = false;
+            this.buttonProgressi.Click += new System.EventHandler(this.buttonProgressi_Click);
             // 
             // buttonVideo
             // 
@@ -176,6 +179,7 @@
             this.buttonVideo.Tag = "";
             this.buttonVideo.Text = "Esercizi Guida";
             this.buttonVideo.UseVisualStyleBackColor = false;
+            this.buttonVideo.Click += new System.EventHandler(this.buttonVideo_Click);
             // 
             // buttonProfilo
             // 
@@ -193,6 +197,7 @@
             this.buttonProfilo.Tag = "";
             this.buttonProfilo.Text = "Profilo";
             this.buttonProfilo.UseVisualStyleBackColor = false;
+            this.buttonProfilo.Click += new System.EventHandler(this.buttonProfilo_Click);
             // 
             // panel2
             // 
@@ -212,12 +217,12 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelSchermataPrincipale);
             this.Controls.Add(this.buttonModificaScheda);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SchermataPrincipaleView";
             this.Size = new System.Drawing.Size(822, 512);
-            this.panel1.ResumeLayout(false);
+            this.panelSchermataPrincipale.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -226,15 +231,15 @@
         }
 
         #endregion
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelTitolo;
-        private System.Windows.Forms.Button buttonModificaScheda;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonFrase;
-        private System.Windows.Forms.Button buttonReset;
-        private System.Windows.Forms.Button buttonProgressi;
-        private System.Windows.Forms.Button buttonVideo;
-        private System.Windows.Forms.Button buttonProfilo;
         private System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public System.Windows.Forms.Panel panelSchermataPrincipale;
+        public System.Windows.Forms.Button buttonProfilo;
+        public System.Windows.Forms.Button buttonProgressi;
+        public System.Windows.Forms.Button buttonVideo;
+        public System.Windows.Forms.Button buttonFrase;
+        public System.Windows.Forms.Button buttonReset;
+        public System.Windows.Forms.Button buttonModificaScheda;
     }
 }
