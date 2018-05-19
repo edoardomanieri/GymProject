@@ -78,7 +78,7 @@ namespace ViewProject.Presentation
         private void OnAccesso(object sender, EventArgs e)
         {
             string username = _schermataAutenticazioneView.textBoxUsername.Text;
-            string password = _schermataAutenticazioneView.Password.Text;
+            string password = _schermataAutenticazioneView.textBoxPassword.Text;
            _utente = _mpm.Autentica(username, password);
             if (_utente == null)
             {

@@ -16,6 +16,7 @@ namespace ViewProject
         public SchermataPrincipaleView()
         {
             InitializeComponent();
+
             
         }
 
