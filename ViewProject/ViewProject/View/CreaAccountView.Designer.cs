@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreaAccountView));
-            this.Password = new System.Windows.Forms.TextBox();
+            this.CreaPassword = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelConfermaPassword = new System.Windows.Forms.Label();
             this.ConfirmPassword = new System.Windows.Forms.TextBox();
@@ -57,25 +57,27 @@
             this.TextBoxCognome = new System.Windows.Forms.TextBox();
             this.labelTitolo = new System.Windows.Forms.Label();
             this.TextBoxNome = new System.Windows.Forms.TextBox();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageShowPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageHidePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAltezza)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPeso)).BeginInit();
             this.SuspendLayout();
             // 
-            // Password
+            // CreaPassword
             // 
-            this.Password.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Password.BackColor = System.Drawing.Color.IndianRed;
-            this.Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password.ForeColor = System.Drawing.SystemColors.Control;
-            this.Password.Location = new System.Drawing.Point(376, 335);
-            this.Password.Name = "Password";
-            this.Password.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Password.Size = new System.Drawing.Size(130, 23);
-            this.Password.TabIndex = 16;
-            this.Password.Tag = "";
-            this.Password.UseSystemPasswordChar = true;
+            this.CreaPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CreaPassword.BackColor = System.Drawing.Color.IndianRed;
+            this.CreaPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreaPassword.ForeColor = System.Drawing.SystemColors.Control;
+            this.CreaPassword.Location = new System.Drawing.Point(376, 345);
+            this.CreaPassword.Name = "CreaPassword";
+            this.CreaPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CreaPassword.Size = new System.Drawing.Size(130, 23);
+            this.CreaPassword.TabIndex = 16;
+            this.CreaPassword.Tag = "";
+            this.CreaPassword.UseSystemPasswordChar = true;
             // 
             // labelPassword
             // 
@@ -84,7 +86,7 @@
             this.labelPassword.BackColor = System.Drawing.Color.Transparent;
             this.labelPassword.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPassword.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelPassword.Location = new System.Drawing.Point(278, 331);
+            this.labelPassword.Location = new System.Drawing.Point(278, 341);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelPassword.Size = new System.Drawing.Size(70, 24);
@@ -98,7 +100,7 @@
             this.labelConfermaPassword.BackColor = System.Drawing.Color.Transparent;
             this.labelConfermaPassword.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelConfermaPassword.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelConfermaPassword.Location = new System.Drawing.Point(218, 376);
+            this.labelConfermaPassword.Location = new System.Drawing.Point(218, 386);
             this.labelConfermaPassword.Name = "labelConfermaPassword";
             this.labelConfermaPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelConfermaPassword.Size = new System.Drawing.Size(130, 24);
@@ -111,7 +113,7 @@
             this.ConfirmPassword.BackColor = System.Drawing.Color.IndianRed;
             this.ConfirmPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.ConfirmPassword.Location = new System.Drawing.Point(376, 382);
+            this.ConfirmPassword.Location = new System.Drawing.Point(376, 392);
             this.ConfirmPassword.Name = "ConfirmPassword";
             this.ConfirmPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ConfirmPassword.Size = new System.Drawing.Size(130, 23);
@@ -173,7 +175,7 @@
             // 
             this.buttonShowHide1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonShowHide1.Image = ((System.Drawing.Image)(resources.GetObject("buttonShowHide1.Image")));
-            this.buttonShowHide1.Location = new System.Drawing.Point(524, 335);
+            this.buttonShowHide1.Location = new System.Drawing.Point(524, 345);
             this.buttonShowHide1.Name = "buttonShowHide1";
             this.buttonShowHide1.Size = new System.Drawing.Size(24, 23);
             this.buttonShowHide1.TabIndex = 29;
@@ -184,7 +186,7 @@
             // 
             this.buttonShowHide2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonShowHide2.Image = ((System.Drawing.Image)(resources.GetObject("buttonShowHide2.Image")));
-            this.buttonShowHide2.Location = new System.Drawing.Point(524, 382);
+            this.buttonShowHide2.Location = new System.Drawing.Point(524, 392);
             this.buttonShowHide2.Name = "buttonShowHide2";
             this.buttonShowHide2.Size = new System.Drawing.Size(24, 23);
             this.buttonShowHide2.TabIndex = 31;
@@ -198,7 +200,7 @@
             this.labelScheda.BackColor = System.Drawing.Color.Transparent;
             this.labelScheda.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelScheda.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelScheda.Location = new System.Drawing.Point(293, 432);
+            this.labelScheda.Location = new System.Drawing.Point(293, 442);
             this.labelScheda.Name = "labelScheda";
             this.labelScheda.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelScheda.Size = new System.Drawing.Size(53, 24);
@@ -217,7 +219,7 @@
             this.checkBoxAutomatica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.checkBoxAutomatica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxAutomatica.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAutomatica.Location = new System.Drawing.Point(459, 434);
+            this.checkBoxAutomatica.Location = new System.Drawing.Point(459, 444);
             this.checkBoxAutomatica.Name = "checkBoxAutomatica";
             this.checkBoxAutomatica.Size = new System.Drawing.Size(80, 24);
             this.checkBoxAutomatica.TabIndex = 34;
@@ -236,7 +238,7 @@
             this.checkBoxManuale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.checkBoxManuale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxManuale.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxManuale.Location = new System.Drawing.Point(376, 434);
+            this.checkBoxManuale.Location = new System.Drawing.Point(376, 444);
             this.checkBoxManuale.Name = "checkBoxManuale";
             this.checkBoxManuale.Size = new System.Drawing.Size(66, 24);
             this.checkBoxManuale.TabIndex = 35;
@@ -250,7 +252,7 @@
             this.numericUpDownAltezza.BackColor = System.Drawing.Color.IndianRed;
             this.numericUpDownAltezza.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownAltezza.ForeColor = System.Drawing.Color.Transparent;
-            this.numericUpDownAltezza.Location = new System.Drawing.Point(381, 289);
+            this.numericUpDownAltezza.Location = new System.Drawing.Point(376, 253);
             this.numericUpDownAltezza.Maximum = new decimal(new int[] {
             250,
             0,
@@ -278,7 +280,7 @@
             this.labelAltezza.BackColor = System.Drawing.Color.Transparent;
             this.labelAltezza.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAltezza.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelAltezza.Location = new System.Drawing.Point(264, 285);
+            this.labelAltezza.Location = new System.Drawing.Point(259, 249);
             this.labelAltezza.Name = "labelAltezza";
             this.labelAltezza.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelAltezza.Size = new System.Drawing.Size(89, 24);
@@ -292,7 +294,7 @@
             this.numericUpDownPeso.BackColor = System.Drawing.Color.IndianRed;
             this.numericUpDownPeso.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownPeso.ForeColor = System.Drawing.Color.Transparent;
-            this.numericUpDownPeso.Location = new System.Drawing.Point(381, 246);
+            this.numericUpDownPeso.Location = new System.Drawing.Point(376, 210);
             this.numericUpDownPeso.Name = "numericUpDownPeso";
             this.numericUpDownPeso.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.numericUpDownPeso.Size = new System.Drawing.Size(44, 23);
@@ -310,7 +312,7 @@
             this.labelPeso.BackColor = System.Drawing.Color.Transparent;
             this.labelPeso.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPeso.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelPeso.Location = new System.Drawing.Point(280, 242);
+            this.labelPeso.Location = new System.Drawing.Point(275, 206);
             this.labelPeso.Name = "labelPeso";
             this.labelPeso.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelPeso.Size = new System.Drawing.Size(71, 24);
@@ -435,7 +437,7 @@
             "2016",
             "2017",
             "2018"});
-            this.comboBoxAnno.Location = new System.Drawing.Point(501, 209);
+            this.comboBoxAnno.Location = new System.Drawing.Point(496, 173);
             this.comboBoxAnno.Name = "comboBoxAnno";
             this.comboBoxAnno.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxAnno.Size = new System.Drawing.Size(52, 25);
@@ -463,7 +465,7 @@
             "10",
             "11",
             "12"});
-            this.comboBoxMese.Location = new System.Drawing.Point(443, 209);
+            this.comboBoxMese.Location = new System.Drawing.Point(438, 173);
             this.comboBoxMese.Name = "comboBoxMese";
             this.comboBoxMese.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxMese.Size = new System.Drawing.Size(52, 25);
@@ -510,7 +512,7 @@
             "29",
             "30",
             "31"});
-            this.comboBoxGiorno.Location = new System.Drawing.Point(381, 209);
+            this.comboBoxGiorno.Location = new System.Drawing.Point(376, 173);
             this.comboBoxGiorno.Name = "comboBoxGiorno";
             this.comboBoxGiorno.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBoxGiorno.Size = new System.Drawing.Size(56, 25);
@@ -524,7 +526,7 @@
             this.labelDataNascita.BackColor = System.Drawing.Color.Transparent;
             this.labelDataNascita.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDataNascita.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelDataNascita.Location = new System.Drawing.Point(257, 209);
+            this.labelDataNascita.Location = new System.Drawing.Point(252, 173);
             this.labelDataNascita.Name = "labelDataNascita";
             this.labelDataNascita.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelDataNascita.Size = new System.Drawing.Size(96, 24);
@@ -539,7 +541,7 @@
             this.RadioButtonFemmina.BackColor = System.Drawing.Color.Transparent;
             this.RadioButtonFemmina.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RadioButtonFemmina.ForeColor = System.Drawing.Color.White;
-            this.RadioButtonFemmina.Location = new System.Drawing.Point(464, 177);
+            this.RadioButtonFemmina.Location = new System.Drawing.Point(459, 141);
             this.RadioButtonFemmina.Name = "RadioButtonFemmina";
             this.RadioButtonFemmina.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RadioButtonFemmina.Size = new System.Drawing.Size(71, 24);
@@ -555,7 +557,7 @@
             this.RadioButtonMaschio.BackColor = System.Drawing.Color.Transparent;
             this.RadioButtonMaschio.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RadioButtonMaschio.ForeColor = System.Drawing.Color.White;
-            this.RadioButtonMaschio.Location = new System.Drawing.Point(381, 177);
+            this.RadioButtonMaschio.Location = new System.Drawing.Point(376, 141);
             this.RadioButtonMaschio.Name = "RadioButtonMaschio";
             this.RadioButtonMaschio.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RadioButtonMaschio.Size = new System.Drawing.Size(68, 24);
@@ -571,7 +573,7 @@
             this.labelSesso.BackColor = System.Drawing.Color.Transparent;
             this.labelSesso.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSesso.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelSesso.Location = new System.Drawing.Point(307, 173);
+            this.labelSesso.Location = new System.Drawing.Point(302, 137);
             this.labelSesso.Name = "labelSesso";
             this.labelSesso.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelSesso.Size = new System.Drawing.Size(46, 24);
@@ -586,7 +588,7 @@
             this.labelCognome.BackColor = System.Drawing.Color.Transparent;
             this.labelCognome.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCognome.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelCognome.Location = new System.Drawing.Point(289, 132);
+            this.labelCognome.Location = new System.Drawing.Point(284, 96);
             this.labelCognome.Name = "labelCognome";
             this.labelCognome.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelCognome.Size = new System.Drawing.Size(64, 24);
@@ -601,7 +603,7 @@
             this.labelNome.BackColor = System.Drawing.Color.Transparent;
             this.labelNome.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNome.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelNome.Location = new System.Drawing.Point(310, 97);
+            this.labelNome.Location = new System.Drawing.Point(305, 61);
             this.labelNome.Name = "labelNome";
             this.labelNome.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelNome.Size = new System.Drawing.Size(43, 24);
@@ -614,7 +616,7 @@
             this.TextBoxCognome.BackColor = System.Drawing.Color.IndianRed;
             this.TextBoxCognome.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBoxCognome.ForeColor = System.Drawing.SystemColors.Control;
-            this.TextBoxCognome.Location = new System.Drawing.Point(381, 138);
+            this.TextBoxCognome.Location = new System.Drawing.Point(376, 102);
             this.TextBoxCognome.Name = "TextBoxCognome";
             this.TextBoxCognome.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TextBoxCognome.Size = new System.Drawing.Size(114, 23);
@@ -641,11 +643,38 @@
             this.TextBoxNome.BackColor = System.Drawing.Color.IndianRed;
             this.TextBoxNome.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBoxNome.ForeColor = System.Drawing.SystemColors.Control;
-            this.TextBoxNome.Location = new System.Drawing.Point(381, 104);
+            this.TextBoxNome.Location = new System.Drawing.Point(376, 68);
             this.TextBoxNome.Name = "TextBoxNome";
             this.TextBoxNome.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TextBoxNome.Size = new System.Drawing.Size(114, 23);
             this.TextBoxNome.TabIndex = 36;
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.BackColor = System.Drawing.Color.Transparent;
+            this.labelUsername.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsername.ForeColor = System.Drawing.Color.GreenYellow;
+            this.labelUsername.Location = new System.Drawing.Point(276, 297);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelUsername.Size = new System.Drawing.Size(70, 24);
+            this.labelUsername.TabIndex = 52;
+            this.labelUsername.Text = "Username";
+            // 
+            // textBoxUsername
+            // 
+            this.textBoxUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxUsername.BackColor = System.Drawing.Color.IndianRed;
+            this.textBoxUsername.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsername.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBoxUsername.Location = new System.Drawing.Point(376, 300);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxUsername.Size = new System.Drawing.Size(114, 23);
+            this.textBoxUsername.TabIndex = 53;
+            this.textBoxUsername.Tag = "";
             // 
             // CreaAccountView
             // 
@@ -653,6 +682,8 @@
             this.BackColor = System.Drawing.Color.IndianRed;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.textBoxUsername);
+            this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.numericUpDownAltezza);
             this.Controls.Add(this.labelAltezza);
             this.Controls.Add(this.numericUpDownPeso);
@@ -680,7 +711,7 @@
             this.Controls.Add(this.ConfirmPassword);
             this.Controls.Add(this.labelConfermaPassword);
             this.Controls.Add(this.labelPassword);
-            this.Controls.Add(this.Password);
+            this.Controls.Add(this.CreaPassword);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Name = "CreaAccountView";
@@ -695,10 +726,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelConfermaPassword;
-        private System.Windows.Forms.TextBox ConfirmPassword;
         private System.Windows.Forms.PictureBox imageShowPassword;
         private System.Windows.Forms.PictureBox imageHidePassword;
         private System.Windows.Forms.Button buttonShowHide1;
@@ -723,6 +752,10 @@
         public System.Windows.Forms.RadioButton RadioButtonMaschio;
         public System.Windows.Forms.TextBox TextBoxCognome;
         public System.Windows.Forms.TextBox TextBoxNome;
+        private System.Windows.Forms.Label labelUsername;
+        public System.Windows.Forms.TextBox textBoxUsername;
+        public System.Windows.Forms.TextBox CreaPassword;
+        public System.Windows.Forms.TextBox ConfirmPassword;
     }
 }
 

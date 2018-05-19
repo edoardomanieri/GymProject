@@ -9,9 +9,8 @@ namespace Palestra.Persistence
 {
     public interface IUtentePersistenceManager
     {
+        bool SaveUtente(Utente utente, string password);
         Utente Autentica(string username, string password);
-        bool SaveUtente(Utente utente);
-        Utente LoadUtente();
         bool DeleteUtente(Utente utente);
     }
 }

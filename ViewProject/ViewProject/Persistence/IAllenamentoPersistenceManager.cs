@@ -9,8 +9,8 @@ namespace Palestra.Persistence
 {
     public interface IAllenamentoPersistenceManager
     {
-        IEnumerable<Allenamento> LoadAllAllenamenti();
+        IEnumerable<Allenamento> LoadAllAllenamenti(Utente utente);
         bool SaveAllenamento(Utente utente, Allenamento allenamento);
-        bool DeleteAllenamenti();
+        bool DeleteAllenamenti(Utente utente);
     }
 }

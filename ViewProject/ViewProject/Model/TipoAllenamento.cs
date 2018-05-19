@@ -10,7 +10,6 @@ namespace Palestra.model
     {
         Ipertrofia,
         Definizione,
-        Forza,
         Tonificazione
     }
 }

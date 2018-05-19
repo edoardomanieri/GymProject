@@ -117,6 +117,7 @@
             this.comboBoxObiettivo.Size = new System.Drawing.Size(94, 25);
             this.comboBoxObiettivo.TabIndex = 23;
             this.comboBoxObiettivo.Text = "Obiettivo";
+            this.comboBoxObiettivo.SelectedIndexChanged += new System.EventHandler(this.comboBoxObiettivo_SelectedIndexChanged);
             // 
             // labelGiorniAllenamento
             // 
@@ -165,6 +166,7 @@
             this.comboModalita.Size = new System.Drawing.Size(94, 25);
             this.comboModalita.TabIndex = 26;
             this.comboModalita.Text = "Modalità";
+            this.comboModalita.SelectedIndexChanged += new System.EventHandler(this.comboModalita_SelectedIndexChanged);
             // 
             // buttonProcedi
             // 

@@ -14,6 +14,24 @@ namespace Palestra.model
         private readonly int _pesoInKg;
         private int _ID;
 
+        public Allenamento(int durataInMinuti, DateTime data, int pesoInKg)
+        {
+            if (durataInMinuti <= 0 || data == null || pesoInKg <= 0)
+                throw new ArgumentException();
+            _durataInMinuti = durataInMinuti;
+            _data = data;
+            _pesoInKg = pesoInKg;
+        }
+
+        public Allenamento(int durataInMinuti, DateTime data)
+        {
+            if (durataInMinuti <= 0 || data == null)
+                throw new ArgumentException();
+            _durataInMinuti = durataInMinuti;
+            _data = data;
+            _pesoInKg = 0;
+        }
+
         public int DurataInMinuti => _durataInMinuti;
 
         public DateTime Data => _data;
@@ -22,19 +40,35 @@ namespace Palestra.model
 
         public int ID { get => _ID; set => _ID = value; }
 
-        public Allenamento(int durataInMinuti, DateTime data, int pesoInKg)
+
+        public override bool Equals(object obj)
         {
-            _durataInMinuti = durataInMinuti;
-            _data = data;
-            _pesoInKg = pesoInKg;
-        }
+            var allenamento = obj as Allenamento;
+            if (allenamento == null) return false;
+            if (allenamento.PesoInKg > 0 && _pesoInKg > 0)
+                return allenamento != null &&
+                       _durataInMinuti == allenamento.DurataInMinuti &&
+                       _data == allenamento.Data &&
+                       _pesoInKg == allenamento.PesoInKg;
+            else if (allenamento.PesoInKg == 0 && _pesoInKg > 0)
+                return false;
+            else if (allenamento.PesoInKg > 0 && _pesoInKg == 0)
+                return false;
+            else
+                return allenamento != null &&
+                      _durataInMinuti == allenamento.DurataInMinuti &&
+                      _data == allenamento.Data;
+        }  
 
-        public Allenamento(int durataInMinuti, DateTime data)
+        public override string ToString()
         {
-            _durataInMinuti = durataInMinuti;
-            _data = data;
+            if (_pesoInKg > 0)
+                return "Durata: " + _durataInMinuti + " minuti\n" +
+                    "Data: " + _data.ToString() + "\n" +
+                    "Peso attuale: " + _pesoInKg + " Kg";
+            else
+                return "Durata: " + _durataInMinuti + " minuti\n" +
+                    "Data: " + _data.ToString() + "\n";
         }
-
-
     }
 }

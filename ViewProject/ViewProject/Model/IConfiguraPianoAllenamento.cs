@@ -8,13 +8,15 @@ namespace Palestra.model
 {
     public abstract class IConfiguraPianoAllenamento
     {
-        const int FasceMuscolariTot = 9;
+        protected const int FasceMuscolariUtili = 9; //Utili perchè le fascie totali sono 10 con cardio, ma cardio lo utilizzo a parte solo per dimagrimento
+
+        public const int NumeroMassimoTentativi = 100000;
         public abstract PianoAllenamento  Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi);
 
-        public Dictionary<int, List<FasciaMuscolare>> distribuisciFasceMuscolariPerGiorno(int numeroGiorniAllenamento)
+        protected Dictionary<int, List<FasciaMuscolare>> distribuisciFasceMuscolariPerGiorno(int numeroGiorniAllenamento)
         {
             Dictionary<int, List<FasciaMuscolare>> result = new Dictionary<int, List<FasciaMuscolare>>();
-            int[] distribuzione = distribuisci(numeroGiorniAllenamento, FasceMuscolariTot);
+            int[] distribuzione = distribuisci(numeroGiorniAllenamento, FasceMuscolariUtili);
             for (int i = 0; i < numeroGiorniAllenamento; i++)
             {
                 List<FasciaMuscolare> temp = new List<FasciaMuscolare>();

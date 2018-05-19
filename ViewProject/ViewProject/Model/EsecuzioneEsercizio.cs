@@ -14,10 +14,24 @@ namespace Palestra.model
 
         public EsecuzioneEsercizio(Esercizio esercizio)
         {
+            if (esercizio == null)
+                throw new ArgumentException();
             Esercizio = esercizio;
         }
 
-        public Esercizio Esercizio { get => _esercizio; set => _esercizio = value; }
+        public Esercizio Esercizio { get => _esercizio; set => _esercizio = value ?? throw new ArgumentException();}
         public int ID { get => _ID; set => _ID = value; }
+
+        public override bool Equals(object obj)
+        {
+            var esecuzioneEsercizio = obj as EsecuzioneEsercizio;
+            return esecuzioneEsercizio != null &&
+                   _esercizio.Equals(esecuzioneEsercizio.Esercizio);
+        }
+
+        public override string ToString()
+        {
+            return _esercizio.ToString();
+        }
     }
 }

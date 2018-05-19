@@ -7,40 +7,104 @@ using System.Threading.Tasks;
 
 namespace Palestra.model
 {
-    public class Utente : IPersistable
+    public class Utente 
     {
-        private readonly string _nome;
-        private readonly string _cognome;
-        private readonly DateTime _dataDiNascita;
-        private readonly int _pesoInKg;
-        private readonly int _altezzaInCm;
-        private readonly Sesso _sesso;
-        private int _ID;
+        private string _username;
+        private string _nome;
+        private string _cognome;
+        private DateTime _dataDiNascita;
+        private int _pesoInKg;
+        private int _altezzaInCm;
+        private Sesso _sesso;
+        private string fotoPath;
 
-        public Utente(string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm, Sesso sesso)
+        public Utente(string username, string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm, Sesso sesso)
         {
+            if (String.IsNullOrEmpty(nome) || String.IsNullOrEmpty(cognome) || dataDiNascita == null || pesoInKg <= 0 || altezzaInCm <= 0|| String.IsNullOrEmpty(username))
+                throw new ArgumentException();
+            _username = username;
             _nome = nome;
             _cognome = cognome;
             _dataDiNascita = dataDiNascita;
             _pesoInKg = pesoInKg;
             _altezzaInCm = altezzaInCm;
             _sesso = sesso;
-            _ID = ID;
         }
 
+        public string Nome
+        {
+            get => _nome;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException();
+                _nome = value;
+            }
+        }
+        public string Cognome
+        {
+            get => _cognome;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException();
+                _cognome = value;
+            }
+        }
+        public DateTime DataDiNascita { get => _dataDiNascita; set => _dataDiNascita = value; }
+        public int PesoInKg
+        {
+            get => _pesoInKg;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException();
+                _pesoInKg = value;
+            }
+        }
+        public int AltezzaInCm
+        {
+            get => _altezzaInCm;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException();
+                _altezzaInCm = value;
+            }
+        }
+        public Sesso Sesso { get => _sesso; set => _sesso = value; }
+        public string Username
+        {
+            get => _username;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException();
+                _username = value;
+            }
+        }
 
-        public string Nome => _nome;
+        public string FotoPath { get => fotoPath; set => fotoPath = value; }
 
-        public string Cognome => _cognome;
+        public override bool Equals(object obj)
+        {
+            var utente = obj as Utente;
+            return utente != null &&
+                   _nome == utente.Nome &&
+                   _cognome == utente.Cognome &&
+                   _dataDiNascita == utente.DataDiNascita &&
+                   _pesoInKg == utente.PesoInKg &&
+                   _altezzaInCm == utente.AltezzaInCm &&
+                   _sesso == utente.Sesso;
+        }
 
-        public DateTime DataDiNascita => _dataDiNascita;
-
-        public int PesoInKg => _pesoInKg;
-
-        public int AltezzaInCm => _altezzaInCm;
-
-        public Sesso Sesso => _sesso;
-
-        public int ID { get => _ID; set => _ID = value; }
+        public override string ToString()
+        {
+            return _nome + _cognome +
+                "Sesso: " + _sesso.ToString() +
+                "\nData di nascita: " + _dataDiNascita.ToString() + "\n" +
+                "Peso: " + _pesoInKg + " Kg" +
+                "\nAltezza: " + _altezzaInCm + " cm";
+        }
     }
 }

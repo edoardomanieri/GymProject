@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SchermataPrincipaleView));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTitolo = new System.Windows.Forms.Label();
             this.buttonModificaScheda = new System.Windows.Forms.Button();
             this.panelSchermataPrincipale = new System.Windows.Forms.Panel();
@@ -39,27 +38,11 @@
             this.buttonVideo = new System.Windows.Forms.Button();
             this.buttonProfilo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridViewScheda = new System.Windows.Forms.DataGridView();
             this.panelSchermataPrincipale.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScheda)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(80, 41);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(517, 408);
-            this.tableLayoutPanel1.TabIndex = 7;
             // 
             // labelTitolo
             // 
@@ -68,7 +51,7 @@
             this.labelTitolo.BackColor = System.Drawing.Color.Transparent;
             this.labelTitolo.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitolo.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelTitolo.Location = new System.Drawing.Point(263, -2);
+            this.labelTitolo.Location = new System.Drawing.Point(228, -2);
             this.labelTitolo.Name = "labelTitolo";
             this.labelTitolo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labelTitolo.Size = new System.Drawing.Size(187, 29);
@@ -85,7 +68,7 @@
             this.buttonModificaScheda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.buttonModificaScheda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModificaScheda.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModificaScheda.Location = new System.Drawing.Point(270, 461);
+            this.buttonModificaScheda.Location = new System.Drawing.Point(234, 457);
             this.buttonModificaScheda.Name = "buttonModificaScheda";
             this.buttonModificaScheda.Size = new System.Drawing.Size(150, 39);
             this.buttonModificaScheda.TabIndex = 9;
@@ -119,13 +102,14 @@
             this.buttonFrase.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.buttonFrase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFrase.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFrase.Location = new System.Drawing.Point(28, 321);
+            this.buttonFrase.Location = new System.Drawing.Point(8, 321);
             this.buttonFrase.Name = "buttonFrase";
-            this.buttonFrase.Size = new System.Drawing.Size(152, 35);
+            this.buttonFrase.Size = new System.Drawing.Size(172, 35);
             this.buttonFrase.TabIndex = 16;
             this.buttonFrase.Tag = "";
-            this.buttonFrase.Text = "Frase del giorno";
+            this.buttonFrase.Text = "Frase Motivazionale";
             this.buttonFrase.UseVisualStyleBackColor = false;
+            this.buttonFrase.Click += new System.EventHandler(this.buttonFrase_Click);
             // 
             // buttonReset
             // 
@@ -210,21 +194,31 @@
             this.panel2.Size = new System.Drawing.Size(626, 29);
             this.panel2.TabIndex = 11;
             // 
+            // dataGridViewScheda
+            // 
+            this.dataGridViewScheda.AllowUserToOrderColumns = true;
+            this.dataGridViewScheda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewScheda.Location = new System.Drawing.Point(18, 35);
+            this.dataGridViewScheda.Name = "dataGridViewScheda";
+            this.dataGridViewScheda.Size = new System.Drawing.Size(591, 395);
+            this.dataGridViewScheda.TabIndex = 12;
+            // 
             // SchermataPrincipaleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.dataGridViewScheda);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelSchermataPrincipale);
             this.Controls.Add(this.buttonModificaScheda);
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SchermataPrincipaleView";
             this.Size = new System.Drawing.Size(822, 512);
             this.panelSchermataPrincipale.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScheda)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +227,6 @@
         #endregion
         private System.Windows.Forms.Label labelTitolo;
         private System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.Panel panelSchermataPrincipale;
         public System.Windows.Forms.Button buttonProfilo;
         public System.Windows.Forms.Button buttonProgressi;
@@ -241,5 +234,6 @@
         public System.Windows.Forms.Button buttonFrase;
         public System.Windows.Forms.Button buttonReset;
         public System.Windows.Forms.Button buttonModificaScheda;
+        public System.Windows.Forms.DataGridView dataGridViewScheda;
     }
 }

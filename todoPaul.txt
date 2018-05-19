@@ -1,0 +1,6 @@
+Form autenticazione
+aggiungere username in creaAccount
+Bottone indietro in schedaManuale
+rendere carico opzionale in schedaManuale
+rendere il peso opzionale in registraAllenamento
+cercare qualcosa per mettere la scheda in modo intelligente nella schermata principale

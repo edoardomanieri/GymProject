@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using ViewProject.View;
 
 namespace ViewProject
 {
@@ -17,12 +18,6 @@ namespace ViewProject
         {
             InitializeComponent();
         }
-        int numeroAllenamenti = 0;
-
-        public Chart Chart1
-        {
-            get { return chart1; }
-        }
 
         private void buttonSalvaAllenamento_Click(object sender, EventArgs e)
         {
@@ -30,12 +25,12 @@ namespace ViewProject
             if (MessageBox.Show("Confermi di voler salvare l'allenamento del " + dateTimePickerDataAllenamento.Value.Day.ToString() + "/" + dateTimePickerDataAllenamento.Value.Month.ToString() + "/" + dateTimePickerDataAllenamento.Value.Year.ToString() + " ?","", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
 
-
+                /*
                 numeroAllenamenti++;
                 labelContatore.Text = numeroAllenamenti.ToString();
                 //chart1.DataSource = new List<Allenamento>();
-                chart1.Series["Durata"].Points.AddXY(dateTimePickerDataAllenamento.Value.Day.ToString() + "/" + dateTimePickerDataAllenamento.Value.Month.ToString(), numericUpDownDurata.Value);
-                chart2.Series["Peso"].Points.AddXY(dateTimePickerDataAllenamento.Value.Day.ToString() + "/" + dateTimePickerDataAllenamento.Value.Month.ToString(), numericUpDownPeso.Value);
+                chartDurata.Series["Durata"].Points.AddXY(dateTimePickerDataAllenamento.Value.Day.ToString() + "/" + dateTimePickerDataAllenamento.Value.Month.ToString(), numericUpDownDurataProgressi.Value);
+                chartPeso.Series["Peso"].Points.AddXY(dateTimePickerDataAllenamento.Value.Day.ToString() + "/" + dateTimePickerDataAllenamento.Value.Month.ToString(), numericUpDownPesoProgressi.Value);
                 if (progressBarAllenamenti.Value < 20)
                     progressBarAllenamenti.Value++;
                 try
@@ -49,20 +44,15 @@ namespace ViewProject
 
                 }
 
-
+    */
             }
         }
 
-        
-
-        private void FormRegistraAllenamento_Load(object sender, EventArgs e)
+        private void buttonIndietroProgressi_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
+            MainForm mainForm = (MainForm)this.FindForm();
+            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            mainForm.SetView(view);
         }
     }
 }

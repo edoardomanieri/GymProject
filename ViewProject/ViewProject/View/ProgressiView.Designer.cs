@@ -39,70 +39,71 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressiView));
-            this.buttonIndietro = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.buttonIndietroProgressi = new System.Windows.Forms.Button();
+            this.chartDurata = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPeso = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelCompletamentoScheda = new System.Windows.Forms.Label();
             this.dateTimePickerDataAllenamento = new System.Windows.Forms.DateTimePicker();
             this.labelDataAllenamento = new System.Windows.Forms.Label();
-            this.numericUpDownDurata = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownDurataProgressi = new System.Windows.Forms.NumericUpDown();
             this.labelPeso = new System.Windows.Forms.Label();
-            this.numericUpDownPeso = new System.Windows.Forms.NumericUpDown();
-            this.buttonSalvaAllenamento = new System.Windows.Forms.Button();
+            this.numericUpDownPesoProgressi = new System.Windows.Forms.NumericUpDown();
+            this.buttonSalvaAllenamentoProgressi = new System.Windows.Forms.Button();
             this.labelContatore = new System.Windows.Forms.Label();
             this.labelAllenamenti = new System.Windows.Forms.Label();
             this.progressBarAllenamenti = new System.Windows.Forms.ProgressBar();
             this.circularProgressBar = new CircularProgressBar.CircularProgressBar();
             this.labelDurata = new System.Windows.Forms.Label();
             this.labelRegistraAllenamento = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurata)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPeso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartDurata)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPeso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurataProgressi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPesoProgressi)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonIndietro
+            // buttonIndietroProgressi
             // 
-            this.buttonIndietro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonIndietro.BackColor = System.Drawing.Color.DarkOrange;
-            this.buttonIndietro.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
-            this.buttonIndietro.FlatAppearance.BorderSize = 2;
-            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
-            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.buttonIndietro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonIndietro.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIndietro.Location = new System.Drawing.Point(34, 453);
-            this.buttonIndietro.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonIndietro.Name = "buttonIndietro";
-            this.buttonIndietro.Size = new System.Drawing.Size(139, 30);
-            this.buttonIndietro.TabIndex = 74;
-            this.buttonIndietro.Tag = "";
-            this.buttonIndietro.Text = "Torna al Menu";
-            this.buttonIndietro.UseVisualStyleBackColor = false;
+            this.buttonIndietroProgressi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonIndietroProgressi.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonIndietroProgressi.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.buttonIndietroProgressi.FlatAppearance.BorderSize = 2;
+            this.buttonIndietroProgressi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
+            this.buttonIndietroProgressi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonIndietroProgressi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonIndietroProgressi.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietroProgressi.Location = new System.Drawing.Point(34, 453);
+            this.buttonIndietroProgressi.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonIndietroProgressi.Name = "buttonIndietroProgressi";
+            this.buttonIndietroProgressi.Size = new System.Drawing.Size(139, 30);
+            this.buttonIndietroProgressi.TabIndex = 74;
+            this.buttonIndietroProgressi.Tag = "";
+            this.buttonIndietroProgressi.Text = "Torna al Menu";
+            this.buttonIndietroProgressi.UseVisualStyleBackColor = false;
+            this.buttonIndietroProgressi.Click += new System.EventHandler(this.buttonIndietroProgressi_Click);
             // 
-            // chart1
+            // chartDurata
             // 
-            this.chart1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chart1.BackColor = System.Drawing.Color.DimGray;
-            this.chart1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
-            this.chart1.BackSecondaryColor = System.Drawing.Color.White;
-            this.chart1.BorderlineColor = System.Drawing.Color.Transparent;
-            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            this.chart1.BorderlineWidth = 0;
-            this.chart1.BorderSkin.PageColor = System.Drawing.Color.Black;
+            this.chartDurata.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chartDurata.BackColor = System.Drawing.Color.DimGray;
+            this.chartDurata.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
+            this.chartDurata.BackSecondaryColor = System.Drawing.Color.White;
+            this.chartDurata.BorderlineColor = System.Drawing.Color.Transparent;
+            this.chartDurata.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.chartDurata.BorderlineWidth = 0;
+            this.chartDurata.BorderSkin.PageColor = System.Drawing.Color.Black;
             chartArea1.BackColor = System.Drawing.Color.PaleGreen;
             chartArea1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
             chartArea1.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.LightUpwardDiagonal;
             chartArea1.BackSecondaryColor = System.Drawing.Color.Blue;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.chartDurata.ChartAreas.Add(chartArea1);
             legendCellColumn1.Name = "Column1";
             legend1.CellColumns.Add(legendCellColumn1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(330, 26);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            this.chartDurata.Legends.Add(legend1);
+            this.chartDurata.Location = new System.Drawing.Point(330, 26);
+            this.chartDurata.Name = "chartDurata";
+            this.chartDurata.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             series1.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.Unscaled;
             series1.BackSecondaryColor = System.Drawing.Color.LimeGreen;
@@ -116,9 +117,9 @@
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             series1.YValuesPerPoint = 20;
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(480, 211);
-            this.chart1.TabIndex = 81;
+            this.chartDurata.Series.Add(series1);
+            this.chartDurata.Size = new System.Drawing.Size(480, 211);
+            this.chartDurata.TabIndex = 81;
             title1.BackColor = System.Drawing.Color.DarkOrchid;
             title1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
             title1.BackSecondaryColor = System.Drawing.Color.LimeGreen;
@@ -129,32 +130,31 @@
             title1.ShadowColor = System.Drawing.Color.RoyalBlue;
             title1.ShadowOffset = 3;
             title1.Text = "I tuoi progressi";
-            this.chart1.Titles.Add(title1);
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            this.chartDurata.Titles.Add(title1);
             // 
-            // chart2
+            // chartPeso
             // 
-            this.chart2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chart2.BackColor = System.Drawing.Color.DimGray;
-            this.chart2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
-            this.chart2.BackSecondaryColor = System.Drawing.Color.White;
-            this.chart2.BorderlineColor = System.Drawing.Color.Transparent;
-            this.chart2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            this.chart2.BorderlineWidth = 0;
-            this.chart2.BorderSkin.PageColor = System.Drawing.Color.Black;
+            this.chartPeso.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chartPeso.BackColor = System.Drawing.Color.DimGray;
+            this.chartPeso.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
+            this.chartPeso.BackSecondaryColor = System.Drawing.Color.White;
+            this.chartPeso.BorderlineColor = System.Drawing.Color.Transparent;
+            this.chartPeso.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.chartPeso.BorderlineWidth = 0;
+            this.chartPeso.BorderSkin.PageColor = System.Drawing.Color.Black;
             chartArea2.BackColor = System.Drawing.Color.PaleGreen;
             chartArea2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
             chartArea2.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.LightUpwardDiagonal;
             chartArea2.BackSecondaryColor = System.Drawing.Color.Blue;
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.chartPeso.ChartAreas.Add(chartArea2);
             legendCellColumn2.Name = "Column1";
             legend2.CellColumns.Add(legendCellColumn2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(330, 272);
-            this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            this.chartPeso.Legends.Add(legend2);
+            this.chartPeso.Location = new System.Drawing.Point(330, 272);
+            this.chartPeso.Name = "chartPeso";
+            this.chartPeso.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             series2.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.Cross;
             series2.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.Unscaled;
@@ -179,9 +179,9 @@
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             series2.YValuesPerPoint = 20;
             series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(480, 211);
-            this.chart2.TabIndex = 83;
+            this.chartPeso.Series.Add(series2);
+            this.chartPeso.Size = new System.Drawing.Size(480, 211);
+            this.chartPeso.TabIndex = 83;
             title2.BackColor = System.Drawing.Color.DarkOrchid;
             title2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
             title2.BackSecondaryColor = System.Drawing.Color.LimeGreen;
@@ -192,7 +192,7 @@
             title2.ShadowColor = System.Drawing.Color.RoyalBlue;
             title2.ShadowOffset = 3;
             title2.Text = "I tuoi progressi";
-            this.chart2.Titles.Add(title2);
+            this.chartPeso.Titles.Add(title2);
             // 
             // labelCompletamentoScheda
             // 
@@ -233,28 +233,28 @@
             this.labelDataAllenamento.Text = "Data";
             this.labelDataAllenamento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // numericUpDownDurata
+            // numericUpDownDurataProgressi
             // 
-            this.numericUpDownDurata.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDownDurata.BackColor = System.Drawing.Color.SteelBlue;
-            this.numericUpDownDurata.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownDurata.ForeColor = System.Drawing.Color.Transparent;
-            this.numericUpDownDurata.Location = new System.Drawing.Point(264, 128);
-            this.numericUpDownDurata.Maximum = new decimal(new int[] {
+            this.numericUpDownDurataProgressi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numericUpDownDurataProgressi.BackColor = System.Drawing.Color.SteelBlue;
+            this.numericUpDownDurataProgressi.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownDurataProgressi.ForeColor = System.Drawing.Color.Transparent;
+            this.numericUpDownDurataProgressi.Location = new System.Drawing.Point(264, 128);
+            this.numericUpDownDurataProgressi.Maximum = new decimal(new int[] {
             300,
             0,
             0,
             0});
-            this.numericUpDownDurata.Minimum = new decimal(new int[] {
+            this.numericUpDownDurataProgressi.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDownDurata.Name = "numericUpDownDurata";
-            this.numericUpDownDurata.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDownDurata.Size = new System.Drawing.Size(44, 23);
-            this.numericUpDownDurata.TabIndex = 78;
-            this.numericUpDownDurata.Value = new decimal(new int[] {
+            this.numericUpDownDurataProgressi.Name = "numericUpDownDurataProgressi";
+            this.numericUpDownDurataProgressi.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.numericUpDownDurataProgressi.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownDurataProgressi.TabIndex = 78;
+            this.numericUpDownDurataProgressi.Value = new decimal(new int[] {
             30,
             0,
             0,
@@ -267,50 +267,45 @@
             this.labelPeso.BackColor = System.Drawing.Color.Transparent;
             this.labelPeso.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPeso.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelPeso.Location = new System.Drawing.Point(30, 173);
+            this.labelPeso.Location = new System.Drawing.Point(30, 172);
             this.labelPeso.Name = "labelPeso";
             this.labelPeso.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelPeso.Size = new System.Drawing.Size(112, 24);
+            this.labelPeso.Size = new System.Drawing.Size(183, 24);
             this.labelPeso.TabIndex = 79;
-            this.labelPeso.Text = "Peso attuale in Kg";
+            this.labelPeso.Text = "Peso attuale in Kg (opzionale)";
             this.labelPeso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // numericUpDownPeso
+            // numericUpDownPesoProgressi
             // 
-            this.numericUpDownPeso.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDownPeso.BackColor = System.Drawing.Color.SteelBlue;
-            this.numericUpDownPeso.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownPeso.ForeColor = System.Drawing.Color.Transparent;
-            this.numericUpDownPeso.Location = new System.Drawing.Point(181, 173);
-            this.numericUpDownPeso.Name = "numericUpDownPeso";
-            this.numericUpDownPeso.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDownPeso.Size = new System.Drawing.Size(44, 23);
-            this.numericUpDownPeso.TabIndex = 80;
-            this.numericUpDownPeso.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
+            this.numericUpDownPesoProgressi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numericUpDownPesoProgressi.BackColor = System.Drawing.Color.SteelBlue;
+            this.numericUpDownPesoProgressi.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownPesoProgressi.ForeColor = System.Drawing.Color.Transparent;
+            this.numericUpDownPesoProgressi.Location = new System.Drawing.Point(264, 173);
+            this.numericUpDownPesoProgressi.Name = "numericUpDownPesoProgressi";
+            this.numericUpDownPesoProgressi.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.numericUpDownPesoProgressi.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownPesoProgressi.TabIndex = 80;
             // 
-            // buttonSalvaAllenamento
+            // buttonSalvaAllenamentoProgressi
             // 
-            this.buttonSalvaAllenamento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSalvaAllenamento.BackColor = System.Drawing.Color.RoyalBlue;
-            this.buttonSalvaAllenamento.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
-            this.buttonSalvaAllenamento.FlatAppearance.BorderSize = 2;
-            this.buttonSalvaAllenamento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
-            this.buttonSalvaAllenamento.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.buttonSalvaAllenamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalvaAllenamento.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalvaAllenamento.Location = new System.Drawing.Point(108, 216);
-            this.buttonSalvaAllenamento.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonSalvaAllenamento.Name = "buttonSalvaAllenamento";
-            this.buttonSalvaAllenamento.Size = new System.Drawing.Size(139, 30);
-            this.buttonSalvaAllenamento.TabIndex = 84;
-            this.buttonSalvaAllenamento.Tag = "";
-            this.buttonSalvaAllenamento.Text = "Salva Allenamento";
-            this.buttonSalvaAllenamento.UseVisualStyleBackColor = false;
-            this.buttonSalvaAllenamento.Click += new System.EventHandler(this.buttonSalvaAllenamento_Click);
+            this.buttonSalvaAllenamentoProgressi.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSalvaAllenamentoProgressi.BackColor = System.Drawing.Color.RoyalBlue;
+            this.buttonSalvaAllenamentoProgressi.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.buttonSalvaAllenamentoProgressi.FlatAppearance.BorderSize = 2;
+            this.buttonSalvaAllenamentoProgressi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
+            this.buttonSalvaAllenamentoProgressi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonSalvaAllenamentoProgressi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSalvaAllenamentoProgressi.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalvaAllenamentoProgressi.Location = new System.Drawing.Point(108, 216);
+            this.buttonSalvaAllenamentoProgressi.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSalvaAllenamentoProgressi.Name = "buttonSalvaAllenamentoProgressi";
+            this.buttonSalvaAllenamentoProgressi.Size = new System.Drawing.Size(139, 30);
+            this.buttonSalvaAllenamentoProgressi.TabIndex = 84;
+            this.buttonSalvaAllenamentoProgressi.Tag = "";
+            this.buttonSalvaAllenamentoProgressi.Text = "Salva Allenamento";
+            this.buttonSalvaAllenamentoProgressi.UseVisualStyleBackColor = false;
+            this.buttonSalvaAllenamentoProgressi.Click += new System.EventHandler(this.buttonSalvaAllenamento_Click);
             // 
             // labelContatore
             // 
@@ -418,59 +413,56 @@
             this.labelRegistraAllenamento.Text = "Registra il tuo allenamento !";
             this.labelRegistraAllenamento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // FormRegistraAllenamento
+            // ProgressiView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(822, 512);
             this.Controls.Add(this.labelRegistraAllenamento);
             this.Controls.Add(this.circularProgressBar);
             this.Controls.Add(this.labelAllenamenti);
             this.Controls.Add(this.labelContatore);
             this.Controls.Add(this.labelCompletamentoScheda);
             this.Controls.Add(this.progressBarAllenamenti);
-            this.Controls.Add(this.buttonSalvaAllenamento);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.numericUpDownPeso);
+            this.Controls.Add(this.buttonSalvaAllenamentoProgressi);
+            this.Controls.Add(this.chartPeso);
+            this.Controls.Add(this.chartDurata);
+            this.Controls.Add(this.numericUpDownPesoProgressi);
             this.Controls.Add(this.labelPeso);
-            this.Controls.Add(this.numericUpDownDurata);
+            this.Controls.Add(this.numericUpDownDurataProgressi);
             this.Controls.Add(this.labelDurata);
             this.Controls.Add(this.labelDataAllenamento);
-            this.Controls.Add(this.buttonIndietro);
+            this.Controls.Add(this.buttonIndietroProgressi);
             this.Controls.Add(this.dateTimePickerDataAllenamento);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormRegistraAllenamento";
-            this.Text = "No Pain No Gain";
-            this.Load += new System.EventHandler(this.FormRegistraAllenamento_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurata)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPeso)).EndInit();
+            this.Name = "ProgressiView";
+            this.Size = new System.Drawing.Size(822, 512);
+            ((System.ComponentModel.ISupportInitialize)(this.chartDurata)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPeso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurataProgressi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPesoProgressi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonIndietro;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Label labelCompletamentoScheda;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDataAllenamento;
         private System.Windows.Forms.Label labelDataAllenamento;
-        private System.Windows.Forms.NumericUpDown numericUpDownDurata;
         private System.Windows.Forms.Label labelPeso;
-        private System.Windows.Forms.NumericUpDown numericUpDownPeso;
-        private System.Windows.Forms.Button buttonSalvaAllenamento;
-        private System.Windows.Forms.Label labelContatore;
         private System.Windows.Forms.Label labelAllenamenti;
-        private System.Windows.Forms.ProgressBar progressBarAllenamenti;
-        private CircularProgressBar.CircularProgressBar circularProgressBar;
         private System.Windows.Forms.Label labelTitolo;
         private System.Windows.Forms.Label labelDurata;
         private System.Windows.Forms.Label labelRegistraAllenamento;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chartDurata;
+        public System.Windows.Forms.ProgressBar progressBarAllenamenti;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chartPeso;
+        public System.Windows.Forms.Button buttonIndietroProgressi;
+        public CircularProgressBar.CircularProgressBar circularProgressBar;
+        public System.Windows.Forms.Button buttonSalvaAllenamentoProgressi;
+        public System.Windows.Forms.NumericUpDown numericUpDownPesoProgressi;
+        public System.Windows.Forms.DateTimePicker dateTimePickerDataAllenamento;
+        public System.Windows.Forms.NumericUpDown numericUpDownDurataProgressi;
+        public System.Windows.Forms.Label labelContatore;
     }
 }

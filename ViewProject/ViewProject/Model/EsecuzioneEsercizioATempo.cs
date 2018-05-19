@@ -12,9 +12,33 @@ namespace Palestra.model
 
         public EsecuzioneEsercizioATempo(Esercizio esercizio, int tempo) : base(esercizio)
         {
-            int _tempo = tempo;
+            if (tempo <= 0)
+                throw new ArgumentException();
+            _tempo = tempo;
         }
 
-        public int Tempo { get => _tempo; set => _tempo = value; }
+        public int Tempo
+        {
+            get => _tempo;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException();
+                _tempo = value;
+            }
+        }
+
+        public override bool Equals(object obj)
+        {
+            var tempo = obj as EsecuzioneEsercizioATempo;
+            return base.Equals(tempo) &&
+                   _tempo == tempo.Tempo;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() +
+                " per " + _tempo + " min";
+        }
     }
 }

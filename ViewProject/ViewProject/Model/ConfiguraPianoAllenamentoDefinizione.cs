@@ -8,11 +8,13 @@ namespace Palestra.model
 {
     class ConfiguraPianoAllenamentoDefinizione : IConfiguraPianoAllenamento
     {
-        const int numeroRipetizioniDefinizione = 15;
-        const int numeroSerieDefinizione = 5;
-        const int tempoDiRecuperoInSecDefinizione = 60;
+        public const int numeroRipetizioniDefinizione = 15;
+        public const int numeroSerieDefinizione = 5;
+        public const int tempoDiRecuperoInSecDefinizione = 60;
         public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
         {
+            if (utenteAutomatico == null || esercizi == null || esercizi.Count == 0)
+                throw new ArgumentException();
             PianoAllenamento schedaGenerata = schedaGenerata = new PianoAllenamento();
             Dictionary<int, List<FasciaMuscolare>> distribuzioneMuscoli = distribuisciFasceMuscolariPerGiorno(utenteAutomatico.NumeroGiorniAllenamento); //distribuzione muscoli da allenare in tutta la settimana
 
@@ -24,13 +26,25 @@ namespace Palestra.model
                 for (int indiceMuscolo = 0; indiceMuscolo < eserciziPerMuscolo.Length; indiceMuscolo++)//per ogni muscolo d'allenare del giorno d'allenamento corrente
                 {
                     IList<Esercizio> listaPerMuscoloCorrente = getEserciziPerFascie(distribuzioneMuscoli[giorno].ElementAt(indiceMuscolo), utenteAutomatico.Risorse, esercizi);
+                    int tentativiFalliti = 0;
                     for (int indiceEsercizio = 0; indiceEsercizio < eserciziPerMuscolo[indiceMuscolo]; indiceEsercizio++)//per ogni esercizio del muscolo corrente
                     {
                         Esercizio nuovoEsercizio = listaPerMuscoloCorrente[new Random().Next(listaPerMuscoloCorrente.Count - 1)];
-                        if (verificaPresenzaEsercizio(nuovoEsercizio, nuovoGiornoAllenamento)) // è scelto random, percio se è già presente ripete l'iterazione all'indice corrente
-                            nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(nuovoEsercizio, tempoDiRecuperoInSecDefinizione, numeroRipetizioniDefinizione, numeroSerieDefinizione));
+                        if (tentativiFalliti <= NumeroMassimoTentativi)
+                        {
+                            if (!verificaPresenzaEsercizio(nuovoEsercizio, nuovoGiornoAllenamento)) // è scelto random, percio se è già presente ripete l'iterazione all'indice corrente
+                            {
+                                nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(nuovoEsercizio, tempoDiRecuperoInSecDefinizione, numeroRipetizioniDefinizione, numeroSerieDefinizione));
+                                tentativiFalliti = 0;
+                            }
+                            else
+                            {
+                                indiceEsercizio--;
+                                tentativiFalliti++;
+                            }
+                        }
                         else
-                            indiceEsercizio--;
+                            break;
                     }
 
                 }

@@ -15,29 +15,44 @@ namespace Palestra.model
 
         public PianoAllenamento()
         {
-            GiorniAllenamento = new List<GiornoAllenamento>();
-            NumeroGiorniAllenamento = 0;
+            _giorniAllenamento = new List<GiornoAllenamento>();
+            _numeroGiorniAllenamento = 0;
  
         }
 
-        public int NumeroGiorniAllenamento { get => _numeroGiorniAllenamento; set => _numeroGiorniAllenamento = value; }
-        public List<GiornoAllenamento> GiorniAllenamento { get => _giorniAllenamento; set => _giorniAllenamento = value; }
+        public int NumeroGiorniAllenamento { get => _numeroGiorniAllenamento; }
+        public List<GiornoAllenamento> GiorniAllenamento { get => _giorniAllenamento; }
 
         public bool addGiornoAllenamento(GiornoAllenamento giornoAllenamento)
         {
             if (NumeroGiorniAllenamento >= 7)
                 return false;
-            GiorniAllenamento.Add(giornoAllenamento);
-            NumeroGiorniAllenamento++;
+            _giorniAllenamento.Add(giornoAllenamento);
+            _numeroGiorniAllenamento++;
             OnChanged();
             return true;
         }
 
+        public bool addOrUpdateGiornoAllenamento(GiornoAllenamento giornoAllenamento, int index)
+        {
+            bool result = false;
+            if (index < 0)
+                throw new ArgumentException();
+            if (index == _giorniAllenamento.Count)
+                result = addGiornoAllenamento(giornoAllenamento);
+            if (index >= 0 && index < _giorniAllenamento.Count)
+            {
+                _giorniAllenamento[index] = giornoAllenamento;
+                result = true;
+            }
+            return result;
+        }
+
         public bool removeGiornoAllenamento(GiornoAllenamento giornoAllenamento)
         {
-            if (GiorniAllenamento.Remove(giornoAllenamento))
+            if (_giorniAllenamento.Remove(giornoAllenamento))
             {
-                NumeroGiorniAllenamento--;
+                _numeroGiorniAllenamento--;
                 OnChanged();
                 return true;
             }
@@ -48,6 +63,40 @@ namespace Palestra.model
         private void OnChanged()
         {
             Changed?.Invoke(this, EventArgs.Empty);
+        }
+
+        public override bool Equals(object obj)
+        {
+            var piano = obj as PianoAllenamento;
+            bool controlloGiorni = true;
+            if (piano != null)
+            {
+                if (_giorniAllenamento.Count == piano.GiorniAllenamento.Count)
+                {
+                    for(int i=0; i<_giorniAllenamento.Count; i++)
+                    {
+                        if(!_giorniAllenamento[i].Equals(piano.GiorniAllenamento[i]))
+                            controlloGiorni = false;
+                    }
+                }
+                else
+                    controlloGiorni = false;
+            }
+            else
+                controlloGiorni = false;
+            return controlloGiorni &&
+                   _numeroGiorniAllenamento == piano.NumeroGiorniAllenamento;
+        }
+
+        public override string ToString()
+        {
+            string result = "";
+            for(int i=0; i<_numeroGiorniAllenamento; i++)
+            {
+                int indiceGiorno = i + 1;
+                result = result + "Giorno "+ indiceGiorno + "\n" +_giorniAllenamento[i].ToString() + "\n";
+            }
+            return result;
         }
     }
 }

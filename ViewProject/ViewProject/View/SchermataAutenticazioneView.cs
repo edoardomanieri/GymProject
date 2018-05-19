@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ViewProject
 {
-    public partial class FormEliminaEsercizi : Form
+    public partial class SchermataAutenticazioneView : UserControl
     {
-        public FormEliminaEsercizi()
+        public SchermataAutenticazioneView()
         {
             InitializeComponent();
         }

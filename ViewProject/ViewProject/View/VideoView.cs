@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewProject.View;
 
 namespace ViewProject
 {
@@ -15,6 +16,13 @@ namespace ViewProject
         public VideoView()
         {
             InitializeComponent();
+        }
+
+        private void buttonIndietroVideo_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = (MainForm)this.FindForm();
+            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            mainForm.SetView(view);
         }
     }
 }

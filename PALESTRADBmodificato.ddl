@@ -27,7 +27,7 @@ create table ALLENAMENTI (
      peso int,
      data date not null,
      durata int not null,
-     Ese_ID int not null,
+     username varchar(50) not null,
      constraint ID_ALLENAMENTI_ID primary key (ID));
 
 create table ESECUZIONIESERCIZI (
@@ -54,50 +54,47 @@ create table ESECUZIONIESERCIZIATEMPO (
 create table GIORNIALLENAMENTI (
      ID int not null,
      tempoRecuperoTraEsercizi int not null,
-     Con_ID int not null,
+     username varchar(50) not null,
      constraint ID_GIORNIALLENAMENTI_ID primary key (ID));
 
 create table IDs (
      allenamento int not null,
-     utente int not null,
      giornoAllenamento int not null,
      esecuzioneEsercizio int not null,
-     constraint ID_IDs_ID primary key (allenamento, utente, giornoAllenamento, esecuzioneEsercizio));
+     constraint ID_IDs_ID primary key (allenamento, giornoAllenamento, esecuzioneEsercizio));
 
 create table PIANIALLENAMENTO (
-     ID int not null,
-     constraint FKrealizza_ID primary key (ID));
+     username varchar(50) not null,
+     constraint FKrealizza_ID primary key (username));
 
 
 create table UTENTI (
-     ID int not null,
+     username varchar(50) not null,
+     password varchar(50) not null,
      nome varchar(50) not null,
      cognome varchar(50) not null,
      sesso varchar(7) not null,
      dataNascita date not null,
      peso int not null,
      altezza int not null,
-     constraint ID_UTENTI_ID primary key (ID));
+     fotopath varchar(200),
+     constraint ID_UTENTI_ID primary key (username));
 
 create table UTENTIAUTOMATICI (
-     ID int not null,
+     username varchar(50) not null,
      risorseDisponibili varchar(12) not null,
      tipoAllenamento varchar(13) not null,
      numeroGiorniAllenamento int not null,
-     constraint FKUTE_UTE_ID primary key (ID));
+     constraint FKUTE_UTE_ID primary key (username));
 
 
 -- Constraints Section
 -- ___________________ 
 
 alter table ALLENAMENTI add constraint FKesegue_FK
-     foreign key (Ese_ID)
+     foreign key (username)
      references UTENTI
      ON DELETE CASCADE;
-
-alter table ESECUZIONIESERCIZI add constraint EXTONE_ESECUZIONIESERCIZI
-     check((ESECUZIONIESERCIZIASERIE is not null and ESECUZIONIESERCIZIATEMPO is null)
-           or (ESECUZIONIESERCIZIASERIE is null and ESECUZIONIESERCIZIATEMPO is not null)); 
 
 alter table ESECUZIONIESERCIZI add constraint FKha_FK
      foreign key (Ha_ID)
@@ -114,32 +111,39 @@ alter table ESECUZIONIESERCIZIATEMPO add constraint FKESE_ESE_1_FK
      references ESECUZIONIESERCIZI
      ON DELETE CASCADE;
 
+alter table GIORNIALLENAMENTI add constraint FKcontiene_FK
+     foreign key (username)
+     references PIANIALLENAMENTO
+     ON DELETE CASCADE;
+
+alter table PIANIALLENAMENTO add constraint FKrealizza_FK
+     foreign key (username)
+     references UTENTI
+     ON DELETE CASCADE;
+
+
+alter table UTENTIAUTOMATICI add constraint FKUTE_UTE_FK
+     foreign key (username)
+     references UTENTI
+     ON DELETE CASCADE;
+
+alter table ESECUZIONIESERCIZI add constraint EXTONE_ESECUZIONIESERCIZI
+     check((ESECUZIONIESERCIZIASERIE is not null and ESECUZIONIESERCIZIATEMPO is null)
+           or (ESECUZIONIESERCIZIASERIE is null and ESECUZIONIESERCIZIATEMPO is not null)); 
+
 alter table GIORNIALLENAMENTI add constraint ID_GIORNIALLENAMENTI_CHK
      check(exists(select * from ESECUZIONIESERCIZI
                   where ESECUZIONIESERCIZI.Ha_ID = ID)); 
 
-alter table GIORNIALLENAMENTI add constraint FKcontiene_FK
-     foreign key (Con_ID)
-     references PIANIALLENAMENTO
-     ON DELETE CASCADE;
 
 alter table PIANIALLENAMENTO add constraint FKrealizza_CHK
      check(exists(select * from GIORNIALLENAMENTI
                   where GIORNIALLENAMENTI.Con_ID = ID)); 
 
-alter table PIANIALLENAMENTO add constraint FKrealizza_FK
-     foreign key (ID)
-     references UTENTI
-     ON DELETE CASCADE;
 
 alter table UTENTI add constraint ID_UTENTI_CHK
      check(exists(select * from PIANIALLENAMENTO
                   where PIANIALLENAMENTO.ID = ID)); 
-
-alter table UTENTIAUTOMATICI add constraint FKUTE_UTE_FK
-     foreign key (ID)
-     references UTENTI
-     ON DELETE CASCADE;
 
 
 -- Index Section

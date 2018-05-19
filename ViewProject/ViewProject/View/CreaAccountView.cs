@@ -25,13 +25,13 @@ namespace ViewProject
         {
             if (i == 0)
             {
-                Password.UseSystemPasswordChar = false;
+                CreaPassword.UseSystemPasswordChar = false;
                 buttonShowHide1.Image = imageHidePassword.Image;
                 i = 1;
             }
             else
             {
-                Password.UseSystemPasswordChar = true;
+                CreaPassword.UseSystemPasswordChar = true;
                 buttonShowHide1.Image = imageShowPassword.Image;
                 i = 0;
             }
@@ -65,7 +65,7 @@ namespace ViewProject
 
         private void buttonProcedi_Click(object sender, EventArgs e)
         {
-            UserControl view;
+ 
             MainForm mainForm = (MainForm)this.FindForm();
             if (!isCompleted())
             {
@@ -73,16 +73,26 @@ namespace ViewProject
             }
             if (checkBoxAutomatica.Checked)
             {
-                view = (CreaSchedaAutomaticaView)ViewFactory.GetView("CreaSchedaAutomaticaView");
+                UserControl view = (CreaSchedaAutomaticaView)ViewFactory.GetView("CreaSchedaAutomaticaView");
                 mainForm.SetView(view);
             }
             else
             {
-                view = (CreaSchedaManualeView)ViewFactory.GetView("CreaSchedaManualeView");
+                CreaSchedaManualeView view = (CreaSchedaManualeView)ViewFactory.GetView("CreaSchedaManualeView");
+                view.buttonIndietro.Visible = false;
+                view.buttonIndietro.Enabled = false;
                 mainForm.SetView(view);
             }
 
 
+        }
+
+        public bool CheckPassword()
+        {
+            if (CreaPassword.Text.Equals(ConfirmPassword.Text))
+                return true;
+            MessageBox.Show("Le Password devono essere uguali");
+            return false;
         }
 
         public bool isCompleted()

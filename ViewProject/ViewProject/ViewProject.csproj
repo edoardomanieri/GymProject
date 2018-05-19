@@ -58,10 +58,17 @@
     <Compile Include="Presentation\CreaSchedaAutomaticaPresenter.cs" />
     <Compile Include="Presentation\CreaSchedaManualePresenter.cs" />
     <Compile Include="Presentation\IPresenter.cs" />
+    <Compile Include="Presentation\MainPresenter.cs" />
     <Compile Include="Presentation\ProfiloPresenter.cs" />
     <Compile Include="Presentation\ProgressiPresenter.cs" />
     <Compile Include="Presentation\SchermataPrincipalePresenter.cs" />
     <Compile Include="Presentation\VideoPresenter.cs" />
+    <Compile Include="View\SchermataAutenticazioneView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SchermataAutenticazioneView.Designer.cs">
+      <DependentUpon>SchermataAutenticazioneView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,12 +86,6 @@
     </Compile>
     <Compile Include="View\CreaSchedaAutomaticaView.Designer.cs">
       <DependentUpon>CreaSchedaAutomaticaView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FormEliminaEsercizi%28inutile%29.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FormEliminaEsercizi%28inutile%29.Designer.cs">
-      <DependentUpon>FormEliminaEsercizi%28inutile%29.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ProfiloView.cs">
       <SubType>UserControl</SubType>
@@ -142,10 +143,12 @@
     <Compile Include="Persistence\IPianoAllenamentoPersistenceManager.cs" />
     <Compile Include="Persistence\IUtentePersistenceManager.cs" />
     <Compile Include="Persistence\MainPersistenceManager.cs" />
-    <Compile Include="Presentation\CreaAccountPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\ViewFactory.cs" />
+    <EmbeddedResource Include="View\SchermataAutenticazioneView.resx">
+      <DependentUpon>SchermataAutenticazioneView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CreaSchedaAutomaticaView.resx">
       <DependentUpon>CreaSchedaAutomaticaView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FormEliminaEsercizi%28inutile%29.resx">
-      <DependentUpon>FormEliminaEsercizi%28inutile%29.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProfiloView.resx">
       <DependentUpon>ProfiloView.cs</DependentUpon>

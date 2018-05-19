@@ -16,6 +16,7 @@ namespace ViewProject
         public SchermataPrincipaleView()
         {
             InitializeComponent();
+            
         }
 
         private void buttonProfilo_Click(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace ViewProject
 
         private void buttonProgressi_Click(object sender, EventArgs e)
         {
-            UserControl view = ViewFactory.GetView("ProfiloView");
+            UserControl view = ViewFactory.GetView("ProgressiView");
             MainForm mainForm = (MainForm)this.FindForm();
             mainForm.SetView(view);
         }
@@ -49,9 +50,45 @@ namespace ViewProject
 
         private void buttonModificaScheda_Click(object sender, EventArgs e)
         {
-            UserControl view = ViewFactory.GetView("CreaSchedaManualeView");
+            CreaSchedaManualeView view = (CreaSchedaManualeView)ViewFactory.GetView("CreaSchedaManualeView");
             MainForm mainForm = (MainForm)this.FindForm();
+            view.buttonIndietro.Visible = true;
+            view.buttonIndietro.Enabled = true;
             mainForm.SetView(view);
+        }
+
+        private void buttonFrase_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(GetFrase(), "La frase pensata per te:");
+        }
+        public string GetFrase()
+        {
+            int da = 1;
+            int a = 43;
+            Random random = new Random();
+            int numeroCasuale = random.Next(da, a);
+            string line = "";
+            StringBuilder frase = new StringBuilder();
+
+            System.IO.StreamReader file = new System.IO.StreamReader(@"../../Frasi.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.ElementAt(0).Equals('#'))
+                {
+                    line = line.Remove(0, 1);
+                    if (line.Equals(numeroCasuale.ToString()))
+                    {
+                        while (!(line = file.ReadLine()).Equals("FINE"))
+                        {
+                            frase.Append(line);
+                        }
+                        file.Close();
+                        return frase.ToString();
+                    }
+                }
+            }
+            file.Close();
+            return frase.ToString();
         }
     }
 }

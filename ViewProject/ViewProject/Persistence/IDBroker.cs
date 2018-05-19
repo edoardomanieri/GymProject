@@ -15,32 +15,10 @@ namespace ViewProject.Persistence
         public IDBroker(string connectionString)
         {
             _connectionString = connectionString;
+            setIDs();
         }
 
-        public int generaUtenteID()
-        {
-            try
-            {
-                using (SqlConnection Conn = new SqlConnection(_connectionString))
-                {
-                    Conn.Open();
-                    SqlCommand myCommand = new SqlCommand("select utente from IDs;", Conn);
-                    SqlDataReader myReader = myCommand.ExecuteReader();
-                    myReader.Read();
-                    int ID = (int)myReader["utente"] + 1;
-                    myReader.Close();
 
-                    SqlCommand update = new SqlCommand("update IDs set utente = " + ID + ";", Conn);
-                    update.ExecuteNonQuery();
-                    Conn.Close();
-                    return ID;
-                }
-            }
-            catch (SqlException e)
-            {
-                throw;
-            }
-        }
 
         public int generaAllenamentoID()
         {
@@ -118,14 +96,23 @@ namespace ViewProject.Persistence
             }
         }
 
-        public void setIDs()
+        private void setIDs()
         {
             try
             {
                 using (SqlConnection Conn = new SqlConnection(_connectionString))
                 {
                     Conn.Open();
-                    SqlCommand insert = new SqlCommand("insert into IDs values (0,0,0,0);", Conn);
+                    SqlCommand select = new SqlCommand("select * from IDs;", Conn);
+                    SqlDataReader myReader = select.ExecuteReader();
+                    if (myReader.HasRows)
+                    {
+                        myReader.Close();
+                        Conn.Close();
+                        return;
+                    }
+                    myReader.Close();
+                    SqlCommand insert = new SqlCommand("insert into IDs values (0,0,0);", Conn);
                     insert.ExecuteNonQuery();
                     Conn.Close();
                 }

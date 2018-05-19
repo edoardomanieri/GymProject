@@ -8,11 +8,9 @@ namespace Palestra.Persistence
 {
     public interface IIDGenerator
     {
-        int generaUtenteID();
         int generaAllenamentoID();
         int generaGiornoAllenamentoID();
         int generaEsecuzioneEsercizioID();
-        void setIDs();
         void resetIDs();
     }
 }

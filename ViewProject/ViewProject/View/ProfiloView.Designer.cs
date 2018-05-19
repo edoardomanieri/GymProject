@@ -147,7 +147,7 @@
             0,
             0});
             this.numericUpDownAltezza.Minimum = new decimal(new int[] {
-            100,
+            40,
             0,
             0,
             0});
@@ -575,11 +575,9 @@
             this.TextBoxNome.ForeColor = System.Drawing.SystemColors.Control;
             this.TextBoxNome.Location = new System.Drawing.Point(452, 57);
             this.TextBoxNome.Name = "TextBoxNome";
-            this.TextBoxNome.ReadOnly = true;
             this.TextBoxNome.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TextBoxNome.Size = new System.Drawing.Size(114, 23);
             this.TextBoxNome.TabIndex = 49;
-            this.TextBoxNome.Text = "Paolo";
             // 
             // buttonModifica
             // 
@@ -599,7 +597,6 @@
             this.buttonModifica.Tag = "";
             this.buttonModifica.Text = "Modifica i dati";
             this.buttonModifica.UseVisualStyleBackColor = false;
-            this.buttonModifica.Click += new System.EventHandler(this.buttonModifica_Click);
             // 
             // buttonSalva
             // 
@@ -619,7 +616,6 @@
             this.buttonSalva.Tag = "";
             this.buttonSalva.Text = "Salva le modifiche";
             this.buttonSalva.UseVisualStyleBackColor = false;
-            this.buttonSalva.Click += new System.EventHandler(this.buttonSalva_Click);
             // 
             // buttonIndietro
             // 
@@ -639,14 +635,14 @@
             this.buttonIndietro.Tag = "";
             this.buttonIndietro.Text = "Torna al Menu";
             this.buttonIndietro.UseVisualStyleBackColor = false;
+            this.buttonIndietro.Click += new System.EventHandler(this.buttonIndietro_Click);
             // 
-            // FormProfilo
+            // ProfiloView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(822, 512);
             this.Controls.Add(this.buttonIndietro);
             this.Controls.Add(this.buttonSalva);
             this.Controls.Add(this.buttonModifica);
@@ -674,9 +670,8 @@
             this.Controls.Add(this.buttonRimuoviFoto);
             this.Controls.Add(this.buttonCaricaFoto);
             this.Controls.Add(this.pictureBoxFoto);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormProfilo";
-            this.Text = "No Pain No Gain";
+            this.Name = "ProfiloView";
+            this.Size = new System.Drawing.Size(822, 512);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAltezza)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPeso)).EndInit();
@@ -686,33 +681,32 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBoxFoto;
-        private System.Windows.Forms.Button buttonCaricaFoto;
-        private System.Windows.Forms.Button buttonRimuoviFoto;
         private System.Windows.Forms.Button buttonShowHide2;
         private System.Windows.Forms.Button buttonShowHide1;
-        private System.Windows.Forms.NumericUpDown numericUpDownAltezza;
         private System.Windows.Forms.Label labelAltezza;
-        private System.Windows.Forms.NumericUpDown numericUpDownPeso;
         private System.Windows.Forms.Label labelPeso;
         private System.Windows.Forms.TextBox ConfirmPassword;
         private System.Windows.Forms.Label labelConfermaPassword;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox Password;
-        private System.Windows.Forms.ComboBox comboBoxAnno;
-        private System.Windows.Forms.ComboBox comboBoxMese;
-        private System.Windows.Forms.ComboBox comboBoxGiorno;
         private System.Windows.Forms.Label labelDataNascita;
-        private System.Windows.Forms.RadioButton RadioButtonFemmina;
-        private System.Windows.Forms.RadioButton RadioButtonMaschio;
         private System.Windows.Forms.Label labelSesso;
         private System.Windows.Forms.Label labelCognome;
         private System.Windows.Forms.Label labelNome;
-        private System.Windows.Forms.TextBox TextBoxCognome;
-        private System.Windows.Forms.TextBox TextBoxNome;
-        private System.Windows.Forms.Button buttonModifica;
-        private System.Windows.Forms.Button buttonSalva;
         private System.Windows.Forms.Button buttonIndietro;
+        public System.Windows.Forms.NumericUpDown numericUpDownAltezza;
+        public System.Windows.Forms.NumericUpDown numericUpDownPeso;
+        public System.Windows.Forms.ComboBox comboBoxAnno;
+        public System.Windows.Forms.ComboBox comboBoxMese;
+        public System.Windows.Forms.ComboBox comboBoxGiorno;
+        public System.Windows.Forms.RadioButton RadioButtonFemmina;
+        public System.Windows.Forms.RadioButton RadioButtonMaschio;
+        public System.Windows.Forms.TextBox TextBoxCognome;
+        public System.Windows.Forms.TextBox TextBoxNome;
+        public System.Windows.Forms.Button buttonModifica;
+        public System.Windows.Forms.Button buttonSalva;
+        public System.Windows.Forms.Button buttonCaricaFoto;
+        public System.Windows.Forms.Button buttonRimuoviFoto;
+        public System.Windows.Forms.PictureBox pictureBoxFoto;
     }
 }

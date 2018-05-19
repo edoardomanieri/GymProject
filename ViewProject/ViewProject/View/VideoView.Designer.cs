@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoView));
-            this.comboBoxFasciaMuscolare = new System.Windows.Forms.ComboBox();
+            this.comboBoxFasciaMuscolareVideo = new System.Windows.Forms.ComboBox();
             this.axWindowsMediaPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.textBoxDescrizione = new System.Windows.Forms.TextBox();
-            this.listBoxEsercizi = new System.Windows.Forms.ListBox();
-            this.buttonIndietro = new System.Windows.Forms.Button();
+            this.listBoxEserciziVideo = new System.Windows.Forms.ListBox();
+            this.buttonIndietroVideo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBoxFasciaMuscolare
+            // comboBoxFasciaMuscolareVideo
             // 
-            this.comboBoxFasciaMuscolare.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxFasciaMuscolare.BackColor = System.Drawing.Color.Lime;
-            this.comboBoxFasciaMuscolare.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFasciaMuscolare.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxFasciaMuscolare.FormattingEnabled = true;
-            this.comboBoxFasciaMuscolare.Items.AddRange(new object[] {
+            this.comboBoxFasciaMuscolareVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBoxFasciaMuscolareVideo.BackColor = System.Drawing.Color.Lime;
+            this.comboBoxFasciaMuscolareVideo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFasciaMuscolareVideo.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxFasciaMuscolareVideo.FormattingEnabled = true;
+            this.comboBoxFasciaMuscolareVideo.Items.AddRange(new object[] {
             "Addominali",
             "Bicipiti",
             "Tricipiti",
@@ -53,12 +53,12 @@
             "Pettorali",
             "Polpacci",
             "Quadricipiti"});
-            this.comboBoxFasciaMuscolare.Location = new System.Drawing.Point(23, 29);
-            this.comboBoxFasciaMuscolare.Name = "comboBoxFasciaMuscolare";
-            this.comboBoxFasciaMuscolare.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxFasciaMuscolare.Size = new System.Drawing.Size(120, 21);
-            this.comboBoxFasciaMuscolare.TabIndex = 14;
-            this.comboBoxFasciaMuscolare.Text = "Fascia Muscolare";
+            this.comboBoxFasciaMuscolareVideo.Location = new System.Drawing.Point(23, 29);
+            this.comboBoxFasciaMuscolareVideo.Name = "comboBoxFasciaMuscolareVideo";
+            this.comboBoxFasciaMuscolareVideo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxFasciaMuscolareVideo.Size = new System.Drawing.Size(150, 21);
+            this.comboBoxFasciaMuscolareVideo.TabIndex = 14;
+            this.comboBoxFasciaMuscolareVideo.Text = "Fascia Muscolare";
             // 
             // axWindowsMediaPlayer
             // 
@@ -79,78 +79,49 @@
             this.textBoxDescrizione.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxDescrizione.Size = new System.Drawing.Size(586, 79);
             this.textBoxDescrizione.TabIndex = 16;
-            this.textBoxDescrizione.Text = resources.GetString("textBoxDescrizione.Text");
             // 
-            // listBoxEsercizi
+            // listBoxEserciziVideo
             // 
-            this.listBoxEsercizi.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.listBoxEsercizi.FormattingEnabled = true;
-            this.listBoxEsercizi.Items.AddRange(new object[] {
-            "Panca Piana",
-            "Curl",
-            "Leg Exstension",
-            "blabla",
-            "blabla",
-            "blabla",
-            "blabla",
-            "adasdada",
-            "ds",
-            "d",
-            "d",
-            "d",
-            "d",
-            "d",
-            "ds",
-            "sa",
-            "d",
-            "s",
-            "s",
-            "s",
-            "s",
-            "",
-            "d",
-            "d",
-            "d",
-            "d"});
-            this.listBoxEsercizi.Location = new System.Drawing.Point(23, 88);
-            this.listBoxEsercizi.Name = "listBoxEsercizi";
-            this.listBoxEsercizi.Size = new System.Drawing.Size(120, 316);
-            this.listBoxEsercizi.TabIndex = 17;
+            this.listBoxEserciziVideo.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.listBoxEserciziVideo.FormattingEnabled = true;
+            this.listBoxEserciziVideo.Location = new System.Drawing.Point(23, 88);
+            this.listBoxEserciziVideo.Name = "listBoxEserciziVideo";
+            this.listBoxEserciziVideo.Size = new System.Drawing.Size(150, 316);
+            this.listBoxEserciziVideo.TabIndex = 17;
             // 
-            // buttonIndietro
+            // buttonIndietroVideo
             // 
-            this.buttonIndietro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonIndietro.BackColor = System.Drawing.Color.DarkOrange;
-            this.buttonIndietro.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
-            this.buttonIndietro.FlatAppearance.BorderSize = 2;
-            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
-            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.buttonIndietro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonIndietro.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIndietro.Location = new System.Drawing.Point(23, 462);
-            this.buttonIndietro.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonIndietro.Name = "buttonIndietro";
-            this.buttonIndietro.Size = new System.Drawing.Size(120, 30);
-            this.buttonIndietro.TabIndex = 74;
-            this.buttonIndietro.Tag = "";
-            this.buttonIndietro.Text = "Torna al Menu";
-            this.buttonIndietro.UseVisualStyleBackColor = false;
+            this.buttonIndietroVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonIndietroVideo.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonIndietroVideo.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.buttonIndietroVideo.FlatAppearance.BorderSize = 2;
+            this.buttonIndietroVideo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
+            this.buttonIndietroVideo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonIndietroVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonIndietroVideo.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietroVideo.Location = new System.Drawing.Point(23, 462);
+            this.buttonIndietroVideo.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonIndietroVideo.Name = "buttonIndietroVideo";
+            this.buttonIndietroVideo.Size = new System.Drawing.Size(120, 30);
+            this.buttonIndietroVideo.TabIndex = 74;
+            this.buttonIndietroVideo.Tag = "";
+            this.buttonIndietroVideo.Text = "Torna al Menu";
+            this.buttonIndietroVideo.UseVisualStyleBackColor = false;
+            this.buttonIndietroVideo.Click += new System.EventHandler(this.buttonIndietroVideo_Click);
             // 
-            // FormVideo
+            // VideoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(822, 512);
-            this.Controls.Add(this.buttonIndietro);
-            this.Controls.Add(this.listBoxEsercizi);
+            this.Controls.Add(this.buttonIndietroVideo);
+            this.Controls.Add(this.listBoxEserciziVideo);
             this.Controls.Add(this.textBoxDescrizione);
             this.Controls.Add(this.axWindowsMediaPlayer);
-            this.Controls.Add(this.comboBoxFasciaMuscolare);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormVideo";
-            this.Text = "No Pain No Gain";
+            this.Controls.Add(this.comboBoxFasciaMuscolareVideo);
+            this.Name = "VideoView";
+            this.Size = new System.Drawing.Size(822, 512);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -158,10 +129,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBoxFasciaMuscolare;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
         public System.Windows.Forms.TextBox textBoxDescrizione;
-        private System.Windows.Forms.ListBox listBoxEsercizi;
-        private System.Windows.Forms.Button buttonIndietro;
+        public System.Windows.Forms.Button buttonIndietroVideo;
+        public System.Windows.Forms.ListBox listBoxEserciziVideo;
+        public System.Windows.Forms.ComboBox comboBoxFasciaMuscolareVideo;
+        public AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
     }
 }
