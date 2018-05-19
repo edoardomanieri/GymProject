@@ -1,5 +1,5 @@
-﻿using Palestra.model;
-using Palestra.Persistence;
+﻿using ViewProject.model;
+using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Data;

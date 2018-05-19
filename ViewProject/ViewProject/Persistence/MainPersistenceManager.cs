@@ -5,10 +5,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Palestra.model;
+using ViewProject.model;
 using ViewProject.Persistence;
 
-namespace Palestra.Persistence
+namespace ViewProject.Persistence
 {
     public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager
     {
@@ -33,10 +33,10 @@ namespace Palestra.Persistence
         {
             //connessione al database che rimarrà connesso per tutta la durata dell'applicazione
             Conn = new SqlConnection();
-            Conn.ConnectionString = "Data Source=EDOARDO;Initial Catalog=PalestraDB;Integrated Security=True";
+            Conn.ConnectionString = "Data Source=GIOVANNI-PC;Initial Catalog=PalestraDB;Integrated Security=True";
             _IDBroker = new IDBroker(Conn.ConnectionString);
             Conn.Open();
-            
+
 
             _esercizi = new List<Esercizio>();
             //esercizi petto
@@ -50,132 +50,164 @@ namespace Palestra.Persistence
 
             _esercizi.Add(new Esercizio("flessioni", FasciaMuscolare.Pettorali, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("flessioni con gambe rialzate", FasciaMuscolare.Pettorali, Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("push up diamond", FasciaMuscolare.Pettorali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("push up plank", FasciaMuscolare.Pettorali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("mountain climber", FasciaMuscolare.Pettorali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("wiper push up", FasciaMuscolare.Pettorali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("dip alle parallele per pettorali", FasciaMuscolare.Pettorali,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("push up diamond", FasciaMuscolare.Pettorali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("push up plank", FasciaMuscolare.Pettorali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("mountain climber", FasciaMuscolare.Pettorali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("wiper push up", FasciaMuscolare.Pettorali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("dip alle parallele per pettorali", FasciaMuscolare.Pettorali, Risorsa.CorpoLibero));
             //esercizi bicipiti
-            _esercizi.Add(new Esercizio("curl con bilanciere", FasciaMuscolare.Bicipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("curl con manubri", FasciaMuscolare.Bicipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("curl a martello", FasciaMuscolare.Bicipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("curl di concentrazione con maubri", FasciaMuscolare.Bicipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("curl con corda", FasciaMuscolare.Bicipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("arm curl", FasciaMuscolare.Bicipiti,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("curl con bilanciere", FasciaMuscolare.Bicipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("curl con manubri", FasciaMuscolare.Bicipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("curl a martello", FasciaMuscolare.Bicipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("curl di concentrazione con maubri", FasciaMuscolare.Bicipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("curl con corda", FasciaMuscolare.Bicipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("arm curl", FasciaMuscolare.Bicipiti, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("chin up", FasciaMuscolare.Bicipiti,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("headbangers", FasciaMuscolare.Bicipiti,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("bodyweight biceps curl", FasciaMuscolare.Bicipiti,  Risorsa.CorpoLibero));
-
+            _esercizi.Add(new Esercizio("chin up", FasciaMuscolare.Bicipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("commando chin up", FasciaMuscolare.Bicipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("isometric chin up", FasciaMuscolare.Bicipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("headbangers", FasciaMuscolare.Bicipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("bodyweight biceps curl", FasciaMuscolare.Bicipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("doorway curl", FasciaMuscolare.Bicipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("towel biceps curl", FasciaMuscolare.Bicipiti, Risorsa.CorpoLibero));
             //esercizi tricipiti
-            _esercizi.Add(new Esercizio("french press con bilanciere", FasciaMuscolare.Tricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("french press con manubri", FasciaMuscolare.Tricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("push down ai cavi", FasciaMuscolare.Tricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("estensioni con corda sopra la testa", FasciaMuscolare.Tricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("estensioni con manubrio sopra la testa", FasciaMuscolare.Tricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("panca presa stretta", FasciaMuscolare.Tricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("estensioni con manubrio busto flesso", FasciaMuscolare.Tricipiti,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("french press con bilanciere", FasciaMuscolare.Tricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("french press con manubri", FasciaMuscolare.Tricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("push down ai cavi", FasciaMuscolare.Tricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("estensioni con corda sopra la testa", FasciaMuscolare.Tricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("estensioni con manubrio sopra la testa", FasciaMuscolare.Tricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("panca presa stretta", FasciaMuscolare.Tricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("estensioni con manubrio busto flesso", FasciaMuscolare.Tricipiti, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("flessioni presa stretta", FasciaMuscolare.Tricipiti,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("forearm triceps extension", FasciaMuscolare.Tricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("power triceps extension", FasciaMuscolare.Tricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("flessioni presa stretta", FasciaMuscolare.Tricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("triceps bow", FasciaMuscolare.Tricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("narrow push up", FasciaMuscolare.Tricipiti, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("dip tra due panche", FasciaMuscolare.Tricipiti, Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("dip alle parallele per tricipiti", FasciaMuscolare.Tricipiti,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("dip alle parallele per tricipiti", FasciaMuscolare.Tricipiti, Risorsa.CorpoLibero));
             //esercizi quadricipiti
-            _esercizi.Add(new Esercizio("squat al multipower", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("jefferson squat", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("pressa", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("leg extension", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("hack squat", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("front squat", FasciaMuscolare.Quadricipiti,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("squat al multipower", FasciaMuscolare.Quadricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("jefferson squat", FasciaMuscolare.Quadricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("pressa", FasciaMuscolare.Quadricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("leg extension", FasciaMuscolare.Quadricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("hack squat", FasciaMuscolare.Quadricipiti, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("front squat", FasciaMuscolare.Quadricipiti, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("squat", FasciaMuscolare.Quadricipiti,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("lateral squat", FasciaMuscolare.Quadricipiti,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("squat", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("lateral squat", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("bulgarian split squat", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("box squat", FasciaMuscolare.Quadricipiti,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("single leg box squat", FasciaMuscolare.Quadricipiti,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("jump squat", FasciaMuscolare.Quadricipiti,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("step", FasciaMuscolare.Quadricipiti,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("box squat", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("single leg box squat", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("jump squat", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("step", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
             //esercizi adduttori
-            _esercizi.Add(new Esercizio("leg curl", FasciaMuscolare.Adduttori,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("leg curl", FasciaMuscolare.Adduttori, Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("stacchi da terra con bilanciere", FasciaMuscolare.Adduttori, Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("stacchi da terra con manubri", FasciaMuscolare.Adduttori,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("stacchi da terra con manubri", FasciaMuscolare.Adduttori, Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("affondi frontali con zavorra", FasciaMuscolare.Adduttori, Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("affondi laterali con zavorra", FasciaMuscolare.Adduttori,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("adductor machine", FasciaMuscolare.Adduttori,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("sumo squat", FasciaMuscolare.Adduttori, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("affondi laterali con zavorra", FasciaMuscolare.Adduttori, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("adductor machine", FasciaMuscolare.Adduttori, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("sumo squat con manubrio", FasciaMuscolare.Quadricipiti, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("affondi laterali", FasciaMuscolare.Adduttori,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("affondi frontali", FasciaMuscolare.Adduttori,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("hamstring curl", FasciaMuscolare.Adduttori,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("sumo squat", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("affondi laterali", FasciaMuscolare.Adduttori, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("affondi frontali", FasciaMuscolare.Adduttori, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("il pattinaggio", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("l'elastico", FasciaMuscolare.Quadricipiti, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("hamstring curl", FasciaMuscolare.Adduttori, Risorsa.CorpoLibero));
             //esercizi polpacci
-            _esercizi.Add(new Esercizio("calf machine in piedi", FasciaMuscolare.Polpacci,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("calf machine seduto", FasciaMuscolare.Polpacci,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("calf sdraiato alla leg press", FasciaMuscolare.Polpacci,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("calf al multipower", FasciaMuscolare.Polpacci,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("calf con manubri", FasciaMuscolare.Polpacci,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("calf machine in piedi", FasciaMuscolare.Polpacci, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("calf machine seduto", FasciaMuscolare.Polpacci, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("calf sdraiato alla leg press", FasciaMuscolare.Polpacci, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("calf al multipower", FasciaMuscolare.Polpacci, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("calf con manubri", FasciaMuscolare.Polpacci, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("boxe jump con zavorra", FasciaMuscolare.Polpacci, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("seated calf raise", FasciaMuscolare.Polpacci,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("calf raise", FasciaMuscolare.Polpacci,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("donkey calf raise", FasciaMuscolare.Polpacci,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("seated calf raise", FasciaMuscolare.Polpacci, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("calf raise", FasciaMuscolare.Polpacci, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("donkey calf raise", FasciaMuscolare.Polpacci, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("boxe jump", FasciaMuscolare.Polpacci, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("salto sulle punte", FasciaMuscolare.Polpacci, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("marcia sulle punte", FasciaMuscolare.Polpacci, Risorsa.CorpoLibero));
             //esercizi dorsali
-            _esercizi.Add(new Esercizio("rematore con bilanciere", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("rematore con manubri", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("rematore su panca con manubri", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("pulley basso", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("lateral pulley", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("lat machine", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("pullover sdraiato ai cavi", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("dorsy machine", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("nautilus machine", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("rematore con bilanciere", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("rematore con manubri", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("rematore su panca con manubri", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("pulley basso", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("lateral pulley", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("lat machine", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("pullover sdraiato ai cavi", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("dorsy machine", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("nautilus machine", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("trazioni a presa larga", FasciaMuscolare.Dorsali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("trazioni a presa stretta", FasciaMuscolare.Dorsali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("trazioni a presa inversa", FasciaMuscolare.Dorsali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("inverted row", FasciaMuscolare.Dorsali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("scapola push up", FasciaMuscolare.Dorsali,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("trazioni a presa larga", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("trazioni a presa stretta", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("trazioni a presa inversa", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("inverted row", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("scapola push up", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("downward dog", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("reverse snow", FasciaMuscolare.Dorsali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("superman", FasciaMuscolare.Dorsali,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("reverse snow", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("superman", FasciaMuscolare.Dorsali, Risorsa.CorpoLibero));
             //esercizi deltoidi
-            _esercizi.Add(new Esercizio("military press", FasciaMuscolare.Deltoidi,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("alzate laterali", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("lento avanti con manubri", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("lento avanti con bilanciere", FasciaMuscolare.Dorsali,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("military press", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("alzate laterali", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("lento avanti con manubri", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("lento avanti con bilanciere", FasciaMuscolare.Dorsali, Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("shoulder press", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("crossover ai cavi", FasciaMuscolare.Deltoidi,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("crossover ai cavi", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("military press", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("alzate frontali con manubri", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("alzate frontali con bilanciere", FasciaMuscolare.Deltoidi,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("alzate a 90 gradi", FasciaMuscolare.Deltoidi,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("alzate frontali con bilanciere", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("alzate a 90 gradi", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
             _esercizi.Add(new Esercizio("arnold press", FasciaMuscolare.Deltoidi, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("inclined push-ups", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("plank to down dog", FasciaMuscolare.Deltoidi,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("pike push-ups", FasciaMuscolare.Deltoidi,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("inclined push up", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("plank to down dog", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("pike push up", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("elevated pike push up", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("rotating plank", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
-
+            _esercizi.Add(new Esercizio("handstand", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("v push up", FasciaMuscolare.Deltoidi, Risorsa.CorpoLibero));
             //esercizi addominali
             _esercizi.Add(new Esercizio("ab rollout con manubrio", FasciaMuscolare.Addominali, Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("decline crunch con peso", FasciaMuscolare.Addominali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("crunch machine", FasciaMuscolare.Addominali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("crunch avanti su panca", FasciaMuscolare.Addominali,  Risorsa.SalaPesi));
-            _esercizi.Add(new Esercizio("weighted crunch", FasciaMuscolare.Addominali,  Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("decline crunch con peso", FasciaMuscolare.Addominali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("crunch machine", FasciaMuscolare.Addominali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("crunch avanti su panca", FasciaMuscolare.Addominali, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("weighted crunch", FasciaMuscolare.Addominali, Risorsa.SalaPesi));
 
-            _esercizi.Add(new Esercizio("ab rollout", FasciaMuscolare.Addominali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("crunch", FasciaMuscolare.Addominali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("crunch con gambe a 90 gradi", FasciaMuscolare.Addominali,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("ab rollout", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("crunch", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("crunch con gambe a 90 gradi", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("reverse crunch", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("sit up", FasciaMuscolare.Addominali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("hill climber", FasciaMuscolare.Addominali,  Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("plank", FasciaMuscolare.Addominali,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("sit up", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("hill climber", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("plank", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("spider plank", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
-            _esercizi.Add(new Esercizio("lateral plank", FasciaMuscolare.Addominali,  Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("lateral plank", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
             _esercizi.Add(new Esercizio("leg raise", FasciaMuscolare.Addominali, Risorsa.CorpoLibero));
+            //esercizi cardio
+            _esercizi.Add(new Esercizio("cyclette", FasciaMuscolare.Cardio, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("tapys roulant", FasciaMuscolare.Cardio, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("skillmill", FasciaMuscolare.Cardio, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("ellittica", FasciaMuscolare.Cardio, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("vogatore", FasciaMuscolare.Cardio, Risorsa.SalaPesi));
+            _esercizi.Add(new Esercizio("kranking", FasciaMuscolare.Cardio, Risorsa.SalaPesi));
+
+            _esercizi.Add(new Esercizio("skip alto", FasciaMuscolare.Cardio, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("skip basso", FasciaMuscolare.Cardio, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("jumping jacks", FasciaMuscolare.Cardio, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("salto con la corda", FasciaMuscolare.Cardio, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("step up", FasciaMuscolare.Cardio, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("corsa in pianura", FasciaMuscolare.Cardio, Risorsa.CorpoLibero));
+            _esercizi.Add(new Esercizio("corsa in salita", FasciaMuscolare.Cardio, Risorsa.CorpoLibero));
 
         }
 
 
 
-        public SqlConnection Conn { get => _conn; set => _conn = value; }
+        public SqlConnection Conn { get => _conn; set => _conn = value ?? throw new ArgumentException();
+    }
 
         /*
          * 
@@ -187,6 +219,8 @@ namespace Palestra.Persistence
 
         public bool DeleteAllenamenti(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             try
             {
                 SqlCommand delete = new SqlCommand("delete from ALLENAMENTI where username = '" + utente.Username + "' ;", Conn);
@@ -200,6 +234,8 @@ namespace Palestra.Persistence
 
         public bool DeletePianoAllenamento(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             //grazie ad on delete cascade mi si eliminano anche tutti le tuple referenziate
             try
             {
@@ -214,6 +250,8 @@ namespace Palestra.Persistence
 
         public bool DeleteUtente(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             try
             {
                 SqlCommand delete = new SqlCommand("delete from UTENTI where username='" + utente.Username + "';", Conn);
@@ -227,6 +265,8 @@ namespace Palestra.Persistence
 
         public IEnumerable<Allenamento> LoadAllAllenamenti(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             List<Allenamento> allenamenti = new List<Allenamento>();
             try
             {
@@ -262,6 +302,8 @@ namespace Palestra.Persistence
 
         public bool CheckUsername(string username)
         {
+            if (String.IsNullOrEmpty(username))
+                throw new ArgumentException();
             try
             {
                 SqlCommand select = new SqlCommand("delete from UTENTI where username='" + username + "';", Conn);
@@ -278,6 +320,8 @@ namespace Palestra.Persistence
 
         public bool ThereIsAPianoAllenamento(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             try
             {
                 bool res;
@@ -299,6 +343,8 @@ namespace Palestra.Persistence
 
         public PianoAllenamento LoadPianoAllenamento(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             PianoAllenamento pianoAllenamento;
             try
             {
@@ -374,6 +420,8 @@ namespace Palestra.Persistence
 
         public Utente Autentica(string username, string password)
         {
+            if(String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+                throw new ArgumentException();
             try
             {
                 Utente utente;
@@ -431,6 +479,8 @@ namespace Palestra.Persistence
 
         public bool SaveAllenamento(Utente utente, Allenamento allenamento)
         {
+            if(utente==null||allenamento==null)
+                 throw new ArgumentException();
             try
             {
                 int allenamentoID = _IDBroker.generaAllenamentoID();
@@ -480,6 +530,8 @@ namespace Palestra.Persistence
 
         public bool SavePianoAllenamento(Utente utente, PianoAllenamento pianoAllenamento)
         {
+            if (utente == null || pianoAllenamento == null)
+                throw new ArgumentException();
             if (ThereIsAPianoAllenamento(utente))
             {
                 DeletePianoAllenamento(utente);
@@ -592,6 +644,8 @@ namespace Palestra.Persistence
         }
         public bool updateUtente(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             try
             {
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
@@ -652,6 +706,8 @@ namespace Palestra.Persistence
 
         public bool SaveUtente(Utente utente, string password)
         {
+            if (utente == null || String.IsNullOrEmpty(password))
+                throw new ArgumentException();
             try
             {
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
@@ -704,6 +760,8 @@ namespace Palestra.Persistence
 
         public bool SaveUtenteAutomatico(Utente utente, Risorsa risorsa, int numeroGiorniAllenamento, TipoAllenamento tipo)
         {
+            if (utente == null || numeroGiorniAllenamento<=0||numeroGiorniAllenamento>7)
+                throw new ArgumentException();
             try
             {
                     SqlCommand insertUtenteAutomatico;
@@ -777,6 +835,8 @@ namespace Palestra.Persistence
 
         public void Reset(Utente utente)
         {
+            if (utente == null)
+                throw new ArgumentException();
             DeleteUtente(utente);
 
         }
@@ -790,6 +850,8 @@ namespace Palestra.Persistence
 
         public static TipoAllenamento? getTipoAllenamento(string tipoString)
         {
+            if (String.IsNullOrEmpty(tipoString))
+                throw new ArgumentException();
             TipoAllenamento? tipo = null;
             switch (tipoString.ToLower())
             {
@@ -810,6 +872,8 @@ namespace Palestra.Persistence
 
         public static Sesso? getSesso(string sessoString)
         {
+            if (String.IsNullOrEmpty(sessoString))
+                throw new ArgumentException();
             Sesso? sesso = null;
             switch (sessoString.ToLower())
             {
@@ -825,6 +889,8 @@ namespace Palestra.Persistence
 
         public static Risorsa? getRisorsa(string risorsaString)
         {
+            if (String.IsNullOrEmpty(risorsaString))
+                throw new ArgumentException();
             Risorsa? risorsa = null;
             switch (risorsaString.ToLower())
             {
@@ -846,6 +912,8 @@ namespace Palestra.Persistence
 
         public Esercizio GetEsercizioByName(string nome)
         {
+            if (String.IsNullOrEmpty(nome))
+                throw new ArgumentException();
             foreach (Esercizio esercizio in _esercizi)
             {
                 if (esercizio.Nome.ToLower().Equals(nome.ToLower()))
@@ -856,6 +924,8 @@ namespace Palestra.Persistence
 
         public static FasciaMuscolare? getFasciaMuscolare(string fasciaMuscolareString)
         {
+            if (String.IsNullOrEmpty(fasciaMuscolareString))
+                throw new ArgumentException();
             FasciaMuscolare? fasciaMuscolare = null;
             switch (fasciaMuscolareString.ToLower())
             {

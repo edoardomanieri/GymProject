@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palestra.model
+namespace ViewProject.model
 {
     public class UtenteAutomatico : Utente
     {
@@ -33,10 +33,7 @@ namespace Palestra.model
         {
             var automatico = obj as UtenteAutomatico;
             return automatico != null &&
-                   base.Equals(automatico) &&
-                   _risorse == automatico.Risorse &&
-                   _numeroGiorniAllenamento == automatico.NumeroGiorniAllenamento &&
-                   _tipo == automatico.Tipo;
+                   base.Equals(automatico);
         }
 
         public override string ToString()
