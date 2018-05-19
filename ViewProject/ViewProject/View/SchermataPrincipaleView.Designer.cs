@@ -196,11 +196,13 @@
             // 
             // dataGridViewScheda
             // 
-            this.dataGridViewScheda.AllowUserToOrderColumns = true;
+            this.dataGridViewScheda.AllowUserToAddRows = false;
+            this.dataGridViewScheda.AllowUserToDeleteRows = false;
             this.dataGridViewScheda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewScheda.Location = new System.Drawing.Point(18, 35);
+            this.dataGridViewScheda.Location = new System.Drawing.Point(69, 65);
             this.dataGridViewScheda.Name = "dataGridViewScheda";
-            this.dataGridViewScheda.Size = new System.Drawing.Size(591, 395);
+            this.dataGridViewScheda.ReadOnly = true;
+            this.dataGridViewScheda.Size = new System.Drawing.Size(240, 150);
             this.dataGridViewScheda.TabIndex = 12;
             // 
             // SchermataPrincipaleView
