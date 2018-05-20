@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ViewProject.Presentation
 {
@@ -50,7 +51,14 @@ namespace ViewProject.Presentation
                     _view.pictureBoxFoto.BackgroundImage = null;
                     _view.pictureBoxFoto.ImageLocation = imageLocation;
                     _utente.FotoPath = imageLocation;
-                    _mpm.updateUtente(_utente);
+                    try
+                    {
+                        _mpm.updateUtente(_utente);
+                    }
+                    catch (SqlException)
+                    {
+                        MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception)
@@ -74,8 +82,16 @@ namespace ViewProject.Presentation
             if (_view.RadioButtonMaschio.Checked)
                 _utente.Sesso = Sesso.Maschio;
             else
-                _utente.Sesso = Sesso.Femmina;
-            _mpm.updateUtente(_utente);
+            {
+                try
+                {
+                    _mpm.updateUtente(_utente);
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
             _view.TextBoxCognome.ReadOnly = true;
             _view.TextBoxNome.ReadOnly = true;

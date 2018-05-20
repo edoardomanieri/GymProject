@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ViewProject.Presentation
 {
@@ -51,24 +52,31 @@ namespace ViewProject.Presentation
 
         private void OnLoad(object sender, EventArgs e)
         {
-            if (_mpm.ThereIsAPianoAllenamento(_utente))
+            try
             {
-                _pianoAllenamento = _mpm.LoadPianoAllenamento(_utente);
-                foreach (GiornoAllenamento giornoAllenamento in _pianoAllenamento.GiorniAllenamento)
+                if (_mpm.ThereIsAPianoAllenamento(_utente))
                 {
-                    giornoAllenamento.Changed += ChangeGiornoAllenamento;
-                    RipopolaGiorniAggiungendoneUno();
+                    _pianoAllenamento = _mpm.LoadPianoAllenamento(_utente);
+                    foreach (GiornoAllenamento giornoAllenamento in _pianoAllenamento.GiorniAllenamento)
+                    {
+                        giornoAllenamento.Changed += ChangeGiornoAllenamento;
+                        RipopolaGiorniAggiungendoneUno();
+                    }
                 }
-            }
-            else
-            {
-                _pianoAllenamento = new PianoAllenamento();
-                //creo il primo giorno
-                _pianoAllenamento.addGiornoAllenamento(new GiornoAllenamento());
-                _pianoAllenamento.GiorniAllenamento[0].Changed += ChangeGiornoAllenamento;
-            }
+                else
+                {
+                    _pianoAllenamento = new PianoAllenamento();
+                    //creo il primo giorno
+                    _pianoAllenamento.addGiornoAllenamento(new GiornoAllenamento());
+                    _pianoAllenamento.GiorniAllenamento[0].Changed += ChangeGiornoAllenamento;
+                }
 
-            _pianoAllenamento.Changed += ChangePiano;
+                _pianoAllenamento.Changed += ChangePiano;
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -103,7 +111,14 @@ namespace ViewProject.Presentation
         {
             if (_pianoAllenamento.GiorniAllenamento.Last().ListaEsecuzioniEsercizi.Count == 0)
                 _pianoAllenamento.removeGiornoAllenamento(_pianoAllenamento.GiorniAllenamento.Last());
-            _mpm.SavePianoAllenamento(_utente,_pianoAllenamento);
+            try
+            {
+                _mpm.SavePianoAllenamento(_utente, _pianoAllenamento);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

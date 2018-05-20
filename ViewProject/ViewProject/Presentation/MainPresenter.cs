@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewProject.View;
+using System.Data.SqlClient;
 
 namespace ViewProject.Presentation
 {
@@ -49,7 +50,13 @@ namespace ViewProject.Presentation
                (int)_creaAccountView.numericUpDownAltezza.Value, sesso);
 
             //inseriamo l'utente nel DB
-            _mpm.SaveUtente(_utente, _creaAccountView.CreaPassword.Text);
+            try
+            {
+                _mpm.SaveUtente(_utente, _creaAccountView.CreaPassword.Text);
+            }catch(SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             AvviaViewsEPresenter();
 
         }
@@ -79,7 +86,14 @@ namespace ViewProject.Presentation
         {
             string username = _schermataAutenticazioneView.textBoxUsername.Text;
             string password = _schermataAutenticazioneView.Password.Text;
-           _utente = _mpm.Autentica(username, password);
+            try
+            {
+                _utente = _mpm.Autentica(username, password);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (_utente == null)
             {
                 MessageBox.Show("Credenziali errate");

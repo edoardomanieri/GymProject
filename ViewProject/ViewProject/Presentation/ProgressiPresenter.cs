@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ViewProject.Presentation
 {
@@ -33,7 +35,13 @@ namespace ViewProject.Presentation
             DateTime data = _view.dateTimePickerDataAllenamento.Value;
 
             Allenamento allenamento = new Allenamento(durata, data, peso);
-            _mpm.SaveAllenamento(_utente, allenamento);
+            try
+            {
+                _mpm.SaveAllenamento(_utente, allenamento);
+            }catch(SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             _allenamenti.Add(allenamento);
 
 
@@ -54,9 +62,14 @@ namespace ViewProject.Presentation
 
         private void OnLoad(object sender, EventArgs e)
         {
-
-            _allenamenti =(List<Allenamento>) _mpm.LoadAllAllenamenti(_utente);
-
+            try
+            {
+                _allenamenti = (List<Allenamento>)_mpm.LoadAllAllenamenti(_utente);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             _view.chartDurata.DataSource = _allenamenti;
             _view.chartDurata.Series["Durata"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             _view.chartDurata.Series["Durata"].XValueMember = "data";

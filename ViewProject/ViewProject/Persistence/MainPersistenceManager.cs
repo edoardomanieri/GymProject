@@ -219,8 +219,6 @@ namespace ViewProject.Persistence
 
         public bool DeleteAllenamenti(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             try
             {
                 SqlCommand delete = new SqlCommand("delete from ALLENAMENTI where username = '" + utente.Username + "' ;", Conn);
@@ -234,8 +232,6 @@ namespace ViewProject.Persistence
 
         public bool DeletePianoAllenamento(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             //grazie ad on delete cascade mi si eliminano anche tutti le tuple referenziate
             try
             {
@@ -250,8 +246,6 @@ namespace ViewProject.Persistence
 
         public bool DeleteUtente(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             try
             {
                 SqlCommand delete = new SqlCommand("delete from UTENTI where username='" + utente.Username + "';", Conn);
@@ -265,8 +259,6 @@ namespace ViewProject.Persistence
 
         public IEnumerable<Allenamento> LoadAllAllenamenti(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             List<Allenamento> allenamenti = new List<Allenamento>();
             try
             {
@@ -302,8 +294,6 @@ namespace ViewProject.Persistence
 
         public bool CheckUsername(string username)
         {
-            if (String.IsNullOrEmpty(username))
-                throw new ArgumentException();
             try
             {
                 SqlCommand select = new SqlCommand("delete from UTENTI where username='" + username + "';", Conn);
@@ -320,8 +310,6 @@ namespace ViewProject.Persistence
 
         public bool ThereIsAPianoAllenamento(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             try
             {
                 bool res;
@@ -343,8 +331,6 @@ namespace ViewProject.Persistence
 
         public PianoAllenamento LoadPianoAllenamento(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             PianoAllenamento pianoAllenamento;
             try
             {
@@ -420,8 +406,6 @@ namespace ViewProject.Persistence
 
         public Utente Autentica(string username, string password)
         {
-            if(String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
-                throw new ArgumentException();
             try
             {
                 Utente utente;
@@ -479,8 +463,6 @@ namespace ViewProject.Persistence
 
         public bool SaveAllenamento(Utente utente, Allenamento allenamento)
         {
-            if(utente==null||allenamento==null)
-                 throw new ArgumentException();
             try
             {
                 int allenamentoID = _IDBroker.generaAllenamentoID();
@@ -530,8 +512,6 @@ namespace ViewProject.Persistence
 
         public bool SavePianoAllenamento(Utente utente, PianoAllenamento pianoAllenamento)
         {
-            if (utente == null || pianoAllenamento == null)
-                throw new ArgumentException();
             if (ThereIsAPianoAllenamento(utente))
             {
                 DeletePianoAllenamento(utente);
@@ -644,8 +624,6 @@ namespace ViewProject.Persistence
         }
         public bool updateUtente(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             try
             {
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
@@ -706,8 +684,6 @@ namespace ViewProject.Persistence
 
         public bool SaveUtente(Utente utente, string password)
         {
-            if (utente == null || String.IsNullOrEmpty(password))
-                throw new ArgumentException();
             try
             {
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
@@ -760,8 +736,6 @@ namespace ViewProject.Persistence
 
         public bool SaveUtenteAutomatico(Utente utente, Risorsa risorsa, int numeroGiorniAllenamento, TipoAllenamento tipo)
         {
-            if (utente == null || numeroGiorniAllenamento<=0||numeroGiorniAllenamento>7)
-                throw new ArgumentException();
             try
             {
                     SqlCommand insertUtenteAutomatico;
@@ -835,8 +809,6 @@ namespace ViewProject.Persistence
 
         public void Reset(Utente utente)
         {
-            if (utente == null)
-                throw new ArgumentException();
             DeleteUtente(utente);
 
         }
@@ -850,8 +822,6 @@ namespace ViewProject.Persistence
 
         public static TipoAllenamento? getTipoAllenamento(string tipoString)
         {
-            if (String.IsNullOrEmpty(tipoString))
-                throw new ArgumentException();
             TipoAllenamento? tipo = null;
             switch (tipoString.ToLower())
             {
@@ -872,8 +842,6 @@ namespace ViewProject.Persistence
 
         public static Sesso? getSesso(string sessoString)
         {
-            if (String.IsNullOrEmpty(sessoString))
-                throw new ArgumentException();
             Sesso? sesso = null;
             switch (sessoString.ToLower())
             {
@@ -889,8 +857,6 @@ namespace ViewProject.Persistence
 
         public static Risorsa? getRisorsa(string risorsaString)
         {
-            if (String.IsNullOrEmpty(risorsaString))
-                throw new ArgumentException();
             Risorsa? risorsa = null;
             switch (risorsaString.ToLower())
             {
@@ -912,8 +878,6 @@ namespace ViewProject.Persistence
 
         public Esercizio GetEsercizioByName(string nome)
         {
-            if (String.IsNullOrEmpty(nome))
-                throw new ArgumentException();
             foreach (Esercizio esercizio in _esercizi)
             {
                 if (esercizio.Nome.ToLower().Equals(nome.ToLower()))
@@ -924,8 +888,6 @@ namespace ViewProject.Persistence
 
         public static FasciaMuscolare? getFasciaMuscolare(string fasciaMuscolareString)
         {
-            if (String.IsNullOrEmpty(fasciaMuscolareString))
-                throw new ArgumentException();
             FasciaMuscolare? fasciaMuscolare = null;
             switch (fasciaMuscolareString.ToLower())
             {

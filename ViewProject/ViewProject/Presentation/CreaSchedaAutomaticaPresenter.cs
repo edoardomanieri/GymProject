@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ViewProject.Presentation
 {
@@ -34,14 +36,26 @@ namespace ViewProject.Presentation
             Risorsa risorsa = MainPersistanceManager.getRisorsa(_creaSchedaAutomaticaView.comboModalita.Text).Value;
             TipoAllenamento tipo = MainPersistanceManager.getTipoAllenamento(_creaSchedaAutomaticaView.comboBoxObiettivo.Text).Value;
             int numeroAllenamenti = (int)_creaSchedaAutomaticaView.numericUpDownAllenamenti.Value;
-
+           
             //verra per forza invocata dopo che un utente è gia stato salvato
-            _mpm.SaveUtenteAutomatico(_utente, risorsa, numeroAllenamenti, tipo);
+            try
+            {
+                _mpm.SaveUtenteAutomatico(_utente, risorsa, numeroAllenamenti, tipo);
+            }catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
             //creo e salvo il pianoAllenamento automatico
             _utente = new UtenteAutomatico(_utente.Username,_utente.Nome,_utente.Cognome, _utente.DataDiNascita, _utente.PesoInKg, _utente.AltezzaInCm,_utente.Sesso, risorsa,numeroAllenamenti,tipo);
             PianoAllenamento pianoAllenamento = _gestorePianiAllenamento.getPianoAllenamento((UtenteAutomatico)_utente, (List<Esercizio>)_mpm.LoadAllEsercizi());
-            _mpm.SavePianoAllenamento(_utente, pianoAllenamento);
+            try
+            {
+                _mpm.SavePianoAllenamento(_utente, pianoAllenamento);
+            }catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }
