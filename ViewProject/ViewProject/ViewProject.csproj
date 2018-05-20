@@ -81,6 +81,7 @@
     <Compile Include="Test\ModelTest\PianoAllenamentoTest.cs" />
     <Compile Include="Test\ModelTest\UtenteAutomaticoTest.cs" />
     <Compile Include="Test\ModelTest\UtenteTest.cs" />
+    <Compile Include="Test\PersistenceTest\MainPersistenceManagerTest.cs" />
     <Compile Include="View\SchermataAutenticazioneView.cs">
       <SubType>UserControl</SubType>
     </Compile>
