@@ -12,6 +12,36 @@ namespace ViewProject.Test.ModelTest
     [TestFixture]
     class ConfiguraPianoAllenamentoTest
     {
+        private readonly int[] _tempiDiRecuperoInSec;
+        private readonly int[] _tempiDiEsecuzioneInMinTonificazione;
+        private readonly int[] _numeriSerieIpertrofia;
+        private readonly int[] _numeriSerieDefinizione;
+        private readonly int[] _numeriSerieTonificazione;
+        private readonly int[] _numeriRipetizioniIpertrofia;
+        private readonly int[] _numeriRipetizioniDefinizione;
+        private readonly int[] _numeriRipetizioniTonificazione;
+
+        public ConfiguraPianoAllenamentoTest()
+        {
+            _tempiDiRecuperoInSec = new int[3];
+            _tempiDiEsecuzioneInMinTonificazione = new int[3];
+            _numeriSerieIpertrofia = new int[3];
+            _numeriSerieDefinizione = new int[3];
+            _numeriSerieTonificazione = new int[3];
+            _numeriRipetizioniIpertrofia = new int[3];
+            _numeriRipetizioniDefinizione = new int[3];
+            _numeriRipetizioniTonificazione = new int[3];
+
+            _tempiDiRecuperoInSec[0] = 60; _tempiDiRecuperoInSec[1] = 90; _tempiDiRecuperoInSec[2] = 120;
+            _tempiDiEsecuzioneInMinTonificazione[0] = 30; _tempiDiEsecuzioneInMinTonificazione[1] = 45; _tempiDiEsecuzioneInMinTonificazione[2] = 20;
+            _numeriSerieIpertrofia[0] = 2; _numeriSerieIpertrofia[1] = 3; _numeriSerieIpertrofia[2] = 4;
+            _numeriSerieDefinizione[0] = 5; _numeriSerieDefinizione[1] = 3; _numeriSerieDefinizione[2] = 4;
+            _numeriSerieTonificazione[0] = 4; _numeriSerieTonificazione[1] = 5; _numeriSerieTonificazione[2] = 6;
+            _numeriRipetizioniIpertrofia[0] = 6; _numeriRipetizioniIpertrofia[1] = 8; _numeriRipetizioniIpertrofia[2] = 10;
+            _numeriRipetizioniDefinizione[0] = 12; _numeriRipetizioniDefinizione[1] = 15; _numeriRipetizioniDefinizione[2] = 20;
+            _numeriRipetizioniTonificazione[0] = 10; _numeriRipetizioniTonificazione[1] = 12; _numeriRipetizioniTonificazione[2] = 15;
+        }
+
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
@@ -32,13 +62,13 @@ namespace ViewProject.Test.ModelTest
             Assert.AreEqual(true, schedaTest.NumeroGiorniAllenamento == utenteAuto.NumeroGiorniAllenamento);
             Assert.AreEqual(true, schedaTest.GiorniAllenamento.Count == utenteAuto.NumeroGiorniAllenamento);
             Assert.AreEqual(true, verificaPresenzaFasceMuscolari(schedaTest));
-            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, ConfiguraPianoAllenamentoIpertrofia.numeroRipetizioniIpertrofia, ConfiguraPianoAllenamentoIpertrofia.numeroSerieIpertrofia, ConfiguraPianoAllenamentoIpertrofia.tempoDiRecuperoInSecIpertrofia, 0));
+            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, _numeriRipetizioniIpertrofia, _numeriSerieIpertrofia, _tempiDiRecuperoInSec, null));
             Assert.AreEqual(true, verificaUnicitaEsercizi(schedaTest));
             schedaTest = configura.Configura(utenteAutoCorpoLibero, manager.LoadAllEsercizi().ToList());
             Assert.AreEqual(true, schedaTest.NumeroGiorniAllenamento == utenteAutoCorpoLibero.NumeroGiorniAllenamento);
             Assert.AreEqual(true, schedaTest.GiorniAllenamento.Count == utenteAutoCorpoLibero.NumeroGiorniAllenamento);
             Assert.AreEqual(true, verificaPresenzaFasceMuscolari(schedaTest));
-            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAutoCorpoLibero.Risorse, ConfiguraPianoAllenamentoIpertrofia.numeroRipetizioniIpertrofia, ConfiguraPianoAllenamentoIpertrofia.numeroSerieIpertrofia, ConfiguraPianoAllenamentoIpertrofia.tempoDiRecuperoInSecIpertrofia, 0));
+            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAutoCorpoLibero.Risorse, _numeriRipetizioniIpertrofia, _numeriSerieIpertrofia, _tempiDiRecuperoInSec, null));
             Assert.AreEqual(true, verificaUnicitaEsercizi(schedaTest));
         }
 
@@ -62,13 +92,13 @@ namespace ViewProject.Test.ModelTest
             Assert.AreEqual(true, schedaTest.NumeroGiorniAllenamento == utenteAuto.NumeroGiorniAllenamento);
             Assert.AreEqual(true, schedaTest.GiorniAllenamento.Count == utenteAuto.NumeroGiorniAllenamento);
             Assert.AreEqual(true, verificaPresenzaFasceMuscolari(schedaTest));
-            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, ConfiguraPianoAllenamentoDefinizione.numeroRipetizioniDefinizione, ConfiguraPianoAllenamentoDefinizione.numeroSerieDefinizione, ConfiguraPianoAllenamentoDefinizione.tempoDiRecuperoInSecDefinizione, 0));
+            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, _numeriRipetizioniDefinizione, _numeriSerieDefinizione, _tempiDiRecuperoInSec, null));
             Assert.AreEqual(true, verificaUnicitaEsercizi(schedaTest));
             schedaTest = configura.Configura(utenteAutoCorpoLibero, manager.LoadAllEsercizi().ToList());
             Assert.AreEqual(true, schedaTest.NumeroGiorniAllenamento == utenteAutoCorpoLibero.NumeroGiorniAllenamento);
             Assert.AreEqual(true, schedaTest.GiorniAllenamento.Count == utenteAutoCorpoLibero.NumeroGiorniAllenamento);
             Assert.AreEqual(true, verificaPresenzaFasceMuscolari(schedaTest));
-            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAutoCorpoLibero.Risorse, ConfiguraPianoAllenamentoDefinizione.numeroRipetizioniDefinizione, ConfiguraPianoAllenamentoDefinizione.numeroSerieDefinizione, ConfiguraPianoAllenamentoDefinizione.tempoDiRecuperoInSecDefinizione, 0));
+            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAutoCorpoLibero.Risorse, _numeriRipetizioniDefinizione, _numeriSerieDefinizione, _tempiDiRecuperoInSec, null));
             Assert.AreEqual(true, verificaUnicitaEsercizi(schedaTest));
         }
 
@@ -92,14 +122,14 @@ namespace ViewProject.Test.ModelTest
             Assert.AreEqual(true, schedaTest.NumeroGiorniAllenamento == utenteAuto.NumeroGiorniAllenamento);
             Assert.AreEqual(true, schedaTest.GiorniAllenamento.Count == utenteAuto.NumeroGiorniAllenamento);
             Assert.AreEqual(true, verificaPresenzaFasceMuscolari(schedaTest));
-            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, ConfiguraPianoAllenamentoTonificazione.numeroRipetizioniTonificazione, ConfiguraPianoAllenamentoTonificazione.numeroSerieTonificazione, ConfiguraPianoAllenamentoTonificazione.tempoDiRecuperoInSecTonificazione, ConfiguraPianoAllenamentoTonificazione.tempoDEsecuzioneInMinTonificazione));
+            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, _numeriRipetizioniTonificazione, _numeriSerieTonificazione, _tempiDiRecuperoInSec, _tempiDiEsecuzioneInMinTonificazione));
             Assert.AreEqual(true, verificaUnicitaEsercizi(schedaTest));
             Assert.AreEqual(true, isPresentCardio(schedaTest));
             schedaTest = configura.Configura(utenteAutoCorpoLibero, manager.LoadAllEsercizi().ToList());
             Assert.AreEqual(true, schedaTest.NumeroGiorniAllenamento == utenteAutoCorpoLibero.NumeroGiorniAllenamento);
             Assert.AreEqual(true, schedaTest.GiorniAllenamento.Count == utenteAutoCorpoLibero.NumeroGiorniAllenamento);
             Assert.AreEqual(true, verificaPresenzaFasceMuscolari(schedaTest));
-            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, ConfiguraPianoAllenamentoTonificazione.numeroRipetizioniTonificazione, ConfiguraPianoAllenamentoTonificazione.numeroSerieTonificazione, ConfiguraPianoAllenamentoTonificazione.tempoDiRecuperoInSecTonificazione, ConfiguraPianoAllenamentoTonificazione.tempoDEsecuzioneInMinTonificazione));
+            Assert.AreEqual(true, verificaEsecuzioniEsercizi(schedaTest, utenteAuto.Risorse, _numeriRipetizioniTonificazione, _numeriSerieTonificazione, _tempiDiRecuperoInSec, _tempiDiEsecuzioneInMinTonificazione));
             Assert.AreEqual(true, verificaUnicitaEsercizi(schedaTest));
             Assert.AreEqual(true, isPresentCardio(schedaTest));
         }
@@ -124,12 +154,12 @@ namespace ViewProject.Test.ModelTest
             return result;    
         }
 
-        private bool verificaEsecuzioniEsercizi(PianoAllenamento scheda, Risorsa risorsa, int numeroRipetizioni, int numeroSerie, int tempoDiRecuperoInSec, int tempoDEsecuzioneInMinTonificazione)
+        private bool verificaEsecuzioniEsercizi(PianoAllenamento scheda, Risorsa risorsa, int[] numeroRipetizioni, int[] numeroSerie, int[] tempoDiRecuperoInSec, int[] tempoDEsecuzioneInMinTonificazione)
         {
             bool result = true;
             foreach (GiornoAllenamento giornoCorrente in scheda.GiorniAllenamento)
             {
-                if (giornoCorrente.TempoDiRecuperoInSec != tempoDiRecuperoInSec)
+                if (!valueIsPresent(tempoDiRecuperoInSec,giornoCorrente.TempoDiRecuperoInSec))
                     result = false;
                 foreach (EsecuzioneEsercizio esecuzioneCorrente in giornoCorrente.ListaEsecuzioniEsercizi)
                 {
@@ -141,21 +171,30 @@ namespace ViewProject.Test.ModelTest
                     if (esecuzioneCorrente is EsecuzioneEsercizioASerie)
                     {
                         EsecuzioneEsercizioASerie temp = esecuzioneCorrente as EsecuzioneEsercizioASerie;
-                        if (temp.NumeroRipetizioni != numeroRipetizioni)
+                        if (!valueIsPresent(numeroRipetizioni,temp.NumeroRipetizioni))
                             result = false;
-                        if (temp.NumeroSerie != numeroSerie)
+                        if (!valueIsPresent(numeroSerie, temp.NumeroSerie))
                             result = false;
-                        if (temp.TempoDiRecuperoInSec != tempoDiRecuperoInSec)
+                        if (!valueIsPresent(tempoDiRecuperoInSec, temp.TempoDiRecuperoInSec))
                             result = false;
                     }
                     if (esecuzioneCorrente is EsecuzioneEsercizioATempo)
                     {
                         EsecuzioneEsercizioATempo temp = esecuzioneCorrente as EsecuzioneEsercizioATempo;
-                        if (temp.Tempo != tempoDEsecuzioneInMinTonificazione)
+                        if (tempoDEsecuzioneInMinTonificazione != null & !valueIsPresent(tempoDEsecuzioneInMinTonificazione, temp.Tempo))
                             result = false;
                     }
                 }
             }
+            return result;
+        }
+
+        private bool valueIsPresent(int[] array, int valoreDaValutare)
+        {
+            bool result = false;
+            foreach (int valoreCorrente in array)
+                if (valoreCorrente == valoreDaValutare)
+                    result = true;
             return result;
         }
 

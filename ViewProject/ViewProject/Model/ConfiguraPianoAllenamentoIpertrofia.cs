@@ -8,10 +8,6 @@ namespace ViewProject.model
 {
     public class ConfiguraPianoAllenamentoIpertrofia : IConfiguraPianoAllenamento
     {
-
-        public const int numeroRipetizioniIpertrofia = 10;
-        public const int numeroSerieIpertrofia = 4;
-        public const int tempoDiRecuperoInSecIpertrofia = 90;
         public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
         {
             if (utenteAutomatico == null || esercizi == null || esercizi.Count == 0)
@@ -23,7 +19,7 @@ namespace ViewProject.model
             for (int giorno = 0; giorno < distribuzioneMuscoli.Count; giorno++)//per ogni giorno d'allenamento
             {
                 int[] eserciziPerMuscolo = distribuisci(distribuzioneMuscoli.ElementAt(giorno).Value.Count, getNumeroEserciziPerNumeroGiorniAllenamento(utenteAutomatico.NumeroGiorniAllenamento)); //distribuzione numero esercizi per ogni muscolo da allenare nel giorno corrente
-                GiornoAllenamento nuovoGiornoAllenamento = new GiornoAllenamento(tempoDiRecuperoInSecIpertrofia);
+                GiornoAllenamento nuovoGiornoAllenamento = new GiornoAllenamento(TempiDiRecuperoInSec[new Random().Next(TempiDiRecuperoInSec.Length)]);
                 for (int indiceMuscolo = 0; indiceMuscolo < eserciziPerMuscolo.Length; indiceMuscolo++)//per ogni muscolo d'allenare del giorno d'allenamento corrente
                 {
                     IList<Esercizio> listaPerMuscoloCorrente = getEserciziPerFascie(distribuzioneMuscoli[giorno].ElementAt(indiceMuscolo), utenteAutomatico.Risorse, esercizi);
@@ -35,7 +31,7 @@ namespace ViewProject.model
                         {
                             if (!verificaPresenzaEsercizio(nuovoEsercizio, nuovoGiornoAllenamento)) // è scelto random, percio se è già presente ripete l'iterazione all'indice corrente
                             {
-                                nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(nuovoEsercizio, tempoDiRecuperoInSecIpertrofia, numeroRipetizioniIpertrofia, numeroSerieIpertrofia));
+                                nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(nuovoEsercizio, TempiDiRecuperoInSec[new Random().Next(TempiDiRecuperoInSec.Length)], NumeriRipetizioniIpertrofia[new Random().Next(NumeriRipetizioniIpertrofia.Length)], NumeriSerieIpertrofia[new Random().Next(NumeriSerieIpertrofia.Length)]));
                                 tentativiFalliti = 0;
                             }
                             else

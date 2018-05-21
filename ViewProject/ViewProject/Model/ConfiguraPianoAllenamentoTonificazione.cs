@@ -8,10 +8,6 @@ namespace ViewProject.model
 {
     class ConfiguraPianoAllenamentoTonificazione : IConfiguraPianoAllenamento
     {
-        public const int numeroRipetizioniTonificazione = 20;
-        public const int numeroSerieTonificazione = 3;
-        public const int tempoDEsecuzioneInMinTonificazione = 40;
-        public const int tempoDiRecuperoInSecTonificazione = 60;
         public override PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi)
         {
             if (utenteAutomatico == null || esercizi == null || esercizi.Count == 0)
@@ -23,9 +19,9 @@ namespace ViewProject.model
             for (int giorno = 0; giorno < distribuzioneMuscoli.Count; giorno++)//per ogni giorno d'allenamento
             {
                 int[] eserciziPerMuscolo = distribuisci(distribuzioneMuscoli.ElementAt(giorno).Value.Count, getNumeroEserciziPerNumeroGiorniAllenamento(utenteAutomatico.NumeroGiorniAllenamento)); //distribuzione numero esercizi per ogni muscolo da allenare nel giorno corrente
-                GiornoAllenamento nuovoGiornoAllenamento = new GiornoAllenamento(tempoDiRecuperoInSecTonificazione);
+                GiornoAllenamento nuovoGiornoAllenamento = new GiornoAllenamento(TempiDiRecuperoInSec[new Random().Next(TempiDiRecuperoInSec.Length)]);
                 IList<Esercizio> listaEserciziCardio = getEserciziPerFascie(FasciaMuscolare.Cardio, utenteAutomatico.Risorse, esercizi);
-                nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioATempo(listaEserciziCardio[new Random().Next(listaEserciziCardio.Count-1)], tempoDEsecuzioneInMinTonificazione)); //aggiungo staticamente due esercizi cardio, da notare il -2 quando chiamo "getNumeroEserciziPerNumeroGiorniAllenamento"
+                nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioATempo(listaEserciziCardio[new Random().Next(listaEserciziCardio.Count-1)], TempiDiEsecuzioneInMinTonificazione[new Random().Next(TempiDiEsecuzioneInMinTonificazione.Length)])); //aggiungo staticamente due esercizi cardio, da notare il -2 quando chiamo "getNumeroEserciziPerNumeroGiorniAllenamento"
                 for (int indiceMuscolo = 0; indiceMuscolo < eserciziPerMuscolo.Length; indiceMuscolo++)//per ogni muscolo d'allenare del giorno d'allenamento corrente
                 {
                     IList<Esercizio> listaPerMuscoloCorrente = getEserciziPerFascie(distribuzioneMuscoli[giorno].ElementAt(indiceMuscolo), utenteAutomatico.Risorse, esercizi);
@@ -37,7 +33,7 @@ namespace ViewProject.model
                         {
                             if (!verificaPresenzaEsercizio(nuovoEsercizio, nuovoGiornoAllenamento)) // è scelto random, percio se è già presente ripete l'iterazione all'indice corrente
                             {
-                                nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(nuovoEsercizio, tempoDiRecuperoInSecTonificazione, numeroRipetizioniTonificazione, numeroSerieTonificazione));
+                                nuovoGiornoAllenamento.addEsecuzioneEsercizio(new EsecuzioneEsercizioASerie(nuovoEsercizio, TempiDiRecuperoInSec[new Random().Next(TempiDiRecuperoInSec.Length)], NumeriRipetizioniTonificazione[new Random().Next(NumeriRipetizioniTonificazione.Length)], NumeriSerieTonificazione[new Random().Next(NumeriSerieTonificazione.Length)]));
                                 tentativiFalliti = 0;
                             }
                             else
