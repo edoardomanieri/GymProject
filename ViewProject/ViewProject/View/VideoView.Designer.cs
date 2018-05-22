@@ -107,7 +107,6 @@
             this.buttonIndietroVideo.Tag = "";
             this.buttonIndietroVideo.Text = "Torna al Menu";
             this.buttonIndietroVideo.UseVisualStyleBackColor = false;
-            this.buttonIndietroVideo.Click += new System.EventHandler(this.buttonIndietroVideo_Click);
             // 
             // VideoView
             // 

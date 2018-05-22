@@ -46,14 +46,14 @@
             this.labelTitolo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitolo.AutoSize = true;
             this.labelTitolo.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitolo.Font = new System.Drawing.Font("Showcard Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitolo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitolo.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelTitolo.Location = new System.Drawing.Point(155, 39);
+            this.labelTitolo.Location = new System.Drawing.Point(115, 31);
             this.labelTitolo.Name = "labelTitolo";
             this.labelTitolo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelTitolo.Size = new System.Drawing.Size(563, 60);
+            this.labelTitolo.Size = new System.Drawing.Size(570, 64);
             this.labelTitolo.TabIndex = 3;
-            this.labelTitolo.Text = "            Inserisci i seguenti dati ai fini di\r\n generare automaticamente la tu" +
+            this.labelTitolo.Text = "            Inserisci i seguenti dati al fine di\r\n generare automaticamente la tu" +
     "a scheda!";
             // 
             // numericUpDownAllenamenti
@@ -185,7 +185,6 @@
             this.buttonProcedi.TabIndex = 29;
             this.buttonProcedi.Text = "Procedi";
             this.buttonProcedi.UseVisualStyleBackColor = false;
-            this.buttonProcedi.Click += new System.EventHandler(this.buttonProcedi_Click);
             // 
             // buttonIndietro
             // 

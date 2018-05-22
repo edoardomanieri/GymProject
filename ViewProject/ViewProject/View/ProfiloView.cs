@@ -18,22 +18,5 @@ namespace ViewProject
             InitializeComponent();
         }
 
-        private void buttonCaricaFoto_Click(object sender, EventArgs e)
-        {
- 
-            
-        }
-
-        private void buttonRimuoviFoto_Click(object sender, EventArgs e)
-        {
-            pictureBoxFoto.ImageLocation = null;
-        }
-
-        private void buttonIndietro_Click(object sender, EventArgs e)
-        {
-            MainForm mainForm = (MainForm)this.FindForm();
-            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
-            mainForm.SetView(view);
-        }
     }
 }

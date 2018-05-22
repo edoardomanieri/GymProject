@@ -79,7 +79,6 @@
             this.buttonIndietroProgressi.Tag = "";
             this.buttonIndietroProgressi.Text = "Torna al Menu";
             this.buttonIndietroProgressi.UseVisualStyleBackColor = false;
-            this.buttonIndietroProgressi.Click += new System.EventHandler(this.buttonIndietroProgressi_Click);
             // 
             // chartDurata
             // 
@@ -305,7 +304,6 @@
             this.buttonSalvaAllenamentoProgressi.Tag = "";
             this.buttonSalvaAllenamentoProgressi.Text = "Salva Allenamento";
             this.buttonSalvaAllenamentoProgressi.UseVisualStyleBackColor = false;
-            this.buttonSalvaAllenamentoProgressi.Click += new System.EventHandler(this.buttonSalvaAllenamento_Click);
             // 
             // labelContatore
             // 

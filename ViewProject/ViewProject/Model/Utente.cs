@@ -1,11 +1,11 @@
-﻿using Palestra.Persistence;
+﻿using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palestra.model
+namespace ViewProject.model
 {
     public class Utente 
     {
@@ -16,7 +16,7 @@ namespace Palestra.model
         private int _pesoInKg;
         private int _altezzaInCm;
         private Sesso _sesso;
-        private string fotoPath;
+        private string _fotoPath;
 
         public Utente(string username, string nome, string cognome, DateTime dataDiNascita, int pesoInKg, int altezzaInCm, Sesso sesso)
         {
@@ -84,18 +84,13 @@ namespace Palestra.model
             }
         }
 
-        public string FotoPath { get => fotoPath; set => fotoPath = value; }
+        public string FotoPath { get => _fotoPath; set => _fotoPath = value; }
 
         public override bool Equals(object obj)
         {
             var utente = obj as Utente;
             return utente != null &&
-                   _nome == utente.Nome &&
-                   _cognome == utente.Cognome &&
-                   _dataDiNascita == utente.DataDiNascita &&
-                   _pesoInKg == utente.PesoInKg &&
-                   _altezzaInCm == utente.AltezzaInCm &&
-                   _sesso == utente.Sesso;
+                   _username == utente.Username;
         }
 
         public override string ToString()

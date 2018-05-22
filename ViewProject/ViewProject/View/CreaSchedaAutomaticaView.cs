@@ -21,17 +21,6 @@ namespace ViewProject
             InitializeComponent();
         }
 
-        private void buttonProcedi_Click(object sender, EventArgs e)
-        {
-            if (!IsCompleted())
-            {
-                MessageBox.Show("Inserire tutti i dati per proseguire!");
-                return;
-            }
-            MainForm mainForm = (MainForm)this.FindForm();
-            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
-            mainForm.SetView(view);
-        }
 
         public bool  IsCompleted()
         {

@@ -33,11 +33,6 @@
             this.buttonSalvaScheda = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelASerie = new System.Windows.Forms.Panel();
-            this.panelATempo = new System.Windows.Forms.Panel();
-            this.numericUpDownTempo = new System.Windows.Forms.NumericUpDown();
-            this.labelTempo2 = new System.Windows.Forms.Label();
-            this.comboBoxEserciziTempo = new System.Windows.Forms.ComboBox();
-            this.labelEsercizio2 = new System.Windows.Forms.Label();
             this.carico = new System.Windows.Forms.NumericUpDown();
             this.labelPeso = new System.Windows.Forms.Label();
             this.tempoRecupero = new System.Windows.Forms.NumericUpDown();
@@ -63,16 +58,21 @@
             this.labelRecuperoGiornoAllenamento = new System.Windows.Forms.Label();
             this.recuperoGiornoAllenamento = new System.Windows.Forms.NumericUpDown();
             this.buttonIndietro = new System.Windows.Forms.Button();
+            this.panelATempo = new System.Windows.Forms.Panel();
+            this.numericUpDownTempo = new System.Windows.Forms.NumericUpDown();
+            this.labelTempo2 = new System.Windows.Forms.Label();
+            this.comboBoxEserciziTempo = new System.Windows.Forms.ComboBox();
+            this.labelEsercizio2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelASerie.SuspendLayout();
-            this.panelATempo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempoRecupero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroRipetizioni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroSerie)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recuperoGiornoAllenamento)).BeginInit();
+            this.panelATempo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempo)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTitolo
@@ -80,12 +80,12 @@
             this.labelTitolo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitolo.AutoSize = true;
             this.labelTitolo.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitolo.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitolo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitolo.ForeColor = System.Drawing.Color.GreenYellow;
             this.labelTitolo.Location = new System.Drawing.Point(277, -2);
             this.labelTitolo.Name = "labelTitolo";
             this.labelTitolo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelTitolo.Size = new System.Drawing.Size(262, 29);
+            this.labelTitolo.Size = new System.Drawing.Size(239, 28);
             this.labelTitolo.TabIndex = 2;
             this.labelTitolo.Text = "Crea la tua Scheda!";
             // 
@@ -107,7 +107,6 @@
             this.buttonSalvaScheda.Tag = "";
             this.buttonSalvaScheda.Text = "Termina e Salva";
             this.buttonSalvaScheda.UseVisualStyleBackColor = false;
-            this.buttonSalvaScheda.Click += new System.EventHandler(this.buttonSalvaScheda_Click);
             // 
             // panel1
             // 
@@ -128,7 +127,6 @@
             // panelASerie
             // 
             this.panelASerie.BackColor = System.Drawing.Color.Transparent;
-            this.panelASerie.Controls.Add(this.panelATempo);
             this.panelASerie.Controls.Add(this.carico);
             this.panelASerie.Controls.Add(this.labelPeso);
             this.panelASerie.Controls.Add(this.tempoRecupero);
@@ -145,87 +143,6 @@
             this.panelASerie.Name = "panelASerie";
             this.panelASerie.Size = new System.Drawing.Size(472, 254);
             this.panelASerie.TabIndex = 65;
-            // 
-            // panelATempo
-            // 
-            this.panelATempo.BackColor = System.Drawing.Color.Transparent;
-            this.panelATempo.Controls.Add(this.numericUpDownTempo);
-            this.panelATempo.Controls.Add(this.labelTempo2);
-            this.panelATempo.Controls.Add(this.comboBoxEserciziTempo);
-            this.panelATempo.Controls.Add(this.labelEsercizio2);
-            this.panelATempo.Location = new System.Drawing.Point(0, 0);
-            this.panelATempo.Name = "panelATempo";
-            this.panelATempo.Size = new System.Drawing.Size(472, 254);
-            this.panelATempo.TabIndex = 66;
-            // 
-            // numericUpDownTempo
-            // 
-            this.numericUpDownTempo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDownTempo.BackColor = System.Drawing.Color.Lime;
-            this.numericUpDownTempo.Location = new System.Drawing.Point(299, 69);
-            this.numericUpDownTempo.Maximum = new decimal(new int[] {
-            3600,
-            0,
-            0,
-            0});
-            this.numericUpDownTempo.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownTempo.Name = "numericUpDownTempo";
-            this.numericUpDownTempo.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDownTempo.TabIndex = 96;
-            this.numericUpDownTempo.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // labelTempo2
-            // 
-            this.labelTempo2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelTempo2.AutoSize = true;
-            this.labelTempo2.BackColor = System.Drawing.Color.Transparent;
-            this.labelTempo2.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTempo2.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelTempo2.Location = new System.Drawing.Point(91, 42);
-            this.labelTempo2.Name = "labelTempo2";
-            this.labelTempo2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelTempo2.Size = new System.Drawing.Size(179, 62);
-            this.labelTempo2.TabIndex = 67;
-            this.labelTempo2.Text = "     Indica la durata \r\ndell\'esercizio (minuti)";
-            this.labelTempo2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // comboBoxEserciziTempo
-            // 
-            this.comboBoxEserciziTempo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxEserciziTempo.BackColor = System.Drawing.Color.Lime;
-            this.comboBoxEserciziTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEserciziTempo.ForeColor = System.Drawing.Color.Black;
-            this.comboBoxEserciziTempo.FormattingEnabled = true;
-            this.comboBoxEserciziTempo.Location = new System.Drawing.Point(299, 16);
-            this.comboBoxEserciziTempo.Name = "comboBoxEserciziTempo";
-            this.comboBoxEserciziTempo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxEserciziTempo.Size = new System.Drawing.Size(120, 21);
-            this.comboBoxEserciziTempo.TabIndex = 66;
-            this.comboBoxEserciziTempo.Text = "Esercizio";
-            this.comboBoxEserciziTempo.TextChanged += new System.EventHandler(this.comboBoxEsecuzioneEsercizio_TextChanged);
-            // 
-            // labelEsercizio2
-            // 
-            this.labelEsercizio2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelEsercizio2.AutoSize = true;
-            this.labelEsercizio2.BackColor = System.Drawing.Color.Transparent;
-            this.labelEsercizio2.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEsercizio2.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelEsercizio2.Location = new System.Drawing.Point(101, 6);
-            this.labelEsercizio2.Name = "labelEsercizio2";
-            this.labelEsercizio2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelEsercizio2.Size = new System.Drawing.Size(169, 31);
-            this.labelEsercizio2.TabIndex = 65;
-            this.labelEsercizio2.Text = "Seleziona l\'esercizio";
-            this.labelEsercizio2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // carico
             // 
@@ -678,7 +595,86 @@
             this.buttonIndietro.Tag = "";
             this.buttonIndietro.Text = "Indietro";
             this.buttonIndietro.UseVisualStyleBackColor = false;
-            this.buttonIndietro.Click += new System.EventHandler(this.buttonIndietro_Click);
+            // 
+            // panelATempo
+            // 
+            this.panelATempo.BackColor = System.Drawing.Color.Transparent;
+            this.panelATempo.Controls.Add(this.numericUpDownTempo);
+            this.panelATempo.Controls.Add(this.labelTempo2);
+            this.panelATempo.Controls.Add(this.comboBoxEserciziTempo);
+            this.panelATempo.Controls.Add(this.labelEsercizio2);
+            this.panelATempo.Location = new System.Drawing.Point(17, 101);
+            this.panelATempo.Name = "panelATempo";
+            this.panelATempo.Size = new System.Drawing.Size(472, 254);
+            this.panelATempo.TabIndex = 102;
+            // 
+            // numericUpDownTempo
+            // 
+            this.numericUpDownTempo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numericUpDownTempo.BackColor = System.Drawing.Color.Lime;
+            this.numericUpDownTempo.Location = new System.Drawing.Point(299, 69);
+            this.numericUpDownTempo.Maximum = new decimal(new int[] {
+            3600,
+            0,
+            0,
+            0});
+            this.numericUpDownTempo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownTempo.Name = "numericUpDownTempo";
+            this.numericUpDownTempo.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDownTempo.TabIndex = 96;
+            this.numericUpDownTempo.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // labelTempo2
+            // 
+            this.labelTempo2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTempo2.AutoSize = true;
+            this.labelTempo2.BackColor = System.Drawing.Color.Transparent;
+            this.labelTempo2.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTempo2.ForeColor = System.Drawing.Color.GreenYellow;
+            this.labelTempo2.Location = new System.Drawing.Point(91, 42);
+            this.labelTempo2.Name = "labelTempo2";
+            this.labelTempo2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelTempo2.Size = new System.Drawing.Size(179, 62);
+            this.labelTempo2.TabIndex = 67;
+            this.labelTempo2.Text = "     Indica la durata \r\ndell\'esercizio (minuti)";
+            this.labelTempo2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxEserciziTempo
+            // 
+            this.comboBoxEserciziTempo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBoxEserciziTempo.BackColor = System.Drawing.Color.Lime;
+            this.comboBoxEserciziTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEserciziTempo.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxEserciziTempo.FormattingEnabled = true;
+            this.comboBoxEserciziTempo.Location = new System.Drawing.Point(299, 16);
+            this.comboBoxEserciziTempo.Name = "comboBoxEserciziTempo";
+            this.comboBoxEserciziTempo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBoxEserciziTempo.Size = new System.Drawing.Size(120, 21);
+            this.comboBoxEserciziTempo.TabIndex = 66;
+            this.comboBoxEserciziTempo.Text = "Esercizio";
+            // 
+            // labelEsercizio2
+            // 
+            this.labelEsercizio2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelEsercizio2.AutoSize = true;
+            this.labelEsercizio2.BackColor = System.Drawing.Color.Transparent;
+            this.labelEsercizio2.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEsercizio2.ForeColor = System.Drawing.Color.GreenYellow;
+            this.labelEsercizio2.Location = new System.Drawing.Point(101, 6);
+            this.labelEsercizio2.Name = "labelEsercizio2";
+            this.labelEsercizio2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelEsercizio2.Size = new System.Drawing.Size(169, 31);
+            this.labelEsercizio2.TabIndex = 65;
+            this.labelEsercizio2.Text = "Seleziona l\'esercizio";
+            this.labelEsercizio2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // CreaSchedaManualeView
             // 
@@ -687,6 +683,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.panelATempo);
             this.Controls.Add(this.buttonIndietro);
             this.Controls.Add(this.recuperoGiornoAllenamento);
             this.Controls.Add(this.labelRecuperoGiornoAllenamento);
@@ -701,9 +698,6 @@
             this.panel1.PerformLayout();
             this.panelASerie.ResumeLayout(false);
             this.panelASerie.PerformLayout();
-            this.panelATempo.ResumeLayout(false);
-            this.panelATempo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tempoRecupero)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroRipetizioni)).EndInit();
@@ -711,6 +705,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recuperoGiornoAllenamento)).EndInit();
+            this.panelATempo.ResumeLayout(false);
+            this.panelATempo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -732,10 +729,7 @@
         public System.Windows.Forms.Button buttonSalvaGiornata;
         private System.Windows.Forms.Label labelRecuperoGiornoAllenamento;
         public System.Windows.Forms.NumericUpDown recuperoGiornoAllenamento;
-        private System.Windows.Forms.Panel panelATempo;
         private System.Windows.Forms.Panel panelASerie;
-        public System.Windows.Forms.ComboBox comboBoxEserciziTempo;
-        private System.Windows.Forms.Label labelEsercizio2;
         public System.Windows.Forms.NumericUpDown tempoRecupero;
         private System.Windows.Forms.Label labelTempoRecupero;
         public System.Windows.Forms.NumericUpDown numeroRipetizioni;
@@ -746,11 +740,14 @@
         private System.Windows.Forms.Label labelFasciaMuscolare;
         public System.Windows.Forms.ComboBox comboBoxFasciaMuscolare;
         private System.Windows.Forms.Label labelEserzizio;
-        private System.Windows.Forms.Label labelTempo2;
-        public System.Windows.Forms.NumericUpDown numericUpDownTempo;
         public System.Windows.Forms.NumericUpDown carico;
         private System.Windows.Forms.Label labelPeso;
         public System.Windows.Forms.ComboBox giornoSettimana;
         public System.Windows.Forms.Button buttonIndietro;
+        private System.Windows.Forms.Panel panelATempo;
+        public System.Windows.Forms.NumericUpDown numericUpDownTempo;
+        private System.Windows.Forms.Label labelTempo2;
+        public System.Windows.Forms.ComboBox comboBoxEserciziTempo;
+        private System.Windows.Forms.Label labelEsercizio2;
     }
 }

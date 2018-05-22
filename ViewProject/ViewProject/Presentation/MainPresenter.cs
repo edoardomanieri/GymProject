@@ -1,5 +1,5 @@
-﻿using Palestra.model;
-using Palestra.Persistence;
+﻿using ViewProject.model;
+using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ViewProject.View;
+using System.Data.SqlClient;
 
 namespace ViewProject.Presentation
 {
@@ -36,6 +37,37 @@ namespace ViewProject.Presentation
             _creaAccountView = (CreaAccountView)ViewFactory.GetView("CreaAccountView");
             _creaAccountView.buttonProcedi.Click += Click_ButtonProcedi;
             _mainForm.SetView(_creaAccountView);
+            _creaAccountView.buttonShowHide1.Click += Click_ButtonHide1;
+            _creaAccountView.buttonShowHide2.Click += Click_ButtonHide2;
+        }
+
+        private void Click_ButtonHide2(object sender, EventArgs e)
+        {
+            if (_creaAccountView.ConfirmPassword.UseSystemPasswordChar)
+            {
+                _creaAccountView.ConfirmPassword.UseSystemPasswordChar = false;
+                _creaAccountView.buttonShowHide2.Image = _creaAccountView.imageHidePassword.Image;
+            }
+            else
+            {
+                _creaAccountView.ConfirmPassword.UseSystemPasswordChar = true;
+                _creaAccountView.buttonShowHide2.Image = _creaAccountView.imageShowPassword.Image;
+            }
+        }
+
+        private void Click_ButtonHide1(object sender, EventArgs e)
+        {
+            if (_creaAccountView.CreaPassword.UseSystemPasswordChar)
+            {
+                _creaAccountView.CreaPassword.UseSystemPasswordChar = false;
+                _creaAccountView.buttonShowHide1.Image = _creaAccountView.imageHidePassword.Image;
+
+            }
+            else
+            {
+                _creaAccountView.CreaPassword.UseSystemPasswordChar = true;
+                _creaAccountView.buttonShowHide1.Image = _creaAccountView.imageShowPassword.Image;
+            }
         }
 
         private void Click_ButtonProcedi(object sender, EventArgs e)
@@ -49,8 +81,31 @@ namespace ViewProject.Presentation
                (int)_creaAccountView.numericUpDownAltezza.Value, sesso);
 
             //inseriamo l'utente nel DB
-            _mpm.SaveUtente(_utente, _creaAccountView.CreaPassword.Text);
+            try
+            {
+                _mpm.SaveUtente(_utente, _creaAccountView.CreaPassword.Text);
+            }catch(SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             AvviaViewsEPresenter();
+
+            if (!_creaAccountView.isCompleted())
+            {
+                // show dialog inserire tutti i paramentri
+            }
+            if (_creaAccountView.checkBoxAutomatica.Checked)
+            {
+                UserControl view = (CreaSchedaAutomaticaView)ViewFactory.GetView("CreaSchedaAutomaticaView");
+                _mainForm.SetView(view);
+            }
+            else
+            {
+                CreaSchedaManualeView view = (CreaSchedaManualeView)ViewFactory.GetView("CreaSchedaManualeView");
+                view.buttonIndietro.Visible = false;
+                view.buttonIndietro.Enabled = false;
+                _mainForm.SetView(view);
+            }
 
         }
 
@@ -78,8 +133,15 @@ namespace ViewProject.Presentation
         private void OnAccesso(object sender, EventArgs e)
         {
             string username = _schermataAutenticazioneView.textBoxUsername.Text;
-            string password = _schermataAutenticazioneView.Password.Text;
-           _utente = _mpm.Autentica(username, password);
+            string password = _schermataAutenticazioneView.textBoxPassword.Text;
+            try
+            {
+                _utente = _mpm.Autentica(username, password);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             if (_utente == null)
             {
                 MessageBox.Show("Credenziali errate");

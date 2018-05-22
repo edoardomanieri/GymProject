@@ -1,11 +1,13 @@
-﻿using Palestra.model;
-using Palestra.Persistence;
+﻿using ViewProject.model;
+using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using ViewProject.View;
 
 namespace ViewProject.Presentation
 {
@@ -26,6 +28,14 @@ namespace ViewProject.Presentation
             _view.buttonSalva.Click += Click_SalvaDati;
             _view.buttonCaricaFoto.Click += Click_CaricaFoto;
             _view.buttonRimuoviFoto.Click += Click_RimuoviFoto;
+            _view.buttonIndietroProfilo.Click += Click_ButtonIndietro;
+        }
+
+        private void Click_ButtonIndietro(object sender, EventArgs e)
+        {
+            MainForm mainForm = (MainForm)_view.FindForm();
+            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            mainForm.SetView(view);
         }
 
         private void Click_RimuoviFoto(object sender, EventArgs e)
@@ -50,7 +60,14 @@ namespace ViewProject.Presentation
                     _view.pictureBoxFoto.BackgroundImage = null;
                     _view.pictureBoxFoto.ImageLocation = imageLocation;
                     _utente.FotoPath = imageLocation;
-                    _mpm.updateUtente(_utente);
+                    try
+                    {
+                        _mpm.updateUtente(_utente);
+                    }
+                    catch (SqlException)
+                    {
+                        MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception)
@@ -74,8 +91,16 @@ namespace ViewProject.Presentation
             if (_view.RadioButtonMaschio.Checked)
                 _utente.Sesso = Sesso.Maschio;
             else
-                _utente.Sesso = Sesso.Femmina;
-            _mpm.updateUtente(_utente);
+            {
+                try
+                {
+                    _mpm.updateUtente(_utente);
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
             _view.TextBoxCognome.ReadOnly = true;
             _view.TextBoxNome.ReadOnly = true;

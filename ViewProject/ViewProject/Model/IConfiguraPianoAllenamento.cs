@@ -4,14 +4,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palestra.model
+namespace ViewProject.model
 {
     public abstract class IConfiguraPianoAllenamento
     {
         protected const int FasceMuscolariUtili = 9; //Utili perchè le fascie totali sono 10 con cardio, ma cardio lo utilizzo a parte solo per dimagrimento
+        protected const int NumeroMassimoTentativi = 100000;
+        private readonly int[] _tempiDiRecuperoInSec;
+        private readonly int[] _tempiDiEsecuzioneInMinTonificazione;
+        private readonly int[] _numeriSerieIpertrofia;
+        private readonly int[] _numeriSerieDefinizione;
+        private readonly int[] _numeriSerieTonificazione;
+        private readonly int[] _numeriRipetizioniIpertrofia;
+        private readonly int[] _numeriRipetizioniDefinizione;
+        private readonly int[] _numeriRipetizioniTonificazione;
 
-        public const int NumeroMassimoTentativi = 100000;
-        public abstract PianoAllenamento  Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi);
+        protected int[] TempiDiRecuperoInSec => _tempiDiRecuperoInSec;
+
+        protected int[] TempiDiEsecuzioneInMinTonificazione => _tempiDiEsecuzioneInMinTonificazione;
+
+        protected int[] NumeriSerieIpertrofia => _numeriSerieIpertrofia;
+
+        protected int[] NumeriSerieDefinizione => _numeriSerieDefinizione;
+
+        protected int[] NumeriSerieTonificazione => _numeriSerieTonificazione;
+
+        protected int[] NumeriRipetizioniIpertrofia => _numeriRipetizioniIpertrofia;
+        
+        protected int[] NumeriRipetizioniDefinizione => _numeriRipetizioniDefinizione;
+
+        protected int[] NumeriRipetizioniTonificazione => _numeriRipetizioniTonificazione;
+
+        protected IConfiguraPianoAllenamento()
+        {
+            _tempiDiRecuperoInSec = new int[3];
+            _tempiDiEsecuzioneInMinTonificazione = new int[3];
+            _numeriSerieIpertrofia = new int[3];
+            _numeriSerieDefinizione = new int[3];
+            _numeriSerieTonificazione = new int[3];
+            _numeriRipetizioniIpertrofia = new int[3];
+            _numeriRipetizioniDefinizione = new int[3];
+            _numeriRipetizioniTonificazione = new int[3];
+
+            _tempiDiRecuperoInSec[0] = 60; _tempiDiRecuperoInSec[1] = 90; _tempiDiRecuperoInSec[2] = 120;
+            _tempiDiEsecuzioneInMinTonificazione[0] = 30; _tempiDiEsecuzioneInMinTonificazione[1] = 45; _tempiDiEsecuzioneInMinTonificazione[2] = 20;
+            _numeriSerieIpertrofia[0] = 2; _numeriSerieIpertrofia[1] = 3; _numeriSerieIpertrofia[2] = 4;
+            _numeriSerieDefinizione[0] = 5; _numeriSerieDefinizione[1] = 3; _numeriSerieDefinizione[2] = 4;
+            _numeriSerieTonificazione[0] = 4; _numeriSerieTonificazione[1] = 5; _numeriSerieTonificazione[2] = 6;
+            _numeriRipetizioniIpertrofia[0] = 6; _numeriRipetizioniIpertrofia[1] = 8; _numeriRipetizioniIpertrofia[2] = 10;
+            _numeriRipetizioniDefinizione[0] = 12; _numeriRipetizioniDefinizione[1] = 15; _numeriRipetizioniDefinizione[2] = 20;
+            _numeriRipetizioniTonificazione[0] = 10; _numeriRipetizioniTonificazione[1] = 12; _numeriRipetizioniTonificazione[2] = 15;
+        }
+
+        public abstract PianoAllenamento Configura(UtenteAutomatico utenteAutomatico, List<Esercizio> esercizi);
 
         protected Dictionary<int, List<FasciaMuscolare>> distribuisciFasceMuscolariPerGiorno(int numeroGiorniAllenamento)
         {
@@ -61,6 +106,7 @@ namespace Palestra.model
             return list.ElementAt(random.Next(list.Count));
         }
 
+        
         protected int[] distribuisci(int dimensioneDistribuzione, int elementiTotDaDistribuire) //Restituisce un array dove: l'indice corrisponde al giorno d'allenamento, il valore contenuto in quell'indice corrisponde al numero di muscoli da allenare.
         {
             int[] result = new int[dimensioneDistribuzione];// 
@@ -147,6 +193,6 @@ namespace Palestra.model
             }
             return result;
         }
-        
+
     }
 }

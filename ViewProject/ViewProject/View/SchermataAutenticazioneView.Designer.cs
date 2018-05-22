@@ -33,11 +33,15 @@
             this.labelUsername = new System.Windows.Forms.Label();
             this.buttonShowHide1 = new System.Windows.Forms.Button();
             this.labelPassword = new System.Windows.Forms.Label();
-            this.Password = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelLogin = new System.Windows.Forms.Label();
             this.labelCreaAccount = new System.Windows.Forms.Label();
-            this.buttonAccedi = new System.Windows.Forms.Button();
             this.buttonCreaAccount = new System.Windows.Forms.Button();
+            this.imageShowPassword = new System.Windows.Forms.PictureBox();
+            this.imageHidePassword = new System.Windows.Forms.PictureBox();
+            this.buttonAccedi = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.imageShowPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHidePassword)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxUsername
@@ -76,6 +80,7 @@
             this.buttonShowHide1.Size = new System.Drawing.Size(24, 23);
             this.buttonShowHide1.TabIndex = 56;
             this.buttonShowHide1.UseVisualStyleBackColor = true;
+            this.buttonShowHide1.Click += new System.EventHandler(this.buttonShowHide1_Click);
             // 
             // labelPassword
             // 
@@ -91,19 +96,19 @@
             this.labelPassword.TabIndex = 55;
             this.labelPassword.Text = "Password";
             // 
-            // Password
+            // textBoxPassword
             // 
-            this.Password.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Password.BackColor = System.Drawing.Color.IndianRed;
-            this.Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password.ForeColor = System.Drawing.SystemColors.Control;
-            this.Password.Location = new System.Drawing.Point(348, 205);
-            this.Password.Name = "Password";
-            this.Password.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Password.Size = new System.Drawing.Size(130, 23);
-            this.Password.TabIndex = 54;
-            this.Password.Tag = "";
-            this.Password.UseSystemPasswordChar = true;
+            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxPassword.BackColor = System.Drawing.Color.IndianRed;
+            this.textBoxPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.ForeColor = System.Drawing.SystemColors.Control;
+            this.textBoxPassword.Location = new System.Drawing.Point(348, 205);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBoxPassword.Size = new System.Drawing.Size(130, 23);
+            this.textBoxPassword.TabIndex = 54;
+            this.textBoxPassword.Tag = "";
+            this.textBoxPassword.UseSystemPasswordChar = true;
             // 
             // labelLogin
             // 
@@ -133,6 +138,55 @@
             this.labelCreaAccount.TabIndex = 60;
             this.labelCreaAccount.Text = "Non sei ancora registrato?";
             // 
+            // buttonCreaAccount
+            // 
+            this.buttonCreaAccount.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonCreaAccount.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.buttonCreaAccount.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.buttonCreaAccount.FlatAppearance.BorderSize = 2;
+            this.buttonCreaAccount.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.buttonCreaAccount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.buttonCreaAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCreaAccount.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCreaAccount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonCreaAccount.Location = new System.Drawing.Point(348, 366);
+            this.buttonCreaAccount.Name = "buttonCreaAccount";
+            this.buttonCreaAccount.Size = new System.Drawing.Size(121, 30);
+            this.buttonCreaAccount.TabIndex = 62;
+            this.buttonCreaAccount.Text = "Crea Account";
+            this.buttonCreaAccount.UseVisualStyleBackColor = false;
+            // 
+            // imageShowPassword
+            // 
+            this.imageShowPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageShowPassword.BackColor = System.Drawing.Color.IndianRed;
+            this.imageShowPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imageShowPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imageShowPassword.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imageShowPassword.ErrorImage")));
+            this.imageShowPassword.Image = ((System.Drawing.Image)(resources.GetObject("imageShowPassword.Image")));
+            this.imageShowPassword.InitialImage = ((System.Drawing.Image)(resources.GetObject("imageShowPassword.InitialImage")));
+            this.imageShowPassword.Location = new System.Drawing.Point(390, 262);
+            this.imageShowPassword.Name = "imageShowPassword";
+            this.imageShowPassword.Size = new System.Drawing.Size(20, 20);
+            this.imageShowPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageShowPassword.TabIndex = 63;
+            this.imageShowPassword.TabStop = false;
+            // 
+            // imageHidePassword
+            // 
+            this.imageHidePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageHidePassword.BackColor = System.Drawing.Color.IndianRed;
+            this.imageHidePassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.imageHidePassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imageHidePassword.Image = ((System.Drawing.Image)(resources.GetObject("imageHidePassword.Image")));
+            this.imageHidePassword.InitialImage = ((System.Drawing.Image)(resources.GetObject("imageHidePassword.InitialImage")));
+            this.imageHidePassword.Location = new System.Drawing.Point(416, 262);
+            this.imageHidePassword.Name = "imageHidePassword";
+            this.imageHidePassword.Size = new System.Drawing.Size(20, 20);
+            this.imageHidePassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageHidePassword.TabIndex = 64;
+            this.imageHidePassword.TabStop = false;
+            // 
             // buttonAccedi
             // 
             this.buttonAccedi.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -144,24 +198,12 @@
             this.buttonAccedi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAccedi.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAccedi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonAccedi.Location = new System.Drawing.Point(373, 253);
+            this.buttonAccedi.Location = new System.Drawing.Point(371, 262);
             this.buttonAccedi.Name = "buttonAccedi";
             this.buttonAccedi.Size = new System.Drawing.Size(80, 31);
-            this.buttonAccedi.TabIndex = 61;
+            this.buttonAccedi.TabIndex = 65;
             this.buttonAccedi.Text = "Accedi";
             this.buttonAccedi.UseVisualStyleBackColor = false;
-            // 
-            // buttonCreaAccount
-            // 
-            this.buttonCreaAccount.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonCreaAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCreaAccount.ForeColor = System.Drawing.Color.Snow;
-            this.buttonCreaAccount.Location = new System.Drawing.Point(349, 360);
-            this.buttonCreaAccount.Name = "buttonCreaAccount";
-            this.buttonCreaAccount.Size = new System.Drawing.Size(112, 30);
-            this.buttonCreaAccount.TabIndex = 62;
-            this.buttonCreaAccount.Text = "Crea Account";
-            this.buttonCreaAccount.UseVisualStyleBackColor = false;
             // 
             // SchermataAutenticazioneView
             // 
@@ -169,17 +211,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.buttonCreaAccount);
             this.Controls.Add(this.buttonAccedi);
+            this.Controls.Add(this.imageHidePassword);
+            this.Controls.Add(this.imageShowPassword);
+            this.Controls.Add(this.buttonCreaAccount);
             this.Controls.Add(this.labelCreaAccount);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.buttonShowHide1);
             this.Controls.Add(this.labelPassword);
-            this.Controls.Add(this.Password);
+            this.Controls.Add(this.textBoxPassword);
             this.Name = "SchermataAutenticazioneView";
             this.Size = new System.Drawing.Size(822, 512);
+            ((System.ComponentModel.ISupportInitialize)(this.imageShowPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageHidePassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,8 +239,10 @@
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelLogin;
         private System.Windows.Forms.Label labelCreaAccount;
-        public System.Windows.Forms.Button buttonAccedi;
         public System.Windows.Forms.Button buttonCreaAccount;
-        public System.Windows.Forms.TextBox Password;
+        public System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.PictureBox imageShowPassword;
+        private System.Windows.Forms.PictureBox imageHidePassword;
+        public System.Windows.Forms.Button buttonAccedi;
     }
 }

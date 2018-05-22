@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palestra.Persistence
+namespace ViewProject.Persistence
 {
     public interface IPersistable
     {

@@ -55,7 +55,7 @@
             this.TextBoxNome = new System.Windows.Forms.TextBox();
             this.buttonModifica = new System.Windows.Forms.Button();
             this.buttonSalva = new System.Windows.Forms.Button();
-            this.buttonIndietro = new System.Windows.Forms.Button();
+            this.buttonIndietroProfilo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAltezza)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPeso)).BeginInit();
@@ -92,7 +92,6 @@
             this.buttonCaricaFoto.Tag = "";
             this.buttonCaricaFoto.Text = "Carica Foto";
             this.buttonCaricaFoto.UseVisualStyleBackColor = false;
-            this.buttonCaricaFoto.Click += new System.EventHandler(this.buttonCaricaFoto_Click);
             // 
             // buttonRimuoviFoto
             // 
@@ -112,7 +111,6 @@
             this.buttonRimuoviFoto.Tag = "";
             this.buttonRimuoviFoto.Text = "Rimuovi Foto";
             this.buttonRimuoviFoto.UseVisualStyleBackColor = false;
-            this.buttonRimuoviFoto.Click += new System.EventHandler(this.buttonRimuoviFoto_Click);
             // 
             // buttonShowHide2
             // 
@@ -558,7 +556,7 @@
             // 
             this.TextBoxCognome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxCognome.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.TextBoxCognome.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBoxCognome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBoxCognome.ForeColor = System.Drawing.SystemColors.Control;
             this.TextBoxCognome.Location = new System.Drawing.Point(452, 91);
             this.TextBoxCognome.Name = "TextBoxCognome";
@@ -571,7 +569,7 @@
             // 
             this.TextBoxNome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxNome.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.TextBoxNome.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBoxNome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBoxNome.ForeColor = System.Drawing.SystemColors.Control;
             this.TextBoxNome.Location = new System.Drawing.Point(452, 57);
             this.TextBoxNome.Name = "TextBoxNome";
@@ -617,25 +615,24 @@
             this.buttonSalva.Text = "Salva le modifiche";
             this.buttonSalva.UseVisualStyleBackColor = false;
             // 
-            // buttonIndietro
+            // buttonIndietroProfilo
             // 
-            this.buttonIndietro.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonIndietro.BackColor = System.Drawing.Color.DarkOrange;
-            this.buttonIndietro.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
-            this.buttonIndietro.FlatAppearance.BorderSize = 2;
-            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
-            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.buttonIndietro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonIndietro.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIndietro.Location = new System.Drawing.Point(58, 443);
-            this.buttonIndietro.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonIndietro.Name = "buttonIndietro";
-            this.buttonIndietro.Size = new System.Drawing.Size(139, 30);
-            this.buttonIndietro.TabIndex = 73;
-            this.buttonIndietro.Tag = "";
-            this.buttonIndietro.Text = "Torna al Menu";
-            this.buttonIndietro.UseVisualStyleBackColor = false;
-            this.buttonIndietro.Click += new System.EventHandler(this.buttonIndietro_Click);
+            this.buttonIndietroProfilo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonIndietroProfilo.BackColor = System.Drawing.Color.DarkOrange;
+            this.buttonIndietroProfilo.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.buttonIndietroProfilo.FlatAppearance.BorderSize = 2;
+            this.buttonIndietroProfilo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
+            this.buttonIndietroProfilo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonIndietroProfilo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonIndietroProfilo.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietroProfilo.Location = new System.Drawing.Point(58, 443);
+            this.buttonIndietroProfilo.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonIndietroProfilo.Name = "buttonIndietroProfilo";
+            this.buttonIndietroProfilo.Size = new System.Drawing.Size(139, 30);
+            this.buttonIndietroProfilo.TabIndex = 73;
+            this.buttonIndietroProfilo.Tag = "";
+            this.buttonIndietroProfilo.Text = "Torna al Menu";
+            this.buttonIndietroProfilo.UseVisualStyleBackColor = false;
             // 
             // ProfiloView
             // 
@@ -643,7 +640,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.buttonIndietro);
+            this.Controls.Add(this.buttonIndietroProfilo);
             this.Controls.Add(this.buttonSalva);
             this.Controls.Add(this.buttonModifica);
             this.Controls.Add(this.buttonShowHide2);
@@ -693,7 +690,6 @@
         private System.Windows.Forms.Label labelSesso;
         private System.Windows.Forms.Label labelCognome;
         private System.Windows.Forms.Label labelNome;
-        private System.Windows.Forms.Button buttonIndietro;
         public System.Windows.Forms.NumericUpDown numericUpDownAltezza;
         public System.Windows.Forms.NumericUpDown numericUpDownPeso;
         public System.Windows.Forms.ComboBox comboBoxAnno;
@@ -708,5 +704,6 @@
         public System.Windows.Forms.Button buttonCaricaFoto;
         public System.Windows.Forms.Button buttonRimuoviFoto;
         public System.Windows.Forms.PictureBox pictureBoxFoto;
+        public System.Windows.Forms.Button buttonIndietroProfilo;
     }
 }

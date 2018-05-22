@@ -17,12 +17,5 @@ namespace ViewProject
         {
             InitializeComponent();
         }
-
-        private void buttonIndietroVideo_Click(object sender, EventArgs e)
-        {
-            MainForm mainForm = (MainForm)this.FindForm();
-            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
-            mainForm.SetView(view);
-        }
     }
 }

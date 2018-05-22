@@ -1,11 +1,14 @@
-﻿using Palestra.model;
-using Palestra.Persistence;
+﻿using ViewProject.model;
+using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Windows.Forms;
+using ViewProject.View;
 
 namespace ViewProject.Presentation
 {
@@ -24,39 +27,62 @@ namespace ViewProject.Presentation
 
             _view.Load += OnLoad;
             _view.buttonSalvaAllenamentoProgressi.Click += Click_SalvaAllenamento;
+            _view.buttonIndietroProgressi.Click += Click_ButtonIndietro;
+        }
+
+        private void Click_ButtonIndietro(object sender, EventArgs e)
+        {
+            MainForm mainForm = (MainForm)_view.FindForm();
+            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            mainForm.SetView(view);
         }
 
         private void Click_SalvaAllenamento(object sender, EventArgs e)
         {
-            int durata = (int)_view.numericUpDownDurataProgressi.Value;
-            int peso = (int)_view.numericUpDownPesoProgressi.Value == 0 ? _utente.PesoInKg : (int)_view.numericUpDownPesoProgressi.Value;
-            DateTime data = _view.dateTimePickerDataAllenamento.Value;
+            if (MessageBox.Show("Confermi di voler salvare l'allenamento del " + _view.dateTimePickerDataAllenamento.Value.Day.ToString() + "/" + _view.dateTimePickerDataAllenamento.Value.Month.ToString() + "/" + _view.dateTimePickerDataAllenamento.Value.Year.ToString() + " ?", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                int durata = (int)_view.numericUpDownDurataProgressi.Value;
+                int peso = (int)_view.numericUpDownPesoProgressi.Value == 0 ? _utente.PesoInKg : (int)_view.numericUpDownPesoProgressi.Value;
+                DateTime data = _view.dateTimePickerDataAllenamento.Value;
 
-            Allenamento allenamento = new Allenamento(durata, data, peso);
-            _mpm.SaveAllenamento(_utente, allenamento);
-            _allenamenti.Add(allenamento);
+                Allenamento allenamento = new Allenamento(durata, data, peso);
+                try
+                {
+                    _mpm.SaveAllenamento(_utente, allenamento);
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                _allenamenti.Add(allenamento);
 
 
-            _view.chartDurata.DataSource = null;
-            _view.chartDurata.DataSource = _allenamenti;
-            _view.chartDurata.DataBind();
+                _view.chartDurata.DataSource = null;
+                _view.chartDurata.DataSource = _allenamenti;
+                _view.chartDurata.DataBind();
 
-            _view.chartPeso.DataSource = null;
-            _view.chartPeso.DataSource = _allenamenti;
-            _view.chartPeso.DataBind();
+                _view.chartPeso.DataSource = null;
+                _view.chartPeso.DataSource = _allenamenti;
+                _view.chartPeso.DataBind();
 
-            _view.progressBarAllenamenti.Value = _allenamenti.Count;
-            _view.labelContatore.Text = (_allenamenti.Count).ToString();
+                _view.progressBarAllenamenti.Value = _allenamenti.Count;
+                _view.labelContatore.Text = (_allenamenti.Count).ToString();
 
-            _view.circularProgressBar.Value = _allenamenti.Count * 10;
-            _view.circularProgressBar.Text = (_allenamenti.Count * 10).ToString() + "%";
+                _view.circularProgressBar.Value = _allenamenti.Count * 10;
+                _view.circularProgressBar.Text = (_allenamenti.Count * 10).ToString() + "%";
+            }
         }
 
         private void OnLoad(object sender, EventArgs e)
         {
-
-            _allenamenti =(List<Allenamento>) _mpm.LoadAllAllenamenti(_utente);
-
+            try
+            {
+                _allenamenti = (List<Allenamento>)_mpm.LoadAllAllenamenti(_utente);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             _view.chartDurata.DataSource = _allenamenti;
             _view.chartDurata.Series["Durata"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             _view.chartDurata.Series["Durata"].XValueMember = "data";

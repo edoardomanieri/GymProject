@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Palestra.model
+namespace ViewProject.model
 { 
     public class Esercizio
     {
@@ -30,7 +30,7 @@ namespace Palestra.model
         {
             string line = "";
             StringBuilder descrizione = new StringBuilder();
-            System.IO.StreamReader file = new System.IO.StreamReader(Directory.GetCurrentDirectory() + @"\Palestra\descrizioneEsercizi.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(Directory.GetCurrentDirectory() + @"\ViewProject\descrizioneEsercizi.txt");
             while ((line = file.ReadLine()) != null)
             {
                 if (line.ElementAt(0).Equals('#'))
@@ -57,7 +57,15 @@ namespace Palestra.model
 
         public string Nome { get => _nome; }
         public FasciaMuscolare FasciaMuscolare { get => _fasciaMuscolare;  }
-        public string Descrizione { get => _descrizione; set => _descrizione = value; }
+        public string Descrizione {
+            get => _descrizione;
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                    throw new ArgumentException();
+                _descrizione = value;
+            }
+        }
         public Risorsa RisorseRichieste { get => _risorseRichieste;  }
 
 

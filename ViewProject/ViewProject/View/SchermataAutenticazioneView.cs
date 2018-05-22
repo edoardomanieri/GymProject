@@ -16,5 +16,21 @@ namespace ViewProject
         {
             InitializeComponent();
         }
+
+
+        private void buttonShowHide1_Click(object sender, EventArgs e)
+        {
+            if (textBoxPassword.UseSystemPasswordChar)
+            {
+                textBoxPassword.UseSystemPasswordChar = false;
+                buttonShowHide1.Image = imageHidePassword.Image;
+            }
+            else
+            {
+                textBoxPassword.UseSystemPasswordChar = true;
+                buttonShowHide1.Image = imageShowPassword.Image;
+            }
+        }
+
     }
 }

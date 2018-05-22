@@ -1,11 +1,13 @@
-﻿using Palestra.model;
-using Palestra.Persistence;
+﻿using ViewProject.model;
+using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ViewProject.View;
+using System.Windows.Forms;
 
 namespace ViewProject.Presentation
 {
@@ -25,7 +27,15 @@ namespace ViewProject.Presentation
             _view.Load += OnLoad;
             _view.comboBoxFasciaMuscolareVideo.SelectedIndexChanged += SelectionChange_FasciaMuscolare;
             _view.listBoxEserciziVideo.SelectedIndexChanged += SelectionChange_Esercizio;
+            _view.buttonIndietroVideo.Click += Click_ButtonIndietro;
 
+        }
+
+        private void Click_ButtonIndietro(object sender, EventArgs e)
+        {
+            MainForm mainForm = (MainForm)_view.FindForm();
+            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            mainForm.SetView(view);
         }
 
         private void SelectionChange_Esercizio(object sender, EventArgs e)

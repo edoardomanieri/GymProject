@@ -1,11 +1,11 @@
-﻿using Palestra.Persistence;
+﻿using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Palestra.model
+namespace ViewProject.model
 {
     public class EsecuzioneEsercizio : IPersistable
     {

@@ -59,6 +59,7 @@
             this.TextBoxNome = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.buttonIndietro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imageShowPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageHidePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAltezza)).BeginInit();
@@ -163,13 +164,12 @@
             this.buttonProcedi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProcedi.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonProcedi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonProcedi.Location = new System.Drawing.Point(718, 469);
+            this.buttonProcedi.Location = new System.Drawing.Point(722, 469);
             this.buttonProcedi.Name = "buttonProcedi";
             this.buttonProcedi.Size = new System.Drawing.Size(80, 31);
             this.buttonProcedi.TabIndex = 28;
             this.buttonProcedi.Text = "Procedi";
             this.buttonProcedi.UseVisualStyleBackColor = false;
-            this.buttonProcedi.Click += new System.EventHandler(this.buttonProcedi_Click);
             // 
             // buttonShowHide1
             // 
@@ -180,7 +180,6 @@
             this.buttonShowHide1.Size = new System.Drawing.Size(24, 23);
             this.buttonShowHide1.TabIndex = 29;
             this.buttonShowHide1.UseVisualStyleBackColor = true;
-            this.buttonShowHide1.Click += new System.EventHandler(this.buttonShowHide1_Click);
             // 
             // buttonShowHide2
             // 
@@ -191,7 +190,6 @@
             this.buttonShowHide2.Size = new System.Drawing.Size(24, 23);
             this.buttonShowHide2.TabIndex = 31;
             this.buttonShowHide2.UseVisualStyleBackColor = true;
-            this.buttonShowHide2.Click += new System.EventHandler(this.buttonShowHide2_Click);
             // 
             // labelScheda
             // 
@@ -614,7 +612,7 @@
             // 
             this.TextBoxCognome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxCognome.BackColor = System.Drawing.Color.IndianRed;
-            this.TextBoxCognome.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBoxCognome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBoxCognome.ForeColor = System.Drawing.SystemColors.Control;
             this.TextBoxCognome.Location = new System.Drawing.Point(376, 102);
             this.TextBoxCognome.Name = "TextBoxCognome";
@@ -628,12 +626,12 @@
             this.labelTitolo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitolo.AutoSize = true;
             this.labelTitolo.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitolo.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitolo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitolo.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelTitolo.Location = new System.Drawing.Point(258, 23);
+            this.labelTitolo.Location = new System.Drawing.Point(274, 14);
             this.labelTitolo.Name = "labelTitolo";
             this.labelTitolo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelTitolo.Size = new System.Drawing.Size(311, 29);
+            this.labelTitolo.Size = new System.Drawing.Size(284, 28);
             this.labelTitolo.TabIndex = 37;
             this.labelTitolo.Text = "Crea un nuovo account!";
             // 
@@ -641,7 +639,7 @@
             // 
             this.TextBoxNome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextBoxNome.BackColor = System.Drawing.Color.IndianRed;
-            this.TextBoxNome.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBoxNome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBoxNome.ForeColor = System.Drawing.SystemColors.Control;
             this.TextBoxNome.Location = new System.Drawing.Point(376, 68);
             this.TextBoxNome.Name = "TextBoxNome";
@@ -667,7 +665,7 @@
             // 
             this.textBoxUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxUsername.BackColor = System.Drawing.Color.IndianRed;
-            this.textBoxUsername.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsername.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxUsername.ForeColor = System.Drawing.SystemColors.Control;
             this.textBoxUsername.Location = new System.Drawing.Point(376, 300);
             this.textBoxUsername.Name = "textBoxUsername";
@@ -676,12 +674,31 @@
             this.textBoxUsername.TabIndex = 53;
             this.textBoxUsername.Tag = "";
             // 
+            // buttonIndietro
+            // 
+            this.buttonIndietro.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonIndietro.AutoSize = true;
+            this.buttonIndietro.BackColor = System.Drawing.Color.White;
+            this.buttonIndietro.FlatAppearance.BorderSize = 2;
+            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.GreenYellow;
+            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.buttonIndietro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonIndietro.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonIndietro.Location = new System.Drawing.Point(27, 469);
+            this.buttonIndietro.Name = "buttonIndietro";
+            this.buttonIndietro.Size = new System.Drawing.Size(86, 31);
+            this.buttonIndietro.TabIndex = 54;
+            this.buttonIndietro.Text = "Indietro";
+            this.buttonIndietro.UseVisualStyleBackColor = false;
+            // 
             // CreaAccountView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.IndianRed;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.buttonIndietro);
             this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.numericUpDownAltezza);
@@ -728,10 +745,6 @@
         #endregion
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelConfermaPassword;
-        private System.Windows.Forms.PictureBox imageShowPassword;
-        private System.Windows.Forms.PictureBox imageHidePassword;
-        private System.Windows.Forms.Button buttonShowHide1;
-        private System.Windows.Forms.Button buttonShowHide2;
         private System.Windows.Forms.Label labelScheda;
         private System.Windows.Forms.Label labelAltezza;
         private System.Windows.Forms.Label labelPeso;
@@ -756,6 +769,11 @@
         public System.Windows.Forms.TextBox textBoxUsername;
         public System.Windows.Forms.TextBox CreaPassword;
         public System.Windows.Forms.TextBox ConfirmPassword;
+        private System.Windows.Forms.Button buttonIndietro;
+        public System.Windows.Forms.Button buttonShowHide1;
+        public System.Windows.Forms.Button buttonShowHide2;
+        public System.Windows.Forms.PictureBox imageShowPassword;
+        public System.Windows.Forms.PictureBox imageHidePassword;
     }
 }
 

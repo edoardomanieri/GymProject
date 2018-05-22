@@ -1,11 +1,13 @@
-﻿using Palestra.model;
-using Palestra.Persistence;
+﻿using ViewProject.model;
+using ViewProject.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using ViewProject.View;
 
 namespace ViewProject.Presentation
 {
@@ -35,9 +37,16 @@ namespace ViewProject.Presentation
             _view.giornoSettimana.SelectionChangeCommitted += SelectionChange_GiornoSettimana;
             _view.listBoxEsecuzioneEsercizi.SelectedValueChanged += SelectionChange_EsecuzioneEsercizi;
             _view.comboBoxFasciaMuscolare.SelectedIndexChanged += SelectionChange_FasciaMuscolare;
+            _view.buttonIndietro.Click += Click_ButtonIndietro;
 
         }
 
+        private void Click_ButtonIndietro(object sender, EventArgs e)
+        {
+            MainForm mainForm = (MainForm)_view.FindForm();
+            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            mainForm.SetView(view);
+        }
 
         private void SelectionChange_FasciaMuscolare(object sender, EventArgs e)
         {
@@ -51,24 +60,31 @@ namespace ViewProject.Presentation
 
         private void OnLoad(object sender, EventArgs e)
         {
-            if (_mpm.ThereIsAPianoAllenamento(_utente))
+            try
             {
-                _pianoAllenamento = _mpm.LoadPianoAllenamento(_utente);
-                foreach (GiornoAllenamento giornoAllenamento in _pianoAllenamento.GiorniAllenamento)
+                if (_mpm.ThereIsAPianoAllenamento(_utente))
                 {
-                    giornoAllenamento.Changed += ChangeGiornoAllenamento;
-                    RipopolaGiorniAggiungendoneUno();
+                    _pianoAllenamento = _mpm.LoadPianoAllenamento(_utente);
+                    foreach (GiornoAllenamento giornoAllenamento in _pianoAllenamento.GiorniAllenamento)
+                    {
+                        giornoAllenamento.Changed += ChangeGiornoAllenamento;
+                        RipopolaGiorniAggiungendoneUno();
+                    }
                 }
-            }
-            else
-            {
-                _pianoAllenamento = new PianoAllenamento();
-                //creo il primo giorno
-                _pianoAllenamento.addGiornoAllenamento(new GiornoAllenamento());
-                _pianoAllenamento.GiorniAllenamento[0].Changed += ChangeGiornoAllenamento;
-            }
+                else
+                {
+                    _pianoAllenamento = new PianoAllenamento();
+                    //creo il primo giorno
+                    _pianoAllenamento.addGiornoAllenamento(new GiornoAllenamento());
+                    _pianoAllenamento.GiorniAllenamento[0].Changed += ChangeGiornoAllenamento;
+                }
 
-            _pianoAllenamento.Changed += ChangePiano;
+                _pianoAllenamento.Changed += ChangePiano;
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -103,7 +119,20 @@ namespace ViewProject.Presentation
         {
             if (_pianoAllenamento.GiorniAllenamento.Last().ListaEsecuzioniEsercizi.Count == 0)
                 _pianoAllenamento.removeGiornoAllenamento(_pianoAllenamento.GiorniAllenamento.Last());
-            _mpm.SavePianoAllenamento(_utente,_pianoAllenamento);
+            try
+            {
+                _mpm.SavePianoAllenamento(_utente, _pianoAllenamento);
+            }
+            catch (SqlException)
+            {
+                MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (MessageBox.Show("La scheda contiene " + (_view.giornoSettimana.Items.Count - 1) + " giorni di allenamento.\nTerminare e Salvare le modifiche ?", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                MainForm mainForm = (MainForm)_view.FindForm();
+                UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+                mainForm.SetView(view);
+            }
         }
 
 
