@@ -224,6 +224,10 @@
             this.Controls.Add(this.textBoxPassword);
             this.Name = "SchermataAutenticazioneView";
             this.Size = new System.Drawing.Size(822, 512);
+<<<<<<< HEAD
+=======
+            this.Load += new System.EventHandler(this.SchermataAutenticazioneView_Load);
+>>>>>>> 57c9c0ba15e46139d1dabcf707614d5bb172cf67
             ((System.ComponentModel.ISupportInitialize)(this.imageShowPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageHidePassword)).EndInit();
             this.ResumeLayout(false);

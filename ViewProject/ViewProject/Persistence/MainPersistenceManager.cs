@@ -33,7 +33,7 @@ namespace ViewProject.Persistence
         {
             //connessione al database che rimarrà connesso per tutta la durata dell'applicazione
             Conn = new SqlConnection();
-            Conn.ConnectionString = "Data Source=EDOARDO;Initial Catalog=PalestraDB;Integrated Security=True";
+            Conn.ConnectionString = "Data Source=LAPTOP-2010DOA2;Initial Catalog=PalestraDB;Integrated Security=True";
             _IDBroker = new IDBroker(Conn.ConnectionString);
             Conn.Open();
 

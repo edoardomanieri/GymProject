@@ -134,6 +134,7 @@ namespace ViewProject.Presentation
         {
             string username = _schermataAutenticazioneView.textBoxUsername.Text;
             string password = _schermataAutenticazioneView.textBoxPassword.Text;
+<<<<<<< HEAD
             try
             {
                 _utente = _mpm.Autentica(username, password);
@@ -142,6 +143,9 @@ namespace ViewProject.Presentation
             {
                 MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+=======
+           _utente = _mpm.Autentica(username, password);
+>>>>>>> 57c9c0ba15e46139d1dabcf707614d5bb172cf67
             if (_utente == null)
             {
                 MessageBox.Show("Credenziali errate");

@@ -191,6 +191,7 @@
             // 
             this.dataGridViewScheda.AllowUserToAddRows = false;
             this.dataGridViewScheda.AllowUserToDeleteRows = false;
+<<<<<<< HEAD
             this.dataGridViewScheda.AllowUserToResizeColumns = false;
             this.dataGridViewScheda.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
@@ -233,6 +234,13 @@
             this.dataGridViewScheda.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             this.dataGridViewScheda.RowTemplate.ReadOnly = true;
             this.dataGridViewScheda.Size = new System.Drawing.Size(623, 487);
+=======
+            this.dataGridViewScheda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewScheda.Location = new System.Drawing.Point(69, 65);
+            this.dataGridViewScheda.Name = "dataGridViewScheda";
+            this.dataGridViewScheda.ReadOnly = true;
+            this.dataGridViewScheda.Size = new System.Drawing.Size(240, 150);
+>>>>>>> 57c9c0ba15e46139d1dabcf707614d5bb172cf67
             this.dataGridViewScheda.TabIndex = 12;
             // 
             // buttonModificaScheda
