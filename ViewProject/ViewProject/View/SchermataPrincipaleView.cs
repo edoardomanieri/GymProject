@@ -16,8 +16,6 @@ namespace ViewProject
         public SchermataPrincipaleView()
         {
             InitializeComponent();
-<<<<<<< HEAD
-=======
 
             
         }
@@ -62,18 +60,8 @@ namespace ViewProject
 
         private void buttonFrase_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(GetFrase(), "La frase pensata per te:");
+            MessageBox.Show( "La frase pensata per te:");
         }
-        public string GetFrase()
-        {
-            int da = 1;
-            int a = 43;
-            Random random = new Random();
-            int numeroCasuale = random.Next(da, a);
-            string line = "";
-            StringBuilder frase = new StringBuilder();
->>>>>>> 57c9c0ba15e46139d1dabcf707614d5bb172cf67
 
-        }
     }
 }

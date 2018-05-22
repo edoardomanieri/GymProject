@@ -44,11 +44,11 @@
             this.buttonFrase = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonProgressi = new System.Windows.Forms.Button();
+            this.buttonModificaScheda = new System.Windows.Forms.Button();
             this.buttonVideo = new System.Windows.Forms.Button();
             this.buttonProfilo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewScheda = new System.Windows.Forms.DataGridView();
-            this.buttonModificaScheda = new System.Windows.Forms.Button();
             this.Giorno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Esercizio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Serie = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +142,24 @@
             this.buttonProgressi.Text = "Registra Allenamento";
             this.buttonProgressi.UseVisualStyleBackColor = false;
             // 
+            // buttonModificaScheda
+            // 
+            this.buttonModificaScheda.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonModificaScheda.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.buttonModificaScheda.FlatAppearance.BorderColor = System.Drawing.Color.MediumTurquoise;
+            this.buttonModificaScheda.FlatAppearance.BorderSize = 3;
+            this.buttonModificaScheda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
+            this.buttonModificaScheda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonModificaScheda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModificaScheda.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModificaScheda.Location = new System.Drawing.Point(30, 366);
+            this.buttonModificaScheda.Name = "buttonModificaScheda";
+            this.buttonModificaScheda.Size = new System.Drawing.Size(150, 39);
+            this.buttonModificaScheda.TabIndex = 9;
+            this.buttonModificaScheda.Tag = "";
+            this.buttonModificaScheda.Text = "Modifica Scheda";
+            this.buttonModificaScheda.UseVisualStyleBackColor = false;
+            // 
             // buttonVideo
             // 
             this.buttonVideo.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -191,13 +209,12 @@
             // 
             this.dataGridViewScheda.AllowUserToAddRows = false;
             this.dataGridViewScheda.AllowUserToDeleteRows = false;
-<<<<<<< HEAD
             this.dataGridViewScheda.AllowUserToResizeColumns = false;
             this.dataGridViewScheda.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             this.dataGridViewScheda.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewScheda.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataGridViewScheda.BackgroundColor = System.Drawing.Color.CornflowerBlue;
+            this.dataGridViewScheda.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewScheda.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dataGridViewScheda.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridViewScheda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -234,32 +251,7 @@
             this.dataGridViewScheda.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             this.dataGridViewScheda.RowTemplate.ReadOnly = true;
             this.dataGridViewScheda.Size = new System.Drawing.Size(623, 487);
-=======
-            this.dataGridViewScheda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewScheda.Location = new System.Drawing.Point(69, 65);
-            this.dataGridViewScheda.Name = "dataGridViewScheda";
-            this.dataGridViewScheda.ReadOnly = true;
-            this.dataGridViewScheda.Size = new System.Drawing.Size(240, 150);
->>>>>>> 57c9c0ba15e46139d1dabcf707614d5bb172cf67
             this.dataGridViewScheda.TabIndex = 12;
-            // 
-            // buttonModificaScheda
-            // 
-            this.buttonModificaScheda.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonModificaScheda.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.buttonModificaScheda.FlatAppearance.BorderColor = System.Drawing.Color.MediumTurquoise;
-            this.buttonModificaScheda.FlatAppearance.BorderSize = 3;
-            this.buttonModificaScheda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
-            this.buttonModificaScheda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
-            this.buttonModificaScheda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModificaScheda.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModificaScheda.Location = new System.Drawing.Point(30, 366);
-            this.buttonModificaScheda.Name = "buttonModificaScheda";
-            this.buttonModificaScheda.Size = new System.Drawing.Size(150, 39);
-            this.buttonModificaScheda.TabIndex = 9;
-            this.buttonModificaScheda.Tag = "";
-            this.buttonModificaScheda.Text = "Modifica Scheda";
-            this.buttonModificaScheda.UseVisualStyleBackColor = false;
             // 
             // Giorno
             // 
