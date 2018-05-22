@@ -274,13 +274,11 @@ namespace ViewProject.Persistence
                 SqlDataReader readerAllenamenti = selectAllenamenti.ExecuteReader();
                 while (readerAllenamenti.Read())
                 {
-                    if (readerAllenamenti["peso"] != null)
+                    try
                     {
                         int peso = (int)readerAllenamenti["peso"];
                         allenamenti.Add(new Allenamento((int)readerAllenamenti["durata"], (DateTime)readerAllenamenti["data"], peso));
-
-                    }
-                    else
+                    } catch(InvalidCastException)
                     {
                         allenamenti.Add(new Allenamento((int)readerAllenamenti["durata"], (DateTime)readerAllenamenti["data"]));
                     }
@@ -674,13 +672,13 @@ namespace ViewProject.Persistence
                 {
                     SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.VarChar, 200);
                     myParam8.Value = utente.FotoPath;
-                    insertUtenti = new SqlCommand("UPDATE UTENTI SET   nome = @Param1, cognome = @Param2, sesso = @Param3, dataNascita = @Param4, altezza = @Param5, peso = @Param6, fotopath = @Param8 where username =" + utente.Username + " ;", Conn);
+                    insertUtenti = new SqlCommand("UPDATE UTENTI SET   nome = @Param1, cognome = @Param2, sesso = @Param3, dataNascita = @Param4, altezza = @Param5, peso = @Param6, fotopath = @Param8 where username ='" + utente.Username + "' ;", Conn);
                     insertUtenti.Parameters.Add(myParam8);
                 }
 
                 else
                 {
-                    insertUtenti = new SqlCommand("UPDATE UTENTI SET   nome = @Param1, cognome = @Param2, sesso = @Param3, dataNascita = @Param4, altezza = @Param5, peso = @Param6 where username =" + utente.Username + " ;", Conn);
+                    insertUtenti = new SqlCommand("UPDATE UTENTI SET   nome = @Param1, cognome = @Param2, sesso = @Param3, dataNascita = @Param4, altezza = @Param5, peso = @Param6 where username ='" + utente.Username + "' ;", Conn);
 
                 }
 

@@ -35,20 +35,21 @@ namespace ViewProject.Test.PersistenceTest
         {
             //SaveDeleteUtente 
             Utente utente1 = new Utente("utenteProva", "uaaatente", "Paaaarova", new DateTime(2000, 1, 1), 45, 170, Sesso.Maschio);
-            UtenteAutomatico utenteAuto = new UtenteAutomatico("aaautenteProva", "utente", "Prova", new DateTime(2000, 1, 1), 45, 170, Sesso.Maschio, Risorsa.CorpoLibero, 5, TipoAllenamento.Ipertrofia);
+            Utente utenteA = new Utente("aaautenteProva", "utente", "Prova", new DateTime(2000, 1, 1), 45, 170, Sesso.Maschio);
             MainPersistanceManager mpm = MainPersistanceManager.Instance;
             Allenamento allenamento1 = new Allenamento(50, new DateTime(2000, 1, 1), 10);
             Allenamento allenamento2 = new Allenamento(50, new DateTime(2000, 1, 1));
             PianoAllenamento piano = new PianoAllenamento();
             Assert.AreEqual(true, mpm.SaveUtente(utente1, "utenteProva"));
-            //Assert.AreEqual(true, mpm.SaveUtenteAutomatico(utenteAuto, utenteAuto.Risorse,utenteAuto.NumeroGiorniAllenamento, utenteAuto.Tipo));
+            Assert.AreEqual(true, mpm.SaveUtente(utenteA, "utenteProva"));
+            Assert.AreEqual(true, mpm.SaveUtenteAutomatico(utenteA, Risorsa.CorpoLibero, 5, TipoAllenamento.Definizione));
 
             //SaveDeleteAllenamenti
             Assert.Throws<ArgumentException>(() => mpm.DeleteAllenamenti(null));
             Assert.Throws<ArgumentException>(() => mpm.SaveAllenamento(null, allenamento1));
             Assert.Throws<ArgumentException>(() => mpm.SaveAllenamento(utente1, null));
             Assert.AreEqual(true, mpm.SaveAllenamento(utente1, allenamento1));
-            //           Assert.AreEqual(true, mpm.SaveAllenamento(utente1, allenamento2));
+            Assert.AreEqual(true, mpm.SaveAllenamento(utente1, allenamento2));
 
             //LoadAllAllenamenti
             Assert.DoesNotThrow(() => mpm.LoadAllAllenamenti(utente1));
@@ -88,10 +89,9 @@ namespace ViewProject.Test.PersistenceTest
             Assert.AreNotEqual(true, mpm.ThereIsAPianoAllenamento(utente1));
 
             //CheckUsername
-            Utente utente2 = new Utente("tenteProva", "utente", "Prova", new DateTime(2000, 1, 1), 45, 170, Sesso.Maschio);
+            Utente utente2 = new Utente("tenProva", "utente", "Prova", new DateTime(2000, 1, 1), 45, 170, Sesso.Maschio);
             Assert.AreEqual(true, mpm.SaveUtente(utente2, "utenteProva"));
             Assert.AreEqual(true, mpm.CheckUsername(utente2.Username));
-            Assert.AreEqual(true, mpm.SaveUtente(utente2, "utenteProva"));
             Assert.DoesNotThrow(() => mpm.CheckUsername(utente2.Username));
             Assert.Throws<ArgumentException>(() => mpm.CheckUsername(null));
             Assert.Throws<ArgumentException>(() => mpm.CheckUsername(""));
@@ -106,29 +106,30 @@ namespace ViewProject.Test.PersistenceTest
             //Autentica
 
             //UpdateUtente
- /*           Assert.Throws<ArgumentException>(() => mpm.updateUtente(null));
+            Assert.Throws<ArgumentException>(() => mpm.updateUtente(null));
             nuovo.AltezzaInCm=179;
             Assert.DoesNotThrow(() => mpm.updateUtente(nuovo));
             nuovo.AltezzaInCm = 379;
-            Assert.AreEqual(true, mpm.updateUtente(nuovo));*/
+            Assert.AreEqual(true, mpm.updateUtente(nuovo));
             //UpdateUtente
 
             Assert.AreEqual(true, mpm.ThereIsASavedAccount());
             Assert.DoesNotThrow(() => mpm.ThereIsASavedAccount());
 
 
-            //         Assert.AreEqual(true, mpm.DeleteUtente(utenteAuto));
+            Assert.AreEqual(true, mpm.DeleteUtente(utenteA));
             Assert.AreEqual(true, mpm.DeleteUtente(utente1));
             Assert.Throws<ArgumentException>(() => mpm.DeleteUtente(null));
             Assert.Throws<ArgumentException>(() => mpm.SaveUtente(null, "ciao"));
             Assert.Throws<ArgumentException>(() => mpm.SaveUtenteAutomatico(null, Risorsa.CorpoLibero, 6, TipoAllenamento.Definizione));
-            Assert.Throws<ArgumentException>(() => mpm.SaveUtenteAutomatico(utenteAuto, Risorsa.CorpoLibero, 0, TipoAllenamento.Definizione));
-            Assert.Throws<ArgumentException>(() => mpm.SaveUtenteAutomatico(utenteAuto, Risorsa.CorpoLibero, 8, TipoAllenamento.Definizione));
+            Assert.Throws<ArgumentException>(() => mpm.SaveUtenteAutomatico(utenteA, Risorsa.CorpoLibero, 0, TipoAllenamento.Definizione));
+            Assert.Throws<ArgumentException>(() => mpm.SaveUtenteAutomatico(utenteA, Risorsa.CorpoLibero, 8, TipoAllenamento.Definizione));
             Assert.Throws<ArgumentException>(() => mpm.SaveUtente(new Utente("utenteProva", "utente", "Prova", new DateTime(2000, 1, 1), 45, 170, Sesso.Maschio), ""));
-            //           Assert.DoesNotThrow(() => mpm.SaveUtenteAutomatico(utenteAuto, utenteAuto.Risorse, utenteAuto.NumeroGiorniAllenamento, utenteAuto.Tipo));
+            Assert.AreEqual(true, mpm.SaveUtente(utenteA, "utenteProva"));
+            Assert.DoesNotThrow(() => mpm.SaveUtenteAutomatico(utenteA, Risorsa.CorpoLibero, 5, TipoAllenamento.Definizione));
             Assert.DoesNotThrow(() => mpm.SaveUtente(utente1, "utenteProva"));
             Assert.DoesNotThrow(() => mpm.DeleteUtente(utente1));
-            //           Assert.DoesNotThrow(() => mpm.DeleteUtente(utenteAuto));
+            Assert.DoesNotThrow(() => mpm.DeleteUtente(utenteA));
             // SaveDeleteUtente
         }
 
