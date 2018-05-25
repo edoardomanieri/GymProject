@@ -91,6 +91,8 @@ namespace ViewProject.Presentation
             if (_view.RadioButtonMaschio.Checked)
                 _utente.Sesso = Sesso.Maschio;
             else
+                _utente.Sesso = Sesso.Femmina;
+
             {
                 try
                 {
@@ -111,6 +113,7 @@ namespace ViewProject.Presentation
             _view.RadioButtonFemmina.Enabled = false;
             _view.numericUpDownPeso.Enabled = false;
             _view.numericUpDownAltezza.Enabled = false;
+            
         }
 
         private void Click_ModificaDati(object sender, EventArgs e)
@@ -124,6 +127,7 @@ namespace ViewProject.Presentation
             _view.RadioButtonFemmina.Enabled = true;
             _view.numericUpDownPeso.Enabled = true;
             _view.numericUpDownAltezza.Enabled = true;
+
         }
 
         private bool isCompleted()
@@ -159,6 +163,12 @@ namespace ViewProject.Presentation
             _view.RadioButtonFemmina.Enabled = false;
             _view.numericUpDownPeso.Enabled = false;
             _view.numericUpDownAltezza.Enabled = false;
+            if (_utente.FotoPath != default(string))
+            {
+                _view.pictureBoxFoto.BackgroundImage = null;
+                _view.pictureBoxFoto.ImageLocation = _utente.FotoPath;
+
+            }
         }
 
 

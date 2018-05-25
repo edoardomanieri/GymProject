@@ -34,7 +34,7 @@ namespace ViewProject
         {
             if (CreaPassword.Text.Equals(ConfirmPassword.Text))
                 return true;
-            MessageBox.Show("Le Password devono essere uguali");
+            MessageBox.Show("Le Password inserite non corrispondono.");
             return false;
         }
 
@@ -53,5 +53,7 @@ namespace ViewProject
                 return false;
             return true;
         }
+
+        
     }
 }

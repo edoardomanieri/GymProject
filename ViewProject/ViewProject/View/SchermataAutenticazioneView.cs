@@ -24,16 +24,13 @@ namespace ViewProject
             {
                 textBoxPassword.UseSystemPasswordChar = false;
                 buttonShowHide1.Image = imageHidePassword.Image;
-
             }
             else
             {
                 textBoxPassword.UseSystemPasswordChar = true;
                 buttonShowHide1.Image = imageShowPassword.Image;
-
             }
         }
-
-
+        
     }
 }

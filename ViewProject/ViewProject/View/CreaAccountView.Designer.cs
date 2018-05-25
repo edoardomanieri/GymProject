@@ -69,13 +69,13 @@
             // CreaPassword
             // 
             this.CreaPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CreaPassword.BackColor = System.Drawing.Color.IndianRed;
-            this.CreaPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreaPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.CreaPassword.Location = new System.Drawing.Point(376, 345);
+            this.CreaPassword.BackColor = System.Drawing.Color.SlateBlue;
+            this.CreaPassword.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreaPassword.ForeColor = System.Drawing.Color.Lavender;
+            this.CreaPassword.Location = new System.Drawing.Point(392, 365);
             this.CreaPassword.Name = "CreaPassword";
             this.CreaPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CreaPassword.Size = new System.Drawing.Size(130, 23);
+            this.CreaPassword.Size = new System.Drawing.Size(130, 24);
             this.CreaPassword.TabIndex = 16;
             this.CreaPassword.Tag = "";
             this.CreaPassword.UseSystemPasswordChar = true;
@@ -85,12 +85,12 @@
             this.labelPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelPassword.AutoSize = true;
             this.labelPassword.BackColor = System.Drawing.Color.Transparent;
-            this.labelPassword.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelPassword.Location = new System.Drawing.Point(278, 341);
+            this.labelPassword.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.ForeColor = System.Drawing.Color.Lavender;
+            this.labelPassword.Location = new System.Drawing.Point(283, 365);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelPassword.Size = new System.Drawing.Size(70, 24);
+            this.labelPassword.Size = new System.Drawing.Size(90, 21);
             this.labelPassword.TabIndex = 17;
             this.labelPassword.Text = "Password";
             // 
@@ -99,25 +99,25 @@
             this.labelConfermaPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelConfermaPassword.AutoSize = true;
             this.labelConfermaPassword.BackColor = System.Drawing.Color.Transparent;
-            this.labelConfermaPassword.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConfermaPassword.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelConfermaPassword.Location = new System.Drawing.Point(218, 386);
+            this.labelConfermaPassword.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfermaPassword.ForeColor = System.Drawing.Color.Lavender;
+            this.labelConfermaPassword.Location = new System.Drawing.Point(196, 412);
             this.labelConfermaPassword.Name = "labelConfermaPassword";
             this.labelConfermaPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelConfermaPassword.Size = new System.Drawing.Size(130, 24);
+            this.labelConfermaPassword.Size = new System.Drawing.Size(177, 21);
             this.labelConfermaPassword.TabIndex = 18;
             this.labelConfermaPassword.Text = "Conferma Password";
             // 
             // ConfirmPassword
             // 
             this.ConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ConfirmPassword.BackColor = System.Drawing.Color.IndianRed;
-            this.ConfirmPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmPassword.ForeColor = System.Drawing.SystemColors.Control;
-            this.ConfirmPassword.Location = new System.Drawing.Point(376, 392);
+            this.ConfirmPassword.BackColor = System.Drawing.Color.SlateBlue;
+            this.ConfirmPassword.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmPassword.ForeColor = System.Drawing.Color.Lavender;
+            this.ConfirmPassword.Location = new System.Drawing.Point(392, 412);
             this.ConfirmPassword.Name = "ConfirmPassword";
             this.ConfirmPassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ConfirmPassword.Size = new System.Drawing.Size(130, 23);
+            this.ConfirmPassword.Size = new System.Drawing.Size(130, 24);
             this.ConfirmPassword.TabIndex = 19;
             this.ConfirmPassword.Tag = "";
             this.ConfirmPassword.UseSystemPasswordChar = true;
@@ -157,14 +157,15 @@
             // 
             this.buttonProcedi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonProcedi.AutoSize = true;
-            this.buttonProcedi.BackColor = System.Drawing.Color.White;
+            this.buttonProcedi.BackColor = System.Drawing.Color.Transparent;
+            this.buttonProcedi.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.buttonProcedi.FlatAppearance.BorderSize = 2;
-            this.buttonProcedi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.GreenYellow;
-            this.buttonProcedi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.buttonProcedi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonProcedi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
             this.buttonProcedi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProcedi.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProcedi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonProcedi.Location = new System.Drawing.Point(722, 469);
+            this.buttonProcedi.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProcedi.ForeColor = System.Drawing.Color.Lavender;
+            this.buttonProcedi.Location = new System.Drawing.Point(716, 469);
             this.buttonProcedi.Name = "buttonProcedi";
             this.buttonProcedi.Size = new System.Drawing.Size(80, 31);
             this.buttonProcedi.TabIndex = 28;
@@ -174,18 +175,21 @@
             // buttonShowHide1
             // 
             this.buttonShowHide1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonShowHide1.BackColor = System.Drawing.Color.SlateBlue;
+            this.buttonShowHide1.ForeColor = System.Drawing.Color.Lavender;
             this.buttonShowHide1.Image = ((System.Drawing.Image)(resources.GetObject("buttonShowHide1.Image")));
-            this.buttonShowHide1.Location = new System.Drawing.Point(524, 345);
+            this.buttonShowHide1.Location = new System.Drawing.Point(540, 365);
             this.buttonShowHide1.Name = "buttonShowHide1";
             this.buttonShowHide1.Size = new System.Drawing.Size(24, 23);
             this.buttonShowHide1.TabIndex = 29;
-            this.buttonShowHide1.UseVisualStyleBackColor = true;
+            this.buttonShowHide1.UseVisualStyleBackColor = false;
             // 
             // buttonShowHide2
             // 
             this.buttonShowHide2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonShowHide2.ForeColor = System.Drawing.Color.Lavender;
             this.buttonShowHide2.Image = ((System.Drawing.Image)(resources.GetObject("buttonShowHide2.Image")));
-            this.buttonShowHide2.Location = new System.Drawing.Point(524, 392);
+            this.buttonShowHide2.Location = new System.Drawing.Point(540, 412);
             this.buttonShowHide2.Name = "buttonShowHide2";
             this.buttonShowHide2.Size = new System.Drawing.Size(24, 23);
             this.buttonShowHide2.TabIndex = 31;
@@ -196,12 +200,12 @@
             this.labelScheda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelScheda.AutoSize = true;
             this.labelScheda.BackColor = System.Drawing.Color.Transparent;
-            this.labelScheda.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelScheda.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelScheda.Location = new System.Drawing.Point(293, 442);
+            this.labelScheda.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelScheda.ForeColor = System.Drawing.Color.Lavender;
+            this.labelScheda.Location = new System.Drawing.Point(299, 461);
             this.labelScheda.Name = "labelScheda";
             this.labelScheda.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelScheda.Size = new System.Drawing.Size(53, 24);
+            this.labelScheda.Size = new System.Drawing.Size(69, 21);
             this.labelScheda.TabIndex = 32;
             this.labelScheda.Text = "Scheda";
             this.labelScheda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -210,47 +214,51 @@
             // 
             this.checkBoxAutomatica.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBoxAutomatica.AutoSize = true;
+            this.checkBoxAutomatica.BackColor = System.Drawing.Color.SlateBlue;
             this.checkBoxAutomatica.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.checkBoxAutomatica.FlatAppearance.BorderSize = 3;
             this.checkBoxAutomatica.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
             this.checkBoxAutomatica.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.checkBoxAutomatica.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.checkBoxAutomatica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxAutomatica.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAutomatica.Location = new System.Drawing.Point(459, 444);
+            this.checkBoxAutomatica.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAutomatica.ForeColor = System.Drawing.Color.Lavender;
+            this.checkBoxAutomatica.Location = new System.Drawing.Point(473, 463);
             this.checkBoxAutomatica.Name = "checkBoxAutomatica";
-            this.checkBoxAutomatica.Size = new System.Drawing.Size(80, 24);
+            this.checkBoxAutomatica.Size = new System.Drawing.Size(98, 20);
             this.checkBoxAutomatica.TabIndex = 34;
             this.checkBoxAutomatica.Text = "Automatica";
-            this.checkBoxAutomatica.UseVisualStyleBackColor = true;
+            this.checkBoxAutomatica.UseVisualStyleBackColor = false;
             this.checkBoxAutomatica.CheckedChanged += new System.EventHandler(this.checkBoxAutomatica_CheckedChanged);
             // 
             // checkBoxManuale
             // 
             this.checkBoxManuale.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBoxManuale.AutoSize = true;
+            this.checkBoxManuale.BackColor = System.Drawing.Color.SlateBlue;
             this.checkBoxManuale.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.checkBoxManuale.FlatAppearance.BorderSize = 3;
             this.checkBoxManuale.FlatAppearance.CheckedBackColor = System.Drawing.Color.Red;
             this.checkBoxManuale.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.checkBoxManuale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.checkBoxManuale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxManuale.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxManuale.Location = new System.Drawing.Point(376, 444);
+            this.checkBoxManuale.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxManuale.ForeColor = System.Drawing.Color.Lavender;
+            this.checkBoxManuale.Location = new System.Drawing.Point(390, 463);
             this.checkBoxManuale.Name = "checkBoxManuale";
-            this.checkBoxManuale.Size = new System.Drawing.Size(66, 24);
+            this.checkBoxManuale.Size = new System.Drawing.Size(79, 20);
             this.checkBoxManuale.TabIndex = 35;
             this.checkBoxManuale.Text = "Manuale";
-            this.checkBoxManuale.UseVisualStyleBackColor = true;
+            this.checkBoxManuale.UseVisualStyleBackColor = false;
             this.checkBoxManuale.CheckedChanged += new System.EventHandler(this.checkBoxManuale_CheckedChanged);
             // 
             // numericUpDownAltezza
             // 
             this.numericUpDownAltezza.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDownAltezza.BackColor = System.Drawing.Color.IndianRed;
-            this.numericUpDownAltezza.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAltezza.ForeColor = System.Drawing.Color.Transparent;
-            this.numericUpDownAltezza.Location = new System.Drawing.Point(376, 253);
+            this.numericUpDownAltezza.BackColor = System.Drawing.Color.SlateBlue;
+            this.numericUpDownAltezza.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAltezza.ForeColor = System.Drawing.Color.Lavender;
+            this.numericUpDownAltezza.Location = new System.Drawing.Point(392, 274);
             this.numericUpDownAltezza.Maximum = new decimal(new int[] {
             250,
             0,
@@ -263,7 +271,7 @@
             0});
             this.numericUpDownAltezza.Name = "numericUpDownAltezza";
             this.numericUpDownAltezza.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDownAltezza.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownAltezza.Size = new System.Drawing.Size(51, 22);
             this.numericUpDownAltezza.TabIndex = 51;
             this.numericUpDownAltezza.Value = new decimal(new int[] {
             100,
@@ -276,12 +284,12 @@
             this.labelAltezza.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelAltezza.AutoSize = true;
             this.labelAltezza.BackColor = System.Drawing.Color.Transparent;
-            this.labelAltezza.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAltezza.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelAltezza.Location = new System.Drawing.Point(259, 249);
+            this.labelAltezza.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAltezza.ForeColor = System.Drawing.Color.Lavender;
+            this.labelAltezza.Location = new System.Drawing.Point(256, 274);
             this.labelAltezza.Name = "labelAltezza";
             this.labelAltezza.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelAltezza.Size = new System.Drawing.Size(89, 24);
+            this.labelAltezza.Size = new System.Drawing.Size(119, 21);
             this.labelAltezza.TabIndex = 50;
             this.labelAltezza.Text = "Altezza in cm";
             this.labelAltezza.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -289,13 +297,13 @@
             // numericUpDownPeso
             // 
             this.numericUpDownPeso.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDownPeso.BackColor = System.Drawing.Color.IndianRed;
-            this.numericUpDownPeso.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownPeso.ForeColor = System.Drawing.Color.Transparent;
-            this.numericUpDownPeso.Location = new System.Drawing.Point(376, 210);
+            this.numericUpDownPeso.BackColor = System.Drawing.Color.SlateBlue;
+            this.numericUpDownPeso.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownPeso.ForeColor = System.Drawing.Color.Lavender;
+            this.numericUpDownPeso.Location = new System.Drawing.Point(392, 231);
             this.numericUpDownPeso.Name = "numericUpDownPeso";
             this.numericUpDownPeso.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDownPeso.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownPeso.Size = new System.Drawing.Size(49, 22);
             this.numericUpDownPeso.TabIndex = 49;
             this.numericUpDownPeso.Value = new decimal(new int[] {
             50,
@@ -308,12 +316,12 @@
             this.labelPeso.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelPeso.AutoSize = true;
             this.labelPeso.BackColor = System.Drawing.Color.Transparent;
-            this.labelPeso.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPeso.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelPeso.Location = new System.Drawing.Point(275, 206);
+            this.labelPeso.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPeso.ForeColor = System.Drawing.Color.Lavender;
+            this.labelPeso.Location = new System.Drawing.Point(274, 231);
             this.labelPeso.Name = "labelPeso";
             this.labelPeso.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelPeso.Size = new System.Drawing.Size(71, 24);
+            this.labelPeso.Size = new System.Drawing.Size(99, 21);
             this.labelPeso.TabIndex = 48;
             this.labelPeso.Text = "Peso in Kg";
             this.labelPeso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -321,10 +329,10 @@
             // comboBoxAnno
             // 
             this.comboBoxAnno.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxAnno.BackColor = System.Drawing.Color.IndianRed;
+            this.comboBoxAnno.BackColor = System.Drawing.Color.SlateBlue;
             this.comboBoxAnno.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBoxAnno.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxAnno.ForeColor = System.Drawing.Color.White;
+            this.comboBoxAnno.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxAnno.ForeColor = System.Drawing.Color.Lavender;
             this.comboBoxAnno.FormattingEnabled = true;
             this.comboBoxAnno.Items.AddRange(new object[] {
             "1910",
@@ -435,20 +443,20 @@
             "2016",
             "2017",
             "2018"});
-            this.comboBoxAnno.Location = new System.Drawing.Point(496, 173);
+            this.comboBoxAnno.Location = new System.Drawing.Point(526, 187);
             this.comboBoxAnno.Name = "comboBoxAnno";
             this.comboBoxAnno.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxAnno.Size = new System.Drawing.Size(52, 25);
+            this.comboBoxAnno.Size = new System.Drawing.Size(56, 23);
             this.comboBoxAnno.TabIndex = 47;
             this.comboBoxAnno.Text = "Anno";
             // 
             // comboBoxMese
             // 
             this.comboBoxMese.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxMese.BackColor = System.Drawing.Color.IndianRed;
+            this.comboBoxMese.BackColor = System.Drawing.Color.SlateBlue;
             this.comboBoxMese.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBoxMese.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxMese.ForeColor = System.Drawing.Color.Transparent;
+            this.comboBoxMese.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxMese.ForeColor = System.Drawing.Color.Lavender;
             this.comboBoxMese.FormattingEnabled = true;
             this.comboBoxMese.Items.AddRange(new object[] {
             "1",
@@ -463,20 +471,20 @@
             "10",
             "11",
             "12"});
-            this.comboBoxMese.Location = new System.Drawing.Point(438, 173);
+            this.comboBoxMese.Location = new System.Drawing.Point(463, 187);
             this.comboBoxMese.Name = "comboBoxMese";
             this.comboBoxMese.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxMese.Size = new System.Drawing.Size(52, 25);
+            this.comboBoxMese.Size = new System.Drawing.Size(57, 23);
             this.comboBoxMese.TabIndex = 46;
             this.comboBoxMese.Text = "Mese";
             // 
             // comboBoxGiorno
             // 
             this.comboBoxGiorno.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxGiorno.BackColor = System.Drawing.Color.IndianRed;
+            this.comboBoxGiorno.BackColor = System.Drawing.Color.SlateBlue;
             this.comboBoxGiorno.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBoxGiorno.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxGiorno.ForeColor = System.Drawing.Color.Transparent;
+            this.comboBoxGiorno.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxGiorno.ForeColor = System.Drawing.Color.Lavender;
             this.comboBoxGiorno.FormattingEnabled = true;
             this.comboBoxGiorno.Items.AddRange(new object[] {
             "1",
@@ -510,10 +518,10 @@
             "29",
             "30",
             "31"});
-            this.comboBoxGiorno.Location = new System.Drawing.Point(376, 173);
+            this.comboBoxGiorno.Location = new System.Drawing.Point(392, 187);
             this.comboBoxGiorno.Name = "comboBoxGiorno";
             this.comboBoxGiorno.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxGiorno.Size = new System.Drawing.Size(56, 25);
+            this.comboBoxGiorno.Size = new System.Drawing.Size(65, 23);
             this.comboBoxGiorno.TabIndex = 45;
             this.comboBoxGiorno.Text = "Giorno";
             // 
@@ -522,12 +530,12 @@
             this.labelDataNascita.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelDataNascita.AutoSize = true;
             this.labelDataNascita.BackColor = System.Drawing.Color.Transparent;
-            this.labelDataNascita.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDataNascita.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelDataNascita.Location = new System.Drawing.Point(252, 173);
+            this.labelDataNascita.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataNascita.ForeColor = System.Drawing.Color.Lavender;
+            this.labelDataNascita.Location = new System.Drawing.Point(239, 185);
             this.labelDataNascita.Name = "labelDataNascita";
             this.labelDataNascita.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelDataNascita.Size = new System.Drawing.Size(96, 24);
+            this.labelDataNascita.Size = new System.Drawing.Size(137, 21);
             this.labelDataNascita.TabIndex = 44;
             this.labelDataNascita.Text = "Data Di Nascita";
             this.labelDataNascita.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -537,12 +545,17 @@
             this.RadioButtonFemmina.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.RadioButtonFemmina.AutoSize = true;
             this.RadioButtonFemmina.BackColor = System.Drawing.Color.Transparent;
-            this.RadioButtonFemmina.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadioButtonFemmina.ForeColor = System.Drawing.Color.White;
-            this.RadioButtonFemmina.Location = new System.Drawing.Point(459, 141);
+            this.RadioButtonFemmina.FlatAppearance.BorderColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonFemmina.FlatAppearance.BorderSize = 4;
+            this.RadioButtonFemmina.FlatAppearance.CheckedBackColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonFemmina.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonFemmina.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonFemmina.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioButtonFemmina.ForeColor = System.Drawing.Color.Lavender;
+            this.RadioButtonFemmina.Location = new System.Drawing.Point(477, 143);
             this.RadioButtonFemmina.Name = "RadioButtonFemmina";
             this.RadioButtonFemmina.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.RadioButtonFemmina.Size = new System.Drawing.Size(71, 24);
+            this.RadioButtonFemmina.Size = new System.Drawing.Size(84, 20);
             this.RadioButtonFemmina.TabIndex = 43;
             this.RadioButtonFemmina.TabStop = true;
             this.RadioButtonFemmina.Text = "Femmina";
@@ -553,12 +566,17 @@
             this.RadioButtonMaschio.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.RadioButtonMaschio.AutoSize = true;
             this.RadioButtonMaschio.BackColor = System.Drawing.Color.Transparent;
-            this.RadioButtonMaschio.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadioButtonMaschio.ForeColor = System.Drawing.Color.White;
-            this.RadioButtonMaschio.Location = new System.Drawing.Point(376, 141);
+            this.RadioButtonMaschio.FlatAppearance.BorderColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonMaschio.FlatAppearance.BorderSize = 4;
+            this.RadioButtonMaschio.FlatAppearance.CheckedBackColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonMaschio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonMaschio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
+            this.RadioButtonMaschio.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadioButtonMaschio.ForeColor = System.Drawing.Color.Lavender;
+            this.RadioButtonMaschio.Location = new System.Drawing.Point(394, 143);
             this.RadioButtonMaschio.Name = "RadioButtonMaschio";
             this.RadioButtonMaschio.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.RadioButtonMaschio.Size = new System.Drawing.Size(68, 24);
+            this.RadioButtonMaschio.Size = new System.Drawing.Size(79, 20);
             this.RadioButtonMaschio.TabIndex = 42;
             this.RadioButtonMaschio.TabStop = true;
             this.RadioButtonMaschio.Text = "Maschio";
@@ -569,12 +587,12 @@
             this.labelSesso.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelSesso.AutoSize = true;
             this.labelSesso.BackColor = System.Drawing.Color.Transparent;
-            this.labelSesso.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSesso.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelSesso.Location = new System.Drawing.Point(302, 137);
+            this.labelSesso.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSesso.ForeColor = System.Drawing.Color.Lavender;
+            this.labelSesso.Location = new System.Drawing.Point(319, 143);
             this.labelSesso.Name = "labelSesso";
             this.labelSesso.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelSesso.Size = new System.Drawing.Size(46, 24);
+            this.labelSesso.Size = new System.Drawing.Size(57, 21);
             this.labelSesso.TabIndex = 41;
             this.labelSesso.Text = "Sesso";
             this.labelSesso.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -584,12 +602,12 @@
             this.labelCognome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCognome.AutoSize = true;
             this.labelCognome.BackColor = System.Drawing.Color.Transparent;
-            this.labelCognome.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCognome.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelCognome.Location = new System.Drawing.Point(284, 96);
+            this.labelCognome.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCognome.ForeColor = System.Drawing.Color.Lavender;
+            this.labelCognome.Location = new System.Drawing.Point(289, 101);
             this.labelCognome.Name = "labelCognome";
             this.labelCognome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelCognome.Size = new System.Drawing.Size(64, 24);
+            this.labelCognome.Size = new System.Drawing.Size(87, 21);
             this.labelCognome.TabIndex = 40;
             this.labelCognome.Text = "Cognome";
             this.labelCognome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -599,25 +617,25 @@
             this.labelNome.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNome.AutoSize = true;
             this.labelNome.BackColor = System.Drawing.Color.Transparent;
-            this.labelNome.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNome.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelNome.Location = new System.Drawing.Point(305, 61);
+            this.labelNome.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNome.ForeColor = System.Drawing.Color.Lavender;
+            this.labelNome.Location = new System.Drawing.Point(319, 66);
             this.labelNome.Name = "labelNome";
             this.labelNome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelNome.Size = new System.Drawing.Size(43, 24);
+            this.labelNome.Size = new System.Drawing.Size(56, 21);
             this.labelNome.TabIndex = 39;
             this.labelNome.Text = "Nome";
             // 
             // TextBoxCognome
             // 
             this.TextBoxCognome.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TextBoxCognome.BackColor = System.Drawing.Color.IndianRed;
-            this.TextBoxCognome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxCognome.ForeColor = System.Drawing.SystemColors.Control;
-            this.TextBoxCognome.Location = new System.Drawing.Point(376, 102);
+            this.TextBoxCognome.BackColor = System.Drawing.Color.SlateBlue;
+            this.TextBoxCognome.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBoxCognome.ForeColor = System.Drawing.Color.Lavender;
+            this.TextBoxCognome.Location = new System.Drawing.Point(392, 103);
             this.TextBoxCognome.Name = "TextBoxCognome";
             this.TextBoxCognome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TextBoxCognome.Size = new System.Drawing.Size(114, 23);
+            this.TextBoxCognome.Size = new System.Drawing.Size(114, 24);
             this.TextBoxCognome.TabIndex = 38;
             this.TextBoxCognome.Tag = "";
             // 
@@ -626,25 +644,25 @@
             this.labelTitolo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitolo.AutoSize = true;
             this.labelTitolo.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitolo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitolo.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelTitolo.Location = new System.Drawing.Point(274, 14);
+            this.labelTitolo.Font = new System.Drawing.Font("Britannic Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitolo.ForeColor = System.Drawing.Color.Lavender;
+            this.labelTitolo.Location = new System.Drawing.Point(273, 14);
             this.labelTitolo.Name = "labelTitolo";
             this.labelTitolo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelTitolo.Size = new System.Drawing.Size(284, 28);
+            this.labelTitolo.Size = new System.Drawing.Size(298, 30);
             this.labelTitolo.TabIndex = 37;
             this.labelTitolo.Text = "Crea un nuovo account!";
             // 
             // TextBoxNome
             // 
             this.TextBoxNome.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TextBoxNome.BackColor = System.Drawing.Color.IndianRed;
-            this.TextBoxNome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBoxNome.ForeColor = System.Drawing.SystemColors.Control;
-            this.TextBoxNome.Location = new System.Drawing.Point(376, 68);
+            this.TextBoxNome.BackColor = System.Drawing.Color.SlateBlue;
+            this.TextBoxNome.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBoxNome.ForeColor = System.Drawing.Color.Lavender;
+            this.TextBoxNome.Location = new System.Drawing.Point(392, 68);
             this.TextBoxNome.Name = "TextBoxNome";
             this.TextBoxNome.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TextBoxNome.Size = new System.Drawing.Size(114, 23);
+            this.TextBoxNome.Size = new System.Drawing.Size(114, 24);
             this.TextBoxNome.TabIndex = 36;
             // 
             // labelUsername
@@ -652,25 +670,25 @@
             this.labelUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelUsername.AutoSize = true;
             this.labelUsername.BackColor = System.Drawing.Color.Transparent;
-            this.labelUsername.Font = new System.Drawing.Font("Agency FB", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelUsername.Location = new System.Drawing.Point(276, 297);
+            this.labelUsername.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsername.ForeColor = System.Drawing.Color.Lavender;
+            this.labelUsername.Location = new System.Drawing.Point(279, 318);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelUsername.Size = new System.Drawing.Size(70, 24);
+            this.labelUsername.Size = new System.Drawing.Size(94, 21);
             this.labelUsername.TabIndex = 52;
             this.labelUsername.Text = "Username";
             // 
             // textBoxUsername
             // 
             this.textBoxUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxUsername.BackColor = System.Drawing.Color.IndianRed;
-            this.textBoxUsername.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsername.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBoxUsername.Location = new System.Drawing.Point(376, 300);
+            this.textBoxUsername.BackColor = System.Drawing.Color.SlateBlue;
+            this.textBoxUsername.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsername.ForeColor = System.Drawing.Color.Lavender;
+            this.textBoxUsername.Location = new System.Drawing.Point(392, 320);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxUsername.Size = new System.Drawing.Size(114, 23);
+            this.textBoxUsername.Size = new System.Drawing.Size(114, 24);
             this.textBoxUsername.TabIndex = 53;
             this.textBoxUsername.Tag = "";
             // 
@@ -678,13 +696,14 @@
             // 
             this.buttonIndietro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonIndietro.AutoSize = true;
-            this.buttonIndietro.BackColor = System.Drawing.Color.White;
+            this.buttonIndietro.BackColor = System.Drawing.Color.Transparent;
+            this.buttonIndietro.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.buttonIndietro.FlatAppearance.BorderSize = 2;
-            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.GreenYellow;
-            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
             this.buttonIndietro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonIndietro.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIndietro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonIndietro.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietro.ForeColor = System.Drawing.Color.Lavender;
             this.buttonIndietro.Location = new System.Drawing.Point(27, 469);
             this.buttonIndietro.Name = "buttonIndietro";
             this.buttonIndietro.Size = new System.Drawing.Size(86, 31);
@@ -695,7 +714,6 @@
             // CreaAccountView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.IndianRed;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.buttonIndietro);
@@ -769,11 +787,11 @@
         public System.Windows.Forms.TextBox textBoxUsername;
         public System.Windows.Forms.TextBox CreaPassword;
         public System.Windows.Forms.TextBox ConfirmPassword;
-        private System.Windows.Forms.Button buttonIndietro;
         public System.Windows.Forms.Button buttonShowHide1;
         public System.Windows.Forms.Button buttonShowHide2;
         public System.Windows.Forms.PictureBox imageShowPassword;
         public System.Windows.Forms.PictureBox imageHidePassword;
+        public System.Windows.Forms.Button buttonIndietro;
     }
 }
 

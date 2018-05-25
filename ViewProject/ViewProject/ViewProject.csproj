@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistence\BCrypt.cs" />
     <Compile Include="Persistence\IDBroker.cs" />
     <Compile Include="Presentation\CreaSchedaAutomaticaPresenter.cs" />
     <Compile Include="Presentation\CreaSchedaManualePresenter.cs" />
@@ -69,6 +70,12 @@
     <Compile Include="Presentation\ProgressiPresenter.cs" />
     <Compile Include="Presentation\SchermataPrincipalePresenter.cs" />
     <Compile Include="Presentation\VideoPresenter.cs" />
+    <Compile Include="View\modificaPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\modificaPasswordForm.Designer.cs">
+      <DependentUpon>modificaPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SchermataAutenticazioneView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +159,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\ViewFactory.cs" />
+    <EmbeddedResource Include="View\modificaPasswordForm.resx">
+      <DependentUpon>modificaPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SchermataAutenticazioneView.resx">
       <DependentUpon>SchermataAutenticazioneView.cs</DependentUpon>
     </EmbeddedResource>

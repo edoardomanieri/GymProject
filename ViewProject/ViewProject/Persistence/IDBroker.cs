@@ -90,7 +90,7 @@ namespace ViewProject.Persistence
                     return ID;
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 throw;
             }
@@ -118,7 +118,7 @@ namespace ViewProject.Persistence
                 }
 
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 throw;
             }

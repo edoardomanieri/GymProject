@@ -22,15 +22,15 @@ namespace ViewProject.model
             _nome = nome;
             _fasciaMuscolare = fasciaMuscolare;
             _risorseRichieste = risorseRichieste;
-            _descrizione = "";
+            _descrizione = GetDescrizione();
         }
 
 
-        public void GetDescrizione()
+        private string GetDescrizione()
         {
             string line = "";
             StringBuilder descrizione = new StringBuilder();
-            System.IO.StreamReader file = new System.IO.StreamReader(Directory.GetCurrentDirectory() + @"\ViewProject\descrizioneEsercizi.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(Directory.GetCurrentDirectory() + @"..\..\..\descrizioneEsercizi.txt");
             while ((line = file.ReadLine()) != null)
             {
                 if (line.ElementAt(0).Equals('#'))
@@ -50,9 +50,9 @@ namespace ViewProject.model
             }
             file.Close();
             if (descrizione.ToString().Equals(""))
-                Descrizione = "Descrizione non disponibile";
+                return "Descrizione non disponibile";
             else
-                Descrizione = descrizione.ToString();
+                return descrizione.ToString();
         }
 
         public string Nome { get => _nome; }

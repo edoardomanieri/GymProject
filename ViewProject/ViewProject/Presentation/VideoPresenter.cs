@@ -41,7 +41,6 @@ namespace ViewProject.Presentation
         private void SelectionChange_Esercizio(object sender, EventArgs e)
         {
             Esercizio esercizio = (Esercizio)_view.listBoxEserciziVideo.SelectedItem;
-            esercizio.GetDescrizione();
             _view.textBoxDescrizione.Text = esercizio.Descrizione;
 
             string path = "..\\..\\resources\\video\\" + esercizio.Nome + ".mp4";
@@ -49,7 +48,7 @@ namespace ViewProject.Presentation
                 _view.axWindowsMediaPlayer.URL = path;
             else
             {
-                //show dialog video non disponibile
+                MessageBox.Show("Video non disponibile");
             }
         }
 

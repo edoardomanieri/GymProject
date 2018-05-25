@@ -46,23 +46,22 @@
             this.labelTitolo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitolo.AutoSize = true;
             this.labelTitolo.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitolo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitolo.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelTitolo.Location = new System.Drawing.Point(115, 31);
+            this.labelTitolo.Font = new System.Drawing.Font("Britannic Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitolo.ForeColor = System.Drawing.Color.Lavender;
+            this.labelTitolo.Location = new System.Drawing.Point(-76, 40);
             this.labelTitolo.Name = "labelTitolo";
             this.labelTitolo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelTitolo.Size = new System.Drawing.Size(570, 64);
+            this.labelTitolo.Size = new System.Drawing.Size(841, 32);
             this.labelTitolo.TabIndex = 3;
-            this.labelTitolo.Text = "            Inserisci i seguenti dati al fine di\r\n generare automaticamente la tu" +
-    "a scheda!";
+            this.labelTitolo.Text = "            Inserisci i dati e genera automaticamente la tua scheda!";
             // 
             // numericUpDownAllenamenti
             // 
             this.numericUpDownAllenamenti.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDownAllenamenti.BackColor = System.Drawing.Color.IndianRed;
-            this.numericUpDownAllenamenti.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAllenamenti.ForeColor = System.Drawing.Color.Transparent;
-            this.numericUpDownAllenamenti.Location = new System.Drawing.Point(591, 178);
+            this.numericUpDownAllenamenti.BackColor = System.Drawing.Color.SlateBlue;
+            this.numericUpDownAllenamenti.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAllenamenti.ForeColor = System.Drawing.Color.Lavender;
+            this.numericUpDownAllenamenti.Location = new System.Drawing.Point(528, 146);
             this.numericUpDownAllenamenti.Maximum = new decimal(new int[] {
             7,
             0,
@@ -75,7 +74,7 @@
             0});
             this.numericUpDownAllenamenti.Name = "numericUpDownAllenamenti";
             this.numericUpDownAllenamenti.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.numericUpDownAllenamenti.Size = new System.Drawing.Size(44, 23);
+            this.numericUpDownAllenamenti.Size = new System.Drawing.Size(44, 24);
             this.numericUpDownAllenamenti.TabIndex = 25;
             this.numericUpDownAllenamenti.Value = new decimal(new int[] {
             1,
@@ -88,33 +87,28 @@
             this.labelObiettivo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelObiettivo.AutoSize = true;
             this.labelObiettivo.BackColor = System.Drawing.Color.Transparent;
-            this.labelObiettivo.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelObiettivo.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelObiettivo.Location = new System.Drawing.Point(211, 245);
+            this.labelObiettivo.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelObiettivo.ForeColor = System.Drawing.Color.Lavender;
+            this.labelObiettivo.Location = new System.Drawing.Point(153, 240);
             this.labelObiettivo.Name = "labelObiettivo";
             this.labelObiettivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelObiettivo.Size = new System.Drawing.Size(311, 31);
+            this.labelObiettivo.Size = new System.Drawing.Size(341, 21);
             this.labelObiettivo.TabIndex = 24;
-            this.labelObiettivo.Text = "Specifica l\'obiettivo del tuo allenamento";
+            this.labelObiettivo.Text = "Seleziona l\'obiettivo del tuo allenamento";
             this.labelObiettivo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // comboBoxObiettivo
             // 
             this.comboBoxObiettivo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxObiettivo.BackColor = System.Drawing.Color.IndianRed;
+            this.comboBoxObiettivo.BackColor = System.Drawing.Color.SlateBlue;
             this.comboBoxObiettivo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxObiettivo.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxObiettivo.ForeColor = System.Drawing.Color.Transparent;
+            this.comboBoxObiettivo.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxObiettivo.ForeColor = System.Drawing.Color.Lavender;
             this.comboBoxObiettivo.FormattingEnabled = true;
-            this.comboBoxObiettivo.Items.AddRange(new object[] {
-            "Ipertrofia",
-            "Definizione",
-            "Forza",
-            "Tonificazione"});
-            this.comboBoxObiettivo.Location = new System.Drawing.Point(566, 251);
+            this.comboBoxObiettivo.Location = new System.Drawing.Point(528, 241);
             this.comboBoxObiettivo.Name = "comboBoxObiettivo";
             this.comboBoxObiettivo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxObiettivo.Size = new System.Drawing.Size(94, 25);
+            this.comboBoxObiettivo.Size = new System.Drawing.Size(103, 24);
             this.comboBoxObiettivo.TabIndex = 23;
             this.comboBoxObiettivo.Text = "Obiettivo";
             this.comboBoxObiettivo.SelectedIndexChanged += new System.EventHandler(this.comboBoxObiettivo_SelectedIndexChanged);
@@ -124,12 +118,12 @@
             this.labelGiorniAllenamento.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelGiorniAllenamento.AutoSize = true;
             this.labelGiorniAllenamento.BackColor = System.Drawing.Color.Transparent;
-            this.labelGiorniAllenamento.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGiorniAllenamento.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelGiorniAllenamento.Location = new System.Drawing.Point(199, 170);
+            this.labelGiorniAllenamento.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGiorniAllenamento.ForeColor = System.Drawing.Color.Lavender;
+            this.labelGiorniAllenamento.Location = new System.Drawing.Point(127, 146);
             this.labelGiorniAllenamento.Name = "labelGiorniAllenamento";
             this.labelGiorniAllenamento.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelGiorniAllenamento.Size = new System.Drawing.Size(334, 31);
+            this.labelGiorniAllenamento.Size = new System.Drawing.Size(367, 21);
             this.labelGiorniAllenamento.TabIndex = 22;
             this.labelGiorniAllenamento.Text = "Specifica il numero di giorni d\'allenamento";
             this.labelGiorniAllenamento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -139,12 +133,12 @@
             this.labelRisorse.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelRisorse.AutoSize = true;
             this.labelRisorse.BackColor = System.Drawing.Color.Transparent;
-            this.labelRisorse.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRisorse.ForeColor = System.Drawing.Color.GreenYellow;
-            this.labelRisorse.Location = new System.Drawing.Point(199, 325);
+            this.labelRisorse.Font = new System.Drawing.Font("Britannic Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRisorse.ForeColor = System.Drawing.Color.Lavender;
+            this.labelRisorse.Location = new System.Drawing.Point(113, 336);
             this.labelRisorse.Name = "labelRisorse";
             this.labelRisorse.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelRisorse.Size = new System.Drawing.Size(343, 31);
+            this.labelRisorse.Size = new System.Drawing.Size(381, 21);
             this.labelRisorse.TabIndex = 27;
             this.labelRisorse.Text = "Indica la modalità di allenamento desiderata";
             this.labelRisorse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -152,18 +146,15 @@
             // comboModalita
             // 
             this.comboModalita.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboModalita.BackColor = System.Drawing.Color.IndianRed;
+            this.comboModalita.BackColor = System.Drawing.Color.SlateBlue;
             this.comboModalita.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboModalita.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboModalita.ForeColor = System.Drawing.Color.Transparent;
+            this.comboModalita.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboModalita.ForeColor = System.Drawing.Color.Lavender;
             this.comboModalita.FormattingEnabled = true;
-            this.comboModalita.Items.AddRange(new object[] {
-            "Sala pesi",
-            "Corpo libero"});
-            this.comboModalita.Location = new System.Drawing.Point(566, 331);
+            this.comboModalita.Location = new System.Drawing.Point(528, 336);
             this.comboModalita.Name = "comboModalita";
             this.comboModalita.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboModalita.Size = new System.Drawing.Size(94, 25);
+            this.comboModalita.Size = new System.Drawing.Size(105, 24);
             this.comboModalita.TabIndex = 26;
             this.comboModalita.Text = "Modalità";
             this.comboModalita.SelectedIndexChanged += new System.EventHandler(this.comboModalita_SelectedIndexChanged);
@@ -172,13 +163,13 @@
             // 
             this.buttonProcedi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonProcedi.AutoSize = true;
-            this.buttonProcedi.BackColor = System.Drawing.Color.White;
+            this.buttonProcedi.BackColor = System.Drawing.Color.Transparent;
             this.buttonProcedi.FlatAppearance.BorderSize = 2;
-            this.buttonProcedi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.GreenYellow;
-            this.buttonProcedi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.buttonProcedi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonProcedi.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
             this.buttonProcedi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonProcedi.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonProcedi.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonProcedi.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProcedi.ForeColor = System.Drawing.Color.Lavender;
             this.buttonProcedi.Location = new System.Drawing.Point(685, 457);
             this.buttonProcedi.Name = "buttonProcedi";
             this.buttonProcedi.Size = new System.Drawing.Size(80, 31);
@@ -190,13 +181,13 @@
             // 
             this.buttonIndietro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonIndietro.AutoSize = true;
-            this.buttonIndietro.BackColor = System.Drawing.Color.White;
+            this.buttonIndietro.BackColor = System.Drawing.Color.Transparent;
             this.buttonIndietro.FlatAppearance.BorderSize = 2;
-            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.GreenYellow;
-            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.IndianRed;
+            this.buttonIndietro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonIndietro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
             this.buttonIndietro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonIndietro.Font = new System.Drawing.Font("Showcard Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonIndietro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonIndietro.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietro.ForeColor = System.Drawing.Color.Lavender;
             this.buttonIndietro.Location = new System.Drawing.Point(40, 457);
             this.buttonIndietro.Name = "buttonIndietro";
             this.buttonIndietro.Size = new System.Drawing.Size(86, 31);
@@ -219,6 +210,7 @@
             this.Controls.Add(this.comboBoxObiettivo);
             this.Controls.Add(this.labelGiorniAllenamento);
             this.Controls.Add(this.labelTitolo);
+            this.ForeColor = System.Drawing.Color.Lavender;
             this.Name = "CreaSchedaAutomaticaView";
             this.Size = new System.Drawing.Size(822, 512);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAllenamenti)).EndInit();

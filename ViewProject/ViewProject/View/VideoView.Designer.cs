@@ -40,9 +40,9 @@
             // comboBoxFasciaMuscolareVideo
             // 
             this.comboBoxFasciaMuscolareVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBoxFasciaMuscolareVideo.BackColor = System.Drawing.Color.Lime;
-            this.comboBoxFasciaMuscolareVideo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFasciaMuscolareVideo.ForeColor = System.Drawing.Color.Black;
+            this.comboBoxFasciaMuscolareVideo.BackColor = System.Drawing.Color.SlateBlue;
+            this.comboBoxFasciaMuscolareVideo.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFasciaMuscolareVideo.ForeColor = System.Drawing.Color.Lavender;
             this.comboBoxFasciaMuscolareVideo.FormattingEnabled = true;
             this.comboBoxFasciaMuscolareVideo.Items.AddRange(new object[] {
             "Addominali",
@@ -56,7 +56,7 @@
             this.comboBoxFasciaMuscolareVideo.Location = new System.Drawing.Point(23, 29);
             this.comboBoxFasciaMuscolareVideo.Name = "comboBoxFasciaMuscolareVideo";
             this.comboBoxFasciaMuscolareVideo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBoxFasciaMuscolareVideo.Size = new System.Drawing.Size(150, 21);
+            this.comboBoxFasciaMuscolareVideo.Size = new System.Drawing.Size(150, 23);
             this.comboBoxFasciaMuscolareVideo.TabIndex = 14;
             this.comboBoxFasciaMuscolareVideo.Text = "Fascia Muscolare";
             // 
@@ -71,7 +71,9 @@
             // 
             // textBoxDescrizione
             // 
-            this.textBoxDescrizione.BackColor = System.Drawing.Color.SpringGreen;
+            this.textBoxDescrizione.BackColor = System.Drawing.Color.Black;
+            this.textBoxDescrizione.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDescrizione.ForeColor = System.Drawing.Color.Lavender;
             this.textBoxDescrizione.Location = new System.Drawing.Point(197, 413);
             this.textBoxDescrizione.Multiline = true;
             this.textBoxDescrizione.Name = "textBoxDescrizione";
@@ -82,23 +84,27 @@
             // 
             // listBoxEserciziVideo
             // 
-            this.listBoxEserciziVideo.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.listBoxEserciziVideo.BackColor = System.Drawing.Color.Black;
+            this.listBoxEserciziVideo.Font = new System.Drawing.Font("Britannic Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxEserciziVideo.ForeColor = System.Drawing.Color.Lavender;
             this.listBoxEserciziVideo.FormattingEnabled = true;
+            this.listBoxEserciziVideo.ItemHeight = 15;
             this.listBoxEserciziVideo.Location = new System.Drawing.Point(23, 88);
             this.listBoxEserciziVideo.Name = "listBoxEserciziVideo";
-            this.listBoxEserciziVideo.Size = new System.Drawing.Size(150, 316);
+            this.listBoxEserciziVideo.Size = new System.Drawing.Size(150, 304);
             this.listBoxEserciziVideo.TabIndex = 17;
             // 
             // buttonIndietroVideo
             // 
             this.buttonIndietroVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonIndietroVideo.BackColor = System.Drawing.Color.DarkOrange;
-            this.buttonIndietroVideo.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.buttonIndietroVideo.BackColor = System.Drawing.Color.Transparent;
+            this.buttonIndietroVideo.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.buttonIndietroVideo.FlatAppearance.BorderSize = 2;
-            this.buttonIndietroVideo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Orange;
-            this.buttonIndietroVideo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.buttonIndietroVideo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonIndietroVideo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
             this.buttonIndietroVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonIndietroVideo.Font = new System.Drawing.Font("Modern No. 20", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietroVideo.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonIndietroVideo.ForeColor = System.Drawing.Color.Lavender;
             this.buttonIndietroVideo.Location = new System.Drawing.Point(23, 462);
             this.buttonIndietroVideo.Margin = new System.Windows.Forms.Padding(0);
             this.buttonIndietroVideo.Name = "buttonIndietroVideo";

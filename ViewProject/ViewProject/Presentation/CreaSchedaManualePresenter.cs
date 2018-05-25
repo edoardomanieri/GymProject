@@ -18,7 +18,7 @@ namespace ViewProject.Presentation
         private CreaSchedaManualeView _view;
         private int _numeroGiorno;
         private EsecuzioneEsercizio _esercizioSelezionato;
-        private bool isCompleted;
+        private bool isCompleted_GiornoSettimana;
         private Utente _utente;
 
         public CreaSchedaManualePresenter(MainPersistanceManager mpm, CreaSchedaManualeView view, Utente utente)
@@ -26,6 +26,7 @@ namespace ViewProject.Presentation
             _mpm = mpm;
             _utente = utente;
             _view = view;
+            isCompleted_GiornoSettimana = false;
  
             _view.Load += OnLoad;
             _view.buttonAggiungiEsercizio.Click += Click_AggiungiEsercizio;
@@ -38,8 +39,10 @@ namespace ViewProject.Presentation
             _view.listBoxEsecuzioneEsercizi.SelectedValueChanged += SelectionChange_EsecuzioneEsercizi;
             _view.comboBoxFasciaMuscolare.SelectedIndexChanged += SelectionChange_FasciaMuscolare;
             _view.buttonIndietro.Click += Click_ButtonIndietro;
+  
 
         }
+
 
         private void Click_ButtonIndietro(object sender, EventArgs e)
         {
@@ -104,13 +107,24 @@ namespace ViewProject.Presentation
             if (_view.comboBoxEsecuzioneEsercizio.Text.Equals("Esercizio a tempo"))
             {
                 _view.comboBoxEserciziTempo.Items.Clear();
+                _view.panelASerie.Hide();
+                _view.panelATempo.Show();
+                foreach (Esercizio esercizio in _mpm.LoadAllEsercizi())
+                {
+                    if (esercizio.FasciaMuscolare.Equals(FasciaMuscolare.Cardio))
+                        _view.comboBoxEserciziSerie.Items.Add(esercizio.ToString());
+                }
+
             }
             else if (_view.comboBoxEsecuzioneEsercizio.Text.Equals("Esercizio a serie"))
             {
                 _view.comboBoxEserciziSerie.Items.Clear();
+                _view.panelATempo.Hide();
+                _view.panelASerie.Show();
                 foreach (Esercizio esercizio in _mpm.LoadAllEsercizi())
                 {
-                    _view.comboBoxEserciziSerie.Items.Add(esercizio.ToString());
+                    if(!esercizio.FasciaMuscolare.Equals(FasciaMuscolare.Cardio))
+                        _view.comboBoxEserciziSerie.Items.Add(esercizio.ToString());
                 }
             }
         }
@@ -130,7 +144,9 @@ namespace ViewProject.Presentation
             if (MessageBox.Show("La scheda contiene " + (_view.giornoSettimana.Items.Count - 1) + " giorni di allenamento.\nTerminare e Salvare le modifiche ?", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 MainForm mainForm = (MainForm)_view.FindForm();
-                UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+                SchermataPrincipaleView view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+                //cambio la proprietà per innescare il cambiamento scheda
+                view.Scheda = true;
                 mainForm.SetView(view);
             }
         }
@@ -157,7 +173,8 @@ namespace ViewProject.Presentation
         }
 
         private void Change_GiornoSettimana(object sender, EventArgs e)
-        { 
+        {
+            isCompleted_GiornoSettimana = true;
             popolaListaEsecuzioneEsercizi();
         }
 
@@ -179,6 +196,7 @@ namespace ViewProject.Presentation
                     RipopolaGiorniAggiungendoneUno();
                     _pianoAllenamento.addGiornoAllenamento(new GiornoAllenamento());
                     _pianoAllenamento.GiorniAllenamento[_numeroGiorno + 1].Changed += ChangeGiornoAllenamento;
+                    _view.giornoSettimana.SelectedItem = _numeroGiorno + 1;
                 }
             }
             catch (Exception)
@@ -190,11 +208,11 @@ namespace ViewProject.Presentation
 
         private void Click_AggiungiEsercizio(object sender, EventArgs e)
         {
-            /*if (!isCompleted)
+            if (!isCompleted_GiornoSettimana)
             {
                 MessageBox.Show("Inserire tutti i dati necessari");
                 return;
-            }*/
+            }
             Esercizio esercizio = _mpm.GetEsercizioByName(_view.comboBoxEserciziSerie.Text);
             EsecuzioneEsercizio esecuzioneEsercizio;
             //da sistemare questa condizione

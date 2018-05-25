@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,10 @@ namespace ViewProject.Presentation
 {
     public class SchermataPrincipalePresenter
     {
-        MainPersistanceManager _mpm;
-        SchermataPrincipaleView _schermataPrincipaleView;
-        Utente _utente;
+        private MainPersistanceManager _mpm;
+        private SchermataPrincipaleView _schermataPrincipaleView;
+        private Utente _utente;
+
 
         public SchermataPrincipalePresenter(MainPersistanceManager mpm, SchermataPrincipaleView schermataPrincipaleView, Utente utente)
         {
@@ -24,6 +26,7 @@ namespace ViewProject.Presentation
             _schermataPrincipaleView = schermataPrincipaleView;
             _utente = utente;
 
+            _schermataPrincipaleView.SchedaChanged += OnLoad_SchermataPrincipale;
             _schermataPrincipaleView.Load += OnLoad_SchermataPrincipale;
             _schermataPrincipaleView.buttonReset.Click += Click_ButtonReset;
             _schermataPrincipaleView.buttonProfilo.Click += buttonProfilo_Click;
@@ -31,6 +34,22 @@ namespace ViewProject.Presentation
             _schermataPrincipaleView.buttonVideo.Click += buttonVideo_Click;
             _schermataPrincipaleView.buttonModificaScheda.Click += buttonModificaScheda_Click;
             _schermataPrincipaleView.buttonFrase.Click += buttonFrase_Click;
+            _schermataPrincipaleView.dataGridViewScheda.CellDoubleClick += Click_DataGridClick;
+        }
+
+        private void Click_DataGridClick(object sender, EventArgs e)
+        {
+            string esercizioString = _schermataPrincipaleView.dataGridViewScheda.CurrentCell.FormattedValue.ToString();
+            Esercizio esercizio = _mpm.GetEsercizioByName(esercizioString);
+            VideoView view = (VideoView)ViewFactory.GetView("VideoView");
+            MainForm mainForm = (MainForm)_schermataPrincipaleView.FindForm();
+            mainForm.SetView(view);
+            view.comboBoxFasciaMuscolareVideo.Text = esercizio.FasciaMuscolare.ToString();
+            view.listBoxEserciziVideo.Text = esercizio.ToString();
+            view.textBoxDescrizione.Text = esercizio.Descrizione;
+            string path = "..\\..\\resources\\video\\" + esercizio.Nome + ".mp4";
+            if (File.Exists(path))
+                view.axWindowsMediaPlayer.URL = path;
         }
 
         private void buttonProfilo_Click(object sender, EventArgs e)
@@ -106,17 +125,22 @@ namespace ViewProject.Presentation
         }
 
         private void Click_ButtonReset(object sender, EventArgs e)
-        { 
-            _mpm.Reset(_utente);
+        {
+            if (MessageBox.Show("Sei sicuro di voler cancellare l'account? Tutti i progressi verranno persi", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                _mpm.Reset(_utente);
+                UserControl view = ViewFactory.GetView("SchermataAutenticazioneView");
+                MainForm mainForm = (MainForm)_schermataPrincipaleView.FindForm();
+                mainForm.SetView(view);
+            }
         }
 
         private void OnLoad_SchermataPrincipale(object sender, EventArgs e)
         {
             PianoAllenamento piano = _mpm.LoadPianoAllenamento(_utente);
-
-
             int numeroGiorni = 0;
 
+            _schermataPrincipaleView.dataGridViewScheda.Rows.Clear();
             foreach (GiornoAllenamento giorno in piano.GiorniAllenamento)
             {
                 _schermataPrincipaleView.dataGridViewScheda.Rows.Add(null, "");

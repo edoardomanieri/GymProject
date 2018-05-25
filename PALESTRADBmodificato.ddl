@@ -70,7 +70,7 @@ create table PIANIALLENAMENTO (
 
 create table UTENTI (
      username varchar(50) not null,
-     password varchar(50) not null,
+     password varchar(200) not null,
      nome varchar(50) not null,
      cognome varchar(50) not null,
      sesso varchar(7) not null,

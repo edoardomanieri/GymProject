@@ -34,8 +34,8 @@ namespace ViewProject.View
 
         public void SetView(UserControl view)
         {
-            _mainPanel.Controls.Clear();
-            _mainPanel.Controls.Add(view);
+            Controls.Clear();
+            Controls.Add(view);
         }
     }
 }

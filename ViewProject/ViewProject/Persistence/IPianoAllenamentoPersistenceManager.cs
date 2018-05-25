@@ -10,8 +10,8 @@ namespace ViewProject.Persistence
     public interface IPianoAllenamentoPersistenceManager
     {
         PianoAllenamento LoadPianoAllenamento(Utente utente);
-        bool SavePianoAllenamento(Utente utente , PianoAllenamento pianoAllenamento);
-        bool DeletePianoAllenamento(Utente utente);
+        void SavePianoAllenamento(Utente utente , PianoAllenamento pianoAllenamento);
+        void DeletePianoAllenamento(Utente utente);
 
     }
 }

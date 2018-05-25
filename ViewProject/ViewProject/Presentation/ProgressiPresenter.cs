@@ -18,12 +18,16 @@ namespace ViewProject.Presentation
         private ProgressiView _view;
         private Utente _utente;
         private List<Allenamento> _allenamenti;
+        private GestorePianiAllenamento _gpa;
+        private int _countAllenamenti;
 
-        public ProgressiPresenter(MainPersistanceManager mpm, ProgressiView view, Utente utente)
+        public ProgressiPresenter(MainPersistanceManager mpm, ProgressiView view, Utente utente, GestorePianiAllenamento gpa)
         {
             _mpm = mpm;
             _view = view;
             _utente = utente;
+            _gpa = gpa;
+            _countAllenamenti = 0;
 
             _view.Load += OnLoad;
             _view.buttonSalvaAllenamentoProgressi.Click += Click_SalvaAllenamento;
@@ -33,8 +37,11 @@ namespace ViewProject.Presentation
         private void Click_ButtonIndietro(object sender, EventArgs e)
         {
             MainForm mainForm = (MainForm)_view.FindForm();
-            UserControl view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            SchermataPrincipaleView view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
+            view.Scheda = true;
             mainForm.SetView(view);
+  
+
         }
 
         private void Click_SalvaAllenamento(object sender, EventArgs e)
@@ -55,6 +62,7 @@ namespace ViewProject.Presentation
                     MessageBox.Show("Errore nel database: verificare la procedura d'installazione", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 _allenamenti.Add(allenamento);
+                _countAllenamenti++;
 
 
                 _view.chartDurata.DataSource = null;
@@ -65,11 +73,23 @@ namespace ViewProject.Presentation
                 _view.chartPeso.DataSource = _allenamenti;
                 _view.chartPeso.DataBind();
 
-                _view.progressBarAllenamenti.Value = _allenamenti.Count;
-                _view.labelContatore.Text = (_allenamenti.Count).ToString();
 
-                _view.circularProgressBar.Value = _allenamenti.Count * 10;
-                _view.circularProgressBar.Text = (_allenamenti.Count * 10).ToString() + "%";
+
+                if (_countAllenamenti % 10 == 0 && _utente is UtenteAutomatico)
+                {                  
+                       if (MessageBox.Show("Complimenti hai completato la scheda, puoi proseguire con la prossima scheda", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            PianoAllenamento newPianoAllenamento = _gpa.getOrUpdatePianoAllenamento((UtenteAutomatico)_utente, (List<Esercizio>)_mpm.LoadAllEsercizi());
+                            _mpm.SavePianoAllenamento(_utente, newPianoAllenamento);
+                        }
+                        
+                }
+
+                _view.progressBarAllenamenti.Value = _countAllenamenti % 10;
+
+                _view.labelContatore.Text = (_countAllenamenti).ToString();
+                _view.circularProgressBar.Value = (_countAllenamenti % 10) * 10;
+                _view.circularProgressBar.Text = ((_countAllenamenti % 10) * 10).ToString() + "%";
             }
         }
 
@@ -78,6 +98,7 @@ namespace ViewProject.Presentation
             try
             {
                 _allenamenti = (List<Allenamento>)_mpm.LoadAllAllenamenti(_utente);
+                _countAllenamenti = _allenamenti.Count;
             }
             catch (SqlException)
             {
@@ -95,11 +116,11 @@ namespace ViewProject.Presentation
             _view.chartPeso.Series["Peso"].YValueMembers = "pesoInKg";
             _view.chartPeso.DataBind();
 
-            _view.progressBarAllenamenti.Value = _allenamenti.Count;
-            _view.labelContatore.Text = (_allenamenti.Count).ToString();
+            _view.progressBarAllenamenti.Value = _countAllenamenti % 10;
+            _view.labelContatore.Text = (_countAllenamenti).ToString();
 
-            _view.circularProgressBar.Value = _allenamenti.Count * 10;
-            _view.circularProgressBar.Text = (_allenamenti.Count * 10).ToString() + "%";
+            _view.circularProgressBar.Value = (_countAllenamenti % 10) * 10;
+            _view.circularProgressBar.Text = ((_countAllenamenti % 10) * 10).ToString() + "%";
         }
     }
 }

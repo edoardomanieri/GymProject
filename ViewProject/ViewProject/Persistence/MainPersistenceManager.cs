@@ -13,7 +13,7 @@ namespace ViewProject.Persistence
     public class MainPersistanceManager : IAllenamentoPersistenceManager, IEsercizioPersistanceManager, IPianoAllenamentoPersistenceManager, IUtentePersistenceManager
     {
         private List<Esercizio> _esercizi;
-        private SqlConnection _conn;
+        private string _connectionString;
         private IIDGenerator _IDBroker;
         private static MainPersistanceManager _instance;
 
@@ -29,14 +29,13 @@ namespace ViewProject.Persistence
             }
         }
 
+        public string ConnectionString { get => _connectionString; set => _connectionString = value; }
+
         private MainPersistanceManager()
         {
-            //connessione al database che rimarrà connesso per tutta la durata dell'applicazione
-            Conn = new SqlConnection();
-            Conn.ConnectionString = "Data Source=EDOARDO;Initial Catalog=PalestraDB;Integrated Security=True";
-            _IDBroker = new IDBroker(Conn.ConnectionString);
-            Conn.Open();
 
+            _connectionString = "Data Source=EDOARDO;Initial Catalog=PalestraDB;Integrated Security=True";
+            _IDBroker = new IDBroker(_connectionString);
 
             _esercizi = new List<Esercizio>();
             //esercizi petto
@@ -205,10 +204,6 @@ namespace ViewProject.Persistence
         }
 
 
-
-        public SqlConnection Conn { get => _conn; set => _conn = value ?? throw new ArgumentException();
-    }
-
         /*
          * 
          * 
@@ -217,49 +212,43 @@ namespace ViewProject.Persistence
          */
 
 
-        public bool DeleteAllenamenti(Utente utente)
+        public void DeleteAllenamenti(Utente utente)
         {
             if (utente == null)
                 throw new ArgumentException();
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 SqlCommand delete = new SqlCommand("delete from ALLENAMENTI where username = '" + utente.Username + "' ;", Conn);
-                return delete.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException)
-            {
-                throw new Exception();
+                delete.ExecuteNonQuery();
+                Conn.Close();
             }
         }
 
-        public bool DeletePianoAllenamento(Utente utente)
+        public void DeletePianoAllenamento(Utente utente)
         {
             if (utente == null)
                 throw new ArgumentException();
             //grazie ad on delete cascade mi si eliminano anche tutti le tuple referenziate
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 SqlCommand delete = new SqlCommand("delete from PIANIALLENAMENTO where username= '" + utente.Username + "' ;", Conn);
-                return delete.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException)
-            {
-                throw new Exception();
+                delete.ExecuteNonQuery();
+                Conn.Close();
             }
         }
 
-        public bool DeleteUtente(Utente utente)
+        public void DeleteUtente(Utente utente)
         {
             if (utente == null)
                 throw new ArgumentException();
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 SqlCommand delete = new SqlCommand("delete from UTENTI where username='" + utente.Username + "';", Conn);
-                return delete.ExecuteNonQuery() > 0;
-            }
-            catch (SqlException)
-            {
-                throw new Exception();
+                delete.ExecuteNonQuery();
+                Conn.Close();
             }
         }
 
@@ -268,32 +257,31 @@ namespace ViewProject.Persistence
             if (utente == null)
                 throw new ArgumentException();
             List<Allenamento> allenamenti = new List<Allenamento>();
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 SqlCommand selectAllenamenti = new SqlCommand("select * from ALLENAMENTI where username = '" + utente.Username + "' ;", Conn);
                 SqlDataReader readerAllenamenti = selectAllenamenti.ExecuteReader();
                 while (readerAllenamenti.Read())
                 {
-                    try 
+                    try
                     {
                         int peso = (int)readerAllenamenti["peso"];
                         allenamenti.Add(new Allenamento((int)readerAllenamenti["durata"], (DateTime)readerAllenamenti["data"], peso));
-
                     }
-                    catch(InvalidCastException)
+                    catch (InvalidCastException)
                     {
                         allenamenti.Add(new Allenamento((int)readerAllenamenti["durata"], (DateTime)readerAllenamenti["data"]));
+                        continue;
                     }
+
                 }
                 readerAllenamenti.Close();
+                Conn.Close();
                 return allenamenti;
             }
-            catch (SqlException)
-            {
-                throw;
-            }
-           
         }
+
 
         public IEnumerable<Esercizio> LoadAllEsercizi()
         {
@@ -304,41 +292,34 @@ namespace ViewProject.Persistence
         {
             if (String.IsNullOrEmpty(username))
                 throw new ArgumentException();
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 SqlCommand select = new SqlCommand("delete from UTENTI where username='" + username + "';", Conn);
                 SqlDataReader sqlDataReader = select.ExecuteReader();
                 bool res = !sqlDataReader.HasRows;
                 sqlDataReader.Close();
+                Conn.Close();
                 return res;
             }
-            catch (SqlException)
-            {
-                throw new Exception();
-            }
+
         }
 
         public bool ThereIsAPianoAllenamento(Utente utente)
         {
             if (utente == null)
                 throw new ArgumentException();
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
-                bool res;
-                SqlCommand commandSelect = new SqlCommand("select * from PIANIALLENAMENTO where username = '" + utente.Username +  "' ;", Conn);
+                Conn.Open();
+                SqlCommand commandSelect = new SqlCommand("select * from PIANIALLENAMENTO where username = '" + utente.Username + "' ;", Conn);
                 SqlDataReader readerPiani = commandSelect.ExecuteReader();
-                readerPiani.Read();
-                if (readerPiani.HasRows)
-                    res = true;
-                else
-                    res = false;
+                bool res = readerPiani.HasRows;
                 readerPiani.Close();
+                Conn.Close();
                 return res;
             }
-            catch (SqlException)
-            {
-                throw new Exception();
-            }
+
         }
 
         public PianoAllenamento LoadPianoAllenamento(Utente utente)
@@ -346,8 +327,9 @@ namespace ViewProject.Persistence
             if (utente == null)
                 throw new ArgumentException();
             PianoAllenamento pianoAllenamento;
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 pianoAllenamento = new PianoAllenamento();
 
                 SqlCommand commandGiorniAllenamenti = new SqlCommand("select * from GIORNIALLENAMENTI where username='" + utente.Username + "';", Conn);
@@ -358,7 +340,7 @@ namespace ViewProject.Persistence
                     giornoAllenamento = new GiornoAllenamento((int)readerGiorniAllenamenti["tempoRecuperoTraEsercizi"]);
                     giornoAllenamento.ID = (int)readerGiorniAllenamenti["ID"];
 
-                    using (SqlConnection conn2 = new SqlConnection(Conn.ConnectionString))
+                    using (SqlConnection conn2 = new SqlConnection(ConnectionString))
                     using (SqlCommand commandEsecuzioneEsercizio = new SqlCommand("select * from ESECUZIONIESERCIZI where Ha_ID=" + readerGiorniAllenamenti["ID"] + ";", conn2))
                     {
                         conn2.Open();
@@ -368,7 +350,7 @@ namespace ViewProject.Persistence
                         {
 
                             //discrimino se l'esercizio è a serie o a tempo
-                            using (SqlConnection conn3 = new SqlConnection(Conn.ConnectionString))
+                            using (SqlConnection conn3 = new SqlConnection(ConnectionString))
                             {
                                 conn3.Open();
                                 SqlCommand commandEsecuzioneEsercizioATempo = new SqlCommand("select * from ESECUZIONIESERCIZIATEMPO where ID=" + readerEsecuzioneEsercizio["ID"] + ";", conn3);
@@ -408,45 +390,53 @@ namespace ViewProject.Persistence
 
                 }
                 readerGiorniAllenamenti.Close();
+                Conn.Close();
                 return pianoAllenamento;
             }
-            catch (SqlException)
-            {
-                throw;
-            }
-            
         }
 
 
         public Utente Autentica(string username, string password)
         {
             if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
-                throw new ArgumentException();
-            try
+                throw new ArgumentException("inserire username e password");
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 Utente utente;
-                SqlParameter utentePassword = new SqlParameter("@password", SqlDbType.VarChar, 50);
-                utentePassword.Value = password;
                 SqlParameter utenteUsername = new SqlParameter("@username", SqlDbType.VarChar, 50);
                 utenteUsername.Value = username;
-                SqlCommand myCommand = new SqlCommand("select * from UTENTI where username =  @username AND password = @password;" , Conn);
+                SqlCommand myCommand = new SqlCommand("select * from UTENTI where username =  @username;", Conn);
                 myCommand.Parameters.Add(utenteUsername);
-                myCommand.Parameters.Add(utentePassword);
                 SqlDataReader myReader = myCommand.ExecuteReader();
                 if (!myReader.HasRows)
                 {
                     myReader.Close();
-                    utente = null;
-                    return utente;
+                    throw new ArgumentException("Username non esistente");
 
                 }
+
                 myReader.Read();
+                if (!DoesPasswordMatch((string)myReader["password"], password))
+                {
+                    myReader.Close();
+                    throw new ArgumentException("password errata");
+                }
                 Sesso? sesso = getSesso((string)myReader["sesso"]);
                 string nome = (string)myReader["nome"];
                 string cognome = (string)myReader["cognome"];
                 DateTime data = (DateTime)myReader["dataNascita"];
                 int peso = (int)myReader["peso"];
                 int altezza = (int)myReader["altezza"];
+                string fotoPath = null;
+                try
+                {
+                    fotoPath = (string)myReader["fotopath"];
+                }
+                catch (InvalidCastException)
+                {
+                }
+
                 myReader.Close();
 
                 //verifico se è un utente automatico
@@ -460,29 +450,33 @@ namespace ViewProject.Persistence
                     myReader2.Read();
                     Risorsa? risorsa = getRisorsa((string)myReader2["risorseDisponibili"]);
                     TipoAllenamento? tipo = getTipoAllenamento((string)myReader2["tipoAllenamento"]);
-                    utente = new UtenteAutomatico(username, nome,cognome , data, peso, altezza, sesso.Value, risorsa.Value, (int)myReader2["numeroGiorniAllenamento"], tipo.Value);
-                    
+                    utente = new UtenteAutomatico(username, nome, cognome, data, peso, altezza, sesso.Value, risorsa.Value, (int)myReader2["numeroGiorniAllenamento"], tipo.Value);
+
+
                 }
                 else
                 {
                     utente = new Utente(username, nome, cognome, data, peso, altezza, sesso.Value);
+
                 }
-                
+                if (!string.IsNullOrEmpty(fotoPath))
+                    utente.FotoPath = fotoPath;
+
                 myReader2.Close();
+                Conn.Close();
                 return utente;
             }
-            catch (SqlException)
-            {
-                throw;
-            }
+
         }
 
-        public bool SaveAllenamento(Utente utente, Allenamento allenamento)
+        public void SaveAllenamento(Utente utente, Allenamento allenamento)
         {
             if (utente == null || allenamento == null)
                 throw new ArgumentException();
-            try
+
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 int allenamentoID = _IDBroker.generaAllenamentoID();
 
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
@@ -492,10 +486,10 @@ namespace ViewProject.Persistence
                 SqlParameter durata = new SqlParameter("@Param2", SqlDbType.Int);
                 durata.Value = allenamento.DurataInMinuti;
 
-                SqlParameter utenteUsername = new SqlParameter("@Param3", SqlDbType.VarChar,50);
+                SqlParameter utenteUsername = new SqlParameter("@Param3", SqlDbType.VarChar, 50);
                 utenteUsername.Value = utente.Username;
 
-                
+
 
                 //fondamentale per salvare l'ID internamente
                 allenamento.ID = allenamentoID;
@@ -520,15 +514,12 @@ namespace ViewProject.Persistence
 
                     myCommand.ExecuteNonQuery();
                 }
-                return true;
+                Conn.Close();
             }
-            catch (SqlException)
-            {
-                throw;
-            }
+
         }
 
-        public bool SavePianoAllenamento(Utente utente, PianoAllenamento pianoAllenamento)
+        public void SavePianoAllenamento(Utente utente, PianoAllenamento pianoAllenamento)
         {
             if (utente == null || pianoAllenamento == null)
                 throw new ArgumentException();
@@ -536,8 +527,9 @@ namespace ViewProject.Persistence
             {
                 DeletePianoAllenamento(utente);
             }
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
                 SqlParameter utenteUsername = new SqlParameter("@Param1", SqlDbType.VarChar, 50);
                 utenteUsername.Value = utente.Username;
@@ -635,19 +627,17 @@ namespace ViewProject.Persistence
 
                     }
                 }
-                return true;
+                Conn.Close();
             }
-            catch (SqlException)
-            {
-                throw;
-            }
+
         }
-        public bool updateUtente(Utente utente)
+        public void updateUtente(Utente utente)
         {
             if (utente == null)
                 throw new ArgumentException();
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
 
                 SqlParameter myParam = new SqlParameter("@Param1", SqlDbType.VarChar);
@@ -693,103 +683,96 @@ namespace ViewProject.Persistence
 
 
                 insertUtenti.ExecuteNonQuery();
-
-                return true;
-
+                Conn.Close();
             }
-            catch (SqlException)
-            {
-                throw;
-            }
+
         }
-    
 
-        public bool SaveUtente(Utente utente, string password)
+
+        public void SaveUtente(Utente utente, string password)
         {
             if (utente == null || String.IsNullOrEmpty(password))
                 throw new ArgumentException();
-            try
+
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
+                Conn.Open();
                 //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
-                    SqlParameter myParam7 = new SqlParameter("@Param7", SqlDbType.VarChar, 50);
-                    myParam7.Value = utente.Username;
+                SqlParameter myParam7 = new SqlParameter("@Param7", SqlDbType.VarChar, 50);
+                myParam7.Value = utente.Username;
 
-                    SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.VarChar, 50);
-                    myParam8.Value = password;
+                //to secure password
+                string pwdToHash = password + "^Y8~JJ"; // ^Y8~JJ is my hard-coded salt
+                string hashToStoreInDatabase = BCrypt.HashPassword(pwdToHash, BCrypt.GenerateSalt());
 
-                    SqlParameter myParam = new SqlParameter("@Param1", SqlDbType.VarChar,50);
-                    myParam.Value = utente.Nome;
+                SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.VarChar);
+                myParam8.Value = hashToStoreInDatabase;
 
-                    SqlParameter myParam2 = new SqlParameter("@Param2", SqlDbType.VarChar,50 );
-                    myParam2.Value = utente.Cognome;
+                SqlParameter myParam = new SqlParameter("@Param1", SqlDbType.VarChar, 50);
+                myParam.Value = utente.Nome;
 
-                    SqlParameter myParam3 = new SqlParameter("@Param3", SqlDbType.VarChar, 7);
-                    myParam3.Value = utente.Sesso;
+                SqlParameter myParam2 = new SqlParameter("@Param2", SqlDbType.VarChar, 50);
+                myParam2.Value = utente.Cognome;
 
-                    SqlParameter myParam4 = new SqlParameter("@Param4", SqlDbType.Date);
-                    myParam4.Value = utente.DataDiNascita;
+                SqlParameter myParam3 = new SqlParameter("@Param3", SqlDbType.VarChar, 7);
+                myParam3.Value = utente.Sesso;
 
-                    SqlParameter myParam5 = new SqlParameter("@Param5", SqlDbType.Int);
-                    myParam5.Value = utente.AltezzaInCm;
+                SqlParameter myParam4 = new SqlParameter("@Param4", SqlDbType.Date);
+                myParam4.Value = utente.DataDiNascita;
 
-                    SqlParameter myParam6 = new SqlParameter("@Param6", SqlDbType.Int);
-                    myParam6.Value = utente.PesoInKg;
+                SqlParameter myParam5 = new SqlParameter("@Param5", SqlDbType.Int);
+                myParam5.Value = utente.AltezzaInCm;
 
-            
-                    SqlCommand insertUtenti = new SqlCommand("INSERT INTO UTENTI (username, password,nome, cognome, sesso, dataNascita, peso, altezza)  Values (@Param7, @Param8, @Param1, @Param2, @Param3, @Param4, @Param5, @Param6);", Conn);
-                    insertUtenti.Parameters.Add(myParam8);
-                    insertUtenti.Parameters.Add(myParam7);
-                    insertUtenti.Parameters.Add(myParam);
-                    insertUtenti.Parameters.Add(myParam2);
-                    insertUtenti.Parameters.Add(myParam3);
-                    insertUtenti.Parameters.Add(myParam4);
-                    insertUtenti.Parameters.Add(myParam5);
-                    insertUtenti.Parameters.Add(myParam6);
+                SqlParameter myParam6 = new SqlParameter("@Param6", SqlDbType.Int);
+                myParam6.Value = utente.PesoInKg;
 
-                    insertUtenti.ExecuteNonQuery();
 
-                return true;
-                
+                SqlCommand insertUtenti = new SqlCommand("INSERT INTO UTENTI (username, password,nome, cognome, sesso, dataNascita, peso, altezza)  Values (@Param7, @Param8, @Param1, @Param2, @Param3, @Param4, @Param5, @Param6);", Conn);
+                insertUtenti.Parameters.Add(myParam8);
+                insertUtenti.Parameters.Add(myParam7);
+                insertUtenti.Parameters.Add(myParam);
+                insertUtenti.Parameters.Add(myParam2);
+                insertUtenti.Parameters.Add(myParam3);
+                insertUtenti.Parameters.Add(myParam4);
+                insertUtenti.Parameters.Add(myParam5);
+                insertUtenti.Parameters.Add(myParam6);
+
+                insertUtenti.ExecuteNonQuery();
+                Conn.Close();
             }
-            catch (SqlException)
-            {
-                throw new Exception();
-            }
+
         }
 
 
-        public bool SaveUtenteAutomatico(Utente utente, Risorsa risorsa, int numeroGiorniAllenamento, TipoAllenamento tipo)
+        public void SaveUtenteAutomatico(Utente utente, Risorsa risorsa, int numeroGiorniAllenamento, TipoAllenamento tipo)
         {
-            if (utente == null || numeroGiorniAllenamento<=0 || numeroGiorniAllenamento>7)
+            if (utente == null || numeroGiorniAllenamento <= 0 || numeroGiorniAllenamento > 7)
                 throw new ArgumentException();
-            try
+
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
-                    SqlCommand insertUtenteAutomatico;
+                Conn.Open();
+                SqlCommand insertUtenteAutomatico;
 
-                    SqlParameter myParam7 = new SqlParameter("@Param7", SqlDbType.VarChar);
-                    myParam7.Value = risorsa.ToString();
+                SqlParameter myParam7 = new SqlParameter("@Param7", SqlDbType.VarChar);
+                myParam7.Value = risorsa.ToString();
 
-                    SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.VarChar);
-                    myParam8.Value = tipo.ToString();
+                SqlParameter myParam8 = new SqlParameter("@Param8", SqlDbType.VarChar);
+                myParam8.Value = tipo.ToString();
 
-                    SqlParameter myParam9 = new SqlParameter("@Param9", SqlDbType.Int);
-                    myParam9.Value = numeroGiorniAllenamento;
-
-
-
-                    insertUtenteAutomatico = new SqlCommand("INSERT INTO UTENTIAUTOMATICI values ('" + utente.Username + "', @Param7, @Param8, @Param9);", Conn);
-                    insertUtenteAutomatico.Parameters.Add(myParam7);
-                    insertUtenteAutomatico.Parameters.Add(myParam8);
-                    insertUtenteAutomatico.Parameters.Add(myParam9);
-                    insertUtenteAutomatico.ExecuteNonQuery();
+                SqlParameter myParam9 = new SqlParameter("@Param9", SqlDbType.Int);
+                myParam9.Value = numeroGiorniAllenamento;
 
 
-                return true;
+
+                insertUtenteAutomatico = new SqlCommand("INSERT INTO UTENTIAUTOMATICI values ('" + utente.Username + "', @Param7, @Param8, @Param9);", Conn);
+                insertUtenteAutomatico.Parameters.Add(myParam7);
+                insertUtenteAutomatico.Parameters.Add(myParam8);
+                insertUtenteAutomatico.Parameters.Add(myParam9);
+                insertUtenteAutomatico.ExecuteNonQuery();
+                Conn.Close();
             }
-            catch (SqlException)
-            {
-                throw;
-            }
+
         }
 
 
@@ -799,44 +782,35 @@ namespace ViewProject.Persistence
          * 
          */
 
-        //da invocare sempre alla chiusura dell'applicazione
-        public void CloseConnection()
+
+        public bool ThereIsASavedAccount()
         {
-            _conn.Close();
-        }
-
-
-
-        public  bool ThereIsASavedAccount()
-        {
-            try
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
             {
-
+                Conn.Open();
                 SqlCommand select = new SqlCommand("select * from UTENTI;", Conn);
                 SqlDataReader myReader = select.ExecuteReader();
                 myReader.Read();
                 if (myReader.HasRows)
                 {
                     myReader.Close();
+                    Conn.Close();
                     return true;
                 }
                 else
                 {
                     myReader.Close();
+                    Conn.Close();
                     return false;
                 }
 
             }
-            catch (SqlException)
-            {
-                throw new Exception();
-            }
+
         }
 
         public void Reset(Utente utente)
         {
             DeleteUtente(utente);
-
         }
 
         /*
@@ -960,6 +934,11 @@ namespace ViewProject.Persistence
 
             }
             return fasciaMuscolare;
+        }
+
+        private bool DoesPasswordMatch(string hashedPwdFromDatabase, string userEnteredPassword)
+        {
+            return BCrypt.CheckPassword(userEnteredPassword + "^Y8~JJ", hashedPwdFromDatabase);
         }
     }
 }
