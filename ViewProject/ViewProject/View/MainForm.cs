@@ -15,7 +15,6 @@ namespace ViewProject.View
     public partial class MainForm : Form
     {
 
-
         public MainForm()
         {
             InitializeComponent();
@@ -26,7 +25,7 @@ namespace ViewProject.View
         {
 
             SchermataAutenticazioneView view = (SchermataAutenticazioneView)ViewFactory.GetView("SchermataAutenticazioneView");
-            MainPresenter mainPresenter = new MainPresenter(this, view);
+            MainPresenter.Create(this, view);
             SetView(view);
 
         }
@@ -34,8 +33,8 @@ namespace ViewProject.View
 
         public void SetView(UserControl view)
         {
-            _mainPanel.Controls.Clear();
-            _mainPanel.Controls.Add(view);
+            Controls.Clear();
+            Controls.Add(view);
         }
     }
 }
