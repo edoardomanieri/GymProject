@@ -1,2 +1,0 @@
-https://csharpdeveloper.wordpress.com/2012/10/09/use-bcrypt-to-hash-your-passwords-example-for-c-and-sql-server/
-https://blog.codinghorror.com/speed-hashing/

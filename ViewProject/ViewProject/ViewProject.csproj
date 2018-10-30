@@ -14,6 +14,23 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>C:\Users\Edoardo\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +50,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B2114F9CC67442C799F7D1EA25B44682CB89DEE2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ViewProject_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
@@ -70,11 +99,11 @@
     <Compile Include="Presentation\ProgressiPresenter.cs" />
     <Compile Include="Presentation\SchermataPrincipalePresenter.cs" />
     <Compile Include="Presentation\VideoPresenter.cs" />
-    <Compile Include="View\modificaPasswordForm.cs">
+    <Compile Include="View\ModificaPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\modificaPasswordForm.Designer.cs">
-      <DependentUpon>modificaPasswordForm.cs</DependentUpon>
+    <Compile Include="View\ModificaPasswordForm.Designer.cs">
+      <DependentUpon>ModificaPasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SchermataAutenticazioneView.cs">
       <SubType>UserControl</SubType>
@@ -111,6 +140,12 @@
     </Compile>
     <Compile Include="View\ProgressiView.Designer.cs">
       <DependentUpon>ProgressiView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TempoRecuperoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TempoRecuperoForm.Designer.cs">
+      <DependentUpon>TempoRecuperoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\VideoView.cs">
       <SubType>UserControl</SubType>
@@ -159,8 +194,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\ViewFactory.cs" />
-    <EmbeddedResource Include="View\modificaPasswordForm.resx">
-      <DependentUpon>modificaPasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\ModificaPasswordForm.resx">
+      <DependentUpon>ModificaPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SchermataAutenticazioneView.resx">
       <DependentUpon>SchermataAutenticazioneView.cs</DependentUpon>
@@ -179,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProgressiView.resx">
       <DependentUpon>ProgressiView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TempoRecuperoForm.resx">
+      <DependentUpon>TempoRecuperoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\VideoView.resx">
       <DependentUpon>VideoView.cs</DependentUpon>
@@ -208,6 +246,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ViewProject_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -237,6 +276,18 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

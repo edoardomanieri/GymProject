@@ -288,23 +288,6 @@ namespace ViewProject.Persistence
             return _esercizi;
         }
 
-        public bool CheckUsername(string username)
-        {
-            if (String.IsNullOrEmpty(username))
-                throw new ArgumentException();
-            using (SqlConnection Conn = new SqlConnection(ConnectionString))
-            {
-                Conn.Open();
-                SqlCommand select = new SqlCommand("delete from UTENTI where username='" + username + "';", Conn);
-                SqlDataReader sqlDataReader = select.ExecuteReader();
-                bool res = !sqlDataReader.HasRows;
-                sqlDataReader.Close();
-                Conn.Close();
-                return res;
-            }
-
-        }
-
         public bool ThereIsAPianoAllenamento(Utente utente)
         {
             if (utente == null)
@@ -467,6 +450,24 @@ namespace ViewProject.Persistence
                 return utente;
             }
 
+        }
+
+        public bool CheckPassword(Utente utente, string password)
+        {
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
+            {
+                Conn.Open();
+                SqlParameter utenteUsername = new SqlParameter("@username", SqlDbType.VarChar, 50);
+                utenteUsername.Value = utente.Username;
+                SqlCommand myCommand = new SqlCommand("select * from UTENTI where username =  @username;", Conn);
+                myCommand.Parameters.Add(utenteUsername);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                bool res = DoesPasswordMatch((string)myReader["password"], password);
+                myReader.Close();
+                Conn.Close();
+                return res;
+            }            
         }
 
         public void SaveAllenamento(Utente utente, Allenamento allenamento)
@@ -686,6 +687,46 @@ namespace ViewProject.Persistence
                 Conn.Close();
             }
 
+        }
+
+        public void UpdatePassword(Utente utente, string password)
+        {
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
+            {
+                Conn.Open();
+                //to secure password
+                string pwdToHash = password + "^Y8~JJ"; // ^Y8~JJ is my hard-coded salt
+                string hashToStoreInDatabase = BCrypt.HashPassword(pwdToHash, BCrypt.GenerateSalt());
+
+                SqlParameter passwordParameter = new SqlParameter("@Password", SqlDbType.VarChar);
+                passwordParameter.Value = hashToStoreInDatabase;
+
+                SqlCommand updateUtente = new SqlCommand("UPDATE UTENTI SET password = @Password where username ='" + utente.Username + "' ;", Conn);
+                updateUtente.Parameters.Add(passwordParameter);
+
+                updateUtente.ExecuteNonQuery();
+
+                Conn.Close();
+            }
+        }
+
+        public bool CheckUsername(string username)
+        {
+            using (SqlConnection Conn = new SqlConnection(ConnectionString))
+            {
+                Conn.Open();
+                //uso di SqlParameter per garantire sicurezza e evitare Sql Injection
+                SqlParameter usernameParam = new SqlParameter("@Username", SqlDbType.VarChar, 50);
+                usernameParam.Value = username;
+
+                SqlCommand select = new SqlCommand("SELECT * FROM UTENTI WHERE username=@Username;", Conn);
+                select.Parameters.Add(usernameParam);
+                SqlDataReader readerUtenti = select.ExecuteReader();
+                bool res = readerUtenti.HasRows;
+                readerUtenti.Close();
+                Conn.Close();
+                return res;
+            }
         }
 
 

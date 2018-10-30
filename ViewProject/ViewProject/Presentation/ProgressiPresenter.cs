@@ -20,31 +20,64 @@ namespace ViewProject.Presentation
         private List<Allenamento> _allenamenti;
         private GestorePianiAllenamento _gpa;
         private int _countAllenamenti;
+        private static ProgressiPresenter _instance = null;
+        private event EventHandler utenteChanged;
 
-        public ProgressiPresenter(MainPersistanceManager mpm, ProgressiView view, Utente utente, GestorePianiAllenamento gpa)
+        public Utente Utente
+        {
+            get => _utente;
+            set
+            {
+                _utente = value;
+                if (_utente != default(Utente))
+                    OnUtenteChanged();
+            }
+        }
+
+        private void OnUtenteChanged()
+        {
+            utenteChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        public static ProgressiPresenter GetInstance()
+        {
+            if (_instance == null)
+                throw new InvalidOperationException("ProgressiPresenter instance not created !");
+            return _instance;
+        }
+
+        public static ProgressiPresenter Create(MainPersistanceManager mpm, ProgressiView view, GestorePianiAllenamento gpa)
+        {
+            if (_instance != null)
+                throw new InvalidOperationException("ProgressiPresenter instance already created !");
+
+            _instance = new ProgressiPresenter(mpm, view, gpa);
+            return _instance;
+        }
+
+        private ProgressiPresenter(MainPersistanceManager mpm, ProgressiView view, GestorePianiAllenamento gpa)
         {
             _mpm = mpm;
             _view = view;
-            _utente = utente;
             _gpa = gpa;
             _countAllenamenti = 0;
 
-            _view.Load += OnLoad;
-            _view.buttonSalvaAllenamentoProgressi.Click += Click_SalvaAllenamento;
-            _view.buttonIndietroProgressi.Click += Click_ButtonIndietro;
+            this.utenteChanged = CaricaAllenamenti;
+            _view.Load += CaricaAllenamenti;
+            _view.buttonSalvaAllenamentoProgressi.Click += SalvaAllenamento;
+            _view.buttonIndietroProgressi.Click += SetSchermataPrincipaleView;
         }
 
-        private void Click_ButtonIndietro(object sender, EventArgs e)
+        private void SetSchermataPrincipaleView(object sender, EventArgs e)
         {
             MainForm mainForm = (MainForm)_view.FindForm();
             SchermataPrincipaleView view = (SchermataPrincipaleView)ViewFactory.GetView("SchermataPrincipaleView");
             view.Scheda = true;
             mainForm.SetView(view);
   
-
         }
 
-        private void Click_SalvaAllenamento(object sender, EventArgs e)
+        private void SalvaAllenamento(object sender, EventArgs e)
         {
             if (MessageBox.Show("Confermi di voler salvare l'allenamento del " + _view.dateTimePickerDataAllenamento.Value.Day.ToString() + "/" + _view.dateTimePickerDataAllenamento.Value.Month.ToString() + "/" + _view.dateTimePickerDataAllenamento.Value.Year.ToString() + " ?", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -93,7 +126,7 @@ namespace ViewProject.Presentation
             }
         }
 
-        private void OnLoad(object sender, EventArgs e)
+        private void CaricaAllenamenti(object sender, EventArgs e)
         {
             try
             {

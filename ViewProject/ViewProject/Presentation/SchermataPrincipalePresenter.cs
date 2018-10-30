@@ -18,26 +18,73 @@ namespace ViewProject.Presentation
         private MainPersistanceManager _mpm;
         private SchermataPrincipaleView _schermataPrincipaleView;
         private Utente _utente;
+        private static SchermataPrincipalePresenter _instance = null;
+        private event EventHandler utenteChanged;
+
+        public Utente Utente
+        {
+            get => _utente;
+            set
+            {
+                _utente = value;
+                if (_utente != default(Utente))
+                    OnUtenteChanged();
+            }
+        }
 
 
-        public SchermataPrincipalePresenter(MainPersistanceManager mpm, SchermataPrincipaleView schermataPrincipaleView, Utente utente)
+        private void OnUtenteChanged()
+        {
+            utenteChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+
+        public static SchermataPrincipalePresenter GetInstance()
+        {
+            if (_instance == null)
+                throw new InvalidOperationException("SchermataPrincipalePresenter instance not created !");
+            return _instance;
+        }
+
+        public static SchermataPrincipalePresenter Create(MainPersistanceManager mpm, SchermataPrincipaleView view)
+        {
+            if (_instance != null)
+                throw new InvalidOperationException("SchermataPrincipalePresenter instance already created !");
+
+            _instance = new SchermataPrincipalePresenter(mpm, view);
+            return _instance;
+        }
+
+
+        private SchermataPrincipalePresenter(MainPersistanceManager mpm, SchermataPrincipaleView schermataPrincipaleView)
         {
             _mpm = mpm;
             _schermataPrincipaleView = schermataPrincipaleView;
-            _utente = utente;
 
-            _schermataPrincipaleView.SchedaChanged += OnLoad_SchermataPrincipale;
-            _schermataPrincipaleView.Load += OnLoad_SchermataPrincipale;
-            _schermataPrincipaleView.buttonReset.Click += Click_ButtonReset;
-            _schermataPrincipaleView.buttonProfilo.Click += buttonProfilo_Click;
+            this.utenteChanged += ShowPianoAllenamento;
+            _schermataPrincipaleView.SchedaChanged += ShowPianoAllenamento;
+            _schermataPrincipaleView.Load += ShowPianoAllenamento;
+            _schermataPrincipaleView.buttonReset.Click += EliminaAccount;
+            _schermataPrincipaleView.buttonProfilo.Click += SetProfiloView;
             _schermataPrincipaleView.buttonProgressi.Click += buttonProgressi_Click;
             _schermataPrincipaleView.buttonVideo.Click += buttonVideo_Click;
             _schermataPrincipaleView.buttonModificaScheda.Click += buttonModificaScheda_Click;
             _schermataPrincipaleView.buttonFrase.Click += buttonFrase_Click;
-            _schermataPrincipaleView.dataGridViewScheda.CellDoubleClick += Click_DataGridClick;
+            _schermataPrincipaleView.dataGridViewScheda.CellDoubleClick += ShowVideoPerEsercizio;
+            _schermataPrincipaleView.buttonEsci.Click += Logout;
         }
 
-        private void Click_DataGridClick(object sender, EventArgs e)
+        private void Logout(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Sei sicuro di voler uscire?", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                UserControl view = ViewFactory.GetView("SchermataAutenticazioneView");
+                MainForm mainForm = (MainForm)_schermataPrincipaleView.FindForm();
+                mainForm.SetView(view);
+            }
+        }
+
+        private void ShowVideoPerEsercizio(object sender, EventArgs e)
         {
             string esercizioString = _schermataPrincipaleView.dataGridViewScheda.CurrentCell.FormattedValue.ToString();
             Esercizio esercizio = _mpm.GetEsercizioByName(esercizioString);
@@ -52,7 +99,7 @@ namespace ViewProject.Presentation
                 view.axWindowsMediaPlayer.URL = path;
         }
 
-        private void buttonProfilo_Click(object sender, EventArgs e)
+        private void SetProfiloView(object sender, EventArgs e)
         {
             UserControl view = ViewFactory.GetView("ProfiloView");
             MainForm mainForm = (MainForm)_schermataPrincipaleView.FindForm();
@@ -94,6 +141,7 @@ namespace ViewProject.Presentation
         {
             MessageBox.Show(GetFrase(), "La frase pensata per te:");
         }
+
         public string GetFrase()
         {
             int da = 1;
@@ -124,7 +172,7 @@ namespace ViewProject.Presentation
             return frase.ToString();
         }
 
-        private void Click_ButtonReset(object sender, EventArgs e)
+        private void EliminaAccount(object sender, EventArgs e)
         {
             if (MessageBox.Show("Sei sicuro di voler cancellare l'account? Tutti i progressi verranno persi", "", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -135,7 +183,7 @@ namespace ViewProject.Presentation
             }
         }
 
-        private void OnLoad_SchermataPrincipale(object sender, EventArgs e)
+        private void ShowPianoAllenamento(object sender, EventArgs e)
         {
             PianoAllenamento piano = _mpm.LoadPianoAllenamento(_utente);
             int numeroGiorni = 0;

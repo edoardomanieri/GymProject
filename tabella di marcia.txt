@@ -1,8 +1,0 @@
--finire algoritmo generazione scheda
--sistemare DB/model
--generare DB e finire la gestione dell'interazione con DB
--iniziare i test (trovare qualcuno fra di noi che si voglia occupare di test)
--finire le view(paul)
--procedere con i controller/presenter studiando come poter applicare eventi e delegati
-
-per il momento direi che basta e avanza

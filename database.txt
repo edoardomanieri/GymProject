@@ -1,6 +1,0 @@
-necessita di un db che tenga traccia delle informazioni dell'utente, degli allenamenti registrati e del pianoAllenamento
-
-se gli esercizi decidiamo di caricarli all'interno del codice:
--eliminare la tabella ESERCIZI
--nella tabella insiemeSerie inserire l'attributo nomeEsercizio
--trasformare insiemeSerie da relazione a tabella

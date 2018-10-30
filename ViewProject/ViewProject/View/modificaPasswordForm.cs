@@ -10,39 +10,57 @@ using System.Windows.Forms;
 
 namespace ViewProject.View
 {
-    public partial class modificaPasswordForm : Form
+    public partial class ModificaPasswordForm : Form
     {
-        public modificaPasswordForm()
+        public ModificaPasswordForm()
         {
             InitializeComponent();
         }
-
         private void buttonShowHide1_Click(object sender, EventArgs e)
         {
-            if (textBoxPassword.UseSystemPasswordChar)
+            if (textBoxVecchiaPassword.UseSystemPasswordChar)
             {
-                textBoxPassword.UseSystemPasswordChar = false;
+                textBoxVecchiaPassword.UseSystemPasswordChar = false;
                 buttonShowHide1.Image = imageHidePassword.Image;
             }
             else
             {
-                textBoxPassword.UseSystemPasswordChar = true;
+                textBoxVecchiaPassword.UseSystemPasswordChar = true;
                 buttonShowHide1.Image = imageShowPassword.Image;
             }
         }
-
         private void buttonShowHide2_Click(object sender, EventArgs e)
         {
-            if (ConfirmPassword.UseSystemPasswordChar)
+            if (textBoxNuovaPassword.UseSystemPasswordChar)
             {
-                ConfirmPassword.UseSystemPasswordChar = false;
+                textBoxNuovaPassword.UseSystemPasswordChar = false;
                 buttonShowHide2.Image = imageHidePassword.Image;
             }
             else
             {
-                ConfirmPassword.UseSystemPasswordChar = true;
+                textBoxNuovaPassword.UseSystemPasswordChar = true;
                 buttonShowHide2.Image = imageShowPassword.Image;
             }
         }
+
+
+        private void buttonShowHide3_Click(object sender, EventArgs e)
+        {
+            if (textBoxConfermaPassword.UseSystemPasswordChar)
+            {
+                textBoxConfermaPassword.UseSystemPasswordChar = false;
+                buttonShowHide3.Image = imageHidePassword.Image;
+            }
+            else
+            {
+                textBoxConfermaPassword.UseSystemPasswordChar = true;
+                buttonShowHide3.Image = imageShowPassword.Image;
+            }
+
+        }
+
+        
+
+        
     }
 }

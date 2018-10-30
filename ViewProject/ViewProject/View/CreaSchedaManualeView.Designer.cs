@@ -60,8 +60,6 @@
             this.listBoxEsecuzioneEsercizi = new System.Windows.Forms.ListBox();
             this.buttonEliminaEsercizio = new System.Windows.Forms.Button();
             this.buttonSalvaGiornata = new System.Windows.Forms.Button();
-            this.labelRecuperoGiornoAllenamento = new System.Windows.Forms.Label();
-            this.recuperoGiornoAllenamento = new System.Windows.Forms.NumericUpDown();
             this.buttonIndietro = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelATempo.SuspendLayout();
@@ -72,7 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeroRipetizioni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroSerie)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recuperoGiornoAllenamento)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTitolo
@@ -630,7 +627,7 @@
             this.buttonSalvaGiornata.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalvaGiornata.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalvaGiornata.ForeColor = System.Drawing.Color.Lavender;
-            this.buttonSalvaGiornata.Location = new System.Drawing.Point(192, 452);
+            this.buttonSalvaGiornata.Location = new System.Drawing.Point(192, 426);
             this.buttonSalvaGiornata.Margin = new System.Windows.Forms.Padding(0);
             this.buttonSalvaGiornata.Name = "buttonSalvaGiornata";
             this.buttonSalvaGiornata.Size = new System.Drawing.Size(151, 30);
@@ -638,47 +635,6 @@
             this.buttonSalvaGiornata.Tag = "";
             this.buttonSalvaGiornata.Text = "Aggiungi Giornata";
             this.buttonSalvaGiornata.UseVisualStyleBackColor = false;
-            // 
-            // labelRecuperoGiornoAllenamento
-            // 
-            this.labelRecuperoGiornoAllenamento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelRecuperoGiornoAllenamento.AutoSize = true;
-            this.labelRecuperoGiornoAllenamento.BackColor = System.Drawing.Color.Transparent;
-            this.labelRecuperoGiornoAllenamento.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRecuperoGiornoAllenamento.ForeColor = System.Drawing.Color.Lavender;
-            this.labelRecuperoGiornoAllenamento.Location = new System.Drawing.Point(40, 418);
-            this.labelRecuperoGiornoAllenamento.Name = "labelRecuperoGiornoAllenamento";
-            this.labelRecuperoGiornoAllenamento.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelRecuperoGiornoAllenamento.Size = new System.Drawing.Size(365, 16);
-            this.labelRecuperoGiornoAllenamento.TabIndex = 67;
-            this.labelRecuperoGiornoAllenamento.Text = "Tempo di recupero tra un esercizio e un altro (secondi)";
-            this.labelRecuperoGiornoAllenamento.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // recuperoGiornoAllenamento
-            // 
-            this.recuperoGiornoAllenamento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.recuperoGiornoAllenamento.BackColor = System.Drawing.Color.SlateBlue;
-            this.recuperoGiornoAllenamento.Font = new System.Drawing.Font("Britannic Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.recuperoGiornoAllenamento.ForeColor = System.Drawing.Color.Lavender;
-            this.recuperoGiornoAllenamento.Location = new System.Drawing.Point(411, 416);
-            this.recuperoGiornoAllenamento.Maximum = new decimal(new int[] {
-            3600,
-            0,
-            0,
-            0});
-            this.recuperoGiornoAllenamento.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.recuperoGiornoAllenamento.Name = "recuperoGiornoAllenamento";
-            this.recuperoGiornoAllenamento.Size = new System.Drawing.Size(40, 24);
-            this.recuperoGiornoAllenamento.TabIndex = 68;
-            this.recuperoGiornoAllenamento.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
             // 
             // buttonIndietro
             // 
@@ -707,8 +663,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.buttonIndietro);
-            this.Controls.Add(this.recuperoGiornoAllenamento);
-            this.Controls.Add(this.labelRecuperoGiornoAllenamento);
             this.Controls.Add(this.buttonSalvaGiornata);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -729,7 +683,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeroSerie)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recuperoGiornoAllenamento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -749,8 +702,6 @@
         public System.Windows.Forms.ComboBox comboBoxEsecuzioneEsercizio;
         private System.Windows.Forms.Label labelEsecuzioneEsercizio;
         public System.Windows.Forms.Button buttonSalvaGiornata;
-        private System.Windows.Forms.Label labelRecuperoGiornoAllenamento;
-        public System.Windows.Forms.NumericUpDown recuperoGiornoAllenamento;
         public System.Windows.Forms.NumericUpDown tempoRecupero;
         private System.Windows.Forms.Label labelTempoRecupero;
         public System.Windows.Forms.NumericUpDown numeroRipetizioni;

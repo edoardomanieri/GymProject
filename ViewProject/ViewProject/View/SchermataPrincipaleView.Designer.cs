@@ -57,6 +57,7 @@
             this.Recupero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Carico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Durata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonEsci = new System.Windows.Forms.Button();
             this.panelSchermataPrincipale.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScheda)).BeginInit();
@@ -81,6 +82,7 @@
             this.panelSchermataPrincipale.AutoSize = true;
             this.panelSchermataPrincipale.BackColor = System.Drawing.Color.Transparent;
             this.panelSchermataPrincipale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panelSchermataPrincipale.Controls.Add(this.buttonEsci);
             this.panelSchermataPrincipale.Controls.Add(this.buttonFrase);
             this.panelSchermataPrincipale.Controls.Add(this.buttonReset);
             this.panelSchermataPrincipale.Controls.Add(this.buttonProgressi);
@@ -94,6 +96,7 @@
             // 
             // buttonFrase
             // 
+            this.buttonFrase.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonFrase.BackColor = System.Drawing.Color.Transparent;
             this.buttonFrase.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.buttonFrase.FlatAppearance.BorderSize = 3;
@@ -102,7 +105,7 @@
             this.buttonFrase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFrase.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonFrase.ForeColor = System.Drawing.Color.Lavender;
-            this.buttonFrase.Location = new System.Drawing.Point(3, 289);
+            this.buttonFrase.Location = new System.Drawing.Point(3, 236);
             this.buttonFrase.Name = "buttonFrase";
             this.buttonFrase.Size = new System.Drawing.Size(177, 35);
             this.buttonFrase.TabIndex = 16;
@@ -132,6 +135,7 @@
             // 
             // buttonProgressi
             // 
+            this.buttonProgressi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonProgressi.BackColor = System.Drawing.Color.Transparent;
             this.buttonProgressi.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.buttonProgressi.FlatAppearance.BorderSize = 3;
@@ -140,7 +144,7 @@
             this.buttonProgressi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonProgressi.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonProgressi.ForeColor = System.Drawing.Color.Lavender;
-            this.buttonProgressi.Location = new System.Drawing.Point(3, 144);
+            this.buttonProgressi.Location = new System.Drawing.Point(3, 95);
             this.buttonProgressi.Name = "buttonProgressi";
             this.buttonProgressi.Size = new System.Drawing.Size(177, 35);
             this.buttonProgressi.TabIndex = 14;
@@ -161,7 +165,7 @@
             this.buttonModificaScheda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModificaScheda.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonModificaScheda.ForeColor = System.Drawing.Color.Lavender;
-            this.buttonModificaScheda.Location = new System.Drawing.Point(1, 357);
+            this.buttonModificaScheda.Location = new System.Drawing.Point(3, 307);
             this.buttonModificaScheda.Name = "buttonModificaScheda";
             this.buttonModificaScheda.Size = new System.Drawing.Size(177, 35);
             this.buttonModificaScheda.TabIndex = 9;
@@ -173,6 +177,7 @@
             // 
             // buttonVideo
             // 
+            this.buttonVideo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonVideo.BackColor = System.Drawing.Color.Transparent;
             this.buttonVideo.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.buttonVideo.FlatAppearance.BorderSize = 3;
@@ -181,7 +186,7 @@
             this.buttonVideo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonVideo.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonVideo.ForeColor = System.Drawing.Color.Lavender;
-            this.buttonVideo.Location = new System.Drawing.Point(3, 217);
+            this.buttonVideo.Location = new System.Drawing.Point(3, 165);
             this.buttonVideo.Name = "buttonVideo";
             this.buttonVideo.Size = new System.Drawing.Size(177, 35);
             this.buttonVideo.TabIndex = 13;
@@ -193,6 +198,7 @@
             // 
             // buttonProfilo
             // 
+            this.buttonProfilo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonProfilo.BackColor = System.Drawing.Color.Transparent;
             this.buttonProfilo.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
             this.buttonProfilo.FlatAppearance.BorderSize = 3;
@@ -202,7 +208,7 @@
             this.buttonProfilo.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonProfilo.ForeColor = System.Drawing.Color.Lavender;
             this.buttonProfilo.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.buttonProfilo.Location = new System.Drawing.Point(3, 72);
+            this.buttonProfilo.Location = new System.Drawing.Point(3, 25);
             this.buttonProfilo.Name = "buttonProfilo";
             this.buttonProfilo.Size = new System.Drawing.Size(177, 35);
             this.buttonProfilo.TabIndex = 12;
@@ -347,6 +353,27 @@
             this.Durata.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Durata.Width = 45;
             // 
+            // buttonEsci
+            // 
+            this.buttonEsci.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonEsci.BackColor = System.Drawing.Color.Transparent;
+            this.buttonEsci.FlatAppearance.BorderColor = System.Drawing.Color.Lavender;
+            this.buttonEsci.FlatAppearance.BorderSize = 3;
+            this.buttonEsci.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonEsci.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateBlue;
+            this.buttonEsci.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEsci.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEsci.ForeColor = System.Drawing.Color.Lavender;
+            this.buttonEsci.Location = new System.Drawing.Point(15, 406);
+            this.buttonEsci.Name = "buttonEsci";
+            this.buttonEsci.Size = new System.Drawing.Size(150, 35);
+            this.buttonEsci.TabIndex = 17;
+            this.buttonEsci.TabStop = false;
+            this.buttonEsci.Tag = "";
+            this.buttonEsci.Text = "Esci";
+            this.buttonEsci.UseMnemonic = false;
+            this.buttonEsci.UseVisualStyleBackColor = false;
+            // 
             // SchermataPrincipaleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,5 +412,6 @@
         public System.Windows.Forms.Button buttonVideo;
         public System.Windows.Forms.Button buttonProfilo;
         public System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.Button buttonEsci;
     }
 }
