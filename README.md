@@ -1,3 +1,3 @@
 # GymProject
 
-Gym app for workout routines and progress monitoring
+Desktop application for workout routines and progress monitoring.
